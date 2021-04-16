@@ -1,0 +1,74 @@
+<?php $this->load->view("admin/include/header"); ?>
+<?php $paymentDetail = $this->query_model->getbySpecific('tbl_payments','id',1);?>
+<!-- end head contents -->
+<!--wysiwyg editor script -->
+<script language="javascript" type="text/javascript" src="<?=THEMEPATH;?>themes/global/js/jquery-1.7.2.js"></script>
+<!--<script src="<?=THEMEPATH;?>themes/global/ckeditor/ckeditor.js"></script>-->
+
+	
+	
+<div class="gen-holder">
+	<div class="gen-panel-holder"  style="width: 100% !important;">
+	<div class="gen-panel">
+		<div class="panel-title">
+			<div class="panel-title-name">Add DojoCart Product</div>
+		</div>
+		<div class="panel-body">
+		<div class="panel-body-holder">		
+		<div class="form-holder">
+<script>
+	$(window).load(function(){
+		var template = $('.dojoCartTemplates').val();
+		$.ajax({ 					
+					type: 'POST',						
+					url: '<?php  echo base_url(); ?>admin/dojocart/ajax_get_dojocart_template',	
+					dataType: 'html',				
+					data: { template : template}					
+					}).done(function(result){ 
+					alert(template);
+					$('#successResult').html(result);
+				});
+	});
+	$(document).ready(function(){
+		$('.dojoCartTemplates').change(function(){
+			var template = $(this).val();
+			if(template != 'none'){
+				$.ajax({ 					
+					type: 'POST',						
+					url: '<?php  echo base_url(); ?>admin/dojocart/ajax_get_dojocart_template',	
+					dataType: 'html',				
+					data: { template : template}					
+					}).done(function(result){ 
+					//alert(result); return false;
+					$('#successResult').html(result);
+				});
+			}else{
+				alert('Please select any template');
+			}
+			
+			
+			
+		});
+	});
+</script>
+
+
+<div class="form-light-holder">
+	<h1> Dojo cart Template</h1>
+	<?php $dojoCartTemplates = array('default_template' => 'Default Template', 'template_1' => 'Template 1', 'template_2' => 'Template 2'); ?>
+	<select name="" class="dojoCartTemplates">
+		<?php foreach($dojoCartTemplates as $key => $dojoCartTemplate){ ?>
+		<option value="<?php echo $key; ?>"><?php echo $dojoCartTemplate; ?></option>
+		<?php } ?>
+	</select>
+</div>
+
+<div id="successResult"></div>
+		</div>
+		</div>
+		</div>
+	</div>
+	</div>
+
+<!-- recent items -->
+<?php $this->load->view("admin/include/footer");?>

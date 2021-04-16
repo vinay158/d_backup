@@ -1,0 +1,102 @@
+<?php $this->load->view("admin/include/header"); ?>
+<?php $paymentDetail = $this->query_model->getbySpecific('tbl_payments','id',1);?>
+<!-- end head contents -->
+<!--wysiwyg editor script -->
+<script language="javascript" type="text/javascript" src="<?=THEMEPATH;?>themes/global/js/jquery-1.7.2.js"></script>
+<!--<script src="<?=THEMEPATH;?>themes/global/ckeditor/ckeditor.js"></script>-->
+<script>
+	$(document).ready(function(){
+		$('.dojoCartTemplates').change(function(){
+			var template = $(this).val();
+			if(template == "template_1"){
+				$('#template_1').show();
+				$('#template_2').hide();
+				$('#default_template').hide();
+			}else if(template == "template_2"){
+				$('#template_2').show();
+				$('#template_1').hide();
+				$('#default_template').hide();
+			}else {
+				$('#default_template').show();
+				$('#template_2').hide();
+				$('#template_1').hide();
+			}
+		});
+	});
+</script>
+<div class="gen-holder">
+	<div class="gen-panel-holder"  style="width: 100% !important;">
+	<div class="gen-panel">
+		<div class="panel-title">
+			<div class="panel-title-name">Add DojoCart Product</div>
+		</div>
+		<div class="panel-body">
+		<div class="panel-body-holder">		
+		<div class="form-holder">
+	
+	
+	
+<div class="form-light-holder">
+	<h1> Dojo cart Template</h1>
+	<?php $dojoCartTemplates = array('default_template' => 'Default Template', 'template_1' => 'Template 1', 'template_2' => 'Template 2'); ?>
+	<select name="" class="dojoCartTemplates">
+		<?php foreach($dojoCartTemplates as $key => $dojoCartTemplate){ ?>
+		<option value="<?php echo $key; ?>"><?php echo $dojoCartTemplate; ?></option>
+		<?php } ?>
+	</select>
+</div>
+
+<div id="default_template">
+<?php echo $this->load->view("admin/dojocart_template_2"); ?>
+</div>
+	
+<div id="template_1" style="display:none"></div>
+	
+<div id="template_2" style="display:none">
+<?php echo $this->load->view("admin/dojocart_default_template"); ?>
+</div>	
+
+
+
+
+
+		</div>
+		</div>
+		</div>
+	</div>
+	</div>
+
+<br style="clear:both"/><br />
+<input type="hidden" class="totalAddMoreFeatures" value="2"  />
+<input type="hidden" class="totalAddMoreUpsales" value="1"  />
+<script language="javascript" type="text/javascript">
+ 	
+	$(document).ready(function(){
+
+			$('.AddMoreButton').click(function(){
+			var totalAddMoreFeatures = $('.totalAddMoreFeatures').val();
+			var i = parseInt(totalAddMoreFeatures) + Number(1);
+			$('.totalAddMoreFeatures').val(i);
+			
+				$('#AddMoreFeatures').append('<span class="featureBox_'+i+'"><i class="fa fa-close" style="cursor:pointer;" onclick="$(this).parent().remove();"> Delete</i><input type="text"  name="features['+i+']" id="features" class="field" placeholder="Enter Your Feature Text Here"/><br></span>');
+			
+		});
+
+			$('.AddMoreUpsale').click(function(){
+			var totalAddMoreUpsales = $('.totalAddMoreUpsales').val();
+			var b = parseInt(totalAddMoreUpsales) + Number(1);
+			$('.totalAddMoreUpsales').val(b);
+			
+				/*$('#upsale_option').append('<div class="form-light-holder"><h1> Upsell #'+b+' Title</h1><input type="text" value="" name="data['+b+'][up_title]" id="up_title" class="field" placeholder="" style="width:40%"/></div><div class="form-light-holder"><h1>Upsell #'+b+' Price</h1>$<input type="text" required="required" value="" name="data['+b+'][up_price]" id="up_price" class="field up_price" number="'+b+'" placeholder="Enter Price" style="width:10%"/><div class="ErrorMessage ErrorMessage_up_price'+b+'"></div><input type="text" value=""  name="data['+b+'][sales_tax]" id="sales_tax" class="field sales_tax_main" number="'+b+'" placeholder="%" style="width:10%; margin-left: 10px;" /><div class="ErrorMessage ErrorMessage_sales_tax_main'+b+'"></div></div><div class="form-light-holder"><h1>Upsell #'+b+' “YES PLEASE! TEXT” DESCRIPTION</h1><input type="text" value="" name="data['+b+'][yes]" id="yes" class="field" placeholder="" style="width:40%"/></div><div class="form-light-holder"><h1>Upsell #'+b+'  “NO THANK YOU! TEXT” DESCRIPTION</h1><input type="text" value="" name="data['+b+'][no]" id="no" class="field" placeholder="" style="width:40%"/></div>');*/
+
+				$('#upsale_option').append('<div class="form-light-holder"><h1> Upsell #'+b+' Title</h1><input type="text" value="" name="data['+b+'][up_title]" id="up_title" class="field" placeholder="" style="width:40%"/></div><div class="form-light-holder manage-pricerow"><h1>Upsell #'+b+' Price</h1><div class="price-validate">$<input type="text" required="required" value="" name="data['+b+'][up_price]" id="up_price" class="field up_price" number="'+b+'" placeholder="Enter Price" style="width:100px"/><div class="ErrorMessage ErrorMessage_up_price'+b+'"></div></div><div class="price-validate tax_hide_show"><span style="padding-left: 15px;">Sales Tax (%)</span><input type="text" value=""  name="data['+b+'][sales_tax]" id="sales_tax" class="field sales_tax_main" number="'+b+'" placeholder="%" style="width:100px; margin-left: 10px;" /><div class="ErrorMessage ErrorMessage_sales_tax_main'+b+'"></div></div></div><div class="form-light-holder"><h1>Upsell #'+b+' “YES PLEASE! TEXT” DESCRIPTION</h1><input type="text" value="" name="data['+b+'][yes]" id="yes" class="field" placeholder="" style="width:40%"/></div><div class="form-light-holder"><h1>Upsell #'+b+'  “NO THANK YOU! TEXT” DESCRIPTION</h1><input type="text" value="" name="data['+b+'][no]" id="no" class="field" placeholder="" style="width:40%"/></div>');
+			
+		});
+
+
+
+	});	 
+	
+</script>
+<!-- recent items -->
+<?php $this->load->view("admin/include/footer");?>
