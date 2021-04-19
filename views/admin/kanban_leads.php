@@ -60,7 +60,7 @@
 				<div class="row mg-t-10">
 				<div class="col-md-2">
 						<h1>Status</h1>
-						<select name="lead_status" id="" class="field search_field">
+						<select name="lead_status" id="kanban_status_dropdown" class="field search_field">
 							<option value="">-All Status-</option>
 							<?php foreach($kanban_lead_all_status as $key => $status){ ?>
 								<option value="<?php echo $status->id; ?>" <?php echo (isset($_GET['lead_status']) && $_GET['lead_status'] == $status->id) ? "selected=selected" : ''; ?>><?php echo $status->title; ?></option>
@@ -168,7 +168,7 @@
 					
 					<!--<div id="new_added_status"></div>-->
 					
-					<?php foreach($kanban_lead_status as $status){ ?>
+					<?php foreach($kanban_lead_status as $status){?>
 					
 	
 	
@@ -177,8 +177,13 @@
         <div class="board-column-header"   style="background:<?php echo !empty($status->color_code) ? $status->color_code : 'red'; ?>">
 			<div class="heading">
 				<h3 class="little_row_heading_<?php echo $status->id; ?>"><?php echo $status->title; ?></h3>
-				<span class="float-right"><i class="fas fa-ellipsis-v"></i><nav class="az-menu-sub">
-			<a href="javascript:void(0)" class="nav-link full_alternate_popup" data-toggle="modal" data-target="#fullAlternatePopup" action_type="edit" item_id="<?php echo $status->id; ?>"  table_name="tbl_kanban_lead_status" form_type="little_row">Edit</a>
+				<span class="float-right"><i class="fas fa-ellipsis-v"></i>
+				<nav class="az-menu-sub">
+			
+<a href="javascript:void(0)" class="nav-link full_alternate_popup" data-toggle="modal" data-target="#fullAlternatePopup" action_type="edit" item_id="<?php echo $status->id; ?>"  table_name="tbl_kanban_lead_status" form_type="little_row">Edit</a>
+<?php if(!isset($all_leads[$status->id]) || empty($all_leads[$status->id]) ){ ?>
+<a href="javascript:void(0)" class="nav-link delete_item" data-toggle="modal" data-target="#popupDeleteItem" item_title="<?php echo $status->title; ?>" item_id="<?php echo $status->id; ?>"  table_name="tbl_kanban_lead_status" form_type="little_row">Delete</a>
+<?php } ?>
 		</nav></span>
 				
 			</div>
@@ -198,8 +203,12 @@
 					$position_y = isset($sort_positions->position_y) ? $sort_positions->position_y : 0;*/
 		?>
           <aside class="board-item muuri-item order_items_<?php echo $status->id; ?> muuri-item-shown lead_<?php echo $lead_type; ?>_<?php echo $lead->id; ?>" lead_type="<?php echo $lead_type; ?>" lead_id="<?php echo $lead->id; ?>" kanban_status_id="<?php echo $status->id; ?>">
-		  <div class="board-item-content modal-effect " data-toggle="modal" data-effect="effect-scale"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>"  style="border-left:10px solid <?php echo !empty($status->color_code) ? $status->color_code : 'red'; ?>"><a href="" class="az-img-user"><i class="typcn typcn-user"></i></a>
-								<h4><?php echo $lead->name; ?></h4>
+		  
+		  <div class="board-item-content modal-effect " data-toggle="modal" data-effect="effect-scale"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>"  style="border-left:10px solid <?php echo !empty($status->color_code) ? $status->color_code : 'red'; ?>">
+		  
+		  <a href="" class="az-img-user"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>"><i class="typcn typcn-user"></i></a>
+		  
+								<a href="" class="username"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>"><h4><?php echo $lead->name; ?></h4></a>
 								<span class="detail"><strong>Date Added:</strong> <?php echo date('M d, Y ', strtotime($lead->created)); ?></span>
 								 <?php
 									
@@ -258,6 +267,12 @@
 	<script src="<?=base_url();?>assets_admin/js/web-animations.min.js"></script>
 <script src="<?=base_url();?>assets_admin/js/muuri.min.js"></script>
 <script src="<?=base_url();?>assets_admin/js/azia.js"></script>
+
+
+<script src="color_overlay_opacity_pickier/js/spectrum.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="color_overlay_opacity_pickier/css/spectrum.css">
+	
+	
     <script>
 	 if(window.matchMedia('(min-width: 992px)').matches) {
 	var $width = $('.greybg').width();
@@ -781,7 +796,6 @@ $(document).ready(function(){
 					
 					if(data.form_action == "add"){
 						
-				/*$('#new_added_status').append('<li class="board-column todo muuri-item red-theme muuri-item-shown kanban_lead_status_'+item_id+'"><div class="board-column-container"><div class="board-column-header"   style="background:'+form_color_code+'"><div class="heading"><h3 class="little_row_heading_'+item_id+'">'+form_status_title+'</h3><span class="float-right"><i class="fas fa-ellipsis-v"></i><nav class="az-menu-sub"><a href="javascript:void(0)" class="nav-link full_alternate_popup" data-toggle="modal" data-target="#fullAlternatePopup" action_type="edit" item_id="'+item_id+'" table_name="tbl_kanban_lead_status" form_type="little_row">Edit</a></nav></span></div></div><div class="board-column-content-wrapper"><div class="board-column-content muuri" > </div></div></div> </li>');*/
 						
 						$('#fullAlternatePopup').modal('hide');
 						
@@ -795,7 +809,27 @@ $(document).ready(function(){
 						$('.kanban_lead_status_'+item_id).find('.board-column-header').css('background',form_color_code);
 						$('.kanban_lead_status_'+item_id).find('.board-item-content').css('border-left','10px solid '+form_color_code);
 						
+						
 						$('#fullAlternatePopup').modal('hide');
+						
+						//alert('dsafdsaf');//kanban_status_dropdown
+						$('#kanban_status_dropdown').empty();
+									
+						$("#kanban_status_dropdown").append('<option value="">-All Status-</option>');
+						
+						 <?php
+							$selected_kanban_status = (isset($_GET['lead_status']) && !empty($_GET['lead_status'])) ? $_GET['lead_status'] : ''; 
+						?>
+						$.each(data.kanban_lead_status, function(index, element) {
+							var selected_kanban_status = '<?php echo $selected_kanban_status; ?>';
+							if(element.id == selected_kanban_status){
+								$("#kanban_status_dropdown").append('<option value="'+element.id+'" selected="selected">'+element.title+'</option>');
+							}else{
+								$("#kanban_status_dropdown").append('<option value="'+element.id+'">'+element.title+'</option>');
+							}
+							
+						});
+						
 						
 						$('#responsePopup').find('.action_response_msg').html('Successfully updated!');
 					
@@ -926,7 +960,7 @@ $(document).ready(function(){
 	})
 	
 	
-	 $('body').on('click','.board-item-content', function(e){
+	 $('body').on('click','.board-item-content .az-img-user,.board-item-content  .username', function(e){
           e.preventDefault();
 		   
 		   var lead_id = $(this).attr('lead_id');
@@ -951,6 +985,59 @@ $(document).ready(function(){
 		   
 		  
         });
+		
+		
+		
+$('body').on('click','.delete_item', function(){
+		var item_id = $(this).attr('item_id');
+		var table_name = $(this).attr('table_name');
+		var form_type = $(this).attr('form_type');
+		var item_title = $(this).attr('item_title');
+		
+		$('#popupDeleteItem').modal('show');
+		$('#popupDeleteItem').find('.modal-title').html('Status: '+item_title);
+		$('#popupDeleteItem').find('#delete_item_id').val(item_id);
+		$('#popupDeleteItem').find('#delete_item_table_name').val(table_name);
+		$('#popupDeleteItem').find('#delete_item_section_type').val(form_type);
+	})
+	
+	
+ 	$('body').on('click','.popup_delete_btn', function(){
+		
+		
+		var formData = $('#popupDeleteItem').find('form').serialize();
+		var form_action = $('#popupDeleteItem').find('form').attr('action');
+		var item_id = $('#popupDeleteItem').find('#delete_item_id').val();
+		
+		
+		$.ajax({ 					
+			type: 'POST',						
+			url: form_action,						
+			data: { formData : formData}					
+			}).done(function(msg){ 
+			if(msg == 1){
+				
+				
+				$('.kanban_lead_status_'+item_id).remove();
+				$('#popupDeleteItem').modal('hide');
+				
+				$('#responsePopup').modal('show');
+				$('#responsePopup').find('.action_response_msg').html('Successfully deleted!');
+				setTimeout(function() {
+						$('#responsePopup').modal('hide');
+						location.reload();
+						}, 3000);
+				
+			}
+			else{
+				alert("Oops! Something went wrong!");
+				return false;
+						
+			}
+		});
+			
+	})
+	
 		
 	
 })
@@ -977,5 +1064,40 @@ $(document).ready(function(){
       </div><!-- modal-dialog -->
     </div><!-- modal -->
 	
+	
+	<div id="popupDeleteItem" class="modal">
+      <div class="modal-dialog modal-dialog-centered sortable-box" role="document">
+        <div class="modal-content modal-content-demo">
+          <div class="modal-header">
+            <h6 class="modal-title"></h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+		  <form action="admin/kanban_leads/delete_kanban_status" method="post" id="deleteForm">
+          <div class="modal-body edit-form">
+             <div class="row row-xs align-items-center delete_popup_text_block">
+					<div class="col-md-12 mg-t-5 mg-md-t-0 text-center">
+						<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+						<h2 class="heading">Are you sure?</h2>
+						<h5 class="subheading">You will not be able to recover the deleted record.</h5>
+					</div>
+				</div>
+				<input type="hidden" name="delete-item-id" id="delete_item_id" value="">
+				<input type="hidden" name="table_name" id="delete_item_table_name" value="">
+				<input type="hidden"  id="delete_item_section_type" value="">
+          </div>
+          <div class="modal-footer">
+			  <div class="col-md-6 text-left">
+				<a href="javascript:void(0)" class="btn btn-indigo popup_cancel_btn" data-dismiss="modal">No, cancel please !</a>
+			  </div>
+			   <div class="col-md-6 text-right">
+				<a href="javascript:void(0)" class="btn btn-indigo popup_delete_btn">Yes, Delete It !</a>
+			   </div>
+          </div>
+		  </form>
+        </div>
+      </div><!-- modal-dialog -->
+    </div><!-- modal -->
 	
 	

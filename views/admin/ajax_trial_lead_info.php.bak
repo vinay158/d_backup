@@ -464,7 +464,7 @@
 									if(!empty($tags)){ 
 										foreach($tags as $tag_id => $tag){
 							?>
-							<span class="badge badge-pill badge-primary kanban_tags kanban_tag_<?php echo $tag_id; ?>"><?php echo $tag; ?></span>
+							<span class="badge badge-pill badge-primary kanban_tag_<?php echo $tag_id; ?>"><?php echo $tag; ?></span>
 							<?php } } ?>
 							</span>
 							

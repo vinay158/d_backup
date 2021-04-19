@@ -32,7 +32,7 @@
 	</div>-->
 	
 <div class="form-light-holder">
-	<h1> Status Color</h1>
+	<h1> Color Overlay And Opacity  Picker</h1>
 	<div id='docs_afull'>
     <div id='docs_content_afull'>
 		<input id="full_colorpicker_opacity_afull" name="color_code" class="colourTextValueAfull form_color_code" value="<?php echo !empty($detail) ? $detail->color_code : ''; ?>" />

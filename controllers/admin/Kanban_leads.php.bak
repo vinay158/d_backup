@@ -146,18 +146,35 @@ class Kanban_leads extends CI_Controller {
 		}
 		
 	$orderLeadsSortEmail = array();
+	$orderLeadsSortCreatedDate = array();
 	$orderLeadsFiltered = array();
+	
 	if(isset($data['filterd_leads']) && !empty($data['filterd_leads'])){
 		foreach($data['filterd_leads'] as $lead_data){
+			$last_date = '';
 			foreach($lead_data as $key => $lead){
-				$orderLeadsSortEmail[strtotime($lead->created)] = $lead;
+				if(strtotime($lead->created) > $last_date){
+					$last_date = strtotime($lead->created);
+					$orderLeadsSortEmail[$lead->email] = $lead;
+				}
 			}
 		}
 		
-		ksort($orderLeadsSortEmail);
 		
 		if(!empty($orderLeadsSortEmail)){
-			foreach($orderLeadsSortEmail as $newlead_data){
+			foreach($orderLeadsSortEmail as $email => $newlead_data){
+				
+				$created_date = strtotime($newlead_data->created);
+				$orderLeadsSortCreatedDate[$created_date] = $newlead_data;
+			}
+			
+			krsort($orderLeadsSortCreatedDate);
+		}
+		
+		//ksort($orderLeadsSortEmail);
+		
+		if(!empty($orderLeadsSortCreatedDate)){
+			foreach($orderLeadsSortCreatedDate as $newlead_data){
 				
 				$new_lead_type = $this->query_model->getKanbanLeadTypeToOrderType($newlead_data->lead_type);
 				//	echo '<pre>newlead_data'; print_r($new_lead_type); die;	
@@ -754,7 +771,7 @@ public function ajax_save_full_alternate_row(){
 	
 		
 		parse_str($_POST['formData'], $searcharray);
-		
+		//echo '<pre>searcharray'; print_r($searcharray); die;
 		$result = array();
 		$result['res'] = 0;
 		if(isset($searcharray['update'])){
@@ -772,6 +789,7 @@ public function ajax_save_full_alternate_row(){
 					$this->query_model->updateData($table_name,'id',$item_id, $data);
 					$insert_id = $item_id;
 					$result['form_action'] = 'edit';
+					
 				}else{
 					
 					$data['status'] = 1;
@@ -787,6 +805,13 @@ public function ajax_save_full_alternate_row(){
 					$result['form_type'] = $form_type;
 					$result['table_name'] = $table_name;
 					$result['color_code'] = $data['color_code'];
+					
+					$this->db->order_by('sort_number','asc');
+					$this->db->select(array('id','title'));
+					$data['kanban_lead_all_status'] = $this->query_model->getbyTable("tbl_kanban_lead_status");
+					
+					$result['kanban_lead_status'] = $data['kanban_lead_status'];
+					
 				
 			}
 		echo json_encode($result); 	die;
@@ -994,15 +1019,38 @@ public function update_lead_status_id(){
 		$kanban_status_name = !empty($kanban_status) ? $kanban_status[0]->title : '';
 		
 		$this->db->select('title');
-		$kanban_status = $this->query_model->getBySpecific('tbl_kanban_lead_status','id',$kanban_status_id);
-		$kanban_status_name = !empty($kanban_status) ? $kanban_status[0]->title : '';
+		$old_kanban_status = $this->query_model->getBySpecific('tbl_kanban_lead_status','id',$old_kanban_status_id);
+		$old_kanban_status_name = !empty($old_kanban_status) ? $old_kanban_status[0]->title : '';
 		
 		$data['response'] = 1;
 		$data['status_type_id'] = $kanban_status_id;
 		$data['kanban_status_name'] = $kanban_status_name;
+		$data['old_kanban_status_name'] = $old_kanban_status_name;
 	}
 	
 	echo json_encode($data); die;
+}
+	
+	
+public function delete_kanban_status(){
+	parse_str($_POST['formData'], $searcharray);
+		
+		$id = isset($searcharray['delete-item-id']) ? $searcharray['delete-item-id'] : 0;
+		$table_name = isset($searcharray['table_name']) ? $searcharray['table_name'] : '';
+		
+		if(!empty($id) && !empty($table_name)){
+			$this->db->where("id", $id);
+			if($this->db->delete($table_name))
+			{
+				
+				echo 1;
+			}
+			else
+			{
+				echo 0;
+			}
+		}
+		exit();	
 }
 	
 }

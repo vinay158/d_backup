@@ -10144,4 +10144,12 @@ public function createAndGetKanbanOrderSortNumber($kanban_status_id,$lead_type,$
 	
 }
 
+public function getKanbanStatusNameByID($kanban_status_id){
+	
+	$this->db->select('title');
+	$kanban_status = $this->query_model->getBySpecific('tbl_kanban_lead_status','id',$kanban_status_id);
+	
+	return !empty($kanban_status) ? $kanban_status[0]->title : '';
+}
+
 }

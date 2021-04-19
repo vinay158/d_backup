@@ -3567,12 +3567,12 @@ public function checkActiveCampaignContactExists($activeCampaign, $email){
 									
 									//... The Captcha is valid you can continue with the rest of your code
 									//... Add code to filter access using $captcha_response . score
-									if ($captcha_response->success==true && $captcha_response->score <= 0.5) {
+									/*if ($captcha_response->success==true && $captcha_response->score <= 0.5) {
 										//Do something to denied access
 										$is_error = 1;
 										$is_captcha_error = 1;
 										$error_text = $error_text.' 43';
-									}
+									}*/
 								}
 								
 							   
@@ -4153,12 +4153,12 @@ public function checkActiveCampaignContactExists($activeCampaign, $email){
 									
 									//... The Captcha is valid you can continue with the rest of your code
 									//... Add code to filter access using $captcha_response . score
-									if ($captcha_response->success==true && $captcha_response->score <= 0.5) {
+									/*if ($captcha_response->success==true && $captcha_response->score <= 0.5) {
 										//Do something to denied access
 										$is_error = 1;
 										$is_captcha_error = 1;
 										$error_text = $error_text.' 43';
-									}
+									}*/
 								}
 								
 							   
@@ -10093,6 +10093,7 @@ public function getKanbanLeadComments($lead_id,$lead_type){
 	
 	if(!empty($lead_id) && !empty($lead_type)){
 		
+		$this->db->order_by('id','desc');
 		$this->db->select(array('comment','id','created'));
 		$this->db->where('lead_id',$lead_id);
 		$comment_results =  $this->query_model->getBySpecific('tbl_kanban_lead_comments','lead_type',$lead_type);
@@ -10141,6 +10142,14 @@ public function createAndGetKanbanOrderSortNumber($kanban_status_id,$lead_type,$
 		return $new_sort_number;
 	}
 	
+}
+
+public function getKanbanStatusNameByID($kanban_status_id){
+	
+	$this->db->select('title');
+	$kanban_status = $this->query_model->getBySpecific('tbl_kanban_lead_status','id',$kanban_status_id);
+	
+	return !empty($kanban_status) ? $kanban_status[0]->title : '';
 }
 
 }

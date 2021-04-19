@@ -291,7 +291,7 @@ $(document).ready(function(){
 							<input type="submit" name="submitCsv" class="submitCsv btn-save" value="Import">
 							</div>
 							<div class="col-lg-3 float-left">
-							 <a href="<?=base_url();?>admin/leads/exportorderleads/?location=<?php echo (isset($_GET['location'])) ? $_GET['location'] : ''; ?>" class="button_class btn btn-outline-light">Export List</a> 
+							 <a href="http://localhost/dojo_demov5admin/leads/exportorderleads/?location=<?php echo (isset($_GET['location'])) ? $_GET['location'] : ''; ?>" class="button_class btn btn-outline-light">Export List</a> 
 							</div>
 						</form>
 					</div>

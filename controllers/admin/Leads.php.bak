@@ -160,7 +160,7 @@ class Leads extends CI_Controller {
 			krsort($data['all_leads']);
 			
 		}
-		//echo '<pre>orderLeadsSortEmail'; print_r($data['all_leads']); die;
+		echo '<pre>orderLeadsSortEmail'; print_r($data['all_leads']); die;
 		/*echo '<pre>'; print_r($data['filterd_leads']); die;
 		$data['all_leads'] = array();
 		$orderLeadsFiltered = array();
