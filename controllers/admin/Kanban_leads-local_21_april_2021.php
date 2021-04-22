@@ -96,14 +96,13 @@ class Kanban_leads extends CI_Controller {
 		}
 		
 		$data['custom_filterd_leads'] = array();
-		echo '<pre>POST'; print_r($data['leads']); die;
 		if(isset($data['leads']) && !empty($data['leads'])){
 			
 			foreach($data['leads'] as $key=> $lead_data){
 				$a = 0;
 				if(!empty($lead_data)){
 					foreach($lead_data as  $lead){
-					 // if($lead->kanban_status_id > 0){
+					  if($lead->kanban_status_id > 0){
 							$lead_type = str_replace('_leads','',$key);
 							
 							if($lead_type == "birthday_parties" || $lead_type == "contact_us" ){
@@ -146,13 +145,12 @@ class Kanban_leads extends CI_Controller {
 							$data['custom_filterd_leads'][$lead->email][$unique_id]['unique_id'] = $unique_id;
 							
 						$a++;
-						//}
+						}
 					}
 				}
 				
 			}
 		}
-	
 	
 	
 	$orderLeadsSortEmail = array();
@@ -220,7 +218,7 @@ class Kanban_leads extends CI_Controller {
 		}
 	}
 	
-	//echo '<pre>'; print_r($data['all_leads']); die;
+	
 		
 		$this->db->where('id',1);
 		$data['multiLocation'] = $this->query_model->getbyTable("tblconfigcalendar");
@@ -280,9 +278,8 @@ public function getOrderLeads($start_date,$end_date,$lead_type,$location = '',$s
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'trial_offer_lead');
 	//echo "select * from (select DISTINCT email,id,name,last_name,phone,location_id,last_order_id,offer_type,trans_status,is_unique_trial,trial_id,created,is_delete,kanban_status_id from tblorders order by id desc) as orders where ".$where." GROUP by orders.email"; die;
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,last_order_id,offer_type,trans_status,is_unique_trial,trial_id,created,is_delete,kanban_status_id from tblorders order by id desc) as orders where ".$where." LIMIT 1");
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,last_order_id,offer_type,trans_status,is_unique_trial,trial_id,created,is_delete,kanban_status_id from tblorders order by id desc) as orders where ".$where." GROUP by orders.email");
 	$leads = $query->result();
-	//echo '<pre>leads'; print_r($leads); die;
 	
 	return $leads;
 }
@@ -296,7 +293,7 @@ public function getBirthdayPartiesLeads($start_date,$end_date,$search_query){
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'birthday_party_lead');
 	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,party_date,guests,date_added,is_delete,kanban_status_id from tblbirthdayparty order by id desc) as orders where ".$where);
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,party_date,guests,date_added,is_delete,kanban_status_id from tblbirthdayparty order by id desc) as orders where ".$where." GROUP by orders.email");
 	$leads = $query->result();
 	
 	return $leads;
@@ -319,7 +316,7 @@ public function getContactUsLeads($start_date,$end_date,$location = '',$search_q
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'contactus_lead');
 	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,school,message,date_added,is_delete,kanban_status_id from tblcontactusleads order by id desc) as orders where ".$where);
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,school,message,date_added,is_delete,kanban_status_id from tblcontactusleads order by id desc) as orders where ".$where." GROUP by orders.email");
 	$leads = $query->result();
 	
 	
@@ -339,7 +336,7 @@ public function getDojocartLeads($start_date,$end_date,$location = '',$search_qu
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'dojocart_lead');
 	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location,product_id,offer_type,amount,trans_status,created,is_delete,kanban_status_id from tbl_dojocart_orders order by id desc) as orders where ".$where);
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location,product_id,offer_type,amount,trans_status,created,is_delete,kanban_status_id from tbl_dojocart_orders order by id desc) as orders where ".$where." GROUP by orders.email");
 	$leads = $query->result();
 	
 	
@@ -905,7 +902,6 @@ public function update_move_lead_status_id(){
 }
 
 public function ajax_sort_kanban_leads(){
-	
 	$responseData = (isset($_POST['responseData']) && !empty($_POST['responseData'])) ? $_POST['responseData'] : '';
 	$kanban_status_id = (isset($_POST['kanban_status_id']) && !empty($_POST['kanban_status_id'])) ? $_POST['kanban_status_id'] : '';
 	$action = (isset($_POST['action']) && !empty($_POST['action'])) ? $_POST['action'] : '';

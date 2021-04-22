@@ -53,19 +53,18 @@
 
 
 <?php 
-$twillio_sms_flow_titles = array('template_1'=>'SMS Flow for Opt-in','template_2'=>'SMS Flow for 2nd SMS','template_3'=>'SMS Flow for Trial Forms','template_4'=>'SMS Flow for Admin');
 	if(!empty($sms_flows)){
 		$i = 1;
 		foreach($sms_flows as $sms_flow){
 ?>
-<div class="mb-3 main-content-label page_main_heading"><?php echo isset($twillio_sms_flow_titles[$sms_flow->msg_type]) ? $twillio_sms_flow_titles[$sms_flow->msg_type] : 'SMS FLOW'; ?></div>
+<div class="mb-3 main-content-label page_main_heading">SMS Flow #<?php echo $i; ?></div>
 
 <div class="form-new-holder">
 	<div class="row row-xs align-items-center">
 		
 		<div class="col-md-12  mg-t-5 mg-md-t-0">
 		<div class="row mg-t-10">
-		<!--<div class="col-lg-12">
+		<div class="col-lg-12">
 			<?php if($sms_flow->id == 1){ ?>
 				<p class="heading">SMS #1 - <span>Sent immediately after opt-in if between</span> 
 					<select name="data[<?php echo $sms_flow->id; ?>][start_time]"  class="field">
@@ -97,7 +96,7 @@ $twillio_sms_flow_titles = array('template_1'=>'SMS Flow for Opt-in','template_2
 				</p>
 			<?php } ?>
 			
-		</div> -->
+		</div>
 		<input type="hidden" name="data[<?php echo $sms_flow->id; ?>][msg_type]" value="template_<?php echo $i; ?>">
 		
 		

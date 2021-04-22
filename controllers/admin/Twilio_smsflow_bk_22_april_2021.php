@@ -34,7 +34,7 @@ class Twilio_smsflow extends CI_Controller{
 						if(!empty($record)){
 							$this->query_model->update('tbl_twilio_sms_flows', $key, $updateDataArr);
 						}else{
-							$updateDataArr['created'] = date('Y-m-d H:i:s');
+							$updateDataArr['msg_template'] = date('Y-m-d H:i:s');
 							
 							$this->query_model->insertData('tbl_twilio_sms_flows',$updateDataArr);
 							

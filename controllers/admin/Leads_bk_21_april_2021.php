@@ -92,7 +92,7 @@ class Leads extends CI_Controller {
 			$data['leads']['dojocart_leads'] = $this->getDojocartLeads($data['start_date'],$data['end_date'],$location,$search_query);
 		}
 		
-		$data['custom_filterd_leads'] = array();
+		
 		if(isset($data['leads']) && !empty($data['leads'])){
 			
 			foreach($data['leads'] as $key=> $lead_data){
@@ -101,37 +101,30 @@ class Leads extends CI_Controller {
 					foreach($lead_data as  $lead){
 						$lead_type = str_replace('_leads','',$key);
 						if($lead_type == "birthday_parties" || $lead_type == "contact_us" ){
-							$created = $lead->date_added;
+							$created = strtotime($lead->date_added);
 						}else{
-							$created = $lead->created;
+							$created = strtotime($lead->created);
 						}
 						
-						$unique_id = $lead->id.'_'.$lead->kanban_status_id.'_'.$lead_type;
-						
-						$data['filterd_leads'][$lead->email][$unique_id] = $lead;
-						$data['filterd_leads'][$lead->email][$unique_id]->lead_type = $lead_type;
-						
+						$data['filterd_leads'][$lead->email][$created] = $lead;
+						$data['filterd_leads'][$lead->email][$created]->lead_type = $lead_type;
 						if($lead_type == "birthday_parties" || $lead_type == "contact_us" ){
-							$data['filterd_leads'][$lead->email][$unique_id]->created = $lead->date_added;
-							$data['filterd_leads'][$lead->email][$unique_id]->offer_type = "";
-							$data['filterd_leads'][$lead->email][$unique_id]->trans_status = "";
+							$data['filterd_leads'][$lead->email][$created]->created = $lead->date_added;
+							$data['filterd_leads'][$lead->email][$created]->offer_type = "";
+							$data['filterd_leads'][$lead->email][$created]->trans_status = "";
 							if($lead_type == "contact_us"){
 								if(!empty($lead->school)){
 									$this->db->select(array('id','name'));
 									$locationDetail = $this->query_model->getBySpecific('tblcontact','name',$lead->school);
 									if(!empty($locationDetail)){
-										$data['filterd_leads'][$lead->email][$unique_id]->location_id = $locationDetail[0]->id;
+										$data['filterd_leads'][$lead->email][$created]->location_id = $locationDetail[0]->id;
 									}
 								}
 								
 							}
 						}elseif($lead_type == "dojocart"){
-							$data['filterd_leads'][$lead->email][$unique_id]->location_id = $lead->location;
+							$data['filterd_leads'][$lead->email][$created]->location_id = $lead->location;
 						}
-						
-						$data['custom_filterd_leads'][$lead->email][$unique_id]['created'] = $created;
-						$data['custom_filterd_leads'][$lead->email][$unique_id]['email'] = $lead->email;
-						$data['custom_filterd_leads'][$lead->email][$unique_id]['unique_id'] = $unique_id;
 					$a++;
 					}
 				}
@@ -141,40 +134,32 @@ class Leads extends CI_Controller {
 		
 		$orderLeadsSortEmail = array();
 		$data['all_leads'] = array();
-		
-		if(isset($data['custom_filterd_leads']) && !empty($data['custom_filterd_leads'])){
-			foreach($data['custom_filterd_leads'] as $lead_data){
+		if(isset($data['filterd_leads']) && !empty($data['filterd_leads'])){
+			foreach($data['filterd_leads'] as $lead_data){
 				
 				$last_date = '';
 				foreach($lead_data as $key => $lead){
-					if(strtotime($lead['created']) > $last_date){
-						$last_date = strtotime($lead['created']);
-						$orderLeadsSortEmail[$lead['email']] = $lead;
+					if(strtotime($lead->created) > $last_date){
+						$last_date = strtotime($lead->created);
+						$orderLeadsSortEmail[$lead->email] = $lead;
 					}
 				}
-				//echo '<prE>'; print_r($orderLeadsSortEmail); die;
+				
 			}
 			
 			//ksort($orderLeadsSortEmail);
 			
 			if(!empty($orderLeadsSortEmail)){
 				foreach($orderLeadsSortEmail as $email => $newlead_data){
-					$lead = array();
-					$lead = isset($data['filterd_leads'][$newlead_data['email']][$newlead_data['unique_id']]) ? $data['filterd_leads'][$newlead_data['email']][$newlead_data['unique_id']] : '';
 					
-					if(!empty($lead)){
-						$created_date = strtotime($lead->created);
-						$data['all_leads'][$created_date] = $lead;
-					}
-					
+					$created_date = strtotime($newlead_data->created);
+					$data['all_leads'][$created_date] = $newlead_data;
 				}
 			}
 			
 			krsort($data['all_leads']);
 			
 		}
-		
-		//echo '<pre>'; print_r($data['all_leads']); die;
 		//echo '<pre>orderLeadsSortEmail'; print_r($data['all_leads']); die;
 		/*echo '<pre>'; print_r($data['filterd_leads']); die;
 		$data['all_leads'] = array();
@@ -265,7 +250,7 @@ public function getOrderLeads($start_date,$end_date,$lead_type,$location = '',$s
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'trial_offer_lead');
 	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,last_order_id,offer_type,trans_status,is_unique_trial,trial_id,created,is_delete,kanban_status_id from tblorders order by id desc) as orders where ".$where);
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,last_order_id,offer_type,trans_status,is_unique_trial,trial_id,created,is_delete,kanban_status_id from tblorders order by id desc) as orders where ".$where." GROUP by orders.email");
 	$leads = $query->result();
 	
 	return $leads;
@@ -280,7 +265,7 @@ public function getBirthdayPartiesLeads($start_date,$end_date,$search_query){
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'birthday_party_lead');
 	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,party_date,guests,date_added,is_delete,kanban_status_id from tblbirthdayparty order by id desc) as orders where ".$where);
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,party_date,guests,date_added,is_delete,kanban_status_id from tblbirthdayparty order by id desc) as orders where ".$where." GROUP by orders.email");
 	$leads = $query->result();
 	
 	
@@ -313,7 +298,7 @@ public function getContactUsLeads($start_date,$end_date,$location = '',$search_q
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'contactus_lead');
 	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,school,message,date_added,is_delete,kanban_status_id from tblcontactusleads order by id desc) as orders where ".$where);
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,school,message,date_added,is_delete,kanban_status_id from tblcontactusleads order by id desc) as orders where ".$where." GROUP by orders.email");
 	$leads = $query->result();
 	
 	
@@ -342,9 +327,7 @@ public function getDojocartLeads($start_date,$end_date,$location = '',$search_qu
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'dojocart_lead');
 	
-	//"select * from (select DISTINCT email,id,name,last_name,phone,location,product_id,offer_type,amount,trans_status,created,is_delete,kanban_status_id from tbl_dojocart_orders order by id desc) as orders where ".$where." GROUP by orders.email"
-	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location,product_id,offer_type,amount,trans_status,created,is_delete,kanban_status_id from tbl_dojocart_orders order by id desc) as orders where ".$where);
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location,product_id,offer_type,amount,trans_status,created,is_delete,kanban_status_id from tbl_dojocart_orders order by id desc) as orders where ".$where." GROUP by orders.email");
 	$leads = $query->result();
 	
 	/*$this->db->where("DATE_FORMAT(created,'%Y-%m-%d') >= ", $start_date);

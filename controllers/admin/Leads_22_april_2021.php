@@ -265,7 +265,7 @@ public function getOrderLeads($start_date,$end_date,$lead_type,$location = '',$s
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'trial_offer_lead');
 	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,last_order_id,offer_type,trans_status,is_unique_trial,trial_id,created,is_delete,kanban_status_id from tblorders order by id desc) as orders where ".$where);
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,last_order_id,offer_type,trans_status,is_unique_trial,trial_id,created,is_delete,kanban_status_id from tblorders order by id desc) as orders where ".$where." GROUP by orders.email");
 	$leads = $query->result();
 	
 	return $leads;
@@ -280,7 +280,7 @@ public function getBirthdayPartiesLeads($start_date,$end_date,$search_query){
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'birthday_party_lead');
 	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,party_date,guests,date_added,is_delete,kanban_status_id from tblbirthdayparty order by id desc) as orders where ".$where);
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,party_date,guests,date_added,is_delete,kanban_status_id from tblbirthdayparty order by id desc) as orders where ".$where." GROUP by orders.email");
 	$leads = $query->result();
 	
 	
@@ -313,7 +313,7 @@ public function getContactUsLeads($start_date,$end_date,$location = '',$search_q
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'contactus_lead');
 	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,school,message,date_added,is_delete,kanban_status_id from tblcontactusleads order by id desc) as orders where ".$where);
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,school,message,date_added,is_delete,kanban_status_id from tblcontactusleads order by id desc) as orders where ".$where." GROUP by orders.email");
 	$leads = $query->result();
 	
 	
@@ -342,9 +342,7 @@ public function getDojocartLeads($start_date,$end_date,$location = '',$search_qu
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'dojocart_lead');
 	
-	//"select * from (select DISTINCT email,id,name,last_name,phone,location,product_id,offer_type,amount,trans_status,created,is_delete,kanban_status_id from tbl_dojocart_orders order by id desc) as orders where ".$where." GROUP by orders.email"
-	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location,product_id,offer_type,amount,trans_status,created,is_delete,kanban_status_id from tbl_dojocart_orders order by id desc) as orders where ".$where);
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location,product_id,offer_type,amount,trans_status,created,is_delete,kanban_status_id from tbl_dojocart_orders order by id desc) as orders where ".$where." GROUP by orders.email");
 	$leads = $query->result();
 	
 	/*$this->db->where("DATE_FORMAT(created,'%Y-%m-%d') >= ", $start_date);

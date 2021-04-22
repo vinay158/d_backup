@@ -95,6 +95,7 @@ class Kanban_leads extends CI_Controller {
 			$data['leads']['dojocart_leads'] = $this->getDojocartLeads($data['start_date'],$data['end_date'],$location,$search_query);
 		}
 		
+		$data['custom_filterd_leads'] = array();
 		
 		if(isset($data['leads']) && !empty($data['leads'])){
 			
@@ -102,95 +103,112 @@ class Kanban_leads extends CI_Controller {
 				$a = 0;
 				if(!empty($lead_data)){
 					foreach($lead_data as  $lead){
-					  if($lead->kanban_status_id > 0){
+					 // if($lead->kanban_status_id > 0){
 							$lead_type = str_replace('_leads','',$key);
 							
-							/*if($lead_type == "birthday_parties" || $lead_type == "contact_us" ){
-								$created = strtotime($lead->date_added);
+							if($lead_type == "birthday_parties" || $lead_type == "contact_us" ){
+								$created = $lead->date_added;
 							}else{
-								$created = strtotime($lead->created);
+								$created = $lead->created;
 							}
 							
-							$new_lead_type = $this->query_model->getKanbanLeadTypeToOrderType($lead_type);
+							/*$new_lead_type = $this->query_model->getKanbanLeadTypeToOrderType($lead_type);
 							
 							$sort_number = $this->query_model->getKanbanOrderSortNumber($lead->kanban_status_id,$new_lead_type,$lead->id);
 							if($sort_number == 0){
 								$sort_number = $this->query_model->createAndGetKanbanOrderSortNumber($lead->kanban_status_id,$new_lead_type,$lead->id);
 							}
 							$lead->sort_number = $sort_number;*/
-							$data['filterd_leads'][$lead->email][$a] = $lead;  
-							$data['filterd_leads'][$lead->email][$a]->lead_type = $lead_type;
+							
+							$unique_id = $lead->id.'_'.$lead->kanban_status_id.'_'.$lead_type;
+							$data['filterd_leads'][$lead->email][$unique_id] = $lead;  
+							$data['filterd_leads'][$lead->email][$unique_id]->lead_type = $lead_type;
 							if($lead_type == "birthday_parties" || $lead_type == "contact_us" ){
-								$data['filterd_leads'][$lead->email][$a]->created = $lead->date_added;
-								$data['filterd_leads'][$lead->email][$a]->offer_type = "";
-								$data['filterd_leads'][$lead->email][$a]->trans_status = "";
+								$data['filterd_leads'][$lead->email][$unique_id]->created = $lead->date_added;
+								$data['filterd_leads'][$lead->email][$unique_id]->offer_type = "";
+								$data['filterd_leads'][$lead->email][$unique_id]->trans_status = "";
 								if($lead_type == "contact_us"){
 									if(!empty($lead->school)){
 										$this->db->select(array('id','name'));
 										$locationDetail = $this->query_model->getBySpecific('tblcontact','name',$lead->school);
 										if(!empty($locationDetail)){
-											$data['filterd_leads'][$lead->email][$a]->location_id = $locationDetail[0]->id;
+											$data['filterd_leads'][$lead->email][$unique_id]->location_id = $locationDetail[0]->id;
 										}
 									}
 									
 								}
 							}elseif($lead_type == "dojocart"){
-								$data['filterd_leads'][$lead->email][$a]->location_id = $lead->location;
+								$data['filterd_leads'][$lead->email][$unique_id]->location_id = $lead->location;
 							}
+							
+							$data['custom_filterd_leads'][$lead->email][$unique_id]['created'] = $created;
+							$data['custom_filterd_leads'][$lead->email][$unique_id]['email'] = $lead->email;
+							$data['custom_filterd_leads'][$lead->email][$unique_id]['unique_id'] = $unique_id;
+							
 						$a++;
-						}
+						//}
 					}
 				}
 				
 			}
 		}
-		
+	
+	
+	
 	$orderLeadsSortEmail = array();
 	$orderLeadsSortCreatedDate = array();
 	$orderLeadsFiltered = array();
 	
-	if(isset($data['filterd_leads']) && !empty($data['filterd_leads'])){
-		foreach($data['filterd_leads'] as $lead_data){
+	if(isset($data['custom_filterd_leads']) && !empty($data['custom_filterd_leads'])){
+		foreach($data['custom_filterd_leads'] as $lead_data){
 			$last_date = '';
 			foreach($lead_data as $key => $lead){
-				if(strtotime($lead->created) > $last_date){
-					$last_date = strtotime($lead->created);
-					$orderLeadsSortEmail[$lead->email] = $lead;
+				if(strtotime($lead['created']) > $last_date){
+					$last_date = strtotime($lead['created']);
+					$orderLeadsSortEmail[$lead['email']] = $lead;
 				}
 			}
 		}
 		
 		
+			
 		if(!empty($orderLeadsSortEmail)){
 			foreach($orderLeadsSortEmail as $email => $newlead_data){
 				
-				$created_date = strtotime($newlead_data->created);
+				$created_date = strtotime($newlead_data['created']);
 				$orderLeadsSortCreatedDate[$created_date] = $newlead_data;
 			}
 			
-			krsort($orderLeadsSortCreatedDate);
+			ksort($orderLeadsSortCreatedDate);
 		}
-		
+	
+		//echo '<pre>orderLeadsSortCreatedDate'; print_r($orderLeadsSortCreatedDate); die;
 		//ksort($orderLeadsSortEmail);
 		
 		if(!empty($orderLeadsSortCreatedDate)){
 			foreach($orderLeadsSortCreatedDate as $newlead_data){
+				$lead = array();
+				$lead = isset($data['filterd_leads'][$newlead_data['email']][$newlead_data['unique_id']]) ? $data['filterd_leads'][$newlead_data['email']][$newlead_data['unique_id']] : '';
 				
-				$new_lead_type = $this->query_model->getKanbanLeadTypeToOrderType($newlead_data->lead_type);
-				//	echo '<pre>newlead_data'; print_r($new_lead_type); die;	
-				$sort_number = $this->query_model->getKanbanOrderSortNumber($newlead_data->kanban_status_id,$new_lead_type,$newlead_data->id);
-				
-				if(empty($sort_number) || $sort_number == 0){
-					$sort_number = $this->query_model->createAndGetKanbanOrderSortNumber($newlead_data->kanban_status_id,$new_lead_type,$newlead_data->id);
+				if(!empty($lead)){
+					$new_lead_type = $this->query_model->getKanbanLeadTypeToOrderType($lead->lead_type);
+					//	echo '<pre>newlead_data'; print_r($new_lead_type); die;	
+					$sort_number = $this->query_model->getKanbanOrderSortNumber($lead->kanban_status_id,$new_lead_type,$lead->id);
+					
+					if(empty($sort_number) || $sort_number == 0){
+						$sort_number = $this->query_model->createAndGetKanbanOrderSortNumber($lead->kanban_status_id,$new_lead_type,$lead->id);
+					}
+					
+					$lead->sort_number = $sort_number;
+					
+					$orderLeadsFiltered[$lead->kanban_status_id][$sort_number] = $lead;
 				}
 				
-				$newlead_data->sort_number = $sort_number;
-				
-				$orderLeadsFiltered[$newlead_data->kanban_status_id][$sort_number] = $newlead_data;
 			}
 		}
 	}
 	
+	//echo '<pre>orderLeadsFiltered'; print_r($orderLeadsFiltered); die;
 	$data['all_leads'] = array();
 	if(isset($data['kanban_lead_status']) && !empty($data['kanban_lead_status'])){
 		foreach($data['kanban_lead_status'] as $status){
@@ -202,7 +220,7 @@ class Kanban_leads extends CI_Controller {
 		}
 	}
 	
-	
+	//echo '<pre>'; print_r($data['all_leads']); die;
 		
 		$this->db->where('id',1);
 		$data['multiLocation'] = $this->query_model->getbyTable("tblconfigcalendar");
@@ -262,8 +280,9 @@ public function getOrderLeads($start_date,$end_date,$lead_type,$location = '',$s
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'trial_offer_lead');
 	//echo "select * from (select DISTINCT email,id,name,last_name,phone,location_id,last_order_id,offer_type,trans_status,is_unique_trial,trial_id,created,is_delete,kanban_status_id from tblorders order by id desc) as orders where ".$where." GROUP by orders.email"; die;
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,last_order_id,offer_type,trans_status,is_unique_trial,trial_id,created,is_delete,kanban_status_id from tblorders order by id desc) as orders where ".$where." GROUP by orders.email");
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,last_order_id,offer_type,trans_status,is_unique_trial,trial_id,created,is_delete,kanban_status_id from tblorders order by id desc) as orders where ".$where);
 	$leads = $query->result();
+	//echo '<pre>leads'; print_r($leads); die;
 	
 	return $leads;
 }
@@ -277,7 +296,7 @@ public function getBirthdayPartiesLeads($start_date,$end_date,$search_query){
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'birthday_party_lead');
 	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,party_date,guests,date_added,is_delete,kanban_status_id from tblbirthdayparty order by id desc) as orders where ".$where." GROUP by orders.email");
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,party_date,guests,date_added,is_delete,kanban_status_id from tblbirthdayparty order by id desc) as orders where ".$where);
 	$leads = $query->result();
 	
 	return $leads;
@@ -300,7 +319,7 @@ public function getContactUsLeads($start_date,$end_date,$location = '',$search_q
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'contactus_lead');
 	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,school,message,date_added,is_delete,kanban_status_id from tblcontactusleads order by id desc) as orders where ".$where." GROUP by orders.email");
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,school,message,date_added,is_delete,kanban_status_id from tblcontactusleads order by id desc) as orders where ".$where);
 	$leads = $query->result();
 	
 	
@@ -320,7 +339,7 @@ public function getDojocartLeads($start_date,$end_date,$location = '',$search_qu
 	
 	$where .= $this->kanbanFilterSearchQuery($search_query,'dojocart_lead');
 	
-	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location,product_id,offer_type,amount,trans_status,created,is_delete,kanban_status_id from tbl_dojocart_orders order by id desc) as orders where ".$where." GROUP by orders.email");
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location,product_id,offer_type,amount,trans_status,created,is_delete,kanban_status_id from tbl_dojocart_orders order by id desc) as orders where ".$where);
 	$leads = $query->result();
 	
 	
@@ -886,6 +905,7 @@ public function update_move_lead_status_id(){
 }
 
 public function ajax_sort_kanban_leads(){
+	
 	$responseData = (isset($_POST['responseData']) && !empty($_POST['responseData'])) ? $_POST['responseData'] : '';
 	$kanban_status_id = (isset($_POST['kanban_status_id']) && !empty($_POST['kanban_status_id'])) ? $_POST['kanban_status_id'] : '';
 	$action = (isset($_POST['action']) && !empty($_POST['action'])) ? $_POST['action'] : '';

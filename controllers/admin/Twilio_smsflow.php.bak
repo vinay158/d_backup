@@ -29,6 +29,7 @@ class Twilio_smsflow extends CI_Controller{
 						$updateDataArr['start_time'] = (isset($val['start_time']) && !empty($val['start_time'])) ? $val['start_time'] : '';
 						$updateDataArr['end_time'] = (isset($val['end_time']) && !empty($val['end_time'])) ? $val['end_time'] : '';
 						$updateDataArr['msg_template'] = (isset($val['msg_template']) && !empty($val['msg_template'])) ? $val['msg_template'] : '';
+						$updateDataArr['created'] = date('Y-m-d H:i:s');
 						
 						//echo '<pre>updateDataArr'; print_r($updateDataArr); die;
 						if(!empty($record)){

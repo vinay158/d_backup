@@ -208,7 +208,7 @@
 		  
 		  <a href="" class="az-img-user"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>"><i class="typcn typcn-user"></i></a>
 		  
-								<a href="" class="username"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>"><h4><?php echo $lead->name; ?></h4></a>
+								<a href="" class="username"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>"><h4> <?php echo $lead->name; ?></h4></a>
 								<span class="detail"><strong>Date Added:</strong> <?php echo date('M d, Y ', strtotime($lead->created)); ?></span>
 								 <?php
 									
@@ -597,10 +597,11 @@ function updateSortOrders(current_kanban_status_id,event_type){
 	//alert(current_kanban_status_id);
 	var kanban_status_id = '';
 	 <?php 
-		if(!empty($kanban_lead_status)){
-			foreach($kanban_lead_status as $status){ 
+		/*if(!empty($kanban_lead_status)){
+			foreach($kanban_lead_status as $status){ */
 	?>	
-	 kanban_status_id = '<?php echo $status->id ?>';
+	 //kanban_status_id = '<?php echo $status->id ?>';
+	 kanban_status_id = current_kanban_status_id;
 	 var responseData = [];
 	 var total_result = $('.order_items_'+kanban_status_id).length;
 	 console.log('current_kanban_status_id=>'+current_kanban_status_id+'==>'+event_type);
@@ -651,7 +652,7 @@ function updateSortOrders(current_kanban_status_id,event_type){
 						
 		});
 	}
-		<?php } } ?>	
+		<?php //} } ?>	
 }	  
 	  
 $(document).ready(function(){

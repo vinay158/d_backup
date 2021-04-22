@@ -3000,6 +3000,7 @@ public function getMetaTitleForAboutUs($location_slug){
 				$extraTags = $this->getProgramCategoryTagsByTrialCatId($formData['trial_offer_id']);
 			}
 		}
+		
 		/*echo '<pre>extraTags'; print_r($extraTags); 
 		echo '<pre>formData'; print_r($formData);
 		echo '<pre>activeCampaign'; print_r($activeCampaign);
@@ -3567,12 +3568,12 @@ public function checkActiveCampaignContactExists($activeCampaign, $email){
 									
 									//... The Captcha is valid you can continue with the rest of your code
 									//... Add code to filter access using $captcha_response . score
-									/*if ($captcha_response->success==true && $captcha_response->score <= 0.5) {
+									if ($captcha_response->success==true && $captcha_response->score <= 0.5) {
 										//Do something to denied access
 										$is_error = 1;
 										$is_captcha_error = 1;
 										$error_text = $error_text.' 43';
-									}*/
+									}
 								}
 								
 							   
@@ -4153,12 +4154,12 @@ public function checkActiveCampaignContactExists($activeCampaign, $email){
 									
 									//... The Captcha is valid you can continue with the rest of your code
 									//... Add code to filter access using $captcha_response . score
-									/*if ($captcha_response->success==true && $captcha_response->score <= 0.5) {
+									if ($captcha_response->success==true && $captcha_response->score <= 0.5) {
 										//Do something to denied access
 										$is_error = 1;
 										$is_captcha_error = 1;
 										$error_text = $error_text.' 43';
-									}*/
+									}
 								}
 								
 							   

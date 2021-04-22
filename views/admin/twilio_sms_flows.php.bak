@@ -58,7 +58,7 @@ $twillio_sms_flow_titles = array('template_1'=>'SMS Flow for Opt-in','template_2
 		$i = 1;
 		foreach($sms_flows as $sms_flow){
 ?>
-<div class="mb-3 main-content-label page_main_heading"><?php echo isset($twillio_sms_flow_titles[$sms_flow->msg_type]) ? $twillio_sms_flow_titles[$sms_flow->msg_type] : 'SMS FLOW'; ?></div>
+<div class="mb-3 main-content-label page_main_heading"><?php echo isset($twillio_sms_flow_titles[$sms_flow->msg_type]) ? $twillio_sms_flow_titles[$sms_flow->msg_type] : ''; ?></div>
 
 <div class="form-new-holder">
 	<div class="row row-xs align-items-center">
