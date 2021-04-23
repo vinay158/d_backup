@@ -219,12 +219,16 @@ class Starttrial extends CI_Controller {
 			
 			$order_id = $this->db->insert_id();
 			
-			$leadTypeArr = array('lead_type'=>'trial_offer','lead_id'=>$order_id);
-			$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
+			
 				
 			if(!empty($order_id)){
 				
+				
+				$leadTypeArr = array('lead_type'=>'opt_in_form','lead_id'=>$order_id);
+				$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
+				
 				$this->query_model->updateOrderForKabanLeads($order_id,'tblorders','',$_POST);
+				
 				
 				$current_email_info = $this->query_model->getOrderEmailInfo($_POST['form_email_2'], $_POST['name'],$orderData['page_url'],$order_id);
 				

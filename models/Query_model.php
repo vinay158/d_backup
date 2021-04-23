@@ -9707,6 +9707,158 @@ public function customCurlRequest($requestData){
 						}catch (Exception $e) {
 							//echo 'Caught exception: ',  $e->getMessage(), "\n"; die;
 						}
+					//echo $twilio_message_id; die("==>");
+					}
+				}
+				
+			}
+			
+		}	
+		
+		return $twilio_message_id;
+		
+	}
+	
+	
+	public function sendAdminMsgTwilioChatApi($msgData, $first_msg_type = ''){
+		
+		$twilio_message_id = "";
+		
+		$twilioChatApi = $this->query_model->getbySpecific('tbl_twilio_chat_api','id',1);
+		
+		if(!empty($twilioChatApi) && $twilioChatApi[0]->type == 1){
+			
+			if(!empty($twilioChatApi[0]->sid) && !empty($twilioChatApi[0]->token) ){
+				
+				if(!empty($msgData)){
+					
+					$phone = (isset($msgData['phone']) && !empty($msgData['phone'])) ? $msgData['phone'] : '';
+					$msg_type = (isset($msgData['msg_type']) && !empty($msgData['msg_type'])) ? $msgData['msg_type'] : '';
+					$message = (isset($msgData['message']) && !empty($msgData['message'])) ? $msgData['message'] : '';
+					$twilio_user_id = (isset($msgData['twilio_user_id']) && !empty($msgData['twilio_user_id'])) ? $msgData['twilio_user_id'] : '';
+					$twilio_sms_msg_id = (isset($msgData['twilio_sms_msg_id']) && !empty($msgData['twilio_sms_msg_id'])) ? $msgData['twilio_sms_msg_id'] : '';
+					
+					if(!empty($phone) && !empty($message) && !empty($twilio_user_id)){
+						
+						
+						include_once './vendor/Twilio/autoload.php';
+						include_once("./vendor/Twilio/Rest/Client.php");
+						
+						$sid    = $twilioChatApi[0]->sid; # test sid
+						$token  = $twilioChatApi[0]->token;# test token
+						
+						$twilio = new Twilio\Rest\Client($sid, $token);
+						
+					
+						
+						$clientPhoneNumber = trim(str_replace(array("(",")"," ","-"),'',$phone));
+						
+						$clientPhoneNumber = $twilioChatApi[0]->country_phone_code.$clientPhoneNumber;
+						
+						try{
+							
+							$this->db->select(array('id','chat_conversation_sid'));
+							$user_detail = $this->query_model->getBySpecific('twilio_sms_users','id',$twilio_user_id);
+							
+						  if(!empty($user_detail) && !empty($user_detail[0]->chat_conversation_sid) ){
+							
+							$message = $twilio->conversations->v1->conversations($user_detail[0]->chat_conversation_sid)
+													 ->messages
+													 ->create([
+																  "author" => "Dojo Admin",
+																  "body" => $message
+															  ]
+													 ); 
+							$updateData = array();
+							$updateData['chat_message_sid']  =  $message->sid;
+							$this->query_model->update('twilio_sms_users', $twilio_user_id, $updateData);
+							
+							$smsUpdateData['chat_message_sid']  =  $message->sid;
+							$this->query_model->update('twilio_sms_messenger', $twilio_sms_msg_id, $smsUpdateData);
+							
+							$twilio_message_id = 'msg_update=>'.$message->sid;
+							//echo 'message old id=>'.$message->sid.'<br/>';
+						  }else{
+							 // echo '<pre>msgData'; print_r($msgData); die;
+							 $service = $twilio->messaging->v1->services
+															 ->create("dojo_name");
+
+								if(isset($service->sid) && !empty($service->sid) ){
+									
+									//echo 'service id=>'.$service->sid.'<br/>'; die;
+									
+									$conversation = $twilio->conversations->v1->conversations
+												  ->create([
+															   "messagingServiceSid" => $service->sid,
+															   "friendlyName" => "Dojo Conversation"
+														   ]
+												  );
+
+									if(isset($conversation->sid) && !empty($conversation->sid)){
+									
+									//echo 'conversation id=>'.$conversation->sid.'<br/>';
+											
+											$participant = $twilio->conversations->v1->conversations($conversation->sid)
+												 ->participants
+												 ->create([
+															  "messagingBindingAddress" => $clientPhoneNumber,
+															  "messagingBindingProxyAddress" => $twilioChatApi[0]->from_phone_number
+														  ]
+												 );
+												 
+										//echo '<pre>participant'; print_r($participant);
+										if(isset($participant->sid) && !empty($participant->sid)){
+											
+											
+											//echo 'participant id=>'.$participant->sid.'<br/>';
+											
+											if($first_msg_type != "first_conversation"){
+												
+												$message = $twilio->conversations->v1->conversations($conversation->sid)
+													 ->messages
+													 ->create([
+																  "author" => "Dojo Admin",
+																  "body" => $message
+															  ]
+													 );
+											}
+											
+											
+											//echo '<pre>message new'; print_r($message);
+											
+											if(!empty($twilio_user_id)){
+												
+												$updateData = array();
+												$updateData['chat_service_sid']  =  $service->sid;
+												$updateData['chat_conversation_sid']  =  $conversation->sid;
+												$updateData['chat_participant_sid']  =  $participant->sid;
+												
+												if($first_msg_type != "first_conversation"){
+												$updateData['chat_message_sid']  =  $message->sid;
+												}
+												
+												
+												$this->query_model->update('twilio_sms_users', $twilio_user_id, $updateData);
+												
+												if($first_msg_type != "first_conversation"){
+													$smsUpdateData['chat_message_sid']  =  $message->sid;
+													$this->query_model->update('twilio_sms_messenger', $twilio_sms_msg_id, $smsUpdateData);
+													
+													$twilio_message_id = 'new msg=>'.$message->sid;
+												}
+												
+											}
+												
+										}
+									}
+									
+								}
+						  }
+							
+						
+						}catch (Exception $e) {
+							//echo 'Caught exception: ',  $e->getMessage(), "\n"; die;
+						}
 					//die("==>");
 					}
 				}
@@ -9720,90 +9872,127 @@ public function customCurlRequest($requestData){
 	}
 	
 	
-	
 	public function saveMsgFromTwilioChatApi($data, $leadData = array()){
 		
-		$formData = $this->setFormDataValueInFormat($data);
+		$twilioChatApi = $this->query_model->getbySpecific('tbl_twilio_chat_api','id',1);
 		
-		if(!empty($formData)){
+		if(!empty($twilioChatApi) && $twilioChatApi[0]->type == 1){
 			
-			date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
-			
-			$twilioUserArr = array();
-			$twilioUserArr['name'] = (isset($formData['name']) && !empty($formData['name'])) ? $formData['name'] : '';
-			$twilioUserArr['phone'] =  (isset($formData['phone']) && !empty($formData['phone'])) ? $formData['phone'] : '';
-			$twilioUserArr['lead_type'] = (isset($leadData['lead_type']) && !empty($leadData['lead_type'])) ? $leadData['lead_type'] : '';
-			$twilioUserArr['lead_id'] = (isset($leadData['lead_id']) && !empty($leadData['lead_id'])) ? $leadData['lead_id'] : '';
-			$twilioUserArr['last_updated_date'] = date('Y-m-d H:i:s');
-			
-			if(!empty($twilioUserArr['name']) && !empty($twilioUserArr['phone'])){
+			if(!empty($twilioChatApi[0]->sid) && !empty($twilioChatApi[0]->token) ){
 				
-				$this->db->select(array('id','name','phone'));
-				$twilio_user_detail = $this->query_model->getBySpecific('twilio_sms_users','phone',$twilioUserArr['phone']);
+			
+			$formData = $this->setFormDataValueInFormat($data);
+			
+			if(!empty($formData)){
 				
-				if(empty($twilio_user_detail)){
-					
-					$this->query_model->insertData('twilio_sms_users',$twilioUserArr);
-					$twilio_user_id = $this->db->insert_id();
-					
-					$user_type = "add";
+				date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
+				
+				$twilioUserArr = array();
+				$twilioUserArr['name'] = (isset($formData['name']) && !empty($formData['name'])) ? $formData['name'] : '';
+				$twilioUserArr['phone'] =  (isset($formData['phone']) && !empty($formData['phone'])) ? $formData['phone'] : '';
+				$twilioUserArr['lead_type'] = (isset($leadData['lead_type']) && !empty($leadData['lead_type'])) ? $leadData['lead_type'] : '';
+				$twilioUserArr['lead_id'] = (isset($leadData['lead_id']) && !empty($leadData['lead_id'])) ? $leadData['lead_id'] : '';
+				$twilioUserArr['last_updated_date'] = date('Y-m-d H:i:s');
+				
+				if(!empty($twilioUserArr['name']) && !empty($twilioUserArr['phone'])){
 					
 					$this->db->select(array('id','name','phone'));
 					$twilio_user_detail = $this->query_model->getBySpecific('twilio_sms_users','phone',$twilioUserArr['phone']);
-				}else{
-					$twilio_user_id = $twilio_user_detail[0]->id;
-					$user_type = "edit"; 
-				}
-				
-				if(!empty($twilio_user_id)){
 					
-					$twilio_sms_flows = $this->query_model->getBySpecific('tbl_twilio_sms_flows','msg_type',"template_1");
-					
-					if(!empty($twilio_sms_flows)){
+					if(empty($twilio_user_detail)){
 						
+						$this->query_model->insertData('twilio_sms_users',$twilioUserArr);
+						$twilio_user_id = $this->db->insert_id();
 						
-						$template_start_time = $twilio_sms_flows[0]->start_time;
-						$template_end_time = $twilio_sms_flows[0]->end_time;
-						$current_time = date("H:i");
-						$template_msg_status = "hold";
-						if($current_time >= $template_start_time && $current_time <= $template_end_time){
-							$template_msg_status = "sent";
-						}
+						$user_type = "add";
 						
-						$msg_template = $this->query_model->replaceAutoResponderVaribles($twilio_sms_flows[0]->msg_template, $formData, '');
-						
-						$insertSMSData = array();
-						$insertSMSData['sender_by'] = 'admin';
-						$insertSMSData['admin_id'] = 0;
-						$insertSMSData['sms_users_id'] = $twilio_user_id;
-						$insertSMSData['message'] = $twilio_sms_flows[0]->msg_template;
-						$insertSMSData['template_msg_type'] = "template_1";
-						$insertSMSData['template_msg_status'] = $template_msg_status;
-						$insertSMSData['created'] = date('Y-m-d H:i:s');
-						
-						$this->query_model->insertData('twilio_sms_messenger',$insertSMSData);
-						$twilio_sms_msg_id = $this->db->insert_id();
-						
-						$phone = (!empty($twilio_user_detail) && !empty($twilio_user_detail[0]->phone)) ? $twilio_user_detail[0]->phone : '';
-						
-						$msgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>'student','phone'=>$phone,'msg_type'=>'admin_to_student','message'=>$msg_template,'twilio_sms_msg_id'=>$twilio_sms_msg_id);
-							
-						if($template_msg_status == "sent"){
-							
-							$this->query_model->sendMsgTwilioChatApi($msgData);
-							//die('111');
-						}else{
-							//die('222');
-							$this->query_model->sendMsgTwilioChatApi($msgData, 'first_conversation');
-						}
-						
+						$this->db->select(array('id','name','phone'));
+						$twilio_user_detail = $this->query_model->getBySpecific('twilio_sms_users','phone',$twilioUserArr['phone']);
+					}else{
+						$twilio_user_id = $twilio_user_detail[0]->id;
+						$user_type = "edit"; 
 					}
 					
-					
+					if(!empty($twilio_user_id)){
+						$twilio_sms_template = ($twilioUserArr['lead_type'] == "trial_forms") ? 'template_3' : 'template_1';
+						$twilio_sms_flows = $this->query_model->getBySpecific('tbl_twilio_sms_flows','msg_type',$twilio_sms_template);
+						
+						if(!empty($twilio_sms_flows)){
+							
+							
+							/*$template_start_time = $twilio_sms_flows[0]->start_time;
+							$template_end_time = $twilio_sms_flows[0]->end_time;
+							$current_time = date("H:i");
+							$template_msg_status = "hold";
+							if($current_time >= $template_start_time && $current_time <= $template_end_time){
+								$template_msg_status = "sent";
+							}*/
+							$template_msg_status = "sent";
+							
+							$msg_template = $this->query_model->replaceAutoResponderVaribles($twilio_sms_flows[0]->msg_template, $formData, '');
+							
+							$insertSMSData = array();
+							$insertSMSData['sender_by'] = 'admin';
+							$insertSMSData['admin_id'] = 0;
+							$insertSMSData['sms_users_id'] = $twilio_user_id;
+							$insertSMSData['message'] = $twilio_sms_flows[0]->msg_template;
+							$insertSMSData['template_msg_type'] = $twilio_sms_template;
+							$insertSMSData['template_msg_status'] = $template_msg_status;
+							$insertSMSData['created'] = date('Y-m-d H:i:s');
+							
+							$this->query_model->insertData('twilio_sms_messenger',$insertSMSData);
+							$twilio_sms_msg_id = $this->db->insert_id();
+							
+							$phone = (!empty($twilio_user_detail) && !empty($twilio_user_detail[0]->phone)) ? $twilio_user_detail[0]->phone : '';
+							
+							$msgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>'student','phone'=>$phone,'msg_type'=>'admin_to_student','message'=>$msg_template,'twilio_sms_msg_id'=>$twilio_sms_msg_id);
+								
+							if($template_msg_status == "sent"){
+								
+								$this->query_model->sendMsgTwilioChatApi($msgData);
+								//die('111');
+							}else{
+								//die('222');
+								$this->query_model->sendMsgTwilioChatApi($msgData, 'first_conversation');
+							}
+							
+							
+						/******** SEND ADMIN SMS ****/	
+							$admin_twilio_sms_template = 'template_4';
+							$admin_twilio_sms_flows = $this->query_model->getBySpecific('tbl_twilio_sms_flows','msg_type',$admin_twilio_sms_template);
+							if(!empty($admin_twilio_sms_flows)){
+								$admin_msg_template = $this->query_model->replaceAutoResponderVaribles($admin_twilio_sms_flows[0]->msg_template, $formData, '');
+								
+								
+								$insertSMSData = array();
+								$insertSMSData['sender_by'] = 'student';
+								$insertSMSData['admin_id'] = 1;
+								$insertSMSData['sms_users_id'] = $twilio_user_id;
+								$insertSMSData['message'] = $admin_twilio_sms_flows[0]->msg_template;
+								$insertSMSData['template_msg_type'] = $admin_twilio_sms_template;
+								$insertSMSData['template_msg_status'] = 'sent';
+								$insertSMSData['created'] = date('Y-m-d H:i:s');
+								
+								$this->query_model->insertData('twilio_sms_messenger',$insertSMSData);
+								$admin_twilio_sms_msg_id = $this->db->insert_id();
+								
+								$phone = (!empty($twilio_user_detail) && !empty($twilio_user_detail[0]->phone)) ? $twilio_user_detail[0]->phone : '';
+								
+								$adminMsgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>'admin','phone'=>$phone,'msg_type'=>'student_to_admin','message'=>$admin_msg_template,'twilio_sms_msg_id'=>$admin_twilio_sms_msg_id);
+								
+								$this->query_model->sendMsgTwilioChatApi($adminMsgData);
+								
+							}
+							
+							
+						}
+						
+						
+					}
 				}
+			
+			  }
 			}
-			
-			
 		}
 	}
 	

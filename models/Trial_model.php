@@ -202,6 +202,10 @@ class Trial_model extends CI_Model {
 			$this->query_model->insertData('tblorders', $insertOrder);
 			$order_id = $this->db->insert_id();
 			if(!empty($order_id)){
+				
+				$leadTypeArr = array('lead_type'=>'trial_forms','lead_id'=>$order_id);
+				$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
+			
 				$this->query_model->updateOrderForKabanLeads($order_id,'tblorders','',$_POST);
 				
 				$current_email_info = $this->query_model->getOrderEmailInfo($_POST['form_email_2'], $_POST['name'] );
