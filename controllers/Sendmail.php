@@ -93,6 +93,9 @@ class Sendmail extends CI_Controller {
 			$order_id = $this->db->insert_id();
 			if(!empty($order_id)){
 				
+				$leadTypeArr = array('lead_type'=>'opt_in_form','lead_id'=>$order_id);
+				$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
+				
 				$this->query_model->updateOrderForKabanLeads($order_id,'tblbirthdayparty','Birthday Party Opt-in',$_POST);
 				
 					

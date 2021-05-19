@@ -2062,9 +2062,9 @@ public function delete_competitor(){
 								));
 
 								$response = curl_exec($curl);
-							
+echo '<prE>response'; print_r($response); die;
 								curl_close($curl);
-							echo '<prE>response'; print_r($response); die;	
+								
 							
 							/*$deleteCompetatiorRequestdata = array(
 												'url_id'=> $api_url_id,

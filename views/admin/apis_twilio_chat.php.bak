@@ -136,7 +136,7 @@ $("#twilioChatApi .form-light-holder1 .authorizecheckbox").click(function(){
 
 <div class="  form-new-holder">
 	<h1>Twilio Admin Phone Number</h1>
-	<input type="text" value="<?php if(!empty($apis_twilio_chat['detail'])){ echo $apis_twilio_chat['detail']->twilio_admin_phone_number; }?>" name="twilio_admin_phone_number" class="field" placeholder="Enter Your Twilio Admin Phone Number"  />
+	<input type="text" value="<?php if(!empty($apis_twilio['detail'])){ echo $apis_twilio['detail']->twilio_admin_phone_number; }?>" name="twilio_admin_phone_number" class="field" placeholder="Enter Your Twilio Admin Phone Number"  />
 	<br/><em>Eg: +1 999999999</em>
 </div>
 

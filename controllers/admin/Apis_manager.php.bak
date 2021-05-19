@@ -1917,7 +1917,7 @@ class Apis_manager extends CI_Controller {
 
 				
 				if(isset($_POST['sparkpost_update'])){
-					//echo '<prE>POST'; print_r($_POST); die;
+					echo '<prE>POST'; print_r($_POST); die;
 					if(!empty($data['detail'])){
 						$updateData['type']  = isset($_POST['type'])?$_POST['type']:'';
 						$updateData['api_key']  = isset($_POST['api_key'])?$_POST['api_key']:'';

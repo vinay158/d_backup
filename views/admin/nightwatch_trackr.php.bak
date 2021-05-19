@@ -677,7 +677,7 @@ $graph_end_date = date('d M Y', strtotime($dateRanges['end_date']));
 				<table id="example4" class="table ">
 				<thead>
 				<tr>
-				<th class="wd-10p">No.</th>
+				<th class="wd-5p">No.</th>
 				<th class="wd-40p">Competitor <!--<span data-container="body" data-popover-color="head-primary" data-placement="top" title="Competitor" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."><i class="fa fa-question-circle"></i></span>--></th>
 				<th class="wd-40p">Site Url <!--<span data-container="body" data-popover-color="head-primary" data-placement="top" title="Site Url" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."><i class="fa fa-question-circle"></i></span>--></th>
 				<th class="wd-5p" style="width:100px">Action <!--<span data-container="body" data-popover-color="head-primary" data-placement="top" title="Action" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "><i class="fa fa-question-circle"></i></span>--></th>

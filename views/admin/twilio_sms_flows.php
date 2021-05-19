@@ -53,7 +53,7 @@
 
 
 <?php 
-$twillio_sms_flow_titles = array('template_1'=>'SMS Flow for Opt-in','template_2'=>'SMS Flow for 2nd SMS','template_3'=>'SMS Flow for Trial Forms','template_4'=>'SMS Flow for Admin');
+$twillio_sms_flow_titles = array('opt_in_form_template'=>'SMS Flow for Opt-in','second_sms_template'=>'SMS Flow for 2nd SMS','trial_offer_template'=>'SMS Flow for Trial Forms','admin_sms_template'=>'SMS Flow for Admin');
 	if(!empty($sms_flows)){
 		$i = 1;
 		foreach($sms_flows as $sms_flow){
@@ -98,7 +98,7 @@ $twillio_sms_flow_titles = array('template_1'=>'SMS Flow for Opt-in','template_2
 			<?php } ?>
 			
 		</div> -->
-		<input type="hidden" name="data[<?php echo $sms_flow->id; ?>][msg_type]" value="template_<?php echo $i; ?>">
+		<input type="hidden" name="data[<?php echo $sms_flow->id; ?>][msg_type]" value="<?php echo $sms_flow->msg_type; ?>">
 		
 		
 			</div>
