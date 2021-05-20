@@ -1,60 +1,83 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+require_once 'vendor/sparkpost_autoload.php';
+
+use SparkPost\SparkPost;
+use GuzzleHttp\Client;
+use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
+
 class Sparkpost_mail_model extends CI_Model{	
 	
-	
-	
- public function requestApi($rankTrackerDetail, $request_url, $request_method, $data = ''){
+	public function requestSparkPostApi($action, $requestData){
 		
-		$result = array();
 		
-		if($request_method == "GET"){
-			$query = "";
-			foreach( $data as $key => $value ) 
+		$sparkPostDetail = $this->query_model->getbySpecific('tbl_sparkpost_mail', 'id', 1);
+		
+		$request_result = array();
+		
+		if(!empty($sparkPostDetail)){
 			
-			if(is_array($value)){
-				foreach($value as $k => $v){
-					$query .= urlencode($key) . '[]=' . $v . '&';
+			if($sparkPostDetail[0]->type == 1 && !empty($sparkPostDetail[0]->api_key)){
+				
+				if(!empty($requestData)){
+					
+					if($action == "add_template"){
+						$request_result = $this->addTemplateToSparkpostApi($sparkPostDetail, $requestData);
+					}
+					
 				}
-			}else{
-				$query .= urlencode($key) . '=' . urlencode($value) . '&';
+				
 			}
-			
-			$query = rtrim($query, '& ');
-		
-			$url = 'https://api.nightwatch.io'.$request_url.'?' . $query;
-			//echo $url.'==><br/>';
-		}else{
-			$url = 'https://api.nightwatch.io'.$request_url;
 		}
+		
+				
+		
+	}
 	
-		$request = curl_init($url); // initiate curl object
-		curl_setopt($request, CURLOPT_HEADER, 0); // set to 0 to eliminate header info from response
-		curl_setopt($request, CURLOPT_RETURNTRANSFER, 1); // Returns response data instead of TRUE(1)
+	public function addTemplateToSparkpostApi($sparkPostDetail,$requestData){
 		
-		if($request_method == "POST"){
-			curl_setopt($request, CURLOPT_POSTFIELDS, $data); // use HTTP POST to send form data
-		}
+		$httpClient = new GuzzleAdapter(new Client());
+		$sparky = new SparkPost($httpClient, ['key'=>$sparkPostDetail[0]->api_key]);
+		$sparky->setOptions(['async' => false]);
 		
-		curl_setopt($request, CURLOPT_FOLLOWLOCATION, true);
-		curl_setopt($request, CURLOPT_SSL_VERIFYHOST, FALSE); 
-		curl_setopt($request, CURLOPT_SSL_VERIFYPEER, FALSE); // uncomment if you get no gateway response and are using HTTPS
+		$sparkpost_template_id = '';
+		$result = array();
+		$result['response'] = 0;
+		
+		$name = (isset($requestData['title']) && !empty($requestData['title'])) ? $requestData['title'] : '';
+		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'] : '';
+		$html = (isset($requestData['description']) && !empty($requestData['description'])) ? $requestData['description'] : '';
+		
+		$create_template_promise = $sparky->request('POST', 'templates', [
+				  'name' => $name,
+				  'published' => true,
+				  'content' => [
+					'from' => $sparkPostDetail[0]->from_email,
+					'subject' => $subject,
+					'html' => $html,
+				  ],
+				]);
 
-		$response = (string)curl_exec($request); // execute curl post and store results in $response
-
-		
-		curl_close($request); // close curl object
-
-		
-		if ( !empty($response) ) {
-			
-			$result = json_decode($response);
-			//die('Nothing was returned. Do you have a connection to Email Marketing server?');
-		}
+				try {
+					$create_template_response_code = $create_template_promise->getStatusCode();
+					$create_template = $create_template_promise->getBody();
+					
+					if($create_template_response_code == 200){
+						if(isset($create_template['results']['id']) && !empty($create_template['results']['id'])){
+							
+							$result['response'] = 1;
+							$result['template_id'] = $create_template['results']['id'];
+						}
+					}
+					
+				} catch (\Exception $e) {
+					echo $e->getCode()."\n";
+					echo $e->getMessage()."\n";
+				}
 		
 		return $result;
 		
- }
+	}
 	
 	
 }

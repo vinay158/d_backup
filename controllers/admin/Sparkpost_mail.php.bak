@@ -24,7 +24,20 @@ class Sparkpost_mail extends CI_Controller {
 		$is_logged_in = $this->session->userdata('is_logged_in');
 
 		if(!empty($is_logged_in) && $is_logged_in == true){
+			$data['title'] = 'Email Flows';
+			$data['link_type'] = 'sparkpost_mail';
+			$data['sparkpost_mail_flows'] = $this->query_model->getByTable('tbl_sparkpost_mail_flows');
 			
+			if(!empty($data['sparkpost_mail_flows'])){
+				foreach($data['sparkpost_mail_flows'] as $sparkpost_flow){
+					
+					$this->db->order_by('pos','ASC');
+					$this->db->select(array('id','title','mail_flow_id','status','pos','created'));
+					$data['sparkpost_templates'][$sparkpost_flow->id] = $this->query_model->getbySpecific('tbl_sparkpost_mail_templates', 'mail_flow_id',$sparkpost_flow->id);
+				}
+			}
+			
+			$this->load->view("admin/sparkpost_mail_index", $data);
 		}
 	}
 	
@@ -108,7 +121,7 @@ class Sparkpost_mail extends CI_Controller {
 				
 				/****** get Metrics by Template ******/
 				
-				$metrics_template_promise = $sparky->request('GET', 'metrics/deliverability/template?from=2021-05-01T08:00&metrics=count_sent,count_unique_confirmed_opened,count_accepted,count_targeted,count_injected,count_rejected&limit=5&order_by=count_injected');
+				$metrics_template_promise = $sparky->request('GET', 'metrics/deliverability/template?from=2021-05-01T08:00&metrics=count_sent,count_unique_confirmed_opened,count_accepted,count_bounce,count_targeted,count_injected,count_rejected&limit=5&order_by=count_injected');
 				
 				try {
 					$metrics_template_response_code = $metrics_template_promise->getStatusCode();
@@ -126,5 +139,202 @@ class Sparkpost_mail extends CI_Controller {
 		
 		
 	}
+	
+	
+	public function edit_template(){
+		
+		$is_logged_in = $this->session->userdata('is_logged_in');
+		
+		if(!empty($is_logged_in) && $is_logged_in == true){
+			
+			if( $this->uri->segment(4) != NULL ){
+				
+				$data['title'] = "Edit: Email Template";
+				
+				$data['details'] = $this->query_model->getbySpecific('tbl_sparkpost_mail_templates','id', $this->uri->segment(4));
+				$data['details'] = $data['details'][0];
+				
+				
+				
+				if(isset($_POST['update'])):
+				
+						$postData['title'] = isset($_POST['title']) ? trim($_POST['title']) : '';
+						$postData['subject'] = isset($_POST['subject']) ? trim($_POST['subject']) : '';
+						$postData['description'] = isset($_POST['description']) ? trim($_POST['description']) : '';
+						$postData['created'] = date('Y-m-d h:i:s');
+						$postData['mail_flow_id'] = (isset($_POST['mail_flow_id']) && !empty($_POST['mail_flow_id'])) ? $_POST['mail_flow_id'] : 0;
+						$this->query_model->updateData('tbl_sparkpost_mail_templates','id',$this->uri->segment(4), $postData);
+
+
+						
+						$flow_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_flows','id',$postData['mail_flow_id']);
+						
+						if(!empty($flow_detail) && !empty($this->uri->segment(4))){
+							
+							$requestData = array('title'=>$flow_detail[0]->title.' ~ '. $postData['title'],
+											'subject'=>$postData['subject'],
+											'description'=>$postData['description']
+										);
+							
+							echo '<prE>requestData'; print_r($requestData); die;
+							$request_result = $this->sparkpost_mail_model->requestSparkPostApi('edit_template',$requestData);
+							
+							if(isset($request_result['response']) && $request_result['response'] == 1){
+								
+								if(isset($request_result['template_id']) && !empty($request_result['template_id'])){
+									$updateData = array();
+									$updateData['template_id'] = $request_result['template_id'];
+									
+									$this->query_model->updateData('tbl_sparkpost_mail_templates','id',$last_insert_id, $updateData);
+								}
+							}
+							
+						}
+						
+						redirect("admin/sparkpost_mail#email_flow_".$postData['mail_flow_id']);
+				endif;		
+				
+				$this->load->view("admin/sparkpost_mail_edit_template", $data);
+				
+			}else{
+				redirect($this->index());
+			}
+		}else{
+		redirect("admin/login");
+		}
+	}
+	
+	public function add_template(){
+	$is_logged_in = $this->session->userdata('is_logged_in');
+		if(!empty($is_logged_in) && $is_logged_in == true)
+		{
+		$data['title'] = "Add: Email Template";
+		
+		if(isset($_POST['update'])):
+			
+				
+				$postData['title'] = isset($_POST['title']) ? trim($_POST['title']) : '';
+				$postData['subject'] = isset($_POST['subject']) ? trim($_POST['subject']) : '';
+				$postData['description'] = isset($_POST['description']) ? trim($_POST['description']) : '';
+				$postData['mail_flow_id'] = (isset($_POST['mail_flow_id']) && !empty($_POST['mail_flow_id'])) ? $_POST['mail_flow_id'] : 0;
+				$postData['created'] = date('Y-m-d h:i:s');
+				$postData['status'] = 1;
+				
+				$this->query_model->insertData('tbl_sparkpost_mail_templates', $postData);
+				$last_insert_id = $this->db->insert_id();
+				
+				$flow_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_flows','id',$postData['mail_flow_id']);
+				
+				if(!empty($flow_detail) && !empty($last_insert_id)){
+					
+					$requestData = array('title'=>$flow_detail[0]->title.' ~ '. $postData['title'],
+									'subject'=>$postData['subject'],
+									'description'=>$postData['description']
+								);
+					
+					$request_result = $this->sparkpost_mail_model->requestSparkPostApi('add_template',$requestData);
+					
+					if(isset($request_result['response']) && $request_result['response'] == 1){
+						
+						if(isset($request_result['template_id']) && !empty($request_result['template_id'])){
+							$updateData = array();
+							$updateData['template_id'] = $request_result['template_id'];
+							
+							$this->query_model->updateData('tbl_sparkpost_mail_templates','id',$last_insert_id, $updateData);
+						}
+					}
+					
+				}
+				
+				
+				
+				redirect("admin/sparkpost_mail#email_flow_".$postData['mail_flow_id']);
+			endif;
+			$this->load->view("admin/sparkpost_mail_add_template", $data);
+		
+		}else{
+		redirect("admin/login");
+		}
+	}
+	
+	
+	public function duplicate_form(){
+		
+		parse_str($_POST['formData'], $searcharray);
+		
+		$_POST = $searcharray;
+		
+		$item_id =  (isset($_POST['item_id']) && !empty($_POST['item_id'])) ? $_POST['item_id'] : '';
+		$table_name =  (isset($_POST['table_name']) && !empty($_POST['table_name'])) ? $_POST['table_name'] : '';
+		$action =  (isset($_POST['action']) && !empty($_POST['action'])) ? $_POST['action'] : '';
+		if(isset($action) && $action == "duplicate_record"){
+			
+			if(isset($item_id) && !empty($item_id) ){
+				
+				$details = $this->query_model->getbySpecific($table_name,'id', $item_id);
+				if(!empty($details)){
+					
+					$postData  = array();
+					unset($details[0]->id);
+					
+					$title = (isset($_POST['title']) && !empty($_POST['title'])) ? $_POST['title'] : '';
+					$title = !empty($title) ? $title : $details[0]->title;
+					$postData['title'] = trim($title);
+					
+					foreach($details[0] as $key => $detail){
+						if($key == "title"){
+							if($detail == $title){
+								$postData[$key] = $title .' Duplicate';
+							}
+						}else{
+							$postData[$key] = $detail;
+						}
+						
+					}
+					
+					$this->query_model->insertData($table_name, $postData);
+					$duplicate_id = $this->db->insert_id();
+					
+					if($table_name == "tbl_sparkpost_mail_flows"){
+						
+						
+						// saving  code other tables
+						$tables = array('tbl_sparkpost_mail_templates');
+						foreach($tables as $table_name){
+							
+							$records = $this->query_model->getbySpecific($table_name,'mail_flow_id', $item_id);
+							
+							if(!empty($records)){
+								foreach($records as $record){
+									$dataArr = array();
+										
+									foreach($record as $key => $val){
+										if($key == "id"){
+											unset($key);
+										}elseif($key == "mail_flow_id"){
+											$dataArr[$key] = $duplicate_id;
+										}else{
+											$dataArr[$key] = $val;
+										}
+									}
+									
+									$this->query_model->insertData($table_name, $dataArr);
+								}
+								
+							}
+						}
+						
+					}
+					
+				}
+				
+			}
+		}
+		
+		echo 1;
+		//redirect("admin/".$this->controller_name);
+		
+	}
+	
 	
 }

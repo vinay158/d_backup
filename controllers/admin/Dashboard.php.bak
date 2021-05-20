@@ -221,7 +221,7 @@ class Dashboard extends CI_Controller {
 	public function ajax_delete_record(){
 		
 		parse_str($_POST['formData'], $searcharray);
-		echo '<prE>searcharray'; print_r($searcharray); die;
+		
 		$id = isset($searcharray['delete-item-id']) ? $searcharray['delete-item-id'] : 0;
 		$table_name = isset($searcharray['table_name']) ? $searcharray['table_name'] : '';
 		
