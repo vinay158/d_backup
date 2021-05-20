@@ -87,7 +87,13 @@
 								<div class="badge-no"><?=$i?>. </div>
 								
 									
-								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?=$row->title;?> </a><em><?php //echo !empty($row->connected_type) ? ' - '.$row->connected_type : '';?></em></h4>
+								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?=$row->title;?> </a><em><?php echo isset($template_types[$row->template_type]) ? ' - '.$template_types[$row->template_type] : '';?></em></h4>
+								
+								<p class="listing_form_instances_box">
+										<span class="heading">Sparkpost Template ID: </span>
+										<span class="form_instances"><?php echo $row->template_id; ?></span>
+								</p>
+								
 								
 							</div>
 							<div class="manager-item-opts">

@@ -45,9 +45,20 @@
 </div>
 
 
+<div class="form-light-holder" style="overflow:auto;">
+			<h1 style="padding-bottom: 5px;">Template Type</h1>
+			<select class="field" name="template_type" required="true" >
+				<option value="">-Select Template Type-</option>
+				<?php foreach($template_types as $key => $template_type){?>
+					<option value="<?php echo $key; ?>"><?php echo $template_type; ?></option>
+				<?php } ?>
+			</select>
+		<div>
+		</div>
+</div>
 
 <div class="form-light-holder" style="overflow:auto;">
-			<h1 style="padding-bottom: 5px;">Auto Responder</h1>
+			<h1 style="padding-bottom: 5px;">Template</h1>
 			<textarea type="text" id="ckeditor_mini_header_title" name="description" class="field full_width_input" style=""></textarea>
 		<div>
 		</div>

@@ -1,5 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+require_once 'vendor/sparkpost_autoload.php';
+
+use SparkPost\SparkPost;
+use GuzzleHttp\Client;
+use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
+
 class Apis_manager extends CI_Controller {
 	
 	function __construct(){
@@ -9,7 +15,7 @@ class Apis_manager extends CI_Controller {
             redirect('/admin/login');
         }
 		
-		//$this->load->model("customcss_model");
+		$this->load->model("sparkpost_mail_model");
 		
 	}
 	
@@ -1930,11 +1936,63 @@ class Apis_manager extends CI_Controller {
 						$insertData['from_email']  = isset($_POST['from_email'])?$_POST['from_email']:'';
 						
 						$this->query_model->insertData('tbl_sparkpost_mail',$insertData);
-					} 
+					}
+					
+					if(isset($_POST['type']) && $_POST['type'] == 1){
+						$this->db->select('id');
+						$this->db->where('template_id','');
+						$sparkpost_blank_templates = $this->query_model->getbyTable('tbl_sparkpost_mail_templates');
+						
+						if(!empty($sparkpost_blank_templates)){
+							foreach($sparkpost_blank_templates as $sparkpost_blank_template){
+								
+								$this->addTemplateToSparkPostApi($sparkpost_blank_template->id);
+								
+							}
+						}
+					}
+					
+					
+					
 				redirect('admin/apis_manager');
 				}
 			return $data;
 	}
+	
+	
+	
+	public function addTemplateToSparkPostApi($template_duplicate_id){
+		
+									
+		$template_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_templates','id',$template_duplicate_id);
+		
+		if(!empty($template_detail)){
+			$flow_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_flows','id',$template_detail[0]->mail_flow_id);
+			
+			if(!empty($flow_detail)){
+				
+				$requestData = array(
+									'title'=>$flow_detail[0]->title.' ~ '. $template_detail[0]->title,
+									'subject'=>$template_detail[0]->subject,
+									'description'=>$template_detail[0]->description
+								);
+			
+				
+				$request_result = $this->sparkpost_mail_model->requestSparkPostApi('add_template',$requestData);
+				
+				if(isset($request_result['response']) && $request_result['response'] == 1){
+					
+					if(isset($request_result['template_id']) && !empty($request_result['template_id'])){
+						$updateData = array();
+						$updateData['template_id'] = $request_result['template_id'];
+						
+						$this->query_model->updateData('tbl_sparkpost_mail_templates','id',$template_duplicate_id, $updateData);
+					}
+				}
+			}
+		}
+	}
+	
 	
 	
 	

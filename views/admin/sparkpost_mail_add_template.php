@@ -45,6 +45,17 @@
 </div>
 
 
+<div class="form-light-holder" style="overflow:auto;">
+			<h1 style="padding-bottom: 5px;">Template Type</h1>
+			<select class="field" name="template_type" required="true" >
+				<option value="">-Select Template Type-</option>
+				<?php foreach($template_types as $key => $template_type){?>
+					<option value="<?php echo $key; ?>"><?php echo $template_type; ?></option>
+				<?php } ?>
+			</select>
+		<div>
+		</div>
+</div>
 
 <div class="form-light-holder" style="overflow:auto;">
 			<h1 style="padding-bottom: 5px;">Template</h1>
@@ -59,7 +70,7 @@
 <?php 
 	$variablesArr = array(	
 						'Common' => array('FIRSTNAME','EMAIL','PHONE','LOCATION','PROGRAM','MESSAGE','BIRTHDAY_PARTY_TITLE','BIRTHDAY_CALL_OR_SCHEDULE','SUMMER_CAMP_RESERVE_OR_SECHEDULE'),
-						'School and Contact'=> array('SITE_TITLE','CONTACT_NAME','CONTACT_ADDRESS','CONTACT_SUITE','CONTACT_CITY','CONTACT_STATE','CONTACT_ZIP','CONTACT_PHONE'),
+						'School and Contact'=> array('SITE_TITLE','SCHOOL_OWNER_NAME','CONTACT_NAME','CONTACT_ADDRESS','CONTACT_SUITE','CONTACT_CITY','CONTACT_STATE','CONTACT_ZIP','CONTACT_PHONE'),
 						'Dojocart'=> array('DOJOCART_TITLE','DOJOCART_UPSELLS_LIST','DOJOCART_MULTI_ITEMS_LIST','DOJOCART_AMOUNT','DOJOCART_QUANTITY','DOJOCART_COUPON_NAME','DOJOCART_COUPON_DISCOUNT','DOJOCART_CUSTOM_FIELDS','PRINT_PDF'),
 						'Trial Offer and Upsell'=> array('TRIAL_NAME','TRIAL_TYPE','TRIAL_AMOUNT','TRIAL_UPSELL_NAME','TRIAL_UPSELL_AMOUNT','TRIAL_COUPON_NAME','TRIAL_COUPON_DISCOUNT','CHILD_NAME','CHILD_AGE','PAYMENT_RESULT')
 					);

@@ -87,7 +87,13 @@
 								<div class="badge-no"><?=$i?>. </div>
 								
 									
-								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?=$row->title;?> </a><em><?php //echo !empty($row->connected_type) ? ' - '.$row->connected_type : '';?></em></h4>
+								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?=$row->title;?> </a><em><?php echo isset($template_types[$row->template_type]) ? ' - '.$template_types[$row->template_type] : '';?></em></h4>
+								
+								<p class="listing_form_instances_box">
+										<span class="heading">Template ID: </span>
+										<span class="form_instances"><?php echo $row->template_id; ?></span>
+								</p>
+								
 								
 							</div>
 							<div class="manager-item-opts">
@@ -98,7 +104,7 @@
 							<?php if($user_level == 1) {?> 
 							  <a href="admin/<?=$link_type;?>/edit_template/<?php echo $row->id; ?>" class="badge badge-primary">Edit</a>
 							  
-							  <a  class="badge badge-primary ajax_record_duplicate" data-toggle="modal" data-target="#popupDuplicateItem" item_id="<?=$row->id;?>"   table_name="tbl_sparkpost_mail_templates" item_title="<?=$row->title;?>" section_type="full_width" form_action="admin/<?=$link_type?>/duplicate_form" redirect_path="admin/<?=$link_type?>#email_flow_<?php echo $sparkpost_flow->id; ?>">Duplicate</a>
+							  <a  class="badge badge-primary ajax_record_duplicate" data-toggle="modal" data-target="#popupDuplicateItem" item_id="<?=$row->id;?>"   table_name="tbl_sparkpost_mail_templates" item_title="<?=$row->title;?>" section_type="full_width" form_action="admin/<?=$link_type?>/duplicate_form" redirect_path="admin/<?=$link_type?>">Duplicate</a>
 							  
 							  <?php //if($i > $deleteBtnLimit){ ?>
 							 <a class="badge badge-primary ajax_record_delete" data-toggle="modal" data-target="#popupDeleteRecord" item_id="<?=$row->id;?>"   table_name="tbl_sparkpost_mail_templates" item_title="<?=$row->title;?>" section_type="full_width_row_<?php echo $sparkpost_flow->id; ?>">Delete</a>
