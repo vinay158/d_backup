@@ -5216,8 +5216,8 @@ public function checkActiveCampaignContactExists($activeCampaign, $email){
 		//echo $dojocart_custom_fields; die;
 		
 		$result = str_replace(
-							array('#FIRSTNAME', '#LASTNAME', '#EMAIL', '#PHONE', '#LOCATION', '#PROGRAM', '#MESSAGE', '#SITE_TITLE','#CONTACT_NAME', '#CONTACT_ADDRESS', '#CONTACT_SUITE', '#CONTACT_CITY', '#CONTACT_STATE', '#CONTACT_ZIP', '#CONTACT_PHONE', '#DOJOCART_TITLE', '#DOJOCART_UPSELLS_LIST', '#DOJOCART_AMOUNT', '#DOJOCART_QUANTITY', '#BIRTHDAY_PARTY_TITLE', '#BIRTHDAY_CALL_OR_SCHEDULE','#PAYMENT_RESULT','#TRIAL_NAME','#TRIAL_TYPE','#TRIAL_AMOUNT','#TRIAL_UPSELL_NAME','#TRIAL_UPSELL_AMOUNT','#TRIAL_COUPON_NAME','#TRIAL_COUPON_DISCOUNT','#DOJOCART_COUPON_NAME','#DOJOCART_COUPON_DISCOUNT','#DOJOCART_CUSTOM_FIELDS','#SUMMER_CAMP_RESERVE_OR_SECHEDULE','#PRINT_PDF','#DOJOCART_MULTI_ITEMS_LIST','#CHILD_NAME','#CHILD_AGE'),
-							array($formData['name'], $formData['last_name'], $formData['email'], $formData['phone'], $formData['location'], $formData['program'], $formData['message'], $site_setting[0]->title, $locationDetail->name, $locationDetail->address, $locationDetail->suite, $locationDetail->city, $locationDetail->state, $locationDetail->zip, $locationDetail->phone,$dojocart_title,$upsell_list,$dojocart_amount,$dojocart_quantity, $birthday_title, $birthday_msg,$payment_result,$trial_offer_name,$trial_offer_type,$trial_offer_amount,$trial_upsell_name,$trial_upsell_amount,$trial_coupon_name,$trial_coupon_discount,$dojocart_coupon_name,$dojocart_coupon_discount,$dojocart_custom_fields,$bdy_reserve_or_schedule,$pdfLink,$dojocart_item_list,$child_name,$child_age), 
+							array('#FIRSTNAME', '#LASTNAME', '#EMAIL', '#PHONE', '#LOCATION', '#PROGRAM', '#MESSAGE', '#SITE_TITLE','#SCHOOL_OWNER_NAME','#CONTACT_NAME', '#CONTACT_ADDRESS', '#CONTACT_SUITE', '#CONTACT_CITY', '#CONTACT_STATE', '#CONTACT_ZIP', '#CONTACT_PHONE', '#DOJOCART_TITLE', '#DOJOCART_UPSELLS_LIST', '#DOJOCART_AMOUNT', '#DOJOCART_QUANTITY', '#BIRTHDAY_PARTY_TITLE', '#BIRTHDAY_CALL_OR_SCHEDULE','#PAYMENT_RESULT','#TRIAL_NAME','#TRIAL_TYPE','#TRIAL_AMOUNT','#TRIAL_UPSELL_NAME','#TRIAL_UPSELL_AMOUNT','#TRIAL_COUPON_NAME','#TRIAL_COUPON_DISCOUNT','#DOJOCART_COUPON_NAME','#DOJOCART_COUPON_DISCOUNT','#DOJOCART_CUSTOM_FIELDS','#SUMMER_CAMP_RESERVE_OR_SECHEDULE','#PRINT_PDF','#DOJOCART_MULTI_ITEMS_LIST','#CHILD_NAME','#CHILD_AGE'),
+							array($formData['name'], $formData['last_name'], $formData['email'], $formData['phone'], $formData['location'], $formData['program'], $formData['message'], $site_setting[0]->title, $site_setting[0]->title, $locationDetail->name, $locationDetail->address, $locationDetail->suite, $locationDetail->city, $locationDetail->state, $locationDetail->zip, $locationDetail->phone,$dojocart_title,$upsell_list,$dojocart_amount,$dojocart_quantity, $birthday_title, $birthday_msg,$payment_result,$trial_offer_name,$trial_offer_type,$trial_offer_amount,$trial_upsell_name,$trial_upsell_amount,$trial_coupon_name,$trial_coupon_discount,$dojocart_coupon_name,$dojocart_coupon_discount,$dojocart_custom_fields,$bdy_reserve_or_schedule,$pdfLink,$dojocart_item_list,$child_name,$child_age), 
 							$content
 							);
 		
@@ -9901,7 +9901,7 @@ public function getAllTwilioUserConversations(){
 											
 											$this->db->select(array('id'));
 											$msg_exit = $this->query_model->getBySpecific('twilio_sms_messenger','chat_message_sid',$msg->sid);
-											echo '<pre>msg'; print_r($msg); die;
+											
 											if(empty($msg_exit)){
 												
 												$date_object = $msg->dateCreated;

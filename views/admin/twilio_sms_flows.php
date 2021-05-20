@@ -122,7 +122,7 @@ $twillio_sms_flow_titles = array('opt_in_form_template'=>'SMS Flow for Opt-in','
 <?php 
 	$variablesArr = array(	
 						'Common' => array('FIRSTNAME','EMAIL','PHONE','LOCATION','PROGRAM','MESSAGE'),
-						'School and Contact'=> array('SITE_TITLE','CONTACT_NAME','CONTACT_ADDRESS','CONTACT_SUITE','CONTACT_CITY','CONTACT_STATE','CONTACT_ZIP','CONTACT_PHONE')
+						'School and Contact'=> array('SITE_TITLE','SCHOOL_OWNER_NAME','CONTACT_NAME','CONTACT_ADDRESS','CONTACT_SUITE','CONTACT_CITY','CONTACT_STATE','CONTACT_ZIP','CONTACT_PHONE')
 					);
 ?>
 			<div class="col-md-12 row row-xs">

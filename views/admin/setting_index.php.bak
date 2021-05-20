@@ -771,7 +771,7 @@ $st_sec_external_link = 'check-off';
 	</div>
 	<div class="linkTarget form-group">
 		<h1>School Owner Name</h1>
-		<input type="text" value="<?php echo $this->query_model->getStrReplaceAdmin($setting->school_owner_name); ?>" name="school_owner_name" id="school_owner_name" class="field contactHalfDivInput" placeholder="School Owner Name"/>	
+		<input type="text" value="<?php // echo $this->query_model->getStrReplaceAdmin($setting->school_owner_name); ?>" name="school_owner_name" id="school_owner_name" class="field contactHalfDivInput" placeholder="School Owner Name"/>	
 	</div>
 	
 </div>
