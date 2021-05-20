@@ -34,8 +34,25 @@ class Sparkpost_mail extends CI_Controller {
 					$this->db->order_by('pos','ASC');
 					$this->db->select(array('id','title','mail_flow_id','status','pos','created'));
 					$data['sparkpost_templates'][$sparkpost_flow->id] = $this->query_model->getbySpecific('tbl_sparkpost_mail_templates', 'mail_flow_id',$sparkpost_flow->id);
+					
 				}
 			}
+			
+			
+			$this->db->select('id');
+			$this->db->where('template_id','');
+			$sparkpost_blank_templates = $this->query_model->getbyTable('tbl_sparkpost_mail_templates');
+			
+			if(!empty($sparkpost_blank_templates)){
+				foreach($sparkpost_blank_templates as $sparkpost_blank_template){
+					
+					$this->addTemplateToSparkPostApi($sparkpost_blank_template->id);
+					
+				}
+			}
+			
+			$requestData = array('search_url' =>'metrics/deliverability/template?from=2021-05-01T08:00&metrics=count_sent,count_unique_confirmed_opened,count_accepted,count_bounce,count_targeted,count_injected,count_rejected&limit=5&order_by=count_injected');
+			$metrics_result = $this->sparkpost_mail_model->requestSparkPostApi('metrics_templates',$requestData);
 			
 			$this->load->view("admin/sparkpost_mail_index", $data);
 		}
@@ -171,23 +188,37 @@ class Sparkpost_mail extends CI_Controller {
 						
 						if(!empty($flow_detail) && !empty($this->uri->segment(4))){
 							
-							$requestData = array('title'=>$flow_detail[0]->title.' ~ '. $postData['title'],
+							if(!empty($data['details']->template_id)){
+								
+								$requestData = array('title'=>$flow_detail[0]->title.' ~ '. $postData['title'],
+											'subject'=>$postData['subject'],
+											'description'=>$postData['description'],
+											'template_id' => $data['details']->template_id
+										);
+							
+							
+								$request_result = $this->sparkpost_mail_model->requestSparkPostApi('edit_template',$requestData);
+								
+							}else{
+								$requestData = array('title'=>$flow_detail[0]->title.' ~ '. $postData['title'],
 											'subject'=>$postData['subject'],
 											'description'=>$postData['description']
 										);
 							
-							echo '<prE>requestData'; print_r($requestData); die;
-							$request_result = $this->sparkpost_mail_model->requestSparkPostApi('edit_template',$requestData);
-							
-							if(isset($request_result['response']) && $request_result['response'] == 1){
 								
-								if(isset($request_result['template_id']) && !empty($request_result['template_id'])){
-									$updateData = array();
-									$updateData['template_id'] = $request_result['template_id'];
+								$request_result = $this->sparkpost_mail_model->requestSparkPostApi('add_template',$requestData);
+								
+								if(isset($request_result['response']) && $request_result['response'] == 1){
 									
-									$this->query_model->updateData('tbl_sparkpost_mail_templates','id',$last_insert_id, $updateData);
+									if(isset($request_result['template_id']) && !empty($request_result['template_id'])){
+										$updateData = array();
+										$updateData['template_id'] = $request_result['template_id'];
+										
+										$this->query_model->updateData('tbl_sparkpost_mail_templates','id',$this->uri->segment(4), $updateData);
+									}
 								}
 							}
+							
 							
 						}
 						
@@ -204,7 +235,8 @@ class Sparkpost_mail extends CI_Controller {
 		}
 	}
 	
-	public function add_template(){
+public function add_template(){
+		
 	$is_logged_in = $this->session->userdata('is_logged_in');
 		if(!empty($is_logged_in) && $is_logged_in == true)
 		{
@@ -221,30 +253,9 @@ class Sparkpost_mail extends CI_Controller {
 				$postData['status'] = 1;
 				
 				$this->query_model->insertData('tbl_sparkpost_mail_templates', $postData);
-				$last_insert_id = $this->db->insert_id();
+				$insert_template_id = $this->db->insert_id();
 				
-				$flow_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_flows','id',$postData['mail_flow_id']);
-				
-				if(!empty($flow_detail) && !empty($last_insert_id)){
-					
-					$requestData = array('title'=>$flow_detail[0]->title.' ~ '. $postData['title'],
-									'subject'=>$postData['subject'],
-									'description'=>$postData['description']
-								);
-					
-					$request_result = $this->sparkpost_mail_model->requestSparkPostApi('add_template',$requestData);
-					
-					if(isset($request_result['response']) && $request_result['response'] == 1){
-						
-						if(isset($request_result['template_id']) && !empty($request_result['template_id'])){
-							$updateData = array();
-							$updateData['template_id'] = $request_result['template_id'];
-							
-							$this->query_model->updateData('tbl_sparkpost_mail_templates','id',$last_insert_id, $updateData);
-						}
-					}
-					
-				}
+				$this->addTemplateToSparkPostApi($insert_template_id);
 				
 				
 				
@@ -319,10 +330,18 @@ class Sparkpost_mail extends CI_Controller {
 									}
 									
 									$this->query_model->insertData($table_name, $dataArr);
+									$template_duplicate_id = $this->db->insert_id();
+									
+									$this->addTemplateToSparkPostApi($template_duplicate_id);
+									
 								}
 								
 							}
 						}
+						
+					}elseif($table_name == "tbl_sparkpost_mail_templates"){
+						
+						$this->addTemplateToSparkPostApi($item_id);
 						
 					}
 					
@@ -336,5 +355,37 @@ class Sparkpost_mail extends CI_Controller {
 		
 	}
 	
+	
+	public function addTemplateToSparkPostApi($template_duplicate_id){
+		
+									
+		$template_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_templates','id',$template_duplicate_id);
+		
+		if(!empty($template_detail)){
+			$flow_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_flows','id',$template_detail[0]->mail_flow_id);
+			
+			if(!empty($flow_detail)){
+				
+				$requestData = array(
+									'title'=>$flow_detail[0]->title.' ~ '. $template_detail[0]->title,
+									'subject'=>$template_detail[0]->subject,
+									'description'=>$template_detail[0]->description
+								);
+			
+				
+				$request_result = $this->sparkpost_mail_model->requestSparkPostApi('add_template',$requestData);
+				
+				if(isset($request_result['response']) && $request_result['response'] == 1){
+					
+					if(isset($request_result['template_id']) && !empty($request_result['template_id'])){
+						$updateData = array();
+						$updateData['template_id'] = $request_result['template_id'];
+						
+						$this->query_model->updateData('tbl_sparkpost_mail_templates','id',$template_duplicate_id, $updateData);
+					}
+				}
+			}
+		}
+	}
 	
 }

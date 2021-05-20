@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller {
         }
 		$this->load->model('user_model');
 		$this->load->model('contact_model');
+		$this->load->model('sparkpost_mail_model');
 		
 	}
 	
@@ -221,11 +222,29 @@ class Dashboard extends CI_Controller {
 	public function ajax_delete_record(){
 		
 		parse_str($_POST['formData'], $searcharray);
-		echo '<prE>searcharray'; print_r($searcharray); die;
+		
 		$id = isset($searcharray['delete-item-id']) ? $searcharray['delete-item-id'] : 0;
 		$table_name = isset($searcharray['table_name']) ? $searcharray['table_name'] : '';
 		
 		if(!empty($id) && !empty($table_name)){
+			
+			if($table_name == "tbl_sparkpost_mail_templates"){
+				$this->db->select(array('template_id'));
+				$sparkpost_template_detail = $this->query_model->getBySpecific($table_name,'id',$id);
+				
+				if(!empty($sparkpost_template_detail)){
+					
+					if(isset($sparkpost_template_detail[0]->template_id) && !empty($sparkpost_template_detail[0]->template_id)){
+						
+						$requestData = array('template_id'=>$sparkpost_template_detail[0]->template_id);
+						
+						$request_result = $this->sparkpost_mail_model->requestSparkPostApi('delete_template',$requestData);
+						
+					}
+				}
+				
+			}
+			
 			$this->db->where("id", $id);
 			if($this->db->delete($table_name))
 			{
