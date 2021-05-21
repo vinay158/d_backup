@@ -689,6 +689,8 @@ if(!empty($payment_response)){
 		
 		$leadTypeArr = array('lead_type'=>'trial_forms','lead_id'=>$order_id);
 		$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
+		
+		$this->query_model->sendEmailFromSparkpostApi($_POST, $leadTypeArr);
 				
 		$this->query_model->updateOrderForKabanLeads($order_id,'tblorders','Paid Trial',$_POST);
 		$current_email_info = $this->query_model->getOrderEmailInfo($_POST['email'], $_POST['name'] );
@@ -1569,7 +1571,9 @@ public function brainTreePaymentGateway(){
 			
 			$leadTypeArr = array('lead_type'=>'trial_forms','lead_id'=>$order_id);
 			$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
-		
+			
+			$this->query_model->sendEmailFromSparkpostApi($_POST, $leadTypeArr);
+			
 			$this->query_model->updateOrderForKabanLeads($order_id,'tblorders','Paid Trial',$_POST);
 			$current_email_info = $this->query_model->getOrderEmailInfo($_POST['email'], $_POST['name'] );
 		
@@ -2800,6 +2804,8 @@ public function stripe_payment_gateway(){
 			$leadTypeArr = array('lead_type'=>'trial_forms','lead_id'=>$order_id);
 			$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
 		
+			$this->query_model->sendEmailFromSparkpostApi($_POST, $leadTypeArr);
+			
 			$this->query_model->updateOrderForKabanLeads($order_id,'tblorders','Paid Trial',$_POST);
 			$current_email_info = $this->query_model->getOrderEmailInfo($_POST['email'], $_POST['name'] );
 		
@@ -3610,7 +3616,9 @@ public function mwalteSpIdlPymSvdj(){
 					
 					$leadTypeArr = array('lead_type'=>'trial_forms','lead_id'=>$order_id);
 					$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
-		
+					
+					$this->query_model->sendEmailFromSparkpostApi($_POST, $leadTypeArr);
+					
 					$this->query_model->updateOrderForKabanLeads($order_id,'tblorders','Paid Trial',$_POST);
 					$current_email_info = $this->query_model->getOrderEmailInfo($_POST['email'], $_POST['name'] );
 				
@@ -4986,6 +4994,8 @@ public function mwalteSpIdlPymSvdj(){
 							$leadTypeArr = array('lead_type'=>'trial_forms','lead_id'=>$order_id);
 							$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
 		
+							$this->query_model->sendEmailFromSparkpostApi($_POST, $leadTypeArr);
+							
 							$this->query_model->updateOrderForKabanLeads($order_id,'tblorders','Paid Trial',$_POST);
 							$current_email_info = $this->query_model->getOrderEmailInfo($_POST['email'], $_POST['name'] );
 						

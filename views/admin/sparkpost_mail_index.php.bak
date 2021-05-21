@@ -61,7 +61,7 @@
 							  </div>
 							  
 							  
-			<ul class="ajax_record_sortable alternating_full_width_row"  table_name="tbl_sparkpost_mail_templates" id="email_flow_<?php echo $sparkpost_flow->id; ?>">
+			<ul class=" alternating_full_width_row"  table_name="tbl_sparkpost_mail_templates" id="email_flow_<?php echo $sparkpost_flow->id; ?>">
 
 			
 			<?php
@@ -90,7 +90,7 @@
 								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?=$row->title;?> </a><em><?php echo isset($template_types[$row->template_type]) ? ' - '.$template_types[$row->template_type] : '';?></em></h4>
 								
 								<p class="listing_form_instances_box">
-										<span class="heading">Template ID: </span>
+										<span class="heading">Sparkpost Template ID: </span>
 										<span class="form_instances"><?php echo $row->template_id; ?></span>
 								</p>
 								

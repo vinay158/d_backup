@@ -60,8 +60,8 @@
 								</div>
 							  </div>
 							  
-							  
-			<ul class="ajax_record_sortable alternating_full_width_row"  table_name="tbl_sparkpost_mail_templates" id="email_flow_<?php echo $sparkpost_flow->id; ?>">
+			<!-- ajax_record_sortable  class for sort templates--->				  
+			<ul class=" alternating_full_width_row"  table_name="tbl_sparkpost_mail_templates" id="email_flow_<?php echo $sparkpost_flow->id; ?>">
 
 			
 			<?php

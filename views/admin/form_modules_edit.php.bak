@@ -463,7 +463,7 @@
 		var crm_webhook_api_id = $('input[name="connected_type_crm"]:checked').attr('webhook_api_id');
 		
 		 $('.sparkpost_mail_flows').hide();
-		// $('.emailWebhookApiTags').hide();
+		 $('.emailWebhookApiTags').hide();
 		 //$('.crmWebhookApiTags').hide();
 			if(connected_type == "Active Campaign"){
 				$('.activeCampaignBox').show();

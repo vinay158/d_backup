@@ -203,8 +203,12 @@ class Trial_model extends CI_Model {
 			$order_id = $this->db->insert_id();
 			if(!empty($order_id)){
 				
-				$leadTypeArr = array('lead_type'=>'trial_offer','lead_id'=>$order_id);
+				$leadTypeArr = array('lead_type'=>'trial_forms','lead_id'=>$order_id);
 				$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
+				
+				
+				$leadTypeArr = array('lead_type'=>'opt_in_form','lead_id'=>$order_id);
+				$this->query_model->sendMsgFromSparkpostApi($_POST, $leadTypeArr);
 			
 				$this->query_model->updateOrderForKabanLeads($order_id,'tblorders','',$_POST);
 				

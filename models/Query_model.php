@@ -10254,4 +10254,96 @@ public function getKanbanStatusNameByID($kanban_status_id){
 	return !empty($kanban_status) ? $kanban_status[0]->title : '';
 }
 
+
+
+public function sendEmailFromSparkpostApi($data, $leadData = array()){
+		
+		$sparkPostDetail = $this->query_model->getbySpecific('tbl_sparkpost_mail', 'id', 1);
+		
+		if(!empty($sparkPostDetail) && $sparkPostDetail[0]->type == 1){
+			
+			$formData = $this->setFormDataValueInFormat($data);
+			
+			if(!empty($formData)){
+				
+				date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
+				
+				$twilioUserArr = array();
+				$twilioUserArr['name'] = (isset($formData['name']) && !empty($formData['name'])) ? $formData['name'] : '';
+				$twilioUserArr['email'] =  (isset($formData['email']) && !empty($formData['email'])) ? $formData['email'] : '';
+				$twilioUserArr['lead_type'] = (isset($leadData['lead_type']) && !empty($leadData['lead_type'])) ? $leadData['lead_type'] : '';
+				$twilioUserArr['lead_id'] = (isset($leadData['lead_id']) && !empty($leadData['lead_id'])) ? $leadData['lead_id'] : '';
+				$twilioUserArr['last_updated_date'] = date('Y-m-d H:i:s');
+				
+				if(!empty($twilioUserArr['email'])){
+					
+					$this->db->select(array('id','name','email'));
+					$twilio_user_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_users','email',$twilioUserArr['email']);
+					
+					if(empty($twilio_user_detail)){
+						
+						$this->query_model->insertData('tbl_sparkpost_mail_users',$twilioUserArr);
+						$twilio_user_id = $this->db->insert_id();
+						
+						$user_type = "add";
+						
+						$this->db->select(array('id','name','email'));
+						$twilio_user_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_users','email',$twilioUserArr['email']);
+					}else{
+						$twilio_user_id = $twilio_user_detail[0]->id;
+						$user_type = "edit"; 
+					}
+					
+					if(!empty($twilio_user_id)){
+						$twilio_sms_template = ($twilioUserArr['lead_type'] == "trial_forms") ? 'paid_trial_purchased' : 'day_1';
+						$twilio_sms_flows = $this->query_model->getBySpecific('tbl_sparkpost_mail_templates','template_type',$twilio_sms_template);
+						
+						if(!empty($twilio_sms_flows)){
+							
+							
+							$template_msg_status = "sent";
+							
+							$msg_template = $this->query_model->replaceAutoResponderVaribles($twilio_sms_flows[0]->description, $formData, '');
+							
+							$insertSMSData = array();
+							$insertSMSData['sender_by'] = 'admin';
+							$insertSMSData['admin_id'] = 0;
+							$insertSMSData['sms_users_id'] = $twilio_user_id;
+							$insertSMSData['message'] = $twilio_sms_flows[0]->description;
+							$insertSMSData['template_msg_type'] = $twilio_sms_template;
+							$insertSMSData['template_msg_status'] = $template_msg_status;
+							$insertSMSData['created'] = date('Y-m-d H:i:s');
+							
+							$this->query_model->insertData('twilio_sms_messenger',$insertSMSData);
+							$twilio_sms_msg_id = $this->db->insert_id();
+							
+							$phone = (!empty($twilio_user_detail) && !empty($twilio_user_detail[0]->phone)) ? $twilio_user_detail[0]->phone : '';
+							$author_name = 'Dojo Admin';
+							$msgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>'student','phone'=>$phone,'msg_type'=>'admin_to_student','message'=>$msg_template,'twilio_sms_msg_id'=>$twilio_sms_msg_id,'author_name'=>$author_name);
+								
+							if($template_msg_status == "sent"){
+								
+								$this->query_model->sendMsgTwilioChatApi($msgData);
+								//die('111');
+							}else{
+								//die('222');
+								$this->query_model->sendMsgTwilioChatApi($msgData, 'first_conversation');
+							}
+							
+						
+							
+						}
+						
+						
+					}
+				}
+			
+			  }
+		}
+	}
+	
+	
+	
+	
+
 }

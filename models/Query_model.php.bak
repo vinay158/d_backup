@@ -5217,7 +5217,7 @@ public function checkActiveCampaignContactExists($activeCampaign, $email){
 		
 		$result = str_replace(
 							array('#FIRSTNAME', '#LASTNAME', '#EMAIL', '#PHONE', '#LOCATION', '#PROGRAM', '#MESSAGE', '#SITE_TITLE','#SCHOOL_OWNER_NAME','#CONTACT_NAME', '#CONTACT_ADDRESS', '#CONTACT_SUITE', '#CONTACT_CITY', '#CONTACT_STATE', '#CONTACT_ZIP', '#CONTACT_PHONE', '#DOJOCART_TITLE', '#DOJOCART_UPSELLS_LIST', '#DOJOCART_AMOUNT', '#DOJOCART_QUANTITY', '#BIRTHDAY_PARTY_TITLE', '#BIRTHDAY_CALL_OR_SCHEDULE','#PAYMENT_RESULT','#TRIAL_NAME','#TRIAL_TYPE','#TRIAL_AMOUNT','#TRIAL_UPSELL_NAME','#TRIAL_UPSELL_AMOUNT','#TRIAL_COUPON_NAME','#TRIAL_COUPON_DISCOUNT','#DOJOCART_COUPON_NAME','#DOJOCART_COUPON_DISCOUNT','#DOJOCART_CUSTOM_FIELDS','#SUMMER_CAMP_RESERVE_OR_SECHEDULE','#PRINT_PDF','#DOJOCART_MULTI_ITEMS_LIST','#CHILD_NAME','#CHILD_AGE'),
-							array($formData['name'], $formData['last_name'], $formData['email'], $formData['phone'], $formData['location'], $formData['program'], $formData['message'], $site_setting[0]->title, $site_setting[0]->title, $locationDetail->name, $locationDetail->address, $locationDetail->suite, $locationDetail->city, $locationDetail->state, $locationDetail->zip, $locationDetail->phone,$dojocart_title,$upsell_list,$dojocart_amount,$dojocart_quantity, $birthday_title, $birthday_msg,$payment_result,$trial_offer_name,$trial_offer_type,$trial_offer_amount,$trial_upsell_name,$trial_upsell_amount,$trial_coupon_name,$trial_coupon_discount,$dojocart_coupon_name,$dojocart_coupon_discount,$dojocart_custom_fields,$bdy_reserve_or_schedule,$pdfLink,$dojocart_item_list,$child_name,$child_age), 
+							array($formData['name'], $formData['last_name'], $formData['email'], $formData['phone'], $formData['location'], $formData['program'], $formData['message'], $site_setting[0]->title, $site_setting[0]->school_owner_name, $locationDetail->name, $locationDetail->address, $locationDetail->suite, $locationDetail->city, $locationDetail->state, $locationDetail->zip, $locationDetail->phone,$dojocart_title,$upsell_list,$dojocart_amount,$dojocart_quantity, $birthday_title, $birthday_msg,$payment_result,$trial_offer_name,$trial_offer_type,$trial_offer_amount,$trial_upsell_name,$trial_upsell_amount,$trial_coupon_name,$trial_coupon_discount,$dojocart_coupon_name,$dojocart_coupon_discount,$dojocart_custom_fields,$bdy_reserve_or_schedule,$pdfLink,$dojocart_item_list,$child_name,$child_age), 
 							$content
 							);
 		
@@ -10253,5 +10253,138 @@ public function getKanbanStatusNameByID($kanban_status_id){
 	
 	return !empty($kanban_status) ? $kanban_status[0]->title : '';
 }
+
+
+
+public function sendEmailFromSparkpostApi($data, $leadData = array()){
+		
+		$sparkPostDetail = $this->query_model->getbySpecific('tbl_sparkpost_mail', 'id', 1);
+		
+		if(!empty($sparkPostDetail) && $sparkPostDetail[0]->type == 1){
+			
+			$formData = $this->setFormDataValueInFormat($data);
+			
+			if(!empty($formData)){
+				
+				date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
+				
+				$twilioUserArr = array();
+				$twilioUserArr['name'] = (isset($formData['name']) && !empty($formData['name'])) ? $formData['name'] : '';
+				$twilioUserArr['email'] =  (isset($formData['email']) && !empty($formData['email'])) ? $formData['email'] : '';
+				$twilioUserArr['lead_type'] = (isset($leadData['lead_type']) && !empty($leadData['lead_type'])) ? $leadData['lead_type'] : '';
+				$twilioUserArr['lead_id'] = (isset($leadData['lead_id']) && !empty($leadData['lead_id'])) ? $leadData['lead_id'] : '';
+				$twilioUserArr['last_updated_date'] = date('Y-m-d H:i:s');
+				
+				if(!empty($twilioUserArr['email'])){
+					
+					$this->db->select(array('id','name','email'));
+					$twilio_user_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_users','email',$twilioUserArr['email']);
+					
+					if(empty($twilio_user_detail)){
+						
+						$this->query_model->insertData('tbl_sparkpost_mail_users',$twilioUserArr);
+						$twilio_user_id = $this->db->insert_id();
+						
+						$user_type = "add";
+						
+						$this->db->select(array('id','name','email'));
+						$twilio_user_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_users','email',$twilioUserArr['email']);
+					}else{
+						$twilio_user_id = $twilio_user_detail[0]->id;
+						$user_type = "edit"; 
+					}
+					
+					if(!empty($twilio_user_id)){
+						$twilio_sms_template = ($twilioUserArr['lead_type'] == "trial_forms") ? 'paid_trial_purchased' : 'opt_in_form_template';
+						$twilio_sms_flows = $this->query_model->getBySpecific('tbl_twilio_sms_flows','msg_type',$twilio_sms_template);
+						
+						if(!empty($twilio_sms_flows)){
+							
+							
+							/*$template_start_time = $twilio_sms_flows[0]->start_time;
+							$template_end_time = $twilio_sms_flows[0]->end_time;
+							$current_time = date("H:i");
+							$template_msg_status = "hold";
+							if($current_time >= $template_start_time && $current_time <= $template_end_time){
+								$template_msg_status = "sent";
+							}*/
+							$template_msg_status = "sent";
+							
+							$msg_template = $this->query_model->replaceAutoResponderVaribles($twilio_sms_flows[0]->msg_template, $formData, '');
+							
+							$insertSMSData = array();
+							$insertSMSData['sender_by'] = 'admin';
+							$insertSMSData['admin_id'] = 0;
+							$insertSMSData['sms_users_id'] = $twilio_user_id;
+							$insertSMSData['message'] = $twilio_sms_flows[0]->msg_template;
+							$insertSMSData['template_msg_type'] = $twilio_sms_template;
+							$insertSMSData['template_msg_status'] = $template_msg_status;
+							$insertSMSData['created'] = date('Y-m-d H:i:s');
+							
+							$this->query_model->insertData('twilio_sms_messenger',$insertSMSData);
+							$twilio_sms_msg_id = $this->db->insert_id();
+							
+							$phone = (!empty($twilio_user_detail) && !empty($twilio_user_detail[0]->phone)) ? $twilio_user_detail[0]->phone : '';
+							$author_name = 'Dojo Admin';
+							$msgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>'student','phone'=>$phone,'msg_type'=>'admin_to_student','message'=>$msg_template,'twilio_sms_msg_id'=>$twilio_sms_msg_id,'author_name'=>$author_name);
+								
+							if($template_msg_status == "sent"){
+								
+								$this->query_model->sendMsgTwilioChatApi($msgData);
+								//die('111');
+							}else{
+								//die('222');
+								$this->query_model->sendMsgTwilioChatApi($msgData, 'first_conversation');
+							}
+							
+							
+						
+						
+						/******** SEND ADMIN SMS ****/	
+							$admin_twilio_sms_template = 'admin_sms_template';
+							$admin_twilio_sms_flows = $this->query_model->getBySpecific('tbl_twilio_sms_flows','msg_type',$admin_twilio_sms_template);
+							if(!empty($admin_twilio_sms_flows)){
+								$admin_msg_template = $this->query_model->replaceAutoResponderVaribles($admin_twilio_sms_flows[0]->msg_template, $formData, '');
+								//echo '<pre>admin_msg_template'; print_r($admin_msg_template); die;
+								
+								$insertSMSData = array();
+								$insertSMSData['sender_by'] = 'student';
+								$insertSMSData['admin_id'] = 1;
+								$insertSMSData['sms_users_id'] = $twilio_user_id;
+								$insertSMSData['message'] = $admin_msg_template;
+								$insertSMSData['template_msg_type'] = $admin_twilio_sms_template;
+								$insertSMSData['template_msg_status'] = 'sent';
+								$insertSMSData['created'] = date('Y-m-d H:i:s');
+								
+								$this->query_model->insertData('twilio_sms_messenger',$insertSMSData);
+								$admin_twilio_sms_msg_id = $this->db->insert_id();
+								
+								//$admin_phone = (!empty($twilio_user_detail) && !empty($twilio_user_detail[0]->phone)) ? $twilio_user_detail[0]->phone : '';
+								$admin_phone = $twilioChatApi[0]->twilio_admin_phone_number;
+								$admin_author_name = 'user_'.$twilio_user_id;
+								
+								$adminMsgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>'admin','phone'=>$admin_phone,'msg_type'=>'student_to_admin','message'=>$admin_msg_template,'twilio_sms_msg_id'=>$admin_twilio_sms_msg_id,'author_name'=>$admin_author_name);
+								
+								//echo '<pre>adminMsgData'; print_r($adminMsgData); die;
+								
+								$this->query_model->sendMsgTwilioChatApi($adminMsgData);
+								
+							}
+							
+							
+							
+						}
+						
+						
+					}
+				}
+			
+			  }
+		}
+	}
+	
+	
+	
+	
 
 }

@@ -178,7 +178,7 @@ class Form_modules extends CI_Controller {
 						
 						$postData['active_campaign_automation_id'] = isset($_POST['active_campaign_automation_id']) ? $_POST['active_campaign_automation_id'] : 0;
 						$postData['active_campaign_list_id'] = isset($_POST['active_campaign_list_id']) ? $_POST['active_campaign_list_id'] : 0;
-						$postData['sparkpost_mail_flow_id'] = (isset($_POST['sparkpost_mail_flow_id']) && !empty($_POST['sparkpost_mail_flow_id'])) ? $_POST['sparkpost_mail_flow_id'] : 0;
+						$postData['sparkpost_mail_flow_id'] = isset($_POST['sparkpost_mail_flow_id']) ? $_POST['sparkpost_mail_flow_id'] : 0;
 						
 						
 						if($postData['connected_type'] == "Active Campaign"){
