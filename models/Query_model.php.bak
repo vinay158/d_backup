@@ -10256,130 +10256,104 @@ public function getKanbanStatusNameByID($kanban_status_id){
 
 
 
-public function sendEmailFromSparkpostApi($data, $leadData = array()){
+public function sendEmailFromSparkpostApi($postData, $leadData = array()){
 		
 		$sparkPostDetail = $this->query_model->getbySpecific('tbl_sparkpost_mail', 'id', 1);
 		
 		if(!empty($sparkPostDetail) && $sparkPostDetail[0]->type == 1){
 			
-			$formData = $this->setFormDataValueInFormat($data);
 			
-			if(!empty($formData)){
+			$formData = $this->query_model->setFormDataValueInFormat($postData);
+			
+			$page_url = isset($postData['page_url']) ? $postData['page_url'] : '';
+		    
+		    $page_url = $this->query_model->reconstruct_url($page_url);
+		    
+			$page_url = $this->query_model->getFormPageUrl($page_url,$postData);
+			
+			//$page_url = '/promo/regional-tournament-registration-2';
+			//echo $page_url; die;
+			
+			// getting form instance by page url 
+			if(isset($postData['trial_offer_cat_id']) && !empty($postData['trial_offer_cat_id'])){
+				$this->db->where("action_id",$postData['trial_offer_cat_id']);
+			}
+			$formInstance = $this->query_model->getbySpecific('tbl_form_instances', 'page_url', $page_url);
+			//echo '<prE>formInstance'; print_R($formInstance); die;
+			if(!empty($formInstance)){
+				// geeting form model id if not empty form instance
+				$form_model_id = isset($formInstance[0]) ? $formInstance[0]->form_module_id : '';
 				
-				date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
+				// getting form model detail by form model id
+				$formModelDetail = $this->query_model->getbySpecific('tbl_form_modules', 'id', $form_model_id);
 				
-				$twilioUserArr = array();
-				$twilioUserArr['name'] = (isset($formData['name']) && !empty($formData['name'])) ? $formData['name'] : '';
-				$twilioUserArr['email'] =  (isset($formData['email']) && !empty($formData['email'])) ? $formData['email'] : '';
-				$twilioUserArr['lead_type'] = (isset($leadData['lead_type']) && !empty($leadData['lead_type'])) ? $leadData['lead_type'] : '';
-				$twilioUserArr['lead_id'] = (isset($leadData['lead_id']) && !empty($leadData['lead_id'])) ? $leadData['lead_id'] : '';
-				$twilioUserArr['last_updated_date'] = date('Y-m-d H:i:s');
-				
-				if(!empty($twilioUserArr['email'])){
+				if(!empty($formModelDetail)){
+					$connectedTypesArr = !empty($formModelDetail[0]->connected_type) ? explode(', ',$formModelDetail[0]->connected_type) : '';
 					
-					$this->db->select(array('id','name','email'));
-					$twilio_user_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_users','email',$twilioUserArr['email']);
-					
-					if(empty($twilio_user_detail)){
-						
-						$this->query_model->insertData('tbl_sparkpost_mail_users',$twilioUserArr);
-						$twilio_user_id = $this->db->insert_id();
-						
-						$user_type = "add";
-						
-						$this->db->select(array('id','name','email'));
-						$twilio_user_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_users','email',$twilioUserArr['email']);
-					}else{
-						$twilio_user_id = $twilio_user_detail[0]->id;
-						$user_type = "edit"; 
-					}
-					
-					if(!empty($twilio_user_id)){
-						$twilio_sms_template = ($twilioUserArr['lead_type'] == "trial_forms") ? 'paid_trial_purchased' : 'opt_in_form_template';
-						$twilio_sms_flows = $this->query_model->getBySpecific('tbl_twilio_sms_flows','msg_type',$twilio_sms_template);
-						
-						if(!empty($twilio_sms_flows)){
+					if(!empty($connectedTypesArr) && in_array('Sparkpost Email' , $connectedTypesArr)){
+						if(!empty($formModelDetail[0]->sparkpost_mail_flow_id)){
 							
+							$sparkpost_mail_flow = $this->query_model->getBySpecific('tbl_sparkpost_mail_flows','id',$formModelDetail[0]->sparkpost_mail_flow_id);
 							
-							/*$template_start_time = $twilio_sms_flows[0]->start_time;
-							$template_end_time = $twilio_sms_flows[0]->end_time;
-							$current_time = date("H:i");
-							$template_msg_status = "hold";
-							if($current_time >= $template_start_time && $current_time <= $template_end_time){
-								$template_msg_status = "sent";
-							}*/
-							$template_msg_status = "sent";
-							
-							$msg_template = $this->query_model->replaceAutoResponderVaribles($twilio_sms_flows[0]->msg_template, $formData, '');
-							
-							$insertSMSData = array();
-							$insertSMSData['sender_by'] = 'admin';
-							$insertSMSData['admin_id'] = 0;
-							$insertSMSData['sms_users_id'] = $twilio_user_id;
-							$insertSMSData['message'] = $twilio_sms_flows[0]->msg_template;
-							$insertSMSData['template_msg_type'] = $twilio_sms_template;
-							$insertSMSData['template_msg_status'] = $template_msg_status;
-							$insertSMSData['created'] = date('Y-m-d H:i:s');
-							
-							$this->query_model->insertData('twilio_sms_messenger',$insertSMSData);
-							$twilio_sms_msg_id = $this->db->insert_id();
-							
-							$phone = (!empty($twilio_user_detail) && !empty($twilio_user_detail[0]->phone)) ? $twilio_user_detail[0]->phone : '';
-							$author_name = 'Dojo Admin';
-							$msgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>'student','phone'=>$phone,'msg_type'=>'admin_to_student','message'=>$msg_template,'twilio_sms_msg_id'=>$twilio_sms_msg_id,'author_name'=>$author_name);
+							if(!empty($sparkpost_mail_flow)){
 								
-							if($template_msg_status == "sent"){
+				
+								date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 								
-								$this->query_model->sendMsgTwilioChatApi($msgData);
-								//die('111');
-							}else{
-								//die('222');
-								$this->query_model->sendMsgTwilioChatApi($msgData, 'first_conversation');
+								
+								
+								$sparkPostUserArr = array();
+								$sparkPostUserArr['name'] = (isset($formData['name']) && !empty($formData['name'])) ? $formData['name'] : '';
+								$sparkPostUserArr['email'] =  (isset($formData['email']) && !empty($formData['email'])) ? $formData['email'] : '';
+								$sparkPostUserArr['lead_type'] = (isset($leadData['lead_type']) && !empty($leadData['lead_type'])) ? $leadData['lead_type'] : '';
+								$sparkPostUserArr['lead_id'] = (isset($leadData['lead_id']) && !empty($leadData['lead_id'])) ? $leadData['lead_id'] : '';
+								$sparkPostUserArr['mail_flow_id'] = $sparkpost_mail_flow[0]->id;
+								
+								$mail_template_type = ($sparkPostUserArr['lead_type'] == "trial_forms") ? 'paid_trial_purchased' : 'day_1';
+								$sparkPostUserArr['mail_template_type'] = $mail_template_type;
+								$sparkPostUserArr['email_flows_status'] = 'pending';
+								$sparkPostUserArr['last_updated_date'] = date('Y-m-d H:i:s');
+								
+								if(!empty($sparkPostUserArr['email'])){
+									
+									$this->db->select(array('id','name','email'));
+									$sparkpost_user_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_users','email',$sparkPostUserArr['email']);
+									
+									if(empty($sparkpost_user_detail)){
+										
+										$this->query_model->insertData('tbl_sparkpost_mail_users',$sparkPostUserArr);
+										$sparkpost_user_id = $this->db->insert_id();
+										
+										$user_type = "add";
+										
+										$this->db->select(array('id','name','email'));
+										$sparkpost_user_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_users','email',$sparkPostUserArr['email']);
+									}else{
+										$sparkpost_user_id = $sparkpost_user_detail[0]->id;
+										$user_type = "edit"; 
+									}
+									
+									if(!empty($sparkpost_user_id)){
+										
+										$this->db->where('status',1);
+										$this->db->where('template_type','day_1');
+										$sparkpost_mail_template = $this->query_model->getBySpecific('tbl_sparkpost_mail_templates','mail_flow_id',$sparkpost_mail_flow[0]->id);
+										
+										echo '<prE>sparkpost_mail_template'; print_r($sparkpost_mail_template); die;
+										
+										
+									}
+								}
 							}
-							
-							
-						
-						
-						/******** SEND ADMIN SMS ****/	
-							$admin_twilio_sms_template = 'admin_sms_template';
-							$admin_twilio_sms_flows = $this->query_model->getBySpecific('tbl_twilio_sms_flows','msg_type',$admin_twilio_sms_template);
-							if(!empty($admin_twilio_sms_flows)){
-								$admin_msg_template = $this->query_model->replaceAutoResponderVaribles($admin_twilio_sms_flows[0]->msg_template, $formData, '');
-								//echo '<pre>admin_msg_template'; print_r($admin_msg_template); die;
-								
-								$insertSMSData = array();
-								$insertSMSData['sender_by'] = 'student';
-								$insertSMSData['admin_id'] = 1;
-								$insertSMSData['sms_users_id'] = $twilio_user_id;
-								$insertSMSData['message'] = $admin_msg_template;
-								$insertSMSData['template_msg_type'] = $admin_twilio_sms_template;
-								$insertSMSData['template_msg_status'] = 'sent';
-								$insertSMSData['created'] = date('Y-m-d H:i:s');
-								
-								$this->query_model->insertData('twilio_sms_messenger',$insertSMSData);
-								$admin_twilio_sms_msg_id = $this->db->insert_id();
-								
-								//$admin_phone = (!empty($twilio_user_detail) && !empty($twilio_user_detail[0]->phone)) ? $twilio_user_detail[0]->phone : '';
-								$admin_phone = $twilioChatApi[0]->twilio_admin_phone_number;
-								$admin_author_name = 'user_'.$twilio_user_id;
-								
-								$adminMsgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>'admin','phone'=>$admin_phone,'msg_type'=>'student_to_admin','message'=>$admin_msg_template,'twilio_sms_msg_id'=>$admin_twilio_sms_msg_id,'author_name'=>$admin_author_name);
-								
-								//echo '<pre>adminMsgData'; print_r($adminMsgData); die;
-								
-								$this->query_model->sendMsgTwilioChatApi($adminMsgData);
-								
-							}
-							
 							
 							
 						}
-						
-						
 					}
+					
 				}
+			}
 			
-			  }
+			
 		}
 	}
 	
