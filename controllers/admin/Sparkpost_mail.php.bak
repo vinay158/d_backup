@@ -26,7 +26,11 @@ class Sparkpost_mail extends CI_Controller {
 		if(!empty($is_logged_in) && $is_logged_in == true){
 			$data['title'] = 'Email Flows';
 			$data['link_type'] = 'sparkpost_mail';
+			
+			$data['template_types'] = array('day_1'=>'Day 1','day_2'=>'Day 2','day_3'=>'Day 3','day_4'=>'Day 4','day_5'=>'Day 5','day_6'=>'Day 6','paid_trial_purchased'=>'Paid Trial Purchased');
+			
 			$data['sparkpost_mail_flows'] = $this->query_model->getByTable('tbl_sparkpost_mail_flows');
+
 			
 			if(!empty($data['sparkpost_mail_flows'])){
 				foreach($data['sparkpost_mail_flows'] as $sparkpost_flow){
@@ -324,6 +328,75 @@ public function add_template(){
 	}
 	
 	
+public function cron_for_sparkpost_email_flow(){
+	
+	$this->db->order_by('id','asc');
+	$sparkpost_users = $this->query_model->getBySpecific('tbl_sparkpost_mail_users','is_stop_mail',0);
+	
+	if(!empty($sparkpost_users)){
+		
+		foreach($sparkpost_users as $sparkpost_user){
+			
+			if($sparkpost_user->email_flows_status == "pending" && $sparkpost_user->mail_template_type != "paid_trial_purchased"){
+				
+				$last_mail_template_type = $sparkpost_user->mail_template_type;
+				
+				$current_mail_template_type = str_replace('day_','',$last_mail_template_type);
+				$current_mail_template_type_number = $current_mail_template_type + 1;
+				$current_mail_template_type = 'day_'.$current_mail_template_type_number;
+				
+				if($current_mail_template_type_number <= 6){
+					
+					//$this->db->select(array('id','template_type'));
+					$this->db->where("mail_flow_id",$sparkpost_user->mail_flow_id);
+					$this->db->where("template_type",$current_mail_template_type);
+					$this->db->where("template_type !=","paid_trial_purchased");
+					$current_sparkpost_mail_template = $this->query_model->getByTable('tbl_sparkpost_mail_templates');
+					//echo '<pre>sparkpost_mail_templates'; print_r($current_sparkpost_mail_template); die;
+					if(!empty($current_sparkpost_mail_template)){
+						$next_msg_created_date = date('Y-m-d',strtotime($sparkpost_user->created. " + $current_mail_template_type_number days"));
+						$current_date = date('Y-m-d');
+						
+						if($next_msg_created_date == $current_date){
+							
+							$updateData = array();
+							if($current_mail_template_type_number == 6){
+								$updateData['email_flows_status']  = 'all_sent';
+								$updateData['is_stop_mail']  = 1;
+							}
+							$updateData['mail_template_type']  = $current_mail_template_type;
+							
+							
+							//$this->query_model->update('tbl_sparkpost_mail_users', $sparkpost_user->id, $updateData);
+							
+							$formData = array('name'=>$sparkpost_user->name,'email'=> $sparkpost_user->email,'location'=>'','last_name'=>'','phone'=>'','program'=>'','message'=>'');
+							
+							$mail_subject = $this->query_model->replaceAutoResponderVaribles($current_sparkpost_mail_template[0]->subject, $formData, '');
+							$mail_template = $this->query_model->replaceAutoResponderVaribles($current_sparkpost_mail_template[0]->description, $formData, '');
+							$requestData = array(
+												'recipient_email' => $sparkpost_user->email,
+												'subject' => $current_sparkpost_mail_template[0]->subject,
+												'mail_template' => $mail_template,
+												);
+							
+							$request_result = $this->sparkpost_mail_model->requestSparkPostApi('send_email_by_template',$requestData);
+							echo '<prE>request_result'; print_r($request_result); die;
+							
+							die('pass');
+							
+						}
+						//echo $next_msg_created_date.'===>'.$current_date; die;
+					}
+					//echo '<pre>sparkpost_mail_templates'; print_r($sparkpost_mail_templates); die;
+					
+				}
+				
+				
+			}
+		}
+	}
+	
+} 
 	
 	public function custom_functions(){
 		
