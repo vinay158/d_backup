@@ -177,21 +177,27 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 		$sparkpost_template_id = '';
 		$result = array();
 		$result['response'] = 0;
-		
+		//echo '<pre>requestData'; print_r($requestData); die;
 		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'] : '';
 		$html = (isset($requestData['mail_template']) && !empty($requestData['mail_template'])) ? $requestData['mail_template'] : '';
+		$recipient_email = (isset($requestData['recipient_email']) && !empty($requestData['recipient_email'])) ? $requestData['recipient_email'] : '';
 		
 		$promise = $sparky->transmissions->post([
 						  'options' => [
-							'sandbox' => true
+							'sandbox' => false,
+							/*"open_tracking" => true,
+							"click_tracking" => true*/
 						  ],
 						  'content' => [
-							'from' => $sparkPostDetail[0]->from_email,
+							/*'from' => $sparkPostDetail[0]->from_email, //info@sparkpostbox.com
 							'subject' => $subject,
-							'html' => $html
+							'html' => $html,*/
+							'template_id' => 'custom-template',
+							 "use_draft_template"=>false
 						  ],
 						  'recipients' => [
-							['address' => ['email'=>'dojodeveloper158@gmail.com']]
+							//['address' => ['email'=>'dojodeveloper158@gmail.com']]
+							['address' => ['email'=>$recipient_email]]
 						  ]
 						]);
 
@@ -199,8 +205,8 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 				$response_code = $promise->getStatusCode();
 				$response = $promise->getBody();
 				
-				//echo '<pre>response_code'; print_r($response_code);
-				//echo '<pre>response'; print_r($response); die;
+				echo '<pre>response_code'; print_r($response_code);
+				echo '<pre>response'; print_r($response); die;
 				if($response_code == 200){
 					$result['response'] = 1;
 					//$result['template_id'] = $response['results']['id'];
@@ -211,7 +217,7 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 				echo $e->getMessage()."\n";
 			}
 		
-		die('pass');
+		die('pass new');
 		return $result;
 		
 	}

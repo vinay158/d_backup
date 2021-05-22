@@ -55,9 +55,10 @@ class Sparkpost_mail extends CI_Controller {
 				}
 			}
 			
-			/*$requestData = array('search_url' =>'metrics/deliverability/template?from=2021-05-01T08:00&metrics=count_sent,count_unique_confirmed_opened,count_accepted,count_bounce,count_targeted,count_injected,count_rejected&limit=5&order_by=count_injected');
-			$metrics_result = $this->sparkpost_mail_model->requestSparkPostApi('metrics_templates',$requestData);*/
+			$requestData = array('search_url' =>'metrics/deliverability/template?from=2021-05-01T08:00&metrics=count_sent,count_unique_confirmed_opened,count_accepted,count_bounce,count_targeted,count_injected,count_rejected&limit=5&order_by=count_injected');
+			$metrics_result = $this->sparkpost_mail_model->requestSparkPostApi('metrics_templates',$requestData);
 			
+			//echo '<prE>metrics_result'; print_r($metrics_result); die;
 			$this->load->view("admin/sparkpost_mail_index", $data);
 		}
 	}
