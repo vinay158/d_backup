@@ -1,13 +1,19 @@
 <?php 
 require 'vendor/autoload.php';
 
+
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+require_once 'vendor/sparkpost_autoload.php';
+use SparkPost\SparkPost;
+use GuzzleHttp\Client;
+use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
 class Site extends CI_Controller {
 
 	public function index()
 	{
-		die('pass');
+		
 		
 		$index_path = explode('/',$_SERVER['REQUEST_URI']);
 		if(isset($index_path[1]) && $index_path[1] == 'index.php'){
@@ -629,6 +635,86 @@ public function thank_you(){
 		redirect(base_url());
 	}
 }
+
+
+
+
+	public function testSpartPost(){
+		
+		$httpClient = new GuzzleAdapter(new Client());
+		$sparky = new SparkPost($httpClient, ['key'=>'ba64eb2dd3348165e3d95b31b5000d3627254e11']);
+		
+		
+		
+/*$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://api.sparkpost.com/api/v1/account',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'GET',
+  CURLOPT_HTTPHEADER => array(
+    'Authorization: ba64eb2dd3348165e3d95b31b5000d3627254e11'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo '<pre>'; print_r(json_decode($response)); die;*/
+		
+
+$sparky->setOptions(['async' => false]);
+$results = $sparky->transmissions->post([
+  'options' => [
+    'sandbox' => true
+  ],
+  'content' => [
+    'from' => 'info@dojoonlinemarketing.com',
+    'subject' => 'Oh hey',
+    'html' => '<html><body><p>Testing SparkPost - the most awesomest email service!</p></body></html>'
+  ],
+  'recipients' => [
+    ['address' => ['email'=>'dojodeveloper158@gmail.com']]
+  ]
+]);
+
+echo '<prE>results'; print_r($results); die;
+		$promise = $sparky->transmissions->post([
+    'content' => [
+        'from' => [
+            'name' => 'SparkPost Team',
+            'email' => 'dojodeveloper158@gmail.com',
+        ],
+        'subject' => 'First Mailing From PHP',
+        'html' => '<html><body><h1>Congratulations, {{name}}!</h1><p>You just sent your very first mailing!</p></body></html>',
+        'text' => 'Congratulations, {{name}}! You just sent your very first mailing!',
+    ],
+    'substitution_data' => ['name' => 'dojodev'],
+    'recipients' => [
+        [
+            'address' => [
+                'name' => 'dojodev',
+                'email' => 'dojodeveloper158@gmail.com',
+            ],
+        ],
+    ],
+]);
+//echo '<pre>promise'; print_r($promise); die;
+try {
+    $response = $promise->wait();
+    echo $response->getStatusCode()."\n";
+    print_r($response->getBody())."\n";
+} catch (\Exception $e) {
+    echo $e->getCode()."\n";
+    echo $e->getMessage()."\n";
+}
+		echo '<pre>sparky'; print_r($sparky); die;
+	}
 
 }
 

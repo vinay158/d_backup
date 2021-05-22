@@ -182,22 +182,29 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 		$html = (isset($requestData['mail_template']) && !empty($requestData['mail_template'])) ? $requestData['mail_template'] : '';
 		$recipient_email = (isset($requestData['recipient_email']) && !empty($requestData['recipient_email'])) ? $requestData['recipient_email'] : '';
 		
+		$site_setting = $this->query_model->getbyTable('tblsite');
+		$site_title = $site_setting[0]->title;
+		
+		
 		$promise = $sparky->transmissions->post([
 						  'options' => [
 							'sandbox' => false,
-							/*"open_tracking" => true,
-							"click_tracking" => true*/
+							"open_tracking" => true,
+							"click_tracking" => true
 						  ],
 						  'content' => [
-							/*'from' => $sparkPostDetail[0]->from_email, //info@sparkpostbox.com
+							'from' => [
+								'name' => $site_title,
+								'email' => $sparkPostDetail[0]->from_email,
+							],
 							'subject' => $subject,
-							'html' => $html,*/
-							'template_id' => 'custom-template',
-							 "use_draft_template"=>false
+							'html' => $html,
+							/*'template_id' => 'custom-template',
+							 "use_draft_template"=>false*/
 						  ],
 						  'recipients' => [
 							//['address' => ['email'=>'dojodeveloper158@gmail.com']]
-							['address' => ['email'=>$recipient_email]]
+							['address' => ['name' => 'dojodev','email'=>$recipient_email]]
 						  ]
 						]);
 
@@ -205,19 +212,29 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 				$response_code = $promise->getStatusCode();
 				$response = $promise->getBody();
 				
-				echo '<pre>response_code'; print_r($response_code);
-				echo '<pre>response'; print_r($response); die;
+				/*echo '<pre>requestData'; print_r($requestData);
+				echo '<pre>response_code'; print_r($response_code); 
+				echo '<pre>response'; print_r($response); die;*/
+				
 				if($response_code == 200){
-					$result['response'] = 1;
-					//$result['template_id'] = $response['results']['id'];
+					
+					if(isset($response['results']['id']) && !empty($response['results']['id'])){
+						
+						$result['response'] = 1;
+						$result['email_id'] = $response['results']['id'];
+						$result['is_rejected_email'] = $response['results']['total_rejected_recipients'];
+						$result['is_accepted_email'] = $response['results']['total_accepted_recipients'];
+						
+					}
+					
 				}
 				
-			} catch (\Exception $e) { die('sss');
+			} catch (\Exception $e) { 
 				echo $e->getCode()."\n";
 				echo $e->getMessage()."\n";
 			}
 		
-		die('pass new');
+		
 		return $result;
 		
 	}
@@ -242,7 +259,7 @@ public function metricsTemplateToSparkpostApi($sparkPostDetail,$requestData){
 				$response_code = $promise->getStatusCode();
 				$response = $promise->getBody();
 				
-				echo '<pre>response'; print_r($response); die;
+				//echo '<pre>response'; print_r($response); die;
 				
 				if($response_code == 200){
 					$result['response'] = 1;

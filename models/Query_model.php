@@ -10348,6 +10348,7 @@ public function sendEmailFromSparkpostApi($postData, $leadData = array()){
 										
 											$this->load->model("sparkpost_mail_model");
 											$requestData = array(
+																'recipient_name' => $sparkPostUserArr['name'],
 																'recipient_email' => $sparkPostUserArr['email'],
 																'subject' => $mail_subject,
 																'mail_template' => $mail_template,
@@ -10356,7 +10357,23 @@ public function sendEmailFromSparkpostApi($postData, $leadData = array()){
 											
 											
 											$request_result = $this->sparkpost_mail_model->requestSparkPostApi('send_email_by_template',$requestData);
-											echo '<prE>sparkpost_mail_template'; print_r($sparkpost_mail_template); die;
+											
+											
+											if(isset($request_result['response']) && $request_result['response'] == 1){
+												
+												if(isset($request_result['email_id']) && !empty($request_result['email_id'])){
+													$insertData = array();
+													$insertData['user_id'] = $sparkpost_user_id;
+													$insertData['sent_email_id'] = $request_result['email_id'];
+													$insertData['is_rejected_email'] = $request_result['is_rejected_email'];
+													$insertData['is_accepted_email'] = $request_result['is_accepted_email'];
+													$insertData['mail_flow_id'] = $sparkpost_mail_flow[0]->id;
+													$insertData['mail_template_type'] = $mail_template_type;
+													$insertData['created'] = date('Y-m-d H:i:s');
+													
+													$this->query_model->insertData('tbl_sparkpost_sent_mails', $insertData);
+												}
+											}
 											
 											//$mail_template_type = "paid_trial_purchased";
 											if($mail_template_type == "paid_trial_purchased"){
@@ -10366,7 +10383,7 @@ public function sendEmailFromSparkpostApi($postData, $leadData = array()){
 												$this->query_model->update('tbl_sparkpost_mail_users', $sparkpost_user_id, $updateData);
 											}
 											
-											
+											//echo '<pre>insertData'; print_r($insertData); die;
 										}
 										
 										
