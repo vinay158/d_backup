@@ -53,30 +53,21 @@
 							  <div class="az-mail-header">
 								<div>
 								  <h4 class="az-content-title mg-b-5"><?php echo $sparkpost_flow->title; ?></h4>
-								  <p>You have <span class="total_alternating_full_width_row_<?php echo $sparkpost_flow->id; ?>"><?php echo !empty($sparkpost_templates[$sparkpost_flow->id]) ? count($sparkpost_templates[$sparkpost_flow->id]) : 0; ?></span> Entries</p>
+								  <p>You have <span class="total_alternating_full_width_row_<?php echo $sparkpost_flow->id; ?>"><?php echo !empty($sparkpost_templates['days_template'][$sparkpost_flow->id]) ? count($sparkpost_templates['days_template'][$sparkpost_flow->id]) : 0; ?></span> Entries</p>
 								</div>
 								<div>
 								 <a href="admin/<?=$link_type;?>/add_template/<?php echo $sparkpost_flow->id; ?>" class="button_class btn btn-indigo ">Add New Template</a>
 								</div>
 							  </div>
 							  
-							  
+			<!-- ajax_record_sortable  class for sort templates--->				  
 			<ul class=" alternating_full_width_row"  table_name="tbl_sparkpost_mail_templates" id="email_flow_<?php echo $sparkpost_flow->id; ?>">
 
 			
 			<?php
 				$deleteBtnLimit = 1;
-				/*if($form_type->id == 1){
-					$deleteBtnLimit = 3;
-				}elseif($form_type->id == 2){
-					$deleteBtnLimit = 4;
-				}elseif($form_type->id == 3){
-					$deleteBtnLimit = 2;
-				}elseif($form_type->id == 4){
-					$deleteBtnLimit = 3;
-				}*/
 				$i = 1;
-				foreach($sparkpost_templates[$sparkpost_flow->id] as $row):
+				foreach($sparkpost_templates['days_template'][$sparkpost_flow->id] as $row):
 				
 				?>
 				
@@ -120,12 +111,71 @@
 					</li>
 <?php $i++; endforeach;?>	
 								</ul>
-
-	
-			
-						
-						
 				</div>
+				
+				<div class="az-content-body ">
+					<div class="az-mail-header">
+								<div>
+								  <h4 class="az-content-title mg-b-5"><?php echo str_replace('opt-ins','',strtolower($sparkpost_flow->title)) .' PAID TRIAL PURCHASED'; ?></h4>
+								</div>
+								
+							  </div>
+							  
+			<!-- ajax_record_sortable  class for sort templates--->				  
+			<ul class=" alternating_full_width_row"  table_name="tbl_sparkpost_mail_templates" id="email_flow_paid_trial<?php echo $sparkpost_flow->id; ?>">
+
+			
+			<?php
+				$deleteBtnLimit = 1;
+				$i = 1;
+				foreach($sparkpost_templates['paid_template'][$sparkpost_flow->id] as $row):
+				
+				?>
+				
+
+					<li   id="menu_<?=$row->id?>" class="full_width_row_<?php echo $row->id; ?> az-contact-info-header">
+						<div class="manager-item media">
+							<div style="float:left;">
+								<div class="badge-no"><?=$i?>. </div>
+								
+									
+								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?=$row->title;?> </a><em><?php echo isset($template_types[$row->template_type]) ? ' - '.$template_types[$row->template_type] : '';?></em></h4>
+								
+								<p class="listing_form_instances_box">
+										<span class="heading">Sparkpost Template ID: </span>
+										<span class="form_instances"><?php echo $row->template_id; ?></span>
+								</p>
+								
+								
+							</div>
+							<div class="manager-item-opts">
+							
+							
+						<nav class="nav">
+							
+							<?php if($user_level == 1) {?> 
+							  <a href="admin/<?=$link_type;?>/edit_template/<?php echo $row->id; ?>" class="badge badge-primary">Edit</a>
+							  
+							  <a  class="badge badge-primary ajax_record_duplicate" data-toggle="modal" data-target="#popupDuplicateItem" item_id="<?=$row->id;?>"   table_name="tbl_sparkpost_mail_templates" item_title="<?=$row->title;?>" section_type="full_width" form_action="admin/<?=$link_type?>/duplicate_form" redirect_path="admin/<?=$link_type?>">Duplicate</a>
+							  
+							  <?php //if($i > $deleteBtnLimit){ ?>
+							 <a class="badge badge-primary ajax_record_delete" data-toggle="modal" data-target="#popupDeleteRecord" item_id="<?=$row->id;?>"   table_name="tbl_sparkpost_mail_templates" item_title="<?=$row->title;?>" section_type="full_width_row_<?php echo $sparkpost_flow->id; ?>">Delete</a>
+							  <?php //} ?>
+							<?php } ?>
+							
+						</nav>
+
+
+
+							</div>
+						</div>
+					</li>
+<?php $i++; endforeach;?>	
+								</ul>
+				</div>
+				
+				
+				
 			</div>
 		</div>
 </div>

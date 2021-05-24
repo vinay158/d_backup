@@ -20,6 +20,7 @@ class Sparkpost_mail extends CI_Controller {
 	}
 	
 	public function index(){
+		
 		$data['user_level']=$this->session->userdata['user_level'];
 		$is_logged_in = $this->session->userdata('is_logged_in');
 
@@ -37,10 +38,17 @@ class Sparkpost_mail extends CI_Controller {
 					
 					$this->db->order_by('pos','ASC');
 					$this->db->select(array('id','title','mail_flow_id','status','pos','created','template_id','template_type'));
-					$data['sparkpost_templates'][$sparkpost_flow->id] = $this->query_model->getbySpecific('tbl_sparkpost_mail_templates', 'mail_flow_id',$sparkpost_flow->id);
+					$this->db->where('template_type !=','paid_trial_purchased');
+					$data['sparkpost_templates']['days_template'][$sparkpost_flow->id] = $this->query_model->getbySpecific('tbl_sparkpost_mail_templates', 'mail_flow_id',$sparkpost_flow->id);
+					
+					$this->db->order_by('pos','ASC');
+					$this->db->select(array('id','title','mail_flow_id','status','pos','created','template_id','template_type'));
+					$this->db->where('template_type','paid_trial_purchased');
+					$data['sparkpost_templates']['paid_template'][$sparkpost_flow->id] = $this->query_model->getbySpecific('tbl_sparkpost_mail_templates', 'mail_flow_id',$sparkpost_flow->id);
 					
 				}
 			}
+			
 			
 			
 			$this->db->select('id');
