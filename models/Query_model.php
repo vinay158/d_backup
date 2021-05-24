@@ -10352,9 +10352,10 @@ public function sendEmailFromSparkpostApi($postData, $leadData = array()){
 																'recipient_email' => $sparkPostUserArr['email'],
 																'subject' => $mail_subject,
 																'mail_template' => $mail_template,
+																'mail_template_id' => $sparkpost_mail_template[0]->template_id,
 																);
 											
-											
+											//echo '<pre>requestData front'; print_r($requestData); die;
 											
 											$request_result = $this->sparkpost_mail_model->requestSparkPostApi('send_email_by_template',$requestData);
 											

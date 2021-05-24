@@ -55,10 +55,20 @@ class Sparkpost_mail extends CI_Controller {
 				}
 			}
 			
-		/*	$requestData = array('search_url' =>'metrics/deliverability/template?from=2021-05-01T08:00&metrics=count_sent,count_unique_confirmed_opened,count_accepted,count_bounce,count_targeted,count_injected,count_rejected&limit=5&order_by=count_injected');
-			$metrics_result = $this->sparkpost_mail_model->requestSparkPostApi('metrics_templates',$requestData);*/
+			$requestData = array('search_url' =>'metrics/deliverability/template?from=2021-05-01T08:00&metrics=count_sent,count_unique_confirmed_opened,count_accepted,count_bounce,count_targeted,count_injected,count_rejected&limit=100&order_by=count_injected');
+			$metrics_result = $this->sparkpost_mail_model->requestSparkPostApi('metrics_templates',$requestData);
 			
-			//echo '<prE>metrics_result'; print_r($metrics_result); die;
+			$data['metrics_records'] = array();
+			if(isset($metrics_result['response']) && $metrics_result['response'] == 1){
+				if(isset($metrics_result['records']) && !empty($metrics_result['records'])){
+					foreach($metrics_result['records'] as $metrics){
+						$data['metrics_records'][$metrics['template_id']] = $metrics;
+					}
+				}
+			}
+			
+			//echo '<pre>metrics_result'; print_r($data['metrics_records']); die;
+		
 			$this->load->view("admin/sparkpost_mail_index", $data);
 		}
 	}
@@ -351,6 +361,7 @@ public function cron_for_sparkpost_email_flow(){
 					//$this->db->select(array('id','template_type'));
 					$this->db->where("mail_flow_id",$sparkpost_user->mail_flow_id);
 					$this->db->where("template_type",$current_mail_template_type);
+					//$this->db->where("template_type",'day_2');
 					$this->db->where("template_type !=","paid_trial_purchased");
 					$current_sparkpost_mail_template = $this->query_model->getByTable('tbl_sparkpost_mail_templates');
 					//echo '<pre>sparkpost_mail_templates'; print_r($current_sparkpost_mail_template); die;
@@ -368,12 +379,14 @@ public function cron_for_sparkpost_email_flow(){
 							$mail_subject = $this->query_model->replaceAutoResponderVaribles($current_sparkpost_mail_template[0]->subject, $formData, '');
 							$mail_template = $this->query_model->replaceAutoResponderVaribles($current_sparkpost_mail_template[0]->description, $formData, '');
 							$requestData = array(
+												'recipient_name' => $sparkpost_user->name,
 												'recipient_email' => $sparkpost_user->email,
 												'subject' => $mail_subject,
 												'mail_template' => $mail_template,
+												'mail_template_id' => $sparkpost_mail_template[0]->template_id,
 												);
 												
-							
+							//echo '<pre>requestData'; print_r($requestData); die;
 							
 							$request_result = $this->sparkpost_mail_model->requestSparkPostApi('send_email_by_template',$requestData);
 							

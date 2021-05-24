@@ -178,15 +178,35 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 		$result = array();
 		$result['response'] = 0;
 		//echo '<pre>requestData'; print_r($requestData); die;
-		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'] : '';
+		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'].' - '.time() : '';
 		$html = (isset($requestData['mail_template']) && !empty($requestData['mail_template'])) ? $requestData['mail_template'] : '';
+		$recipient_name = (isset($requestData['recipient_name']) && !empty($requestData['recipient_name'])) ? $requestData['recipient_name'] : '';
 		$recipient_email = (isset($requestData['recipient_email']) && !empty($requestData['recipient_email'])) ? $requestData['recipient_email'] : '';
+		$mail_template_id = (isset($requestData['mail_template_id']) && !empty($requestData['mail_template_id'])) ? $requestData['mail_template_id'] : '';
 		
 		$site_setting = $this->query_model->getbyTable('tblsite');
 		$site_title = $site_setting[0]->title;
 		
+		// Note: sandbox is true then mail from address is : info@sparkpostbox.com    // template id : 6962077433458241801 or 6961497415304991863  sandbox true ke case me to mail send ho rhi h 
+		// sandbos is false then mail from address is : info@dojoonlinemarketing.com  //template id :  6961495113202512439
 		
 		$promise = $sparky->transmissions->post([
+						// 'campaign_id'=> 'postman_metadata_example',
+						  'options' => [
+							'sandbox' => true,
+							"open_tracking" => true,
+							"click_tracking" => true
+						  ],
+						  'content' => [
+							//'template_id' => 'custome-template-by-id'
+							'template_id' => $mail_template_id
+						  ],
+						  'recipients' => [
+							['address' => ['name' => $recipient_name,'email'=>$recipient_email]]
+						  ]
+						]);
+						
+			/*$promise = $sparky->transmissions->post([
 						  'options' => [
 							'sandbox' => false,
 							"open_tracking" => true,
@@ -199,20 +219,17 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 							],
 							'subject' => $subject,
 							'html' => $html,
-							/*'template_id' => 'custom-template',
-							 "use_draft_template"=>false*/
 						  ],
 						  'recipients' => [
-							//['address' => ['email'=>'dojodeveloper158@gmail.com']]
-							['address' => ['name' => 'dojodev','email'=>$recipient_email]]
+							['address' => ['name' => $recipient_name,'email'=>$recipient_email]]
 						  ]
-						]);
-
+						]);*/
+						
 			try {
 				$response_code = $promise->getStatusCode();
 				$response = $promise->getBody();
 				
-				echo '<pre>requestData'; print_r($requestData);
+				//echo '<pre>requestData'; print_r($requestData);
 				echo '<pre>response_code'; print_r($response_code); 
 				echo '<pre>response'; print_r($response); die;
 				
@@ -259,11 +276,10 @@ public function metricsTemplateToSparkpostApi($sparkPostDetail,$requestData){
 				$response_code = $promise->getStatusCode();
 				$response = $promise->getBody();
 				
-				//echo '<pre>response'; print_r($response); die;
 				
 				if($response_code == 200){
 					$result['response'] = 1;
-					//$result['template_id'] = $response['results']['id'];
+					$result['records'] = $response['results'];
 				}
 				
 			} catch (\Exception $e) {
