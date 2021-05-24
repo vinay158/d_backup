@@ -56,11 +56,18 @@ class Sparkpost_mail_model extends CI_Model{
 		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'] : '';
 		$html = (isset($requestData['description']) && !empty($requestData['description'])) ? $requestData['description'] : '';
 		
+		$reply_to = 'noreply@dojoonlinemarketing.com';
+		
+		$this->db->select(array('title'));
+		$site_setting = $this->query_model->getbyTable('tblsite');
+		$site_title = $site_setting[0]->title;
+		
 		$create_template_promise = $sparky->request('POST', 'templates', [
 				  'name' => $name,
 				  'published' => true,
 				  'content' => [
-					'from' => $sparkPostDetail[0]->from_email,
+					'from' => ['name' => $site_title,'email'=>$sparkPostDetail[0]->from_email],
+					'reply_to' => $reply_to,
 					'subject' => $subject,
 					'html' => $html,
 				  ],
@@ -89,7 +96,7 @@ class Sparkpost_mail_model extends CI_Model{
 	
 	
 	public function editTemplateToSparkpostApi($sparkPostDetail,$requestData){
-		
+		//echo '<pre>requestData'; print_r($requestData); die;
 		$httpClient = new GuzzleAdapter(new Client());
 		$sparky = new SparkPost($httpClient, ['key'=>$sparkPostDetail[0]->api_key]);
 		$sparky->setOptions(['async' => false]);
@@ -103,11 +110,18 @@ class Sparkpost_mail_model extends CI_Model{
 		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'] : '';
 		$html = (isset($requestData['description']) && !empty($requestData['description'])) ? $requestData['description'] : '';
 		
+		$reply_to = 'noreply@dojoonlinemarketing.com';
+		
+		$this->db->select(array('title'));
+		$site_setting = $this->query_model->getbyTable('tblsite');
+		$site_title = $site_setting[0]->title;
+		
 		$update_template_promise = $sparky->request('PUT', 'templates/'.$template_id, [
 					'name' => $name,
 					'published' => true,
 					'content' => [
-						'from' => $sparkPostDetail[0]->from_email,
+						'from' => ['name' => $site_title,'email'=>$sparkPostDetail[0]->from_email],
+						'reply_to' => $reply_to,
 						'subject' => $subject,
 						'html' => $html,
 					  ],
@@ -119,6 +133,7 @@ class Sparkpost_mail_model extends CI_Model{
 				try {
 					$response_code = $update_template_promise->getStatusCode();
 					$response = $update_template_promise->getBody();
+					
 					if($response_code == 200){
 						$result['response'] = 1;
 					}
@@ -184,8 +199,11 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 		$recipient_email = (isset($requestData['recipient_email']) && !empty($requestData['recipient_email'])) ? $requestData['recipient_email'] : '';
 		$mail_template_id = (isset($requestData['mail_template_id']) && !empty($requestData['mail_template_id'])) ? $requestData['mail_template_id'] : '';
 		
+		$this->db->select(array('title'));
 		$site_setting = $this->query_model->getbyTable('tblsite');
 		$site_title = $site_setting[0]->title;
+		
+		$reply_to = 'noreply111@dojoonlinemarketing.com';
 		
 		// Note: sandbox is true then mail from address is : info@sparkpostbox.com    // template id : 6962077433458241801 or 6961497415304991863  sandbox true ke case me to mail send ho rhi h 
 		// sandbos is false then mail from address is : info@dojoonlinemarketing.com  //template id :  6961495113202512439
@@ -200,11 +218,28 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 						  ],
 						  'content' => [
 							//'template_id' => 'custome-template-by-id'
-							'template_id' => $mail_template_id
+							'template_id' => $mail_template_id,
+							//'reply_to' => $reply_to,
 						  ],
 						  'recipients' => [
 							['address' => ['name' => $recipient_name,'email'=>$recipient_email]]
-						  ]
+						  ],
+						/*'cc' => [
+							[
+								'address' => [
+									'name' => 'VNY',
+									'email' => 'vinayverma158@gmail.com',
+								],
+							],
+						],
+						'bcc' => [
+							[
+								'address' => [
+									'name' => 'DEV',
+									'email' => 'developertest085@gmail.com',
+								],
+							],
+						],*/
 						]);
 						
 			/*$promise = $sparky->transmissions->post([

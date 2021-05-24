@@ -120,6 +120,8 @@ class Sparkpost_mail extends CI_Controller {
 							
 								$request_result = $this->sparkpost_mail_model->requestSparkPostApi('edit_template',$requestData);
 								
+								//echo '<pre>request_result'; print_r($request_result); die;
+								
 							}else{
 								$requestData = array('title'=>$flow_detail[0]->title.' ~ '. $postData['title'],
 											'subject'=>$postData['subject'],
@@ -334,6 +336,8 @@ public function add_template(){
 						$this->query_model->updateData('tbl_sparkpost_mail_templates','id',$template_duplicate_id, $updateData);
 					}
 				}
+				
+				
 			}
 		}
 	}
