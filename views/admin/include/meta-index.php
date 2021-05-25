@@ -33,6 +33,7 @@ $mainLocation = $this->query_model->getMainLocation("tblcontact");
 
 
 $meta_school_name = isset($meta_data->meta_school_name) ? $meta_data->meta_school_name : '';
+$meta_school_owner_name = isset($meta_data->meta_school_owner_name) ? $meta_data->meta_school_owner_name : '';
 $meta_city = isset($meta_data->meta_city) ? $meta_data->meta_city : '';
 $meta_state = isset($meta_data->meta_state) ? $meta_data->meta_state : '';
 $meta_city_state = isset($meta_data->meta_city_state) ? $meta_data->meta_city_state : '';
@@ -60,6 +61,10 @@ $phone = !empty($mainLocation) ? $mainLocation[0]->phone : '';
 	<tr>
     	<th>School Name</th>
         <td><input type="text" name="meta_school_name" value="<?=$meta_school_name?>" />&nbsp;{school_name}</td>
+    </tr>
+	<tr>
+    	<th>School Owner Name</th>
+        <td><input type="text" name="meta_school_owner_name" value="<?=$meta_school_owner_name?>" />&nbsp;{school_owner_name}</td>
     </tr>
     <tr>
     	<th>City</th>

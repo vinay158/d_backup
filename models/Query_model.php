@@ -5107,6 +5107,9 @@ public function checkActiveCampaignContactExists($activeCampaign, $email){
 	
 	public function replaceAutoResponderVaribles($content, $formData, $extraContentArr){
 		
+		$this->db->select('meta_school_owner_name');
+		$metaVaribles = $this->query_model->getbySpecific('tblmetavariable','id',1);
+		$school_owner_name = $metaVaribles[0]->meta_school_owner_name;
 		
 		$multiLocation =  $this->query_model->getbyTable("tblconfigcalendar");
 		if($multiLocation[0]->field_value == 1){
@@ -5217,7 +5220,7 @@ public function checkActiveCampaignContactExists($activeCampaign, $email){
 		
 		$result = str_replace(
 							array('#FIRSTNAME', '#LASTNAME', '#EMAIL', '#PHONE', '#LOCATION', '#PROGRAM', '#MESSAGE', '#SITE_TITLE','#SCHOOL_OWNER_NAME','#CONTACT_NAME', '#CONTACT_ADDRESS', '#CONTACT_SUITE', '#CONTACT_CITY', '#CONTACT_STATE', '#CONTACT_ZIP', '#CONTACT_PHONE', '#DOJOCART_TITLE', '#DOJOCART_UPSELLS_LIST', '#DOJOCART_AMOUNT', '#DOJOCART_QUANTITY', '#BIRTHDAY_PARTY_TITLE', '#BIRTHDAY_CALL_OR_SCHEDULE','#PAYMENT_RESULT','#TRIAL_NAME','#TRIAL_TYPE','#TRIAL_AMOUNT','#TRIAL_UPSELL_NAME','#TRIAL_UPSELL_AMOUNT','#TRIAL_COUPON_NAME','#TRIAL_COUPON_DISCOUNT','#DOJOCART_COUPON_NAME','#DOJOCART_COUPON_DISCOUNT','#DOJOCART_CUSTOM_FIELDS','#SUMMER_CAMP_RESERVE_OR_SECHEDULE','#PRINT_PDF','#DOJOCART_MULTI_ITEMS_LIST','#CHILD_NAME','#CHILD_AGE'),
-							array($formData['name'], $formData['last_name'], $formData['email'], $formData['phone'], $formData['location'], $formData['program'], $formData['message'], $site_setting[0]->title, $site_setting[0]->school_owner_name, $locationDetail->name, $locationDetail->address, $locationDetail->suite, $locationDetail->city, $locationDetail->state, $locationDetail->zip, $locationDetail->phone,$dojocart_title,$upsell_list,$dojocart_amount,$dojocart_quantity, $birthday_title, $birthday_msg,$payment_result,$trial_offer_name,$trial_offer_type,$trial_offer_amount,$trial_upsell_name,$trial_upsell_amount,$trial_coupon_name,$trial_coupon_discount,$dojocart_coupon_name,$dojocart_coupon_discount,$dojocart_custom_fields,$bdy_reserve_or_schedule,$pdfLink,$dojocart_item_list,$child_name,$child_age), 
+							array($formData['name'], $formData['last_name'], $formData['email'], $formData['phone'], $formData['location'], $formData['program'], $formData['message'], $site_setting[0]->title, $school_owner_name, $locationDetail->name, $locationDetail->address, $locationDetail->suite, $locationDetail->city, $locationDetail->state, $locationDetail->zip, $locationDetail->phone,$dojocart_title,$upsell_list,$dojocart_amount,$dojocart_quantity, $birthday_title, $birthday_msg,$payment_result,$trial_offer_name,$trial_offer_type,$trial_offer_amount,$trial_upsell_name,$trial_upsell_amount,$trial_coupon_name,$trial_coupon_discount,$dojocart_coupon_name,$dojocart_coupon_discount,$dojocart_custom_fields,$bdy_reserve_or_schedule,$pdfLink,$dojocart_item_list,$child_name,$child_age), 
 							$content
 							);
 		
@@ -10342,9 +10345,13 @@ public function sendEmailFromSparkpostApi($postData, $leadData = array()){
 										
 										if(!empty($sparkpost_mail_template)){
 											//echo '<prE>sparkpost_mail_template'; print_r($sparkpost_mail_template); die;
-											$mail_subject = $this->query_model->replaceAutoResponderVaribles($sparkpost_mail_template[0]->subject, $formData, '');
+											//$mail_subject = $this->query_model->replaceAutoResponderVaribles($sparkpost_mail_template[0]->subject, $formData, '');
 											
-											$mail_template = $this->query_model->replaceAutoResponderVaribles($sparkpost_mail_template[0]->description, $formData, '');
+											//$mail_template = $this->query_model->replaceAutoResponderVaribles($sparkpost_mail_template[0]->description, $formData, '');
+											
+											$mail_subject = $this->query_model->replaceSparkpostEmailVaribles($sparkpost_mail_template[0]->subject);
+											
+											$mail_template = $this->query_model->replaceSparkpostEmailVaribles($sparkpost_mail_template[0]->description);
 										
 											$this->load->model("sparkpost_mail_model");
 											$requestData = array(
@@ -10379,6 +10386,7 @@ public function sendEmailFromSparkpostApi($postData, $leadData = array()){
 											//$mail_template_type = "paid_trial_purchased";
 											if($mail_template_type == "paid_trial_purchased"){
 												$updateData = array();
+												$updateData['mail_template_type']  = 'paid_trial_purchased';
 												$updateData['email_flows_status']  = 'all_sent';
 												$updateData['is_stop_mail']  = 1;
 												$this->query_model->update('tbl_sparkpost_mail_users', $sparkpost_user_id, $updateData);
@@ -10404,6 +10412,36 @@ public function sendEmailFromSparkpostApi($postData, $leadData = array()){
 	}
 	
 	
+
+
+public function replaceSparkpostEmailVaribles($data){
+			$metaVaribles = $this->getbyId('tblmetavariable',1);
+			$meta_varibles = $metaVaribles[0];
+			
+			$this->db->select('id');
+			$this->db->where("published", 1);
+			$allLocations = $this->getbyTable("tblcontact");
+			$allLocations = count($allLocations);
+			
+			
+			$site_currency_type = $this->query_model->getSiteCurrencyType();
+			
+			$content = '';
+			
+			if(!empty($data)){
+				$content = str_replace(
+							array('#SCHOOL_NAME', '#SCHOOL_OWNER_NAME', '#SCHOOL_PHONE_NUMBER', '#SCHOOL_MASTER_INSTRUCTOR', '#SCHOOL_URL', '#SCHOOL_STREET', '#SCHOOL_SUITE', '#SCHOOL_ZIP','#SCHOOL_CITY','#SCHOOL_STATE', '#SCHOOL_COUNTY'),
+
+							array($meta_varibles->meta_school_name,$meta_varibles->meta_school_owner_name,$meta_varibles->phone,$meta_varibles->main_instructor,$meta_varibles->url,$meta_varibles->street,$meta_varibles->suite,$meta_varibles->zip,$meta_varibles->meta_city,$meta_varibles->meta_state,$meta_varibles->meta_county), 
+							$data
+							);
+			}
+			
+			$content = htmlspecialchars_decode($content);
+			
+			return $content;
+	}
+
 	
 	
 

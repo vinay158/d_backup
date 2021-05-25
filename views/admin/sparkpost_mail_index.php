@@ -80,10 +80,32 @@
 									
 								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?=$row->title;?> </a><em><?php echo isset($template_types[$row->template_type]) ? ' - '.$template_types[$row->template_type] : '';?></em></h4>
 								
-								<p class="listing_form_instances_box">
-										<span class="heading">Sparkpost Template ID: </span>
-										<span class="form_instances"><?php echo $row->template_id; ?></span>
+								<p class="listing_form_instances_box" style="text-align: center;">
+									<span>
+										<span class="heading">Template ID <br/><span class="form_instances"><?php echo $row->template_id; ?></span> </span>
+									</span>
+								
+									<span>
+										<span class="heading">Unique Confirmed Opens <br/><span class="form_instances"><?php echo isset($metrics_records[$row->template_id]['count_unique_confirmed_opened']) ? $metrics_records[$row->template_id]['count_unique_confirmed_opened'] : 0; ?></span> </span>
+									</span>
+									
+									
+									<span>
+										<span class="heading">Sent <br/><span class="form_instances"><?php echo isset($metrics_records[$row->template_id]['count_sent']) ? $metrics_records[$row->template_id]['count_sent'] : 0; ?></span> </span>
+									</span>
+									
+									
+									<span>
+										<span class="heading">Accepted <br/><span class="form_instances"><?php echo isset($metrics_records[$row->template_id]['count_accepted']) ? $metrics_records[$row->template_id]['count_accepted'] : 0; ?></span> </span>
+									</span>
+									
+									
+									<span>
+										<span class="heading">Bounces <br/><span class="form_instances"><?php echo isset($metrics_records[$row->template_id]['count_bounce']) ? $metrics_records[$row->template_id]['count_bounce'] : 0; ?></span> </span>
+									</span>
+									
 								</p>
+								
 								
 								
 							</div>
@@ -93,6 +115,7 @@
 						<nav class="nav">
 							
 							<?php if($user_level == 1) {?> 
+							 
 							  <a href="admin/<?=$link_type;?>/edit_template/<?php echo $row->id; ?>" class="badge badge-primary">Edit</a>
 							  
 							  <a  class="badge badge-primary ajax_record_duplicate" data-toggle="modal" data-target="#popupDuplicateItem" item_id="<?=$row->id;?>"   table_name="tbl_sparkpost_mail_templates" item_title="<?=$row->title;?>" section_type="full_width" form_action="admin/<?=$link_type?>/duplicate_form" redirect_path="admin/<?=$link_type?>">Duplicate</a>
@@ -112,7 +135,8 @@
 <?php $i++; endforeach;?>	
 								</ul>
 				</div>
-				
+			
+			<?php if(isset($sparkpost_templates['paid_template'][$sparkpost_flow->id]) && !empty($sparkpost_templates['paid_template'][$sparkpost_flow->id])){?>	
 				<div class="az-content-body ">
 					<div class="az-mail-header">
 								<div style="margin-top:50px">
@@ -141,10 +165,32 @@
 									
 								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?=$row->title;?> </a><em><?php echo isset($template_types[$row->template_type]) ? ' - '.$template_types[$row->template_type] : '';?></em></h4>
 								
-								<p class="listing_form_instances_box">
-										<span class="heading">Sparkpost Template ID: </span>
-										<span class="form_instances"><?php echo $row->template_id; ?></span>
+								<p class="listing_form_instances_box" style="text-align: center;">
+									<span>
+										<span class="heading">Template ID <br/><span class="form_instances"><?php echo $row->template_id; ?></span> </span>
+									</span>
+								
+									<span>
+										<span class="heading">Unique Confirmed Opens <br/><span class="form_instances"><?php echo isset($metrics_records[$row->template_id]['count_unique_confirmed_opened']) ? $metrics_records[$row->template_id]['count_unique_confirmed_opened'] : 0; ?></span> </span>
+									</span>
+									
+									
+									<span>
+										<span class="heading">Sent <br/><span class="form_instances"><?php echo isset($metrics_records[$row->template_id]['count_sent']) ? $metrics_records[$row->template_id]['count_sent'] : 0; ?></span> </span>
+									</span>
+									
+									
+									<span>
+										<span class="heading">Accepted <br/><span class="form_instances"><?php echo isset($metrics_records[$row->template_id]['count_accepted']) ? $metrics_records[$row->template_id]['count_accepted'] : 0; ?></span> </span>
+									</span>
+									
+									
+									<span>
+										<span class="heading">Bounces <br/><span class="form_instances"><?php echo isset($metrics_records[$row->template_id]['count_bounce']) ? $metrics_records[$row->template_id]['count_bounce'] : 0; ?></span> </span>
+									</span>
+									
 								</p>
+								
 								
 								
 							</div>
@@ -173,7 +219,7 @@
 <?php $i++; endforeach;?>	
 								</ul>
 				</div>
-				
+			<?php } ?>	
 				
 				
 			</div>

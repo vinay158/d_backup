@@ -77,7 +77,7 @@ class Form_modules extends CI_Controller {
 				$this->db->select(array('id','tag'));
 				$data['active_campaign_tags'] = $this->query_model->getbySpecific('tbl_form_tags', 'tag_type','active_campaign');
 				
-				$this->db->order_by('id','DESC');
+				$this->db->order_by('id','ASC');
 				$this->db->select(array('id','title'));
 				$data['sparkpost_mail_flows'] = $this->query_model->getbySpecific('tbl_sparkpost_mail_flows', 'status',1);
 				

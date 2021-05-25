@@ -83,7 +83,7 @@ $("#sparkPostApi .form-light-holder1 .authorizecheckbox").click(function(){
 
 <div  class="AuthorizeDetailBox">
 <div class="  form-new-holder">
-	<h1>Key</h1>
+	<h1>Api Key</h1>
 	<input type="text" value="<?php if(!empty($apis_sparkpost_mail['detail'])){ echo $apis_sparkpost_mail['detail']->api_key; }?>" name="api_key" class="field authorize"  placeholder="Enter Your Sparkpost Key"  />
 </div>
 

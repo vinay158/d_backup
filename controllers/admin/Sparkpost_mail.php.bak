@@ -49,7 +49,7 @@ class Sparkpost_mail extends CI_Controller {
 				}
 			}
 			
-			echo '<pre>'; print_r($data['sparkpost_templates']); die;
+			
 			
 			$this->db->select('id');
 			$this->db->where('template_id','');
@@ -63,7 +63,7 @@ class Sparkpost_mail extends CI_Controller {
 				}
 			}
 			
-			$requestData = array('search_url' =>'metrics/deliverability/template?from=2021-05-01T08:00&metrics=count_sent,count_unique_confirmed_opened,count_accepted,count_bounce,count_targeted,count_injected,count_rejected&limit=100&order_by=count_injected');
+			$requestData = array('search_url' =>'metrics/deliverability/template?from=2021-01-01T08:00&metrics=count_sent,count_unique_confirmed_opened,count_accepted,count_bounce,count_targeted,count_injected,count_rejected&limit=100&order_by=count_injected');
 			$metrics_result = $this->sparkpost_mail_model->requestSparkPostApi('metrics_templates',$requestData);
 			
 			$data['metrics_records'] = array();
@@ -119,21 +119,28 @@ class Sparkpost_mail extends CI_Controller {
 							
 							if(!empty($data['details']->template_id)){
 								
+								$mail_subject = $this->query_model->replaceSparkpostEmailVaribles($postData['subject']);
+								$mail_template = $this->query_model->replaceSparkpostEmailVaribles($postData['description']);
+								
 								$requestData = array('title'=>$flow_detail[0]->title.' ~ '. $postData['title'],
-											'subject'=>$postData['subject'],
-											'description'=>$postData['description'],
+											'subject'=>$mail_subject,
+											'description'=>$mail_template,
 											'template_id' => $data['details']->template_id
 										);
 							
-							
+									
 								$request_result = $this->sparkpost_mail_model->requestSparkPostApi('edit_template',$requestData);
 								
-								//echo '<pre>request_result'; print_r($request_result); die;
+								
 								
 							}else{
+								
+								$mail_subject = $this->query_model->replaceSparkpostEmailVaribles($postData['subject']);
+								$mail_template = $this->query_model->replaceSparkpostEmailVaribles($postData['description']);
+								
 								$requestData = array('title'=>$flow_detail[0]->title.' ~ '. $postData['title'],
-											'subject'=>$postData['subject'],
-											'description'=>$postData['description']
+											'subject'=>$mail_subject,
+											'description'=>$mail_template
 										);
 							
 								
@@ -326,10 +333,13 @@ public function add_template(){
 			
 			if(!empty($flow_detail)){
 				
+				$mail_subject = $this->query_model->replaceSparkpostEmailVaribles($template_detail[0]->subject);
+				$mail_template = $this->query_model->replaceSparkpostEmailVaribles($template_detail[0]->description);
+								
 				$requestData = array(
 									'title'=>$flow_detail[0]->title.' ~ '. $template_detail[0]->title,
-									'subject'=>$template_detail[0]->subject,
-									'description'=>$template_detail[0]->description
+									'subject'=>$mail_subject,
+									'description'=>$mail_template
 								);
 			
 				
@@ -388,8 +398,12 @@ public function cron_for_sparkpost_email_flow(){
 							
 							$formData = array('name'=>$sparkpost_user->name,'email'=> $sparkpost_user->email,'location'=>'','last_name'=>'','phone'=>'','program'=>'','message'=>'');
 							
-							$mail_subject = $this->query_model->replaceAutoResponderVaribles($current_sparkpost_mail_template[0]->subject, $formData, '');
-							$mail_template = $this->query_model->replaceAutoResponderVaribles($current_sparkpost_mail_template[0]->description, $formData, '');
+							//$mail_subject = $this->query_model->replaceAutoResponderVaribles($current_sparkpost_mail_template[0]->subject, $formData, '');
+							//$mail_template = $this->query_model->replaceAutoResponderVaribles($current_sparkpost_mail_template[0]->description, $formData, '');
+							
+							$mail_subject = $this->query_model->replaceSparkpostEmailVaribles($current_sparkpost_mail_template[0]->subject);
+							$mail_template = $this->query_model->replaceSparkpostEmailVaribles($current_sparkpost_mail_template[0]->description);
+							
 							$requestData = array(
 												'recipient_name' => $sparkpost_user->name,
 												'recipient_email' => $sparkpost_user->email,

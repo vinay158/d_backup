@@ -14,6 +14,8 @@ class Meta extends CI_Controller {
 		$is_logged_in = $this->session->userdata('is_logged_in');
 		if(!empty($is_logged_in) && $is_logged_in == true)
 		{
+		
+		
 			$data['meta']=$this->db->query("select * from `tblmeta` order by pos ASC" )->result();
 			//$data['meta'] = $this->query_model->getbyTable("tblmeta");	
 			$data['title'] = "Meta Tags/URL Rewriting";
@@ -156,11 +158,12 @@ class Meta extends CI_Controller {
 		$suite = $this->input->post('suite');
 		$zip = $this->input->post('zip');
 		$phone = $this->input->post('phone');
+		$school_owner_name = $this->input->post('meta_school_owner_name');
 		
 		
 		
 		
-		$data = array("meta_school_name" => $school_name, "meta_city" => $city, "meta_state" => $state, "meta_city_state" => $city_state, "meta_nearbylocation1" => $nearbylocation1, "meta_nearbylocation2" => $nearbylocation2 , "meta_county" => $county, "meta_main_martial_arts_style" => $main_martial_arts_style, "meta_martial_arts_style" => $martial_arts_style, "display_status"=> !empty($display) ? $display : 'H', "trial_offer1" => $trial_offer1, "trial_offer2" => $trial_offer2,'main_instructor' => $main_instructor,'est_year'=> $est_year,'current_location'=> $current_location,'url' => $url,'street' => $street,'suite' => $suite,'zip' => $zip,'phone' => $phone);
+		$data = array("meta_school_name" => $school_name, "meta_city" => $city, "meta_state" => $state, "meta_city_state" => $city_state, "meta_nearbylocation1" => $nearbylocation1, "meta_nearbylocation2" => $nearbylocation2 , "meta_county" => $county, "meta_main_martial_arts_style" => $main_martial_arts_style, "meta_martial_arts_style" => $martial_arts_style, "display_status"=> !empty($display) ? $display : 'H', "trial_offer1" => $trial_offer1, "trial_offer2" => $trial_offer2,'main_instructor' => $main_instructor,'est_year'=> $est_year,'current_location'=> $current_location,'url' => $url,'street' => $street,'suite' => $suite,'zip' => $zip,'phone' => $phone,'meta_school_owner_name' => $school_owner_name);
 							
 							
 		$meta_data = $this->query_model->getbyId("tblmetavariable", 1);

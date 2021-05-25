@@ -56,7 +56,7 @@ class Sparkpost_mail_model extends CI_Model{
 		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'] : '';
 		$html = (isset($requestData['description']) && !empty($requestData['description'])) ? $requestData['description'] : '';
 		
-		$reply_to = 'noreply@dojoonlinemarketing.com';
+		//$reply_to = 'noreply@dojoonlinemarketing.com';
 		
 		$this->db->select(array('title'));
 		$site_setting = $this->query_model->getbyTable('tblsite');
@@ -67,7 +67,7 @@ class Sparkpost_mail_model extends CI_Model{
 				  'published' => true,
 				  'content' => [
 					'from' => ['name' => $site_title,'email'=>$sparkPostDetail[0]->from_email],
-					'reply_to' => $reply_to,
+					'reply_to' => $sparkPostDetail[0]->reply_to_email,
 					'subject' => $subject,
 					'html' => $html,
 				  ],
@@ -110,7 +110,7 @@ class Sparkpost_mail_model extends CI_Model{
 		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'] : '';
 		$html = (isset($requestData['description']) && !empty($requestData['description'])) ? $requestData['description'] : '';
 		
-		$reply_to = 'noreply@dojoonlinemarketing.com';
+		//$reply_to = 'noreply@dojoonlinemarketing.com';
 		
 		$this->db->select(array('title'));
 		$site_setting = $this->query_model->getbyTable('tblsite');
@@ -120,8 +120,9 @@ class Sparkpost_mail_model extends CI_Model{
 					'name' => $name,
 					'published' => true,
 					'content' => [
+						//'from' => ['name' => $site_title,'email'=>$sparkPostDetail[0]->from_email],
 						'from' => ['name' => $site_title,'email'=>$sparkPostDetail[0]->from_email],
-						'reply_to' => $reply_to,
+						'reply_to' => $sparkPostDetail[0]->reply_to_email,
 						'subject' => $subject,
 						'html' => $html,
 					  ],
@@ -193,7 +194,7 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 		$result = array();
 		$result['response'] = 0;
 		//echo '<pre>requestData'; print_r($requestData); die;
-		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'].' - '.time() : '';
+		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'] : '';
 		$html = (isset($requestData['mail_template']) && !empty($requestData['mail_template'])) ? $requestData['mail_template'] : '';
 		$recipient_name = (isset($requestData['recipient_name']) && !empty($requestData['recipient_name'])) ? $requestData['recipient_name'] : '';
 		$recipient_email = (isset($requestData['recipient_email']) && !empty($requestData['recipient_email'])) ? $requestData['recipient_email'] : '';
@@ -203,7 +204,7 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 		$site_setting = $this->query_model->getbyTable('tblsite');
 		$site_title = $site_setting[0]->title;
 		
-		$reply_to = 'noreply111@dojoonlinemarketing.com';
+		$reply_to = $sparkPostDetail[0]->reply_to_email;
 		
 		// Note: sandbox is true then mail from address is : info@sparkpostbox.com    // template id : 6962077433458241801 or 6961497415304991863  sandbox true ke case me to mail send ho rhi h 
 		// sandbos is false then mail from address is : info@dojoonlinemarketing.com  //template id :  6961495113202512439
@@ -266,8 +267,8 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 				$response = $promise->getBody();
 				
 				//echo '<pre>requestData'; print_r($requestData);
-				echo '<pre>response_code'; print_r($response_code); 
-				echo '<pre>response'; print_r($response); die;
+				/*echo '<pre>response_code'; print_r($response_code); 
+				echo '<pre>response'; print_r($response); die;*/
 				
 				if($response_code == 200){
 					

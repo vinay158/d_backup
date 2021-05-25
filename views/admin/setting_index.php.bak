@@ -764,14 +764,14 @@ $st_sec_external_link = 'check-off';
 		<input type="hidden" value="<?php echo $setting->email_marketing; ?>" name="email_marketing" class="email_marketing_hidden_cb" />
 </div> -->
 
-<div class="form-light-holder    d-md-flex   dual_input ">
+<div class="form-light-holder   d-md-flex   dual_input ">
 	<div class="adsUrl form-group">
 		<h1>School Name</h1>
 		<input type="text" value="<?php echo $this->query_model->getStrReplaceAdmin($setting->title); ?>" name="title" id="title" class="field" placeholder="School Name"/>	
 	</div>
 	<div class="linkTarget form-group">
-		<h1>School Owner Name</h1>
-		<input type="text" value="<?php // echo $this->query_model->getStrReplaceAdmin($setting->school_owner_name); ?>" name="school_owner_name" id="school_owner_name" class="field contactHalfDivInput" placeholder="School Owner Name"/>	
+		<h1>H1 Tag</h1>
+		<input type="text" value="<?php echo $this->query_model->getStrReplaceAdmin($setting->h1_tag); ?>" name="h1_tag" id="h1_tag" class="field contactHalfDivInput" placeholder="H1 Tag"/>	
 	</div>
 	
 </div>
@@ -784,17 +784,9 @@ $st_sec_external_link = 'check-off';
 	<input type="text" value="<?php if($setting->phone_number_text != ''){ echo $setting->phone_number_text; } else { echo 'free phone consultation'; }?>" name="phone_number_text" id="phone_number_text" class="field" placeholder="Text next to Phone Number"/>
 </div> -->
 
-<div class="form-light-holder   d-md-flex   dual_input ">
-	<div class="adsUrl form-group">
-		<h1>H1 Tag</h1>
-		<input type="text" value="<?php echo $this->query_model->getStrReplaceAdmin($setting->h1_tag); ?>" name="h1_tag" id="h1_tag" class="field " placeholder="H1 Tag"/>	
-	</div>
-	<div class="linkTarget form-group"  <?php if($multi_location[0]->field_value == 0){ echo 'style="display:none"'; } ?>>
-		<h1>Top Bar Text</h1>
-		<input type="text" value="<?php if($setting->top_bar_text != ''){ echo $this->query_model->getStrReplaceAdmin($setting->top_bar_text); } else { echo '{locations_number} Locations in {city}'; }?>" name="top_bar_text" id="top_bar_text" class="field contactHalfDivInput" placeholder="Top Bar Text"/>
-	</div>
-	
-	
+<div class="form-light-holder" <?php if($multi_location[0]->field_value == 0){ echo 'style="display:none"'; } ?>>
+	<h1>Top Bar Text</h1>
+	<input type="text" value="<?php if($setting->top_bar_text != ''){ echo $this->query_model->getStrReplaceAdmin($setting->top_bar_text); } else { echo '{locations_number} Locations in {city}'; }?>" name="top_bar_text" id="top_bar_text" class="field" placeholder="Top Bar Text"/>
 </div>
 <style>
 .callToAction{width:50%; float:left;}

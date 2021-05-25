@@ -67,15 +67,20 @@
 
 <div class="form-light-holder  row row-xs align-items-center  email_varibles" style="overflow:auto;">
 			<div class="col-md-12"><h1 style="padding-bottom: 5px;">Variables:</h1></div>
-			<div class="col-md-12"><em>Please use variables in auto responder textarea</em></div>
+			<div class="col-md-12"><em>Please use variables in template textarea</em></div>
 			
 <?php 
-	$variablesArr = array(	
+	/*$variablesArr = array(	
 						'Common' => array('FIRSTNAME','EMAIL','PHONE','LOCATION','PROGRAM','MESSAGE','BIRTHDAY_PARTY_TITLE','BIRTHDAY_CALL_OR_SCHEDULE','SUMMER_CAMP_RESERVE_OR_SECHEDULE'),
 						'School and Contact'=> array('SITE_TITLE','SCHOOL_OWNER_NAME','CONTACT_NAME','CONTACT_ADDRESS','CONTACT_SUITE','CONTACT_CITY','CONTACT_STATE','CONTACT_ZIP','CONTACT_PHONE'),
 						'Dojocart'=> array('DOJOCART_TITLE','DOJOCART_UPSELLS_LIST','DOJOCART_MULTI_ITEMS_LIST','DOJOCART_AMOUNT','DOJOCART_QUANTITY','DOJOCART_COUPON_NAME','DOJOCART_COUPON_DISCOUNT','DOJOCART_CUSTOM_FIELDS','PRINT_PDF'),
 						'Trial Offer and Upsell'=> array('TRIAL_NAME','TRIAL_TYPE','TRIAL_AMOUNT','TRIAL_UPSELL_NAME','TRIAL_UPSELL_AMOUNT','TRIAL_COUPON_NAME','TRIAL_COUPON_DISCOUNT','CHILD_NAME','CHILD_AGE','PAYMENT_RESULT')
+					);*/
+					
+	$variablesArr = array(	
+						'School Info ' => array('SCHOOL_NAME','SCHOOL_OWNER_NAME','SCHOOL_PHONE_NUMBER','SCHOOL_MASTER_INSTRUCTOR','SCHOOL_URL','SCHOOL_STREET','SCHOOL_SUITE','SCHOOL_ZIP','SCHOOL_CITY','SCHOOL_STATE','SCHOOL_COUNTY')
 					);
+					
 ?>
 			<div class="col-md-12 row row-xs">
 			<?php 
@@ -84,7 +89,9 @@
 				
 			?>
 				<div class="col-md-3">
-				<div class="col-md-12 <?php echo ($i == 0 || $i == 3) ? 'nopadding' : ''; ?>"> <h1 class="heading"><?php echo $key ?> Variables</h1></div>
+				<div class="col-md-12 <?php echo ($i == 0 || $i == 3) ? 'nopadding' : ''; ?>"> 
+				<h1 class="heading"><?php echo $key ?> Variables</h1>
+				</div>
 				<?php  foreach($variables as $variable){ ?>
 						<div class="col-md-12  <?php echo ($i == 0 || $i == 3) ? 'nopadding' : ''; ?>">#<?php echo $variable; ?></div>
 				<?php } ?>

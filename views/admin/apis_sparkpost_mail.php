@@ -92,6 +92,11 @@ $("#sparkPostApi .form-light-holder1 .authorizecheckbox").click(function(){
 	<input type="text" value="<?php if(!empty($apis_sparkpost_mail['detail'])){ echo $apis_sparkpost_mail['detail']->from_email; }?>" name="from_email" class="field authorize"  placeholder="Enter Your From Email Address"  />
 </div>
 
+<div class="  form-new-holder">
+	<h1>Reply To Email Address</h1>
+	<input type="text" value="<?php if(!empty($apis_sparkpost_mail['detail'])){ echo $apis_sparkpost_mail['detail']->reply_to_email; }?>" name="reply_to_email" class="field authorize"  placeholder="Enter Your Reply To Email Address"  />
+</div>
+
 
 </div>
 

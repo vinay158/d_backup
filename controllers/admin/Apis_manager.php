@@ -1928,12 +1928,14 @@ class Apis_manager extends CI_Controller {
 						$updateData['type']  = isset($_POST['type'])?$_POST['type']:'';
 						$updateData['api_key']  = isset($_POST['api_key'])?$_POST['api_key']:'';
 						$updateData['from_email']  = isset($_POST['from_email'])?$_POST['from_email']:'';
+						$updateData['reply_to_email']  = isset($_POST['reply_to_email'])?$_POST['reply_to_email']:'';
 						
 						$this->query_model->update('tbl_sparkpost_mail', 1, $updateData);
 					} else{
 						$insertData['type']  = isset($_POST['type'])?$_POST['type']:'';
 						$insertData['api_key']  = isset($_POST['api_key'])?$_POST['api_key']:'';
 						$insertData['from_email']  = isset($_POST['from_email'])?$_POST['from_email']:'';
+						$insertData['reply_to_email']  = isset($_POST['reply_to_email'])?$_POST['reply_to_email']:'';
 						
 						$this->query_model->insertData('tbl_sparkpost_mail',$insertData);
 					}

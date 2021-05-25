@@ -15,7 +15,7 @@ class Apis_manager extends CI_Controller {
             redirect('/admin/login');
         }
 		
-		//$this->load->model("customcss_model");
+		$this->load->model("sparkpost_mail_model");
 		
 	}
 	
