@@ -1040,9 +1040,9 @@
 							if($featuredprogram->p_type == 'program'){	
 								if($featuredprogram->program_id == 0)
 									{
-										$featured_pro_url = str_replace('http://','https://',$featuredprogram->program_category_url);
+										$featured_pro_url = $featuredprogram->program_category_url;
 									} else{
-										$featured_pro_url = str_replace('http://','https://',$featuredprogram->program_url);
+										$featured_pro_url = $featuredprogram->program_url;
 									}
 							} else{
 								$featured_pro_url = $featuredprogram->url;

@@ -2041,29 +2041,25 @@ public function delete_competitor(){
 						if(isset($tokenRequest->access_token) && !empty($tokenRequest->access_token)){
 							$access_token = $tokenRequest->access_token;
 							
-							
-							$curl = curl_init();
+							$url = "https://api.nightwatch.io/api/v1/urls/".$api_url_id."/competitors/".$competitor_id."?access_token=".$access_token;
 
-								curl_setopt_array($curl, array(
-								  CURLOPT_URL => 'https://api.nightwatch.io/api/v1/urls/'.$api_url_id.'/competitors/'.$competitor_id.'?access_token='.$access_token,
-								  CURLOPT_RETURNTRANSFER => true,
-								  CURLOPT_ENCODING => '',
-								  CURLOPT_MAXREDIRS => 10,
-								  CURLOPT_TIMEOUT => 0,
-								  CURLOPT_FOLLOWLOCATION => true,
-								  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-								  CURLOPT_SSL_VERIFYHOST => false,
-								  CURLOPT_SSL_VERIFYPEER => false,
-								  CURLOPT_CUSTOMREQUEST => 'POST',
-								  CURLOPT_POSTFIELDS =>'{"competitor":{"competitor_url":"'.$competitor_site_url.'","places_match":null,"places_image_title":null,"match_subdomains":false,"custom_name":null,"display_name":null,"url_id":"'.$api_url_id.'","competitor_id":"'.$competitor_id.'","url":"'.$competitor_site_url.'"}}',
-								  CURLOPT_HTTPHEADER => array(
-									'Content-Type: application/json'
-								  ),
-								));
+							$curl = curl_init($url);
+							curl_setopt($curl, CURLOPT_URL, $url);
+							//curl_setopt($curl, CURLOPT_DELETE, true);
+							curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+							curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-								$response = curl_exec($curl);
-echo '<prE>response'; print_r($response); die;
-								curl_close($curl);
+							$headers = array(
+							   "Content-Type: application/json",
+							);
+							curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+							//for debug only!
+							curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+							curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+							$resp = curl_exec($curl);
+							curl_close($curl);
+							//var_dump($resp);
 								
 							
 							/*$deleteCompetatiorRequestdata = array(

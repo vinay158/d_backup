@@ -1928,12 +1928,14 @@ class Apis_manager extends CI_Controller {
 						$updateData['type']  = isset($_POST['type'])?$_POST['type']:'';
 						$updateData['api_key']  = isset($_POST['api_key'])?$_POST['api_key']:'';
 						$updateData['from_email']  = isset($_POST['from_email'])?$_POST['from_email']:'';
+						$updateData['reply_to_email']  = isset($_POST['reply_to_email'])?$_POST['reply_to_email']:'';
 						
 						$this->query_model->update('tbl_sparkpost_mail', 1, $updateData);
 					} else{
 						$insertData['type']  = isset($_POST['type'])?$_POST['type']:'';
 						$insertData['api_key']  = isset($_POST['api_key'])?$_POST['api_key']:'';
 						$insertData['from_email']  = isset($_POST['from_email'])?$_POST['from_email']:'';
+						$insertData['reply_to_email']  = isset($_POST['reply_to_email'])?$_POST['reply_to_email']:'';
 						
 						$this->query_model->insertData('tbl_sparkpost_mail',$insertData);
 					}
@@ -1950,6 +1952,34 @@ class Apis_manager extends CI_Controller {
 								
 							}
 						}
+						
+						$this->db->select(array('id','template_id','subject','description','mail_flow_id'));
+						$sparkpost_mail_templates = $this->query_model->getbyTable('tbl_sparkpost_mail_templates');
+						//echo '<prE>sparkpost_mail_templates'; print_r($sparkpost_mail_templates); die;
+						if(!empty($sparkpost_mail_templates)){
+							
+							//$sparkpost_mail_api =  $this->query_model->getbySpecific('tbl_sparkpost_mail', 'id', 1);
+							
+							foreach($sparkpost_mail_templates as $sparkpost_mail_template){
+								
+								$this->db->select(array('title'));
+								$flow_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_flows','id',$sparkpost_mail_template->mail_flow_id);
+								
+								
+								$mail_subject = $this->query_model->replaceSparkpostEmailVaribles($sparkpost_mail_template->subject);
+								$mail_template = $this->query_model->replaceSparkpostEmailVaribles($sparkpost_mail_template->description);
+								
+								$requestData = array(
+												'template_id' => $sparkpost_mail_template->template_id,
+												'title'=>$flow_detail[0]->title.' ~ '. $sparkpost_mail_template->template_id,
+												'subject'=>$mail_subject,
+												'description'=>$mail_template,
+												);
+								
+								$request_result = $this->sparkpost_mail_model->requestSparkPostApi('update_template_setting',$requestData);
+							}
+						}
+						
 					}
 					
 					

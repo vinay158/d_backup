@@ -1952,6 +1952,34 @@ class Apis_manager extends CI_Controller {
 								
 							}
 						}
+						
+						$this->db->select(array('id','template_id','subject','description','mail_flow_id','title'));
+						$sparkpost_mail_templates = $this->query_model->getbyTable('tbl_sparkpost_mail_templates');
+						//echo '<prE>sparkpost_mail_templates'; print_r($sparkpost_mail_templates); die;
+						if(!empty($sparkpost_mail_templates)){
+							
+							//$sparkpost_mail_api =  $this->query_model->getbySpecific('tbl_sparkpost_mail', 'id', 1);
+							
+							foreach($sparkpost_mail_templates as $sparkpost_mail_template){
+								
+								$this->db->select(array('title'));
+								$flow_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_flows','id',$sparkpost_mail_template->mail_flow_id);
+								
+								
+								$mail_subject = $this->query_model->replaceSparkpostEmailVaribles($sparkpost_mail_template->subject);
+								$mail_template = $this->query_model->replaceSparkpostEmailVaribles($sparkpost_mail_template->description);
+								
+								$requestData = array(
+												'template_id' => $sparkpost_mail_template->template_id,
+												'title'=>$flow_detail[0]->title.' ~ '. $sparkpost_mail_template->title,
+												'subject'=>$mail_subject,
+												'description'=>$mail_template,
+												);
+								
+								$request_result = $this->sparkpost_mail_model->requestSparkPostApi('update_template_setting',$requestData);
+							}
+						}
+						
 					}
 					
 					

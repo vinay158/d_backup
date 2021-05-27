@@ -29,6 +29,8 @@ class Sparkpost_mail_model extends CI_Model{
 						$request_result = $this->deleteTemplateToSparkpostApi($sparkPostDetail, $requestData);
 					}elseif($action == "send_email_by_template"){
 						$request_result = $this->sendEmailByTemplateToSparkpostApi($sparkPostDetail, $requestData);
+					}elseif($action == "update_template_setting"){
+						$request_result = $this->updateTemplateSettingToSparkpostApi($sparkPostDetail, $requestData);
 					}elseif($action == "metrics_templates"){
 						$request_result = $this->metricsTemplateToSparkpostApi($sparkPostDetail, $requestData);
 					}
@@ -149,6 +151,62 @@ class Sparkpost_mail_model extends CI_Model{
 	}
 	
 	
+	public function updateTemplateSettingToSparkpostApi($sparkPostDetail,$requestData){
+		
+		$httpClient = new GuzzleAdapter(new Client());
+		$sparky = new SparkPost($httpClient, ['key'=>$sparkPostDetail[0]->api_key]);
+		$sparky->setOptions(['async' => false]);
+		
+		$sparkpost_template_id = '';
+		$result = array();
+		$result['response'] = 0;
+		
+		$template_id = (isset($requestData['template_id']) && !empty($requestData['template_id'])) ? $requestData['template_id'] : '';
+		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'] : '';
+		$html = (isset($requestData['description']) && !empty($requestData['description'])) ? $requestData['description'] : '';
+		$name = (isset($requestData['title']) && !empty($requestData['title'])) ? $requestData['title'] : '';
+		
+		//echo '<pre>template_id'; print_r($template_id); die;
+		
+		$this->db->select(array('title'));
+		$site_setting = $this->query_model->getbyTable('tblsite');
+		$site_title = $site_setting[0]->title;
+		
+		$update_template_promise = $sparky->request('PUT', 'templates/'.$template_id, [
+					'name' => $name,
+					'published' => true,
+					'content' => [
+						'from' => ['name' => $site_title,'email'=>$sparkPostDetail[0]->from_email],
+						'reply_to' => $sparkPostDetail[0]->reply_to_email,
+						'subject' => $subject,
+						'html' => $html,
+					  ],
+					'options' => [
+						'open_tracking' => true,
+					],
+				]);
+
+				try {
+					$response_code = $update_template_promise->getStatusCode();
+					$response = $update_template_promise->getBody();
+					
+					if($response_code == 200){
+						$result['response'] = 1;
+					}
+					
+				} catch (\Exception $e) {
+					echo $e->getCode()."\n";
+					echo $e->getMessage()."\n";
+				}
+		
+		/*echo '<pre>template_id'; print_r($template_id); 
+		echo '<pre>result'; print_r($result); die;*/
+		
+		return $result;
+		
+	}
+	
+	
 	
 	public function deleteTemplateToSparkpostApi($sparkPostDetail,$requestData){
 		
@@ -213,36 +271,23 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 		$promise = $sparky->transmissions->post([
 						// 'campaign_id'=> 'postman_metadata_example',
 						  'options' => [
-							'sandbox' => true,
+							'sandbox' => false,
 							"open_tracking" => true,
 							"click_tracking" => true
 						  ],
 						  'content' => [
-							//'template_id' => 'custome-template-by-id'
+							//'template_id' => 'bounce-tramplate'
 							'template_id' => $mail_template_id,
 							//'reply_to' => $reply_to,
 						  ],
 						  'recipients' => [
 							['address' => ['name' => $recipient_name,'email'=>$recipient_email]]
 						  ],
-						/*'cc' => [
-							[
-								'address' => [
-									'name' => 'VNY',
-									'email' => 'vinayverma158@gmail.com',
-								],
-							],
-						],
-						'bcc' => [
-							[
-								'address' => [
-									'name' => 'DEV',
-									'email' => 'developertest085@gmail.com',
-								],
-							],
-						],*/
 						]);
-						
+			
+
+			// code for send mail with inline html without template ID
+			
 			/*$promise = $sparky->transmissions->post([
 						  'options' => [
 							'sandbox' => false,
