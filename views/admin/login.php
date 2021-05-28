@@ -69,7 +69,11 @@ if(isset($_SERVER['REQUEST_URI'])){
 	
 	
 	$reffer_url = base_url().$ref_url;
-	if(isset($_SERVER['HTTP_REFERER'])){
+	
+	$admin_after_login_redirct_url = $this->session->userdata('admin_after_login_redirct_url');
+	if($admin_after_login_redirct_url != ""){
+		$reffer_url = $admin_after_login_redirct_url;
+	}elseif(isset($_SERVER['HTTP_REFERER'])){
 		$reffer_url = $_SERVER['HTTP_REFERER'];
 	}
 	

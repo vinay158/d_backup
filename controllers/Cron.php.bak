@@ -34,7 +34,7 @@ class Cron extends CI_Controller {
 				
 				$apiResponse['sparkpost_api'] = 1;
 				
-				//$this->cron_for_sparkpost_email_flow();
+				$this->cron_for_sparkpost_email_flow();
 				
 			}
 		}
@@ -98,7 +98,10 @@ public function cron_for_sparkpost_email_flow(){
 					
 					if(!empty($current_sparkpost_mail_template)){
 						
-						$next_msg_created_date = date('Y-m-d',strtotime($sparkpost_user->created. " + $current_mail_template_type_number days"));
+						
+						$next_day_number = $current_mail_template_type_number - 1;
+						
+						$next_msg_created_date = date('Y-m-d',strtotime($sparkpost_user->created. " + $next_day_number days"));
 						$current_date = date('Y-m-d');
 						
 						//echo $next_msg_created_date.'==>'.$current_date; die;
@@ -182,7 +185,7 @@ public function cron_for_twilio_sms_flow_msgs(){
 	$this->db->where('sms_flows_status','pending');
 	$twilio_users = $this->query_model->getBySpecific('twilio_sms_users','is_msg_sent_by_phone',0);
 	
-	echo '<pre>twilio_users'; print_r($twilio_users); die;
+	//echo '<pre>twilio_users'; print_r($twilio_users); die;
 	
 	if(!empty($twilio_users)){
 		

@@ -15,7 +15,6 @@ class Login extends CI_Controller {
 		if(!empty($is_logged_in) && $is_logged_in == true){
 				redirect('admin');
 		}else{
-			//echo '<pre>'; print_r($_SERVER); die;
 			$this->load->view('admin/login');
 		}
 	}
@@ -25,6 +24,8 @@ class Login extends CI_Controller {
 		if($this->user_model->validate() == 1){
 			
 			$reffer_url = (isset($_POST['reffer_url']) && !empty($_POST['reffer_url'])) ? $_POST['reffer_url'] : 'admin/dashboard';
+			
+			$this->session->unset_userdata('some_name');
 			
 			redirect($reffer_url);
 		}else{

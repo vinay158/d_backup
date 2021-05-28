@@ -12,15 +12,12 @@ $folder = $_SERVER['CONTEXT_PREFIX'];
 
 
 
-
 $_SERVER['REQUEST_URI'] = str_replace($folder,'',$_SERVER['REQUEST_URI']);
 $siteUrl = $this->query_model->getSiteUrl();
 
 $scriptUrl = (isset($_SERVER['SCRIPT_URI']) && !empty($_SERVER['SCRIPT_URI'])) ? parse_url($_SERVER['SCRIPT_URI']) : '';
 $scriptUrl = isset($scriptUrl['host']) ? $scriptUrl['host'] : '';
 
-
-	
 if(isset($_SERVER['REQUEST_URI'])){
 
 	$prefix = $_SERVER['REQUEST_URI'];
@@ -72,11 +69,15 @@ if(isset($_SERVER['REQUEST_URI'])){
 	
 	
 	$reffer_url = base_url().$ref_url;
-	if(isset($_SERVER['HTTP_REFERER'])){
+	
+	$admin_after_login_redirct_url = $this->session->userdata('admin_after_login_redirct_url');
+	if($admin_after_login_redirct_url != ""){
+		
+	}elseif(isset($_SERVER['HTTP_REFERER'])){
 		$reffer_url = $_SERVER['HTTP_REFERER'];
 	}
 	
-	
+	//echo $reffer_url; 
 	
 ?>
 

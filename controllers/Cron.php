@@ -34,7 +34,7 @@ class Cron extends CI_Controller {
 				
 				$apiResponse['sparkpost_api'] = 1;
 				
-				//$this->cron_for_sparkpost_email_flow();
+				$this->cron_for_sparkpost_email_flow();
 				
 			}
 		}
@@ -98,7 +98,10 @@ public function cron_for_sparkpost_email_flow(){
 					
 					if(!empty($current_sparkpost_mail_template)){
 						
-						$next_msg_created_date = date('Y-m-d',strtotime($sparkpost_user->created. " + $current_mail_template_type_number days"));
+						
+						$next_day_number = $current_mail_template_type_number - 1;
+						
+						$next_msg_created_date = date('Y-m-d',strtotime($sparkpost_user->created. " + $next_day_number days"));
 						$current_date = date('Y-m-d');
 						
 						//echo $next_msg_created_date.'==>'.$current_date; die;

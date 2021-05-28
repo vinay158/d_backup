@@ -10446,6 +10446,22 @@ public function replaceSparkpostEmailVaribles($data){
 	}
 
 	
+public function	isAdminUserLoggedIn(){
+	$result = 1;
+	if (!$this->session->userdata('is_logged_in')){
+		$result = 0;
+	}
 	
+	return $result;
+}
+
+public function setRedirectUrlAfterAdminLogin($admin_redirct_url = ''){
+	if(!empty($admin_redirct_url)){
+		
+		$adminRedirctUrl = array('admin_after_login_redirct_url' => $admin_redirct_url);
+		$this->session->set_userdata($adminRedirctUrl);
+	}
+}
+
 
 }

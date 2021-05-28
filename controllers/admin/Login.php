@@ -25,6 +25,8 @@ class Login extends CI_Controller {
 			
 			$reffer_url = (isset($_POST['reffer_url']) && !empty($_POST['reffer_url'])) ? $_POST['reffer_url'] : 'admin/dashboard';
 			
+			$this->session->unset_userdata('admin_after_login_redirct_url');
+			
 			redirect($reffer_url);
 		}else{
 			
