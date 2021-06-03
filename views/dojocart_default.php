@@ -641,7 +641,7 @@ $paymentDetail = $this->query_model->getbySpecific('tbl_payments','id',1);
 
 
 <!-- payment here -->
-<section id="payment-block">
+<section id="payment-block" class="dojocart_page">
   <div class="container-fluid paymentBlockPart">
     <div class="row">
       <div class="col-md-5 col-xs-12 col-sm-6 col-md-push-7">

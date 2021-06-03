@@ -574,7 +574,7 @@ var is_free_payment = $('#is_free_payment').val();
 
 
 <!-- payment here -->
-<section id="payment-block">
+<section id="payment-block"  class="dojocart_page">
   <div class="container-fluid paymentBlockPart">
     <div class="row">
       <div class="col-md-5 col-xs-12 col-sm-6 col-md-push-7">

@@ -527,7 +527,7 @@ var datapie = {
 			if(isset($free_paid_trial_leads) && !empty($free_paid_trial_leads)){
 				foreach($free_paid_trial_leads as $date => $lead){
 					$total_free_trial_leads = isset($lead['free_trials'][0]->total_free_trial) ? $lead['free_trials'][0]->total_free_trial : 0;
-					$total_paid_trial_leads = isset($lead['paid_trials'][0]->total_paid_trial) ? $lead['paid_trials'][0]->total_paid_trial : 0;
+					$total_paid_trial_leads = isset($lead['paid_trials'][0]->total_paid_trial) ? $lead['paid_trials'][0]->total_free_trial : 0;
 		?>
 		graphTrialLables.push('<?php echo $date ?>');
 		graphTotalFreeTrial.push('<?php echo $total_free_trial_leads ?>');

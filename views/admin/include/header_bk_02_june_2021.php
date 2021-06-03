@@ -172,74 +172,7 @@ if(!empty($userDetail)){
 
 <?php $this->load->view("admin/include/navigator-links");?>
 
-<?php 
-$is_home_page = 0;
-$pagesListForSpaceArr = array('dashboard'); 
-
-if($this->uri->segment(2) != ""){
-	if(in_array($this->uri->segment(2),$pagesListForSpaceArr)){
-		$is_home_page = 1;
-	}
-}else{
-	$is_home_page = 1;
-}
-
-?>
-
-<div class="az-content az-content-dashboard-ten <?php echo ($is_home_page == 1) ? ' dashboard dashboard_page' : ''; ?>">
-
-<?php 
-	if($is_home_page == 1){ 
-		if($this->session->userdata("user_level") == 1) { 
-?>
-<div class="mg-t-65 mg-b-10 stickyalert" style="text-align: center; ">
-				<div class="alert alert-solid-danger" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					  <span aria-hidden="true">&times;</span>
-					</button>
-					<strong>
-						<?php $checkFormModuleConncted =  $this->query_model->checkFormModuleConncted(); ?>
-						<?php 
-						if(isset($checkFormModuleConncted['form_instances']) && isset($checkFormModuleConncted['form_module'])){ 
-							
-							echo '<div class="form_instance_mising_old">Form module not connected!</div>';
-						
-						}else{ 
-								if(isset($checkFormModuleConncted['form_instances'])){
-									
-									echo '<div class="form_instance_mising_old">Form Instances not connected!</div>';
-									
-								}elseif(isset($checkFormModuleConncted['form_module'])){
-									
-									echo '<div class="form_instance_mising_old">Form not connected!</div>';
-									
-								}
-							}
-						?>
-					</strong>
-				  </div><div class="alert alert-solid-info" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					  <span aria-hidden="true">&times;</span>
-					</button>
-					<strong>
-						<?php 
-							$activeApis = $this->query_model->getActiveApisNames();
-							if(!empty($activeApis)){
-								$i = 1;
-								echo '<div class="active_apis_list_old">';
-								foreach($activeApis as $active_api){
-									$comma = ($i != count($activeApis)) ? ", " : ' ';
-									echo $active_api.$comma;
-								$i++;
-								}
-								echo "API's are ON.</div>";
-							}
-						?>
-					</strong>
-				  </div>
-			</div>
-<?php } } ?>
-			
+<div class="az-content az-content-dashboard-ten">
 <div class="az-content-body ">
     <div class="az-content-body-left">
 
@@ -259,7 +192,7 @@ if($this->uri->segment(2) != ""){
             <button class="btn"><i class="fas fa-search"></i></button>-->
 			
 			
-			<?php /*if($this->session->userdata("user_level") == 1) { ?>
+			<?php if($this->session->userdata("user_level") == 1) { ?>
 	
 			<?php $checkFormModuleConncted =  $this->query_model->checkFormModuleConncted(); ?>
 			<?php 
@@ -293,13 +226,13 @@ if($this->uri->segment(2) != ""){
 					echo "API's are ON.</div>";
 				}
 			?>
-			<?php }*/ ?>
+			<?php } ?>
 
           </div><!-- az-header-center -->
 
           <div class="az-header-right">
             <div class="az-btn-view-site">
-              <a class="btn btn-outline-indigo btn-with-icon btn-block"  href="<?=base_url();?>" target="_blank"><!--<i class="typcn typcn-device-laptop"></i>--> View Your Website</a>
+              <a class="btn btn-outline-indigo btn-with-icon btn-block"  href="<?=base_url();?>" target="_blank"><i class="typcn typcn-device-laptop"></i> View Your Website</a>
             </div> 
 			<?php
 				$is_switch_to_crm =  $this->query_model->is_switch_to_crm_applied();
@@ -317,17 +250,16 @@ if($this->uri->segment(2) != ""){
 			<?php } ?>
 			
             <div class="az-header-message">
-              <a href="#"><i class="typcn typcn-bell"></i></a>
+
+              <a href="#"><i class="typcn typcn-messages"></i></a>
+
             </div><!-- az-header-message -->
-			<div class="az-header-message">
-              <a href="#"><i class="fa fa-question-circle"></i></a>
-            </div><!-- az-header-message --> 
 
            
 
             <div class="dropdown az-profile-menu">
 
-              <span><?php echo $this->session->userdata("fname").' '.$this->session->userdata("lname") ?></span> <a href="" class="az-img-user"><i class="typcn typcn-user"></i></a>
+              <a href="" class="az-img-user"><i class="typcn typcn-user"></i></a>
 
                <div class="dropdown-menu">
 
@@ -392,7 +324,18 @@ if($this->uri->segment(2) != ""){
       </div><!-- az-header -->
 
 	<?php 
-		if($is_home_page == 0){
+		$is_space_need = 1;
+		$pagesListForSpaceArr = array('dashboard'); 
+		
+		if($this->uri->segment(2) != ""){
+			if(in_array($this->uri->segment(2),$pagesListForSpaceArr)){
+				$is_space_need = 0;
+			}
+		}else{
+			$is_space_need = 0;
+		}
+		
+		if($is_space_need == 1){
 	?>
       <div class="az-content-header d-block d-md-flex mg-t-0 top_header_extra_spacing">
 

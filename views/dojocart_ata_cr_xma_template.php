@@ -281,7 +281,7 @@ $paymentDetail = $this->query_model->getbySpecific('tbl_payments','id',1);
 
  
 		
-<div class="paymentform">
+<div class="paymentform dojocart_page">
 	<form class="row" method="post" id="paymentForm" action="#">
 	<?php echo $this->query_model->getCaptchaInputFields('dojo_cart_form'); ?>
 	<input type="hidden" name="miniform" value="" /> 

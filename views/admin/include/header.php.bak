@@ -186,7 +186,7 @@ if($this->uri->segment(2) != ""){
 
 ?>
 
-<div class="az-content az-content-dashboard-ten <?php echo ($is_home_page == 1) ? ' dashboard dashboard_page' : ''; ?>">
+<div class="az-content az-content-dashboard-ten <?php echo ($is_home_page == 1) ? ' dashboard' : ''; ?>">
 
 <?php 
 	if($is_home_page == 1){ 

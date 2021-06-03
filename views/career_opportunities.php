@@ -185,7 +185,7 @@
 
 
 <!-- payment here -->
-<section id="payment-block">
+<section id="payment-block" class="career_opportunities_page">
   <div class="container paymentBlockPart">
     <div class="row">
       <!--<div class="col-md-5 col-xs-12 col-sm-6 col-md-push-7 hidden-xs">
