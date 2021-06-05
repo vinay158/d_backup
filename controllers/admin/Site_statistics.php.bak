@@ -32,6 +32,7 @@ class Site_statistics extends CI_Controller {
 		
 		$search_query = array();
 		$data['website_leads'] = $this->query_model->getTotalWebsiteOptinLeads($data['start_date'],$data['end_date'],'only_total_count',$search_query);
+		echo '<pre>'; print_r($data['website_leads']); die;
 		
 		require_once 'vendor/google_autoload.php';
 		

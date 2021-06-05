@@ -82,7 +82,7 @@
 
                 <div class="media-body">
 
-                  <h6 class="total_unique_leads"><?php echo $total_unique_leads; ?></h6>
+                  <h6 class="total_unique_leads"><?php echo isset($website_leads['total_unique_leads']) ? $website_leads['total_unique_leads'] : 0; ?></h6>
 
                   <span >Website Leads</span>
                 </div>

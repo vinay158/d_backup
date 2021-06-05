@@ -1,5 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+require_once 'vendor/google_autoload.php';
+
 class Dashboard extends CI_Controller {
 	
 	function __construct(){
@@ -165,10 +167,12 @@ class Dashboard extends CI_Controller {
 			$data['latest_leads'] = array_slice($data['all_leads'], 0, 10);
 		}
 		
+		$data['website_leads'] = $this->query_model->getTotalWebsiteOptinLeads($data['start_date'],$data['end_date'],'total_count_with_record',$search_query);
+		echo '<pre>'; print_r($data['website_leads']); die;
 		$data['free_paid_trial_leads'] = $this->getFreePaidTrialLeads($data['start_date'],$data['end_date'],$location,$search_query);
 		
 		
-		require_once 'vendor/google_autoload.php';
+		
 		
 		$result = $this->db->get("tblgoogleanaytics")->result();
 		$data['analyticsDetail'] = $result[0];
@@ -612,10 +616,10 @@ public function getFreePaidTrialLeads($start_date,$end_date,$location = '',$sear
 	$where .= '(offer_type = "Free" OR offer_type = "Paid" )';
 	//$where .= $this->kanbanFilterSearchQuery($search_query,'trial_offer_lead');
 	
-	echo "select created from tblorders where ".$where; die;
+	
 	$query = $this->db->query("select created from tblorders where ".$where);
 	$leads = $query->result();
-	echo '<pre>leads'; print_r($leads); die;
+	
 	$graphLeadRecord = array();
 	if(!empty($leads)){
 		foreach($leads as $lead){

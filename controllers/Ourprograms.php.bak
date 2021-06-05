@@ -61,6 +61,7 @@ class Ourprograms extends CI_Controller {
 			// echo $this->uri->segment(2); die;
 			
 			$this->db->where('published',1);
+			$this->db->where('cat_type','programs');
 			$data['category'] = $this->query_model->getbySpecific('tblcategory', 'cat_slug', $this->uri->segment(2));
 			
 			$data['trialCatSlug'] = '';

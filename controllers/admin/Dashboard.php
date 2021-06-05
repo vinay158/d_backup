@@ -1,5 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+require_once 'vendor/google_autoload.php';
+
 class Dashboard extends CI_Controller {
 	
 	function __construct(){
@@ -165,10 +167,12 @@ class Dashboard extends CI_Controller {
 			$data['latest_leads'] = array_slice($data['all_leads'], 0, 10);
 		}
 		
+		$data['website_leads'] = $this->query_model->getTotalWebsiteOptinLeads($data['start_date'],$data['end_date'],'total_count_with_record',$search_query);
+		
 		$data['free_paid_trial_leads'] = $this->getFreePaidTrialLeads($data['start_date'],$data['end_date'],$location,$search_query);
 		
 		
-		require_once 'vendor/google_autoload.php';
+		
 		
 		$result = $this->db->get("tblgoogleanaytics")->result();
 		$data['analyticsDetail'] = $result[0];

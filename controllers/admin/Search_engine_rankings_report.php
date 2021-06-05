@@ -935,15 +935,10 @@ public function getStartAndEndDate($sort){
 
 		}elseif($key == "current_month" && $key == $sort){
 
-			$monday = strtotime("last monday");
-
-			$monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
-
-			$start_date = date("Y-m-01",$monday);
-
+			//$monday = strtotime("last monday");
+			//$monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
+			$start_date = date("Y-m-01");
 			$end_date = date('Y-m-d');
-
-			//echo "current_month from $start_date to $end_date <br/><br/>"; 
 
 			
 
@@ -2039,7 +2034,6 @@ public function delete_competitor(){
 						$tokenRequest  = $this->nightwatch_trackr_model->requestApi($rankTrackerDetail,'/api/v1/token','POST',$accessTokenRequestdata);
 						
 						if(isset($tokenRequest->access_token) && !empty($tokenRequest->access_token)){
-							
 							$access_token = $tokenRequest->access_token;
 							
 							$url = "https://api.nightwatch.io/api/v1/urls/".$api_url_id."/competitors/".$competitor_id."?access_token=".$access_token;
@@ -2060,19 +2054,17 @@ public function delete_competitor(){
 
 							$resp = curl_exec($curl);
 							curl_close($curl);
-							//var_dump($resp);
-								
 							
-							/*$deleteCompetatiorRequestdata = array(
+						/*	$deleteCompetatiorRequestdata = array(
 												'url_id'=> $api_url_id,
 												'competitor_id'=> $competitor_id
 											);
 											
-							echo '<pre>deleteCompetatiorRequestdata'; print_r($deleteCompetatiorRequestdata); die;
+							echo '<pre>deleteCompetatiorRequestdata'; print_r($deleteCompetatiorRequestdata);
 							echo '/api/v1/urls/'.$api_url_id.'/competitors/'.$competitor_id.'?access_token='.$access_token;
 							$deleteCompetatiorRequest  = $this->nightwatch_trackr_model->requestApi($rankTrackerDetail,'/api/v1/urls/'.$api_url_id.'/competitors/'.$competitor_id.'?access_token='.$access_token,'POST',$deleteCompetatiorRequestdata);
 					
-							echo '<pre>deleteCompetatiorRequest'; print_r($deleteCompetatiorRequest); die;*/
+				        	echo '<pre>deleteCompetatiorRequest'; print_r($deleteCompetatiorRequest); die;*/
 						}
 						
 					}

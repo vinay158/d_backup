@@ -49,7 +49,7 @@
               <div class="media">
                 <div class="media-body">
 				<span>Leads to Call Back</span>
-                  <h6 class="total_unique_leads"><?php echo $total_unique_leads; ?></h6>
+                  <h6 class="total_unique_leads"><?php echo isset($website_leads['total_unique_leads']) ? $website_leads['total_unique_leads'] : 0; ?></h6>
                   <div class="notify">
 					<div data-container="body"   data-popover-color="head-primary" data-placement="top" title="" data-content="The number of users that come to the page.The number of users is different from the number of sessions. Users can create multiple sessions.The number of users shows the unique users." data-original-title="Leads to Call Back " aria-describedby="popover86564"><i class="fa fa-question-circle"></i></div>
 					
@@ -114,9 +114,9 @@
 				<label class="az-content-label tx-base mg-b-25">New Prospects</label>
 				<ul>
 				<?php 
-					if(!empty($latest_leads)){
+					if(isset($website_leads['latest_leads']) && !empty($website_leads['latest_leads'])){
 						$i = 1;
-						foreach($latest_leads as $lead){
+						foreach($website_leads['latest_leads'] as $lead){
 							
 							$this->db->select(array('color_code'));
 							$kanban_lead_status = $this->query_model->getBySpecific('tbl_kanban_lead_status','id',$lead->kanban_status_id);
@@ -129,6 +129,7 @@
 				?>
 				<style>
 					.newProspects ul .new_lead_<?php echo $lead->kanban_status_id.'_'.$lead->id; ?> .status::before{background:<?php echo $status_color_code; ?>}
+					.newProspects ul .new_lead_<?php echo $lead->kanban_status_id.'_'.$lead->id; ?> .status{color:#fff}
 				</style>
 					<li class="new_lead_<?php echo $lead->kanban_status_id.'_'.$lead->id; ?>">
 						<div class="icon">
@@ -157,7 +158,7 @@
               <div class="col-12 " >
                 <div class="chart-wrapper">
                   <div class="d-md-flex">
-					<canvas id="chartBar5"></canvas>
+					<canvas id="chartBar5" style="height:270px !important"></canvas>
 			          </div>
                 </div><!-- chart-wrapper -->
               </div><!-- col -->
@@ -527,7 +528,7 @@ var datapie = {
 			if(isset($free_paid_trial_leads) && !empty($free_paid_trial_leads)){
 				foreach($free_paid_trial_leads as $date => $lead){
 					$total_free_trial_leads = isset($lead['free_trials'][0]->total_free_trial) ? $lead['free_trials'][0]->total_free_trial : 0;
-					$total_paid_trial_leads = isset($lead['paid_trials'][0]->total_paid_trial) ? $lead['paid_trials'][0]->total_free_trial : 0;
+					$total_paid_trial_leads = isset($lead['paid_trials'][0]->total_paid_trial) ? $lead['paid_trials'][0]->total_paid_trial : 0;
 		?>
 		graphTrialLables.push('<?php echo $date ?>');
 		graphTotalFreeTrial.push('<?php echo $total_free_trial_leads ?>');

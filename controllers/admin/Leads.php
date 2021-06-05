@@ -2304,11 +2304,10 @@ public function getStartAndEndDate($sort){
 			//echo "current_week from $start_date to $end_date <br/><br/>"; 
 		
 		}elseif($key == "current_month" && $key == $sort){
-			$monday = strtotime("last monday");
-			$monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
-			$start_date = date("Y-m-01",$monday);
+			//$monday = strtotime("last monday");
+			//$monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
+			$start_date = date("Y-m-01");
 			$end_date = date('Y-m-d');
-			//echo "current_month from $start_date to $end_date <br/><br/>"; 
 			
 		}elseif($key == "current_year" && $key == $sort){
 			$monday = strtotime("last monday");
