@@ -59,10 +59,9 @@ class Ourprograms extends CI_Controller {
 				$data['category']=$cat_data[0]->category;
 			 endif;*/
 			// echo $this->uri->segment(2); die;
-			
 			$this->db->where('published',1);
-			$data['category'] = $this->query_model->getbySpecific('tblcategory', 'cat_slug', $this->uri->segment(2));
-			
+			 $data['category'] = $this->query_model->getbySpecific('tblcategory', 'cat_slug', $this->uri->segment(2));
+			 
 			$data['trialCatSlug'] = '';
 			if(!empty($data['category'][0]->trial_offer_id)){
 				$tbl_onlinespecial_categories = $this->query_model->getTrialOffersCategoryTableName();

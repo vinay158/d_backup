@@ -335,7 +335,7 @@ $results = $sparky->transmissions->post([
   'content' => [
     'from' => 'info@sparkpostbox.com',
     'subject' => 'Oh hey',
-    'html' => '<html><body><p>Testing SparkPost - the most awesomest email service!</p></body></html>'
+    'html' => '<html><body><p>Testing SparkPost Mail - the most awesomest email service!</p></body></html>'
   ],
   'recipients' => [
     ['address' => ['email'=>'dojodeveloper158@gmail.com']]

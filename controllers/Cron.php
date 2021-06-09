@@ -71,9 +71,9 @@ public function cron_for_sparkpost_email_flow(){
 	
 	
 	
-	$this->db->order_by('id','desc');
+	$this->db->order_by('id','asc');
 	$sparkpost_users = $this->query_model->getBySpecific('tbl_sparkpost_mail_users','is_stop_mail',0);
-	
+//	echo '<pre>'; print_r($sparkpost_users); die;
 	if(!empty($sparkpost_users)){
 		
 		foreach($sparkpost_users as $sparkpost_user){
@@ -98,13 +98,13 @@ public function cron_for_sparkpost_email_flow(){
 					
 					if(!empty($current_sparkpost_mail_template)){
 						
-						
 						$next_day_number = $current_mail_template_type_number - 1;
 						
 						$next_msg_created_date = date('Y-m-d',strtotime($sparkpost_user->created. " + $next_day_number days"));
 						$current_date = date('Y-m-d');
 						
-						//echo $next_msg_created_date.'==>'.$current_date; die;
+					//	echo $current_mail_template_type;
+					//	echo $next_msg_created_date.'==>'.$current_date; die;
 						
 						if($next_msg_created_date == $current_date){
 							

@@ -236,7 +236,7 @@
 							<div><b>Status:</b> <?php echo !empty($order->trans_status) ?  ucfirst($order->trans_status) : '';  ?></div>
 						</div>
 						<div class="col-sm-6 float-left nopadding  detail">
-							<div><b>Created Date:</b> <?php echo date('M d, Y', strtotime($order->created)); ?></div>
+							<div><b>Created Date:</b> <?php echo date('M d, Y  H:i A', strtotime($order->created)); ?></div>
 						</div>
 						
 						
@@ -445,7 +445,7 @@
 							</div>
 							<?php } ?>
 							<div class="col-sm-6 float-left nopadding  detail">
-								<div><b>Created Date:</b> <?php echo date('M d, Y', strtotime($order->created)); ?></div>
+								<div><b>Created Date:</b> <?php echo date('M d, Y H:i A ', strtotime($order->created)); ?></div>
 							</div>
 						
 						<?php } ?>
@@ -464,7 +464,7 @@
 									if(!empty($tags)){ 
 										foreach($tags as $tag_id => $tag){
 							?>
-							<span class="badge badge-pill badge-primary kanban_tag_<?php echo $tag_id; ?>"><?php echo $tag; ?></span>
+							<span class="badge badge-pill badge-primary kanban_tags kanban_tag_<?php echo $tag_id; ?>"><?php echo $tag; ?></span>
 							<?php } } ?>
 							</span>
 							

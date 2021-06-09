@@ -194,7 +194,7 @@ $(document).ready(function(){
 				<div class="col-md-2">
 						<h1>Status</h1>
 						<select name="lead_status" id="" class="field search_field">
-							<option value="">-All Status-</option>
+							<option value="">-All Statusddd-</option>
 							<?php foreach($kanban_lead_all_status as $key => $status){ ?>
 								<option value="<?php echo $status->id; ?>" <?php echo (isset($_GET['lead_status']) && $_GET['lead_status'] == $status->id) ? "selected=selected" : ''; ?>><?php echo $status->title; ?></option>
 							<?php } ?>
@@ -291,7 +291,7 @@ $(document).ready(function(){
 							<input type="submit" name="submitCsv" class="submitCsv btn-save" value="Import">
 							</div>
 							<div class="col-lg-3 float-left">
-							 <a href="http://localhost/dojo_demov5admin/leads/exportorderleads/?location=<?php echo (isset($_GET['location'])) ? $_GET['location'] : ''; ?>" class="button_class btn btn-outline-light">Export List</a> 
+							 <a href="<?=base_url();?>admin/leads/exportorderleads/?location=<?php echo (isset($_GET['location'])) ? $_GET['location'] : ''; ?>" class="button_class btn btn-outline-light">Export List</a> 
 							</div>
 						</form>
 					</div>

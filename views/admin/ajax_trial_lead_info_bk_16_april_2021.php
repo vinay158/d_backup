@@ -50,7 +50,7 @@
 					<div class="time_ago"><?php echo $this->query_model->getTimeAgo(date('Y-m-d H:i:s',$key)); ?></div>
 					<div class="created_time"><?php echo date('M d, Y', strtotime($order->created)); ?></div>
 					<div class="lead_type"><?php echo ucwords(str_replace('_',' ',$order->lead_type)) ?> <?php echo !empty($order->last_order_id) ? ' - Upsell' : ''; ?></div>
-					<div class="lead_status"><?php echo !empty($order->trans_status) ?  ucfirst($order->trans_status) : '&nbsp; '; ?></div>
+					<div class="lead_status"><?php echo !empty($order->trans_status) ?  ucfirst($order->trans_status) : 'Success'; ?></div>
 					<div class="lead_action">
 					
 					<!--<a class="ajax_lead_record_delete" data-toggle="modal" data-target="#popupDeleteLeadRecord" item_id="<?=$order->id;?>" email="<?php echo $order->email; ?>"  lead_type="<?php echo (isset($order->last_order_id) && $order->last_order_id > 0) ? 'upsell_trial' : $order->lead_type; ?>" item_title="<?=$order->email;?>"><i class="fa fa-trash"></i></a>--->
@@ -233,10 +233,10 @@
 							<div><b>Total Amount:</b> <?php if(!empty($order->amount)) { echo $site_currency_type.number_format($order->amount,2); } else { echo ''; } ?></div>
 						</div>
 						<div class="col-sm-6 float-left nopadding  detail">
-							<div><b>Status:</b> <?php echo !empty($order->trans_status) ?  ucfirst($order->trans_status) : '';  ?></div>
+							<div><b>Status:</b> <?php echo $order->trans_status; ?></div>
 						</div>
 						<div class="col-sm-6 float-left nopadding  detail">
-							<div><b>Created Date:</b> <?php echo date('M d, Y  h:i A', strtotime($order->created)); ?></div>
+							<div><b>Created Date:</b> <?php echo date('M d, Y', strtotime($order->created)); ?></div>
 						</div>
 						
 						
@@ -414,7 +414,7 @@
 							
 							<?php if(!empty($order->trans_status)){ ?>
 							<div class="col-sm-6 float-left nopadding  detail">
-								<div><b>Status:</b> <?php echo !empty($order->trans_status) ?  ucfirst($order->trans_status) : '';  ?></div>
+								<div><b>Status:</b> <?php echo $order->trans_status; ?></div>
 							</div>
 							<?php } ?>
 							
@@ -445,31 +445,10 @@
 							</div>
 							<?php } ?>
 							<div class="col-sm-6 float-left nopadding  detail">
-								<div><b>Created Date:</b> <?php echo date('M d, Y h:i A ', strtotime($order->created)); ?></div>
+								<div><b>Created Date:</b> <?php echo date('M d, Y', strtotime($order->created)); ?></div>
 							</div>
 						
 						<?php } ?>
-						
-						<div class="col-sm-6 float-left nopadding  detail">
-							<div><b>Kanban Status:</b> <?php echo !empty($order->kanban_status_id) ?  $this->query_model->getKanbanStatusNameByID($order->kanban_status_id) : '';  ?></div>
-						</div>
-						<div class="col-sm-6 float-left nopadding  detail">
-							<div><b>Tags:</b> 
-							
-							<span>
-							<?php 
-								$lead_type = $this->query_model->getKanbanLeadTypeToOrderType($order->lead_type); 
-								$tags = $this->query_model->getOrderTagsByOrderId($order->id,$lead_type);
-								
-									if(!empty($tags)){ 
-										foreach($tags as $tag_id => $tag){
-							?>
-							<span class="badge badge-pill badge-primary kanban_tags kanban_tag_<?php echo $tag_id; ?>"><?php echo $tag; ?></span>
-							<?php } } ?>
-							</span>
-							
-							</div>
-						</div>
 						
 						<p><?php //echo '<pre>order'; print_r($order); ?></p>
 					</div>

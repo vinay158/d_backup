@@ -29,8 +29,6 @@ class Sparkpost_mail_model extends CI_Model{
 						$request_result = $this->deleteTemplateToSparkpostApi($sparkPostDetail, $requestData);
 					}elseif($action == "send_email_by_template"){
 						$request_result = $this->sendEmailByTemplateToSparkpostApi($sparkPostDetail, $requestData);
-					}elseif($action == "update_template_setting"){
-						$request_result = $this->updateTemplateSettingToSparkpostApi($sparkPostDetail, $requestData);
 					}elseif($action == "metrics_templates"){
 						$request_result = $this->metricsTemplateToSparkpostApi($sparkPostDetail, $requestData);
 					}
@@ -58,18 +56,11 @@ class Sparkpost_mail_model extends CI_Model{
 		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'] : '';
 		$html = (isset($requestData['description']) && !empty($requestData['description'])) ? $requestData['description'] : '';
 		
-		//$reply_to = 'noreply@dojoonlinemarketing.com';
-		
-		$this->db->select(array('title'));
-		$site_setting = $this->query_model->getbyTable('tblsite');
-		$site_title = $site_setting[0]->title;
-		
 		$create_template_promise = $sparky->request('POST', 'templates', [
 				  'name' => $name,
 				  'published' => true,
 				  'content' => [
-					'from' => ['name' => $site_title,'email'=>$sparkPostDetail[0]->from_email],
-					'reply_to' => $sparkPostDetail[0]->reply_to_email,
+					'from' => $sparkPostDetail[0]->from_email,
 					'subject' => $subject,
 					'html' => $html,
 				  ],
@@ -98,7 +89,7 @@ class Sparkpost_mail_model extends CI_Model{
 	
 	
 	public function editTemplateToSparkpostApi($sparkPostDetail,$requestData){
-		//echo '<pre>requestData'; print_r($requestData); die;
+		
 		$httpClient = new GuzzleAdapter(new Client());
 		$sparky = new SparkPost($httpClient, ['key'=>$sparkPostDetail[0]->api_key]);
 		$sparky->setOptions(['async' => false]);
@@ -112,19 +103,11 @@ class Sparkpost_mail_model extends CI_Model{
 		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'] : '';
 		$html = (isset($requestData['description']) && !empty($requestData['description'])) ? $requestData['description'] : '';
 		
-		//$reply_to = 'noreply@dojoonlinemarketing.com';
-		
-		$this->db->select(array('title'));
-		$site_setting = $this->query_model->getbyTable('tblsite');
-		$site_title = $site_setting[0]->title;
-		
 		$update_template_promise = $sparky->request('PUT', 'templates/'.$template_id, [
 					'name' => $name,
 					'published' => true,
 					'content' => [
-						//'from' => ['name' => $site_title,'email'=>$sparkPostDetail[0]->from_email],
-						'from' => ['name' => $site_title,'email'=>$sparkPostDetail[0]->from_email],
-						'reply_to' => $sparkPostDetail[0]->reply_to_email,
+						'from' => $sparkPostDetail[0]->from_email,
 						'subject' => $subject,
 						'html' => $html,
 					  ],
@@ -136,7 +119,6 @@ class Sparkpost_mail_model extends CI_Model{
 				try {
 					$response_code = $update_template_promise->getStatusCode();
 					$response = $update_template_promise->getBody();
-					
 					if($response_code == 200){
 						$result['response'] = 1;
 					}
@@ -145,62 +127,6 @@ class Sparkpost_mail_model extends CI_Model{
 					echo $e->getCode()."\n";
 					echo $e->getMessage()."\n";
 				}
-		
-		return $result;
-		
-	}
-	
-	
-	public function updateTemplateSettingToSparkpostApi($sparkPostDetail,$requestData){
-		
-		$httpClient = new GuzzleAdapter(new Client());
-		$sparky = new SparkPost($httpClient, ['key'=>$sparkPostDetail[0]->api_key]);
-		$sparky->setOptions(['async' => false]);
-		
-		$sparkpost_template_id = '';
-		$result = array();
-		$result['response'] = 0;
-		
-		$template_id = (isset($requestData['template_id']) && !empty($requestData['template_id'])) ? $requestData['template_id'] : '';
-		$subject = (isset($requestData['subject']) && !empty($requestData['subject'])) ? $requestData['subject'] : '';
-		$html = (isset($requestData['description']) && !empty($requestData['description'])) ? $requestData['description'] : '';
-		$name = (isset($requestData['title']) && !empty($requestData['title'])) ? $requestData['title'] : '';
-		
-		//echo '<pre>template_id'; print_r($template_id); die;
-		
-		$this->db->select(array('title'));
-		$site_setting = $this->query_model->getbyTable('tblsite');
-		$site_title = $site_setting[0]->title;
-		
-		$update_template_promise = $sparky->request('PUT', 'templates/'.$template_id, [
-					'name' => $name,
-					'published' => true,
-					'content' => [
-						'from' => ['name' => $site_title,'email'=>$sparkPostDetail[0]->from_email],
-						'reply_to' => $sparkPostDetail[0]->reply_to_email,
-						'subject' => $subject,
-						'html' => $html,
-					  ],
-					'options' => [
-						'open_tracking' => true,
-					],
-				]);
-
-				try {
-					$response_code = $update_template_promise->getStatusCode();
-					$response = $update_template_promise->getBody();
-					
-					if($response_code == 200){
-						$result['response'] = 1;
-					}
-					
-				} catch (\Exception $e) {
-					echo $e->getCode()."\n";
-					echo $e->getMessage()."\n";
-				}
-		
-		/*echo '<pre>template_id'; print_r($template_id); 
-		echo '<pre>result'; print_r($result); die;*/
 		
 		return $result;
 		
@@ -256,41 +182,12 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 		$html = (isset($requestData['mail_template']) && !empty($requestData['mail_template'])) ? $requestData['mail_template'] : '';
 		$recipient_name = (isset($requestData['recipient_name']) && !empty($requestData['recipient_name'])) ? $requestData['recipient_name'] : '';
 		$recipient_email = (isset($requestData['recipient_email']) && !empty($requestData['recipient_email'])) ? $requestData['recipient_email'] : '';
-		$mail_template_id = (isset($requestData['mail_template_id']) && !empty($requestData['mail_template_id'])) ? $requestData['mail_template_id'] : '';
 		
-		$this->db->select(array('title'));
 		$site_setting = $this->query_model->getbyTable('tblsite');
 		$site_title = $site_setting[0]->title;
 		
-		$reply_to = $sparkPostDetail[0]->reply_to_email;
 		
-		// Note: sandbox is true then mail from address is : info@sparkpostbox.com    // template id : 6962077433458241801 or 6961497415304991863  sandbox true ke case me to mail send ho rhi h 
-		// sandbos is false then mail from address is : info@dojoonlinemarketing.com  //template id :  6961495113202512439
-		// if we are sending mail by template id then only sandbox true is working. and mail from address will be info@sparkpostbox.com
-		//info@spbounce.dojoonlinemarketing.com
-		
-	
 		$promise = $sparky->transmissions->post([
-						// 'campaign_id'=> 'postman_metadata_example',
-						  'options' => [
-							'sandbox' => false,
-							"open_tracking" => true,
-							"click_tracking" => true
-						  ],
-						  'content' => [
-							//'template_id' => 'bounce-template-2'
-							'template_id' => $mail_template_id,
-							//'reply_to' => $reply_to,
-						  ],
-						  'recipients' => [
-							['address' => ['name' => $recipient_name,'email'=>$recipient_email]]
-						  ],
-						]);
-			
-
-			// code for send mail with inline html without template ID
-			
-			/*$promise = $sparky->transmissions->post([
 						  'options' => [
 							'sandbox' => false,
 							"open_tracking" => true,
@@ -303,18 +200,21 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 							],
 							'subject' => $subject,
 							'html' => $html,
+							/*'template_id' => 'custom-template',
+							 "use_draft_template"=>false*/
 						  ],
 						  'recipients' => [
+							//['address' => ['email'=>'dojodeveloper158@gmail.com']]
 							['address' => ['name' => $recipient_name,'email'=>$recipient_email]]
 						  ]
-						]);*/
-						
+						]);
+
 			try {
 				$response_code = $promise->getStatusCode();
 				$response = $promise->getBody();
 				
-				//echo '<pre>requestData'; print_r($requestData);
-			/*	echo '<pre>response_code'; print_r($response_code); 
+				/*echo '<pre>requestData'; print_r($requestData);
+				echo '<pre>response_code'; print_r($response_code); 
 				echo '<pre>response'; print_r($response); die;*/
 				
 				if($response_code == 200){
@@ -360,10 +260,11 @@ public function metricsTemplateToSparkpostApi($sparkPostDetail,$requestData){
 				$response_code = $promise->getStatusCode();
 				$response = $promise->getBody();
 				
+				//echo '<pre>response'; print_r($response); die;
 				
 				if($response_code == 200){
 					$result['response'] = 1;
-					$result['records'] = $response['results'];
+					//$result['template_id'] = $response['results']['id'];
 				}
 				
 			} catch (\Exception $e) {

@@ -390,24 +390,24 @@
 <?php $this->load->view("admin/include/footer");?>
 
 <script src="<?=base_url();?>assets_admin/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?=base_url();?>assets_admin/lib/jquery.flot/jquery.flot.js"></script>
+    <script src="<?=base_url();?>assets_admin/lib/jquery.flot/jquery.flot.js"></script>
 
-<script src="<?=base_url();?>assets_admin/lib/jquery.flot/jquery.flot.resize.js"></script>
+    <script src="<?=base_url();?>assets_admin/lib/jquery.flot/jquery.flot.resize.js"></script>
 
-<script src="<?=base_url();?>assets_admin/lib/jqvmap/jquery.vmap.min.js"></script>
+    <script src="<?=base_url();?>assets_admin/lib/jqvmap/jquery.vmap.min.js"></script>
 
-<script src="<?=base_url();?>assets_admin/lib/jqvmap/maps/jquery.vmap.world.js"></script>
+    <script src="<?=base_url();?>assets_admin/lib/jqvmap/maps/jquery.vmap.world.js"></script>
 
 
-<script src="<?=base_url();?>assets_admin/lib/chart.js/Chart.bundle.min.js"></script>
-<script src="<?=base_url();?>assets_admin/lib/jquery.flot/jquery.flot.js"></script>
-<script src="<?=base_url();?>assets_admin/lib/jquery.flot/jquery.flot.pie.js"></script>
-<script src="<?=base_url();?>assets_admin/lib/jquery.flot/jquery.flot.resize.js"></script>
-
-<script src="<?=base_url();?>assets_admin/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
-<script src="<?=base_url();?>assets_admin/lib/raphael/raphael.min.js"></script>
-<script src="<?=base_url();?>assets_admin/js/owl.carousel.min.js"></script>
-<script src="<?=base_url();?>assets_admin/js/dashboard.sampledata.js"></script>
+	<script src="<?=base_url();?>assets_admin/lib/chart.js/Chart.bundle.min.js"></script>
+	<script src="<?=base_url();?>assets_admin/lib/jquery.flot/jquery.flot.js"></script>
+    <script src="<?=base_url();?>assets_admin/lib/jquery.flot/jquery.flot.pie.js"></script>
+    <script src="<?=base_url();?>assets_admin/lib/jquery.flot/jquery.flot.resize.js"></script>
+    
+    <script src="<?=base_url();?>assets_admin/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="<?=base_url();?>assets_admin/lib/raphael/raphael.min.js"></script>
+	<script src="<?=base_url();?>assets_admin/js/owl.carousel.min.js"></script>
+    <script src="<?=base_url();?>assets_admin/js/dashboard.sampledata.js"></script>
 	
     
 <script>
@@ -417,7 +417,39 @@
         'use strict'
 
 
-        
+        $('.az-sidebar .with-sub').on('click', function(e){
+
+          e.preventDefault();
+
+          $(this).parent().toggleClass('show');
+
+          $(this).parent().siblings().removeClass('show');
+
+        })
+
+
+
+        $(document).on('click touchstart', function(e){
+
+          e.stopPropagation();
+
+
+
+ 0         // closing of sidebar menu when clicking outside of it
+
+          if(!$(e.target).closest('.az-header-menu-icon').length) {
+
+            var sidebarTarg = $(e.target).closest('.az-sidebar').length;
+
+            if(!sidebarTarg) {
+
+              $('body').removeClass('az-sidebar-show');
+
+            }
+
+          }
+
+        });
 var datapie = {
     labels: ['1-3', '4-10', '11+'],
     datasets: [{
@@ -448,7 +480,45 @@ var datapie = {
             return '<div style="font-size:8pt; text-align:center; padding:2px; color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
           }
  
- 
+ /* var res_data = <?php echo json_encode($free_paid_trial_leads); ?>;
+  var graphData = [];
+	$.each(res_data, function(i, item) {
+		
+		var date = i;
+		
+		graphData.date = [];
+		graphData.push({period: date, trial_offer_type:'Free', total_leads: item.free_trials[0].total_free_trial});
+		graphData.push({period: date, trial_offer_type:'Paid', total_leads: item.paid_trials[0].total_paid_trial});
+		
+	});
+	
+	
+	let finalObj = {}
+      graphData.forEach((games) => {
+        const date = games.period.split('T')[0]
+        if (finalObj[date]) {
+          finalObj[date].push(games);
+        } else {
+          finalObj[date] = [games];
+        }
+      })
+    
+	
+	var responseData = [];
+	$.each(finalObj, function(i, item) {
+		var new_user = 0;
+		var returning_user = 0;
+		$.each(item, function(a, value) {
+			if(value.trial_offer_type == "Free"){
+				new_user = value.new_user;
+			}else{
+				returning_user = value.returning_user;
+			}
+		});
+		responseData.push({period: i, new_user : new_user, returning_user: returning_user});
+	});
+	
+	console.log(finalObj); return false;*/
   
     var graphTrialLables = [];
 	var graphTotalFreeTrial = [];

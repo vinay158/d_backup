@@ -2,14 +2,14 @@
  $lead_type = $this->query_model->getKanbanLeadTypeToOrderType($main_lead_detail['order_type']); ?> 
  <div class="modal-content modal-content-demo">
   <div class="modal-header">
-            <button type="button" class="btn btn-success update_lead_status_id" status_type="won" kanban_status_id="<?php echo $main_lead_detail['kanban_status_id']; ?>" lead_type="<?php echo $lead_type; ?>" lead_id="<?php echo $main_lead_detail['id']; ?>">Won</button>
-            <button type="button" class="btn btn-danger update_lead_status_id"  status_type="lost" kanban_status_id="<?php echo $main_lead_detail['kanban_status_id']; ?>"  lead_type="<?php echo $lead_type; ?>" lead_id="<?php echo $main_lead_detail['id']; ?>">Lost</button>
+            <button type="button" class="btn btn-success update_lead_status_id" status_type="won"  lead_type="<?php echo $lead_type; ?>" lead_id="<?php echo $main_lead_detail['id']; ?>">Won</button>
+            <button type="button" class="btn btn-danger update_lead_status_id"  status_type="lost" lead_type="<?php echo $lead_type; ?>" lead_id="<?php echo $main_lead_detail['id']; ?>">Lost</button>
             
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
 			<button type="button" class="ellipsis" >
-              <!--<i class="fas fa-ellipsis-h"></i>-->
+              <i class="fas fa-ellipsis-h"></i>
             </button>
           </div>
           <div class="modal-body">
@@ -73,7 +73,7 @@
 								foreach($comments as $comment){
 						?>
 						
-						<div class="recent_added_comment"><div class="comment_date"><span class="time_ago"><?php echo $comment['created']; ?></span><span class="comment_datetime"><?php echo $comment['created_date']; ?></span></div><div class="comment"><?php echo $comment['comment']; ?></div></div>
+						<div class="recent_added_comment"><div class="comment_date"><?php echo $comment['created']; ?></div><div class="comment"><?php echo $comment['comment']; ?></div></div>
 							<?php } } ?>
 						
 					</div>

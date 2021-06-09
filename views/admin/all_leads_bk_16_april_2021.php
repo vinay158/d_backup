@@ -161,21 +161,14 @@ $(document).ready(function(){
 
 <div class="az-content-body-left advanced_page custom_full_page onlinedojo_users_page user_attendance_page rank_traker_api_page order_listing_page" >
 	<div class="az-content-header d-block d-md-flex">
-		 <div class="col-md-12 col-lg-12 col-xl-12 mg-b-20 position-top">
-				<div class="float-left az-dashboard-one-title">
-				 <h2 class="az-dashboard-title"><?= $title ?>  </h2>
-					
-				</div>
-				<div class="float-right back_to_kanban_box">
-						
-						<a href="<?php echo base_url().'admin/kanban_leads'; ?>"><button class="btn btn-with-icon btn-block"><i class="typcn typcn-folder"></i>Switch to Column View</button></a>
-						
-					</div>
+		<div class="az-dashboard-one-title">
+			<div>
+			  <h2 class="az-dashboard-title"><?= $title ?></h2>
 			</div>
-		  
-		  
+			
+		  </div>
 	  </div>
-	   <div class="row row-sm program-cat-page" style="clear:both">
+	   <div class="row row-sm program-cat-page">
 
           <div class="col-sm-12 col-xl-12 az-content-body-contacts"  >
 			<div class="card pd-sm-20 edit-form">
@@ -191,26 +184,6 @@ $(document).ready(function(){
 				
 				<div class="col-md-12  mg-t-5 mg-md-t-0">
 				<div class="row mg-t-10">
-				<div class="col-md-2">
-						<h1>Status</h1>
-						<select name="lead_status" id="" class="field search_field">
-							<option value="">-All Status-</option>
-							<?php foreach($kanban_lead_all_status as $key => $status){ ?>
-								<option value="<?php echo $status->id; ?>" <?php echo (isset($_GET['lead_status']) && $_GET['lead_status'] == $status->id) ? "selected=selected" : ''; ?>><?php echo $status->title; ?></option>
-							<?php } ?>
-						</select>
-					</div>
-				
-				<div class="col-md-2">
-						<h1>Tag</h1>
-						<select name="tags" id="" class="field search_field">
-							<option value="">-All Tag-</option>
-							<?php foreach($kanban_lead_tags as $key => $val){ ?>
-								<option value="<?php echo $val->tag; ?>" <?php echo (isset($_GET['tags']) && $_GET['tags'] == $val->tag) ? "selected=selected" : ''; ?>><?php echo $val->tag; ?></option>
-							<?php } ?>
-						</select>
-					</div>
-					
 				<div class="col-lg-2">
 						<h1>Lead Type</h1>
 						<select name="lead_type" id="" class="field search_field">
@@ -220,7 +193,17 @@ $(document).ready(function(){
 							<?php } ?>
 						</select>
 					</div>
-				
+				<?php if($multiLocation[0]->field_value == 1){ ?>
+					<div class="col-lg-2">
+						<h1>Location</h1>
+							<select  id='location_sort' name="location" class="field search_field">
+								<option value="">-All Locations-</option>
+								<?php foreach($allLocations as $location){ ?>
+								<option value="<?php echo $location->id ?>" <?php echo (isset($_GET['location']) && $_GET['location'] == $location->id) ? "selected=selected" : ''; ?>><?php echo $location->name; ?></option>
+								<?php } ?>
+							</select>
+					</div><!-- col-3 -->
+					<?php } ?>
 					<div class="col-lg-2">
 						<h1>Date Range</h1>
 						<select name="date_sort" id="" class="field sort_dates search_field">
@@ -244,18 +227,6 @@ $(document).ready(function(){
 								<h1>End Date</h1>
 								<input type="text" value="<?php echo $end_date; ?>" name="end_date" id="end_date" class="dateRange field" placeholder="mm/dd/yyyy" maxlength="10"/>
 							</div>
-							
-					<?php if($multiLocation[0]->field_value == 1){ ?>
-					<div class="col-lg-2">
-						<h1>Location</h1>
-							<select  id='location_sort' name="location" class="field search_field">
-								<option value="">-All Locations-</option>
-								<?php foreach($allLocations as $location){ ?>
-								<option value="<?php echo $location->id ?>" <?php echo (isset($_GET['location']) && $_GET['location'] == $location->id) ? "selected=selected" : ''; ?>><?php echo $location->name; ?></option>
-								<?php } ?>
-							</select>
-					</div><!-- col-3 -->
-					<?php } ?>
 							
 							<div class="col-lg-2">
 								<h1>&nbsp;</h1>
@@ -320,7 +291,6 @@ $(document).ready(function(){
                                     <th class="wd-5p">Email</th>
                                     <th class="wd-5p">School</th>
 									<th class="wd-5p">Type</th>
-									<th class="wd-5p">Payment Status</th>
 									<th class="wd-5p">Status</th>
 									<th class="wd-10p">Date</th>
                                     <th class="wd-5p">Action</th>
@@ -358,8 +328,7 @@ $(document).ready(function(){
 									
 									
 									</td>
-									<td><?php echo !empty($order->trans_status) ?  ucfirst($order->trans_status) : '';  ?></td>
-									<td><?php echo !empty($order->kanban_status_id) ?  $this->query_model->getKanbanStatusNameByID($order->kanban_status_id) : '';  ?></td>
+									<td><?php echo !empty($order->trans_status) ?  ucfirst($order->trans_status) : 'Success';  ?></td>
 									
 									<td><?php echo date('M d, Y ', strtotime($order->created)); ?></td>
                                     <td ><!--<a href="<?=base_url();?>admin/leads/edittrial/<?=$order->id?>">Edit</a> -->

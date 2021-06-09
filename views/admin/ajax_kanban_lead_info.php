@@ -61,7 +61,7 @@
 						<span class="send_comment_response"></span>
 						<a href="javascript:void(0)" class="az-msg-send add_lead_comment" lead_type="<?php echo $lead_type; ?>" lead_id="<?php echo $main_lead_detail['id']; ?>">
 						
-						<i class="fas fa-arrow-circle-up"></i></a>
+						<i class="fas fa-arrow-circle-right"></i></a>
 					</div>
 					
 					

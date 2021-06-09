@@ -88,7 +88,7 @@
               <a href="" class="nav-link"><i class="fas fa-ellipsis-v"></i></a>
             </nav>
             <input type="text" class="form-control text_message" placeholder="Type your message here...">
-            <a href="javascript:void(0)" class="az-msg-send send_user_msg" user_id="0"><i class="fas fa-arrow-circle-right"></i></a>
+            <a href="javascript:void(0)" class="az-msg-send send_user_msg" user_id="0"><i class="fas fa-arrow-circle-up"></i></a>
           </div><!-- az-chat-footer -->
         </div><!-- az-content-body -->
       </div>
