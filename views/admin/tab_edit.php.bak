@@ -246,7 +246,7 @@ $('.videoType').change(function(){
 
 <div class="mb-3 main-content-label">Edit: Welcome Text</div>
 
-<div class="form-light-holder" style="display:none">
+<div class="form-light-holder">
 <div class="row row-xs align-items-center">
 	<div class="col-md-2">
 		<label class="form-label mg-b-0">IMAGE OR VIDEO</label>

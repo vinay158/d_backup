@@ -85,7 +85,7 @@ class Setting_model extends CI_Model{
 		$google_reviews = (isset($_POST['google_reviews']) && !empty($_POST['google_reviews']))? $_POST['google_reviews']:'';
 		$facebook_reviews = (isset($_POST['facebook_reviews']) && !empty($_POST['facebook_reviews']))?$_POST['facebook_reviews'] :'';
 		$twitter = $_POST['twitter'];
-		$gplus = (isset($_POST['gplus']) && !empty($_POST['gplus']))? $_POST['gplus']:'';
+		$gplus = $_POST['gplus'];
 		$youtube = $_POST['youtube'];	
 		$email = strtolower($_POST['email']);	
 		$image = isset($_FILES['userfile']['name'])?$_FILES['userfile']['name']:'';

@@ -243,7 +243,7 @@ class Contact_model extends CI_Model{
 		$fb = $_POST['fb'];
 		$twitter = $_POST['twitter'];
 		$instagram = $_POST['instagram'];
-		$gplus =  (isset($_POST['gplus']) && !empty($_POST['gplus']))? $_POST['gplus']:'';
+		$gplus = $_POST['gplus'];
 		$youtube = $_POST['youtube'];
 		$vimeo = $_POST['vimeo'];
 		$yelp = $_POST['yelp'];

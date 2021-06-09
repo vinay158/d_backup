@@ -908,8 +908,15 @@ $st_sec_external_link = 'check-off';
 </div>
 
 <div class="form-light-holder  <?php echo $social_icon_display; ?>">
-	<h1>Yelp URL</h1>
+	<div class="adsUrl">
+		<h1>Yelp URL</h1>
 	<input type="text" value="<?php echo $this->query_model->getStrReplaceAdmin($setting->yelp);?>" name="yelp" id="yelp" class="field" placeholder="Yelp"/>
+	
+	</div>
+	<div class="linkTarget">
+	
+	</div>
+	
 </div>
 
 <div class="form-light-holder  <?php echo $social_icon_display; ?>">

@@ -56,7 +56,7 @@ if(!empty($social_icon_details)){
 		  	
             <?php if(!empty($social_fb)): ?><li class="social-facebook"><a href="<?=$social_fb?>" target="_blank"><i class="fa fa-facebook"></i></a></li><?php endif; ?>
             <?php if(!empty($social_twitter)): ?> <li class="social-twitter"><a href="<?=$social_twitter?>" target="_blank"><i class="fa fa-twitter"></i></a></li><?php endif; ?>
-            <?php /* if(!empty($social_gplus)): ?><li class="social-google"><a href="<?=$social_gplus?>" target="_blank"><i class="fa fa-google-plus"></i></a></li><?php endif; */ ?>
+            <?php if(!empty($social_gplus)): ?><li class="social-google"><a href="<?=$social_gplus?>" target="_blank"><i class="fa fa-google-plus"></i></a></li><?php endif; ?>
             <?php if(!empty($social_youtube)): ?> <li class="social-youtube"><a href="<?=$social_youtube?>" target="_blank"><i class="fa fa-youtube"></i></a></li><?php endif; ?>
 			<?php if(!empty($social_instagram)): ?><li class="social-instagram"><a href="<?=$social_instagram?>" target="_blank"><i class="fa fa-instagram"></i></a></li><?php endif; ?>
 			<?php if(!empty($social_yelp)): ?><li class="social-yelp"><a href="<?=$social_yelp?>" target="_blank"><i class="fa fa-yelp"></i></a></li><?php endif; ?>

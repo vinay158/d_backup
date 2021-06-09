@@ -88,7 +88,7 @@
               <a href="" class="nav-link"><i class="fas fa-ellipsis-v"></i></a>
             </nav>
             <input type="text" class="form-control text_message" placeholder="Type your message here...">
-            <a href="javascript:void(0)" class="az-msg-send send_user_msg" user_id="0"><i class="fas fa-arrow-circle-up"></i></a>
+            <a href="javascript:void(0)" class="az-msg-send send_user_msg" user_id="0"><i class="fas fa-arrow-circle-right"></i></a>
           </div><!-- az-chat-footer -->
         </div><!-- az-content-body -->
       </div>
@@ -109,10 +109,35 @@
 <script>
 $(window).load(function(){
 	
-	if($('.user_number_1').length > 0){
-		$('.user_number_1').trigger( "click" );
-		$('.user_number_1').addClass('selected');
-	}
+	
+	
+	<?php 
+		if(isset($_GET['kanban_user_phone_number']) && !empty($_GET['kanban_user_phone_number'])){ 
+			
+			$kanban_user_phone_number = $_GET['kanban_user_phone_number'];
+			
+			$this->db->select(array('id','phone'));
+			$twilio_user_id = $this->query_model->getBySpecific('twilio_sms_users','phone',$kanban_user_phone_number);
+			if(!empty($twilio_user_id)){
+	?>
+		var twilio_user_id = "<?php echo $twilio_user_id[0]->id; ?>";
+		
+		$('.user_number_'+twilio_user_id).trigger( "click" );
+		$('.user_number_'+twilio_user_id).addClass( "selected" );
+		
+		var phone_number = "<?php echo $kanban_user_phone_number; ?>";
+		phone_number = phone_number.toLowerCase();
+		$('#search_user').val(phone_number);
+		$(".sms_users_list").filter(function() {
+		  $(this).toggle($(this).text().toLowerCase().indexOf(phone_number) > -1)
+		});
+		
+	<?php } }else{?>
+		if($('.user_number_1').length > 0){
+			$('.user_number_1').trigger( "click" );
+			$('.user_number_1').addClass('selected');
+		}
+	<?php } ?>
 })
 
 $(document).ready(function(){ 

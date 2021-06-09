@@ -225,7 +225,7 @@
 									<a href="tel:<?php echo $lead->phone; ?>"><i class="fas fa-phone"></i></a>
 									
 									<?php if($is_mobile_number_linked_twilio == 1){ ?>
-										<a href="<?php echo base_url().'admin/twilio_sms_messenger?kanban_user_phone_number='.$lead->phone; ?>"><i class="fas fa-mobile-alt"></i></a>
+										<a href="<?php echo base_url().'admin/twilio_sms_messenger?kanban_user_phone_number='.$lead->phone ?>"><i class="fas fa-mobile-alt"></i></a>
 										
 										<!--<span data-container="body" data-popover-color="head-primary" data-placement="top" title="Search engine" data-content="The name of the search engine that sends users to your website."><i class="fa fa-question-circle"></i></span> -->
 										

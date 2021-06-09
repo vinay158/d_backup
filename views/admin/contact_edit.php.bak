@@ -1298,7 +1298,7 @@ else { ?>
 
 	<h1 style="padding-bottom: 5px;">Location Picture</h1>
 	<div class="custom-file">
-	<input type="file" name="userfile" id="customFile2" class="custom-file-input" accept="image/*" />
+	<input type="file" name="userfile" id="customFile2"class="custom-file-input" accept="image/*" />
 	<label class="custom-file-label" for="customFile">Choose file</label></div>
 	<?php if(!empty($details->photo)): ?>
 	<div><img id="img" src="<?=$details->photo;?>" style="width: 100px; clear:both;" /></div>

@@ -239,14 +239,12 @@ class Kanban_leads extends CI_Controller {
 		$this->db->select('tag');
 		$data['kanban_lead_tags'] = $this->query_model->getbyTable("tbl_kanban_lead_tags");
 		
-		$is_mobile_number_linked_twilio = 0;
 		$twilioChatApi = $this->query_model->getbySpecific('tbl_twilio_chat_api','id',1);
 		if(!empty($twilioChatApi) && $twilioChatApi[0]->type == 1){
 			if(!empty($twilioChatApi[0]->sid) && !empty($twilioChatApi[0]->token) ){
-				$is_mobile_number_linked_twilio = 1;
+			
 			}
 		}
-		$data['is_mobile_number_linked_twilio'] = $is_mobile_number_linked_twilio;
 		//echo '<pre>'; print_r($data); die;	
 		
 		$this->load->view('admin/kanban_leads',$data);

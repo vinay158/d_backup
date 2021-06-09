@@ -168,7 +168,7 @@ $virtual_training_rows = $this->query_model->getbyTable('tbl_virtual_training_ro
          </div>
       </header>
 	
-<?php if($virtual_training[0]->hide_virtual_classes_button == 0 && !empty($virtual_training_rows)){ ?>	
+<?php if($virtual_training[0]->hide_virtual_classes_button == 0){ ?>	
 	 <header class="virtual-training-row">
 	<div class="container-fluid">
             <div class="row">

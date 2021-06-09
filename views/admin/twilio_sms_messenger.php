@@ -31,7 +31,7 @@
 				$i = 1;
 				foreach($lead_users as $user){
 		?>
-            <div class="media user_number_<?php echo $i; ?> new sms_users_list twilio_u_list" user_id="<?php echo $user->id ?>" user_name="<?php echo $user->name ?>" msg_last_seen="<?php echo $this->query_model->getTimeAgo($user->last_updated_date); ?>" user_number="<?php echo $i; ?>">
+            <div class="media user_number_<?php echo $i; ?> twilio_user_id_<?php echo $user->id ?> new sms_users_list twilio_u_list" user_id="<?php echo $user->id ?>" user_name="<?php echo $user->name ?>" msg_last_seen="<?php echo $this->query_model->getTimeAgo($user->last_updated_date); ?>" user_number="<?php echo $i; ?>">
               <div class="az-img-user">
                 <img src="https://via.placeholder.com/500" alt="">
 				<?php //if(!empty($user->total_msgs)){ ?>
@@ -109,10 +109,36 @@
 <script>
 $(window).load(function(){
 	
-	if($('.user_number_1').length > 0){
-		$('.user_number_1').trigger( "click" );
-		$('.user_number_1').addClass('selected');
-	}
+	
+	
+	<?php 
+		if(isset($_GET['kanban_user_phone_number']) && !empty($_GET['kanban_user_phone_number'])){ 
+			
+			$kanban_user_phone_number = $_GET['kanban_user_phone_number'];
+			
+			$this->db->select(array('id','phone'));
+			$twilio_user_id = $this->query_model->getBySpecific('twilio_sms_users','phone',$kanban_user_phone_number);
+			if(!empty($twilio_user_id)){
+	?>
+		var twilio_user_id = "<?php echo $twilio_user_id[0]->id; ?>";
+		
+		$('.twilio_user_id_'+twilio_user_id).trigger( "click" );
+		
+		var phone_number = "<?php echo $kanban_user_phone_number; ?>";
+		phone_number = phone_number.toLowerCase();
+		$('#search_user').val(phone_number);
+		$(".sms_users_list").filter(function() {
+		  $(this).toggle($(this).text().toLowerCase().indexOf(phone_number) > -1)
+		});
+	
+		$('.twilio_user_id_'+twilio_user_id).addClass( "selected" );
+		
+	<?php } }else{?>
+		if($('.user_number_1').length > 0){
+			$('.user_number_1').trigger( "click" );
+			$('.user_number_1').addClass('selected');
+		}
+	<?php } ?>
 })
 
 $(document).ready(function(){ 

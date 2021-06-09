@@ -481,9 +481,7 @@ $mymainLocation = $this->query_model->getMainLocation();
 									}
 									
 								}else{
-									if(!empty($category_detail)){
-										$program_url = base_url().$program_slug.'/'.$category_detail[0]->cat_slug.'/'.$program->program_slug;
-									}
+									$program_url = base_url().$program_slug.'/'.$category_detail[0]->cat_slug.'/'.$program->program_slug;
 								}
 							?>
 							<a href="<?php echo $program_url; ?>"><?php echo $this->query_model->getStaticTextTranslation('learn_more'); ?>
