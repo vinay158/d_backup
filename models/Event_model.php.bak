@@ -669,21 +669,21 @@ class Event_model extends CI_Model {
 								
 								if($is_repeat_weekly == 1){
 								
-									$component['location_id'] =  $row5['location_id'];
-									$component['frequency'] = $item['repeat'];
-									$component['start'] = $item['start'];
-									$component['end'] = $item['end'];
-									$component['title'] = $row5['title'];
-									$component['category'] = $row5['category'];
-									$component['isWhole'] = $item['isWhole'];
-									$component['id'] = $item['id'];
-									$component['published'] = $row5['published'];
-									$component['show_even_on_closed_days'] = isset($row5['show_even_on_closed_days']) ? $row5['show_even_on_closed_days'] : '';
-									$component['mydate'] = date_format(date_create($item['date']), 'm/d/Y');
-									$component['content'] = $row5['content'];
-									$component['timestamp'] = strtotime(date('Y-m-d').' '.date("H:i", strtotime($item['start'])).':00');
-							
-									$arr_temp_c5[] = $component;
+								$component['location_id'] =  $row5['location_id'];
+								$component['frequency'] = $item['repeat'];
+								$component['start'] = $item['start'];
+								$component['end'] = $item['end'];
+								$component['title'] = $row5['title'];
+								$component['category'] = $row5['category'];
+								$component['isWhole'] = $item['isWhole'];
+								$component['id'] = $item['id'];
+								$component['published'] = $row5['published'];
+								$component['show_even_on_closed_days'] = isset($row5['show_even_on_closed_days']) ? $row5['show_even_on_closed_days'] : '';
+								$component['mydate'] = date_format(date_create($item['date']), 'm/d/Y');
+								$component['content'] = $row5['content'];
+								$component['timestamp'] = strtotime(date('Y-m-d').' '.date("H:i", strtotime($item['start'])).':00');
+						
+								$arr_temp_c5[] = $component;
 								
 								}
 									

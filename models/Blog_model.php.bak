@@ -284,7 +284,6 @@ class Blog_model extends CI_Model{
 					$ins['event_id'] = $event_id;
 					$ins['isWhole'] = $post['allday1'][$i];
 					$ins['pos'] = 0;
-					$ins['end_date'] = $_POST['end_date1'][$i];
 					
 					$this->db->insert('tbl_calendar_dates',$ins);
 				}

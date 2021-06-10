@@ -189,7 +189,7 @@ class Calendar extends CI_Controller {
 			
 				// $this->blog_model->addcalendar();
 				//$this->blog_model->addcalendar_v2();
-				//echo '<pre>post'; print_r($_POST); die;
+				echo '<pre>post'; print_r($_POST); die;
 				$this->blog_model->addcalendar_new_multiple();
 				
 				

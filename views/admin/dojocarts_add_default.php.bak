@@ -19,14 +19,8 @@
 									{ customConfig : 'mini_half_configy.js' }
 							);
 		
-		CKEDITOR.replace(  'dojocart_item_desc_1',
-									{  customConfig : 'config.js' }
-						);
 	});
 </script>
-<style>
-	.displayNone{display: none !important}
-</style>
 <div class="az-content-body-left advanced_page dojocart_edit_page" >
 
        <div class="row row-sm">
@@ -69,7 +63,7 @@
             </a>
 			<a href="<?php echo $page_url; ?>#PaymentTypes" class="az-contact-item">
               <div class="az-contact-body">
-                <h6>Payment Setting & Dojocart Items</h6>
+                <h6>Payment Setting & Upsells</h6>
               </div>
             </a>
 			<a href="<?php echo $page_url; ?>#Term_Conditions" class="az-contact-item">
@@ -105,12 +99,13 @@
 			
 				<div class="az-mail-header">
             <div>
-              <h4 class="az-content-title mg-b-5">Add DojoCart:  <?php echo str_replace('_',' ',$this->session->userdata('dojo_cart_template')); ?> Template</h4>
+              <h4 class="az-content-title mg-b-5">Add DojoCart:  <?php echo $this->session->userdata('dojo_cart_template'); ?> Template</h4>
             </div>
             
           </div>
 				
 				<div class=" edit-form edit_form_box">
+				
 
 <form id="blog_form" action="" method="post" enctype="multipart/form-data">
 <style>
@@ -331,7 +326,7 @@ $('.videoType').change(function(){
 
 
 <!-- Choose Video Section Start-->
-<div class="form-light-holder d-md-flex  dual_input  welcome_video">
+<div class="form-light-holder d-md-flex  dual_input   welcome_video">
 	<div class="adsUrl form-group">
 		<h1>Video Type</h1>
 		<select name="video_type" id="" class="field videoType" >
@@ -365,6 +360,7 @@ $('.videoType').change(function(){
 
 <div class="page-section" id="BulletPoints">
 <div class="mb-3 main-content-label">Right Sidebar Section</div>
+
 <div class="form-light-holder">
 	<h1> Bullet Points Title</h1>
 	<input type="text" value="" name="offer-title" id="offer-title" class="field full_width_input" placeholder="Enter Your Offer Headline Text Here" style=""/>	
@@ -415,14 +411,14 @@ $('.videoType').change(function(){
 
 </div>
 
-
 <div class="page-section" id="PaymentTypes">
-<div class="mb-3 main-content-label">Payment Setting &  Dojocart Items</div>
+<div class="mb-3 main-content-label">Payment Setting & Upsells</div>
+
 <div class="form-light-holder">
 	<h1> Do you want to accept credit card payments for this product?</h1>
 	<select name="payment_type" class="field payment_type">
-	<!--<option value="free">Free product</option>-->
-	<?php if($paymentDetail[0]->authorize_net_payment == 1 || $paymentDetail[0]->braintree_payment == 1  || $paymentDetail[0]->stripe_payment == 1  || $paymentDetail[0]->stripe_ideal_payment == 1   || $paymentDetail[0]->paypal_payment){ ?>
+	<option value="free">Free product</option>
+	<?php if($paymentDetail[0]->authorize_net_payment == 1 || $paymentDetail[0]->braintree_payment == 1  || $paymentDetail[0]->stripe_payment == 1  || $paymentDetail[0]->stripe_ideal_payment == 1  ){ ?>
 	<option value="paid">Paid product</option>
 	<?php } ?>
 	</select>	
@@ -433,86 +429,44 @@ $('.videoType').change(function(){
 
 <div class="form-light-holder salestax_required">
 		<a id="status" class="salestax_checkbox check-off"></a>
-		<h1 class="inline">Add Sales Tax On Total? </h1>
+		<h1 class="inline">Add Sales Tax? </h1>
 		<input type="hidden" value="0" name="sales_taxable" class="salestax_hidden_cb" />
 </div>
 
-<div class="form-light-holder manage-pricerow tax_hide_show" >
-<h1 class="inline displayNone">Product Price (<?php echo $this->query_model->getSiteCurrencyTypeForAdmin() ?>)</h1>
-<div class="price-validate displayNone">
-<input type="text" value="" name="price" id="" class="field" placeholder="Enter Price" style="width:100px; margin-left: 10px;" /><div class="ErrorMessage ErrorMessage_price"></div>
+<div class="form-light-holder manage-pricerow" >
+<h1 class="inline">Product Price (<?php echo $this->query_model->getSiteCurrencyTypeForAdmin() ?>)</h1>
+<div class="price-validate">
+<input type="text" value="" name="price" id="price" class="field" placeholder="Enter Price" style="width:100px; margin-left: 10px;" /><div class="ErrorMessage ErrorMessage_price"></div>
 </div>
-<div class="price-validate ">
+<div class="price-validate tax_hide_show">
 <h1 style="padding-left: 10px;">Sales Tax (%)</h1>
 <input type="text" value="" name="sales_tax_main" id="sales_tax_main" class="field sales_tax_main" placeholder="%" style="width:100px; margin-left: 10px;" />
 <div class="ErrorMessage ErrorMessage_sales_tax_main"></div>
 </div>
-
+<div style="font-style:italic;font-size:11px;margin-left:12px;">
+		Please enter the amount in decimal form. Do not use any characters such as "$” or “%". Example: "49.99" or “7”.
+	</div>
 </div>		
 
-<div class="form-light-holder multi_item_salestax_required">
-		<a id="status" class="multi_item_salestax_checkbox check-off"></a>
-		<h1 class="inline">Add Sales Tax On Multi Items?</h1>
-		<input type="hidden" value="0" name="multi_item_sales_taxable" class="multi_item_salestax_hidden_cb" />
-</div>
 
-<div class="form-light-holder showquantity_required displayNone" style="" >
+<div class="form-light-holder showquantity_required" style="" >
 	<a id="status" class="showquantity_checkbox check-off"></a>
 		<h1 class="inline">Add Quantity Option? </h1>
 		<input type="hidden" value="0" name="show_quantity" class="showquantity_hidden_cb" />
 </div>
 
 <!-- Upsell Section Start -->
-<div class="form-light-holder item_required ">
-		<a id="status" class="item_checkbox check-off"></a>
-		<h1 class="inline">Add Dojocart Item? </h1>
-		<input type="hidden" value="0" name="dojocart_item" class="item_hidden_cb" />
-</div>
-<div id="item_option" class="">
-<div class=""><h3><a href="javascript:void(0);" class="btn btn-outline-light AddMoreItem">Add New Item</a></h3></div>
-<div class="multi_item_boxes">
-<div class="form-light-holder">
-	<h1> <b>Item #1</b></h1>
-	<h1> Item #1 Title</h1>
-	<input type="text" value="" name="dojocartItem[1][item_title]" id="item_title" class="field full_width_input" placeholder="" style="width:40%"/>	
-</div>
 
-<div class="form-light-holder manage-pricerow">
-	<h1> Item #1 Price</h1>
-	<div class="price-validate">
-	<?php echo $this->query_model->getSiteCurrencyTypeForAdmin() ?><input type="text" value="" name="dojocartItem[1][item_price]" id="item_price" class="field item_price" number="1" placeholder="Enter Price" style="width:100px"/>
-	<div class="ErrorMessage ErrorMessage_up_price1"></div>
-	</div>	
-	<div class="price-validate multi_item_tax_hide_show">
-	<h1 style="padding-left: 10px;">Sales Tax (%)</h1>
-		<input type="text" value=""  name="dojocartItem[1][sales_tax]" id="sales_tax" class="field sales_tax_main" number="1" placeholder="%" style="width:100px; margin-left: 10px;" /><div class="ErrorMessage ErrorMessage_sales_tax_main1"></div>
-	</div>
-
-	<div style="font-style:italic;font-size:11px;margin-left:12px;">
-		Please enter the amount in decimal form. Do not use any characters such as "$” or “%". Example: "49.99" or “7”.
-	</div>
-</div>
-
-<div class="form-new-holder">
-	<h1>Item #1 Description</h1>
-		
-	<textarea type="text" value="" name="dojocartItem[1][item_description]" id="dojocart_item_desc_1" class="field" placeholder="" /></textarea>
-</div>
-
-	
-</div>
-</div>
-<!-- Upsell Section End -->
-
-<!-- Upsell Section Start -->
-<div class="form-light-holder upsale_required displayNone">
+<div class="form-light-holder upsale_required">
 		<a id="status" class="upsale_checkbox check-off"></a>
 		<h1 class="inline">Add Upsells? </h1>
 		<input type="hidden" value="0" name="upsale" class="upsale_hidden_cb" />
 </div>
-<div id="upsale_option" class="displayNone">
-<div class=""><h3><a href="javascript:void(0);" class="AddMoreUpsale">Add Another Upsell</a></h3></div>
+<div id="upsale_option">
+<div class=""><h3><a href="javascript:void(0);" class="btn btn-outline-light AddMoreUpsale">Add Another Upsell</a></h3></div>
+<div class="multi_item_boxes">
 <div class="form-light-holder">
+	<h1><b>Upsell #1</b></h1>
 	<h1> Upsell #1 Title</h1>
 	<input type="text" value="" name="data[1][up_title]" id="up_title" class="field full_width_input" placeholder="" style="width:40%"/>	
 </div>
@@ -534,12 +488,17 @@ $('.videoType').change(function(){
 </div>
 
 <div class="form-light-holder">
-	<h1>Upsell #1 “Yes Please! Text” Description</h1>
-	<input type="text" value="" name="data[1][yes]" id="yes" class="field" placeholder="" style="width:40%"/>	
-</div>
+<label class="ckbox">
+	<input type="checkbox" name="data[1][is_qty_apply]" value="1" ><span>Show Quantity Option For Upsell? </span></label>
+</div>	
+
 <div class="form-light-holder">
+	<h1>Upsell #1 “Yes Please! Text” Description</h1>
+	<input type="text" value="" name="data[1][yes]" id="yes" class="field full_width_input" placeholder="" style="width:40%"/>	
+</div>
+<div class="form-new-holder">
 	<h1>Upsell #1 “No Thank You! Text” Description</h1>
-	<input type="text" value="" name="data[1][no]" id="no" class="field" placeholder="" style="width:40%"/>	
+	<input type="text" value="" name="data[1][no]" id="no" class="field full_width_input" placeholder="" style="width:40%"/>	
 </div>
 
 	
@@ -549,7 +508,7 @@ $('.videoType').change(function(){
 
 
 </div>
-
+</div>
 
 <div class="page-section" id="Term_Conditions">
 <div class="mb-3 main-content-label">Terms & Conditions</div>
@@ -577,7 +536,7 @@ $('.videoType').change(function(){
 </div>
 
 <div class="addMoreCoupons"  style=" display:none" id="hide_coupon_code">
-<h3><a href="javascript:void(0);" class="btn btn-outline-light AddMoreCouponsButton">Add Coupons</a></h3>
+<h3><a href="javascript:void(0);" class="btn btn-outline-light  AddMoreCouponsButton">Add Coupon</a></h3>
 <div class="form-light-holder multi_item_boxes">
 		<div class="adsUrl">
 				<h1>#1 Coupon Code Name </h1>
@@ -620,7 +579,7 @@ $('.videoType').change(function(){
 
 <div class="page-section" id="CustomFields">
 <div class="mb-3 main-content-label">Custom Fields</div>
-<h3><a href="javascript:void(0);" class="btn btn-outline-light AddMoreCustomFields">Add Custom Fields</a></h3>
+<h3><a href="javascript:void(0);" class="btn btn-outline-light  AddMoreCustomFields">Add Custom Fields</a></h3>
 <div id="addMoreFields">
 	
 	
@@ -629,13 +588,10 @@ $('.videoType').change(function(){
 
 <script language="javascript">
 $(document).ready(function(){
-	//$('#hide_show_p_quant').hide();
-	$('#hide_show_p_quant').show();
+	$('#hide_show_p_quant').hide();
 	$('#hide_show_term_condition').hide();
 	$('#upsale_option').hide();
-	$('#item_option').hide(); // kz 22-04-2019
 	$('.tax_hide_show').hide();
-	$('.multi_item_tax_hide_show').hide();
 
 	$('.payment_type').change(function(){
 		var type = $(this).val();
@@ -690,29 +646,6 @@ $(".upsale_required .upsale_checkbox").click(function(){
 	
 });
 
-// kz 22-04-2019
-$(".item_required .item_checkbox").click(function(){
-		if($(this).hasClass("check-on")){
-			$(this).removeClass("check-on");
-			$(this).addClass("check-off");
-			$(this).parents(".form-light-holder").children(".item_hidden_cb").val("0");
-			$('#item_price').attr('required', false);
-			$('#item_option').hide();
-			//var show_price = 0;
-			
-		}
-		else
-		{
-			$(this).removeClass("check-off");
-			$(this).addClass("check-on");
-			$(this).parents(".form-light-holder").children(".item_hidden_cb").val("1");
-			$('#item_option').show();
-			$('#item_price').attr('required', 'required');
-			//var show_price = 1;
-		}
-	
-});
-
 
 // Sales Taxable Item
 
@@ -732,39 +665,12 @@ $(".salestax_required .salestax_checkbox").click(function(){
 			$(this).addClass("check-on");
 			$(this).parents(".form-light-holder").children(".salestax_hidden_cb").val("1");
 			$('.tax_hide_show').show();
-			$('.multi_item_salestax_checkbox').removeClass("check-on");
-			$('.multi_item_salestax_checkbox').addClass("check-off");
-			$('.multi_item_tax_hide_show').hide();
-			$(".multi_item_salestax_hidden_cb").val("0");
 			//$('#up_price').attr('required', 'required');
 			//var show_price = 1;
 		}
 	
 });
 
-$(".multi_item_salestax_required .multi_item_salestax_checkbox").click(function(){
-		if($(this).hasClass("check-on")){
-			$(this).removeClass("check-on");
-			$(this).addClass("check-off");
-			$(this).parents(".form-light-holder").children(".multi_item_salestax_hidden_cb").val("0");
-			//$('#up_price').attr('required', false);
-			$('.multi_item_tax_hide_show').hide();
-			//var show_price = 0;
-			
-		}
-		else
-		{
-			$(this).removeClass("check-off");
-			$(this).addClass("check-on");
-			$(this).parents(".form-light-holder").children(".multi_item_salestax_hidden_cb").val("1");
-			$('.multi_item_tax_hide_show').show();
-			$('.salestax_checkbox').removeClass("check-on");
-			$('.salestax_checkbox').addClass("check-off");
-			$('.tax_hide_show').hide();
-			$(".salestax_hidden_cb").val("0");
-		}
-	
-});
 
 // Show Quantity
 $(".showquantity_required .showquantity_checkbox").click(function(){
@@ -888,7 +794,6 @@ $(".satisfaction_gurantee_img_required .satisfaction_gurantee_img_checkbox").cli
 
     
 </div>
-
 <div class="form-light-holder   d-md-flex  dual_input">
 	<div class="adsUrl form-group">
 		<h1>Body Class</h1>
@@ -968,7 +873,6 @@ $(window).load(function(){
 		</div>
 	</div>
 </div>
-
 </div>
 
 <?php 
@@ -976,14 +880,12 @@ $(window).load(function(){
 		
 ?>
 <div class="form-light-holder locationsDropdown">
-	
-		<h1>Locations</h1>
+	<h1>Locations</h1>
 		<select name="locations[]" id="" class="field locationSelectBox" required='true' multiple="true" style="height:200px">
 		<?php foreach($dojo_cart_allLocations as $location){ ?>
 			<option value="<?php echo $location->id; ?>"><?php echo $location->name; ?></option>
 		<?php } ?>
 	</select>
-	
 </div>
 <?php } ?>
  <div class="form-light-holder">
@@ -996,8 +898,7 @@ $(window).load(function(){
 </div>
 
 
-
-	
+		
 
 	<div class="tx-center pd-y-20 bg-gray-200" id="bottom"> 
 				<input type="hidden" value="<?php echo $this->session->userdata('dojo_cart_template'); ?>" name="template" class="hidden_cb" />
@@ -1020,9 +921,9 @@ $(window).load(function(){
      </div>
 
 
+	
 <input type="hidden" class="totalAddMoreFeatures" value="2"  />
 <input type="hidden" class="totalAddMoreUpsales" value="1"  />
-<input type="hidden" class="totalAddMoreItems" value="1"  /> <!-- kz 22-04-2019 -->
 <input type="hidden" class="totalAddMoreCoupons" value="1"  />
 <input type="hidden" class="totalAddMoreCustomFields" value="0"  />
 
@@ -1046,7 +947,6 @@ $(window).load(function(){
 			var i = parseInt(totalAddMoreFeatures) + Number(1);
 			$('.totalAddMoreFeatures').val(i);
 			
-				
 				$('#AddMoreFeatures').append('<span class="featureBox_'+i+'"><input type="text"  name="features['+i+']" id="features" class="field" placeholder="Enter Your Feature Text Here"/>&nbsp; &nbsp; <i class="fa fa-times" style="cursor:pointer;" onclick="$(this).parent().remove();"></i><br></span>');
 			
 		});
@@ -1057,26 +957,7 @@ $(window).load(function(){
 			var totalAddMoreUpsales = $('.totalAddMoreUpsales').val();
 			var b = parseInt(totalAddMoreUpsales) + Number(1);
 			$('.totalAddMoreUpsales').val(b);
-				$('#upsale_option').append('<div class="form-light-holder"><h1> Upsell #'+b+' Title</h1><input type="text" value="" name="data['+b+'][up_title]" id="up_title" class="field full_width_input" placeholder="" /></div><div class="form-light-holder manage-pricerow"><h1>Upsell #'+b+' Price</h1><div class="price-validate"><?php echo $this->query_model->getSiteCurrencyTypeForAdmin() ?><input type="text" required="required" value="" name="data['+b+'][up_price]" id="up_price" class="field up_price" number="'+b+'" placeholder="Enter Price" style="width:100px"/><div class="ErrorMessage ErrorMessage_up_price'+b+'"></div></div><div class="price-validate tax_hide_show"><h1 style="padding-left: 10px;">Sales Tax (%)</h1><input type="text" value=""  name="data['+b+'][sales_tax]" id="sales_tax" class="field sales_tax_main" number="'+b+'" placeholder="%" style="width:100px; margin-left: 10px;" /><div class="ErrorMessage ErrorMessage_sales_tax_main'+b+'"></div></div></div><div class="form-light-holder"><h1>Upsell #'+b+' “YES PLEASE! TEXT” DESCRIPTION</h1><input type="text" value="" name="data['+b+'][yes]" id="yes" class="field" placeholder=""/></div><div class="form-light-holder"><h1>Upsell #'+b+'  “NO THANK YOU! TEXT” DESCRIPTION</h1><input type="text" value="" name="data['+b+'][no]" id="no" class="field" placeholder=""/></div>');
-			
-		});
-		
-		// kz 22-04-2019
-			$('.AddMoreItem').click(function(){
-			var totalAddMoreItems = $('.totalAddMoreItems').val();
-			var b = parseInt(totalAddMoreItems) + Number(1);
-			var ckeditor_id = 'dojocart_item_desc_'+b;
-			var multi_item_salestax = $('.multi_item_salestax_hidden_cb').val();
-			var salestax_display = 'none';
-			if(multi_item_salestax == 1){
-				var salestax_display = 'inline-block';
-			}
-			$('.totalAddMoreItems').val(b);
-				$('#item_option').append('<div class="multi_item_boxes"><div class="form-light-holder"><h1><b>Item #'+b+'</b></h1><h1> Item #'+b+' Title</h1><input type="text" value="" name="dojocartItem['+b+'][item_title]" id="item_title" class="field full_width_input" placeholder="" /></div><div class="form-light-holder manage-pricerow"><h1>Item #'+b+' Price</h1><div class="price-validate"><?php echo $this->query_model->getSiteCurrencyTypeForAdmin() ?><input type="text" required="required" value="" name="dojocartItem['+b+'][item_price]" id="item_price" class="field item_price" number="'+b+'" placeholder="Enter Price" style="width:100px"/><div class="ErrorMessage ErrorMessage_up_price'+b+'"></div></div><div class="price-validate multi_item_tax_hide_show" style="display:'+salestax_display+'"><span style="padding-left: 15px;">Sales Tax (%)</span><input type="text" value=""  name="dojocartItem['+b+'][sales_tax]" id="sales_tax" class="field sales_tax_main" number="'+b+'" placeholder="%" style="width:100px; margin-left: 10px;" /><div class="ErrorMessage ErrorMessage_sales_tax_main'+b+'"></div></div></div><div class="form-new-holder"><h1>Item #'+b+' DESCRIPTION</h1><textarea type="text" value="" name="dojocartItem['+b+'][item_description]" id="'+ckeditor_id+'" class="field" placeholder="" /></textarea></div></div>');
-				
-				 CKEDITOR.replace(  ckeditor_id, 
-									{ customConfig : 'config.js' }
-							);
+				$('#upsale_option').append('<div class="multi_item_boxes"><div class="form-light-holder"><h1><b>Upsell #'+b+'</b></h1><h1> Upsell #'+b+' Title</h1><input type="text" value="" name="data['+b+'][up_title]" id="up_title" class="field full_width_input" placeholder=""/></div><div class="form-light-holder manage-pricerow"><h1>Upsell #'+b+' Price</h1><div class="price-validate"><?php echo $this->query_model->getSiteCurrencyTypeForAdmin() ?><input type="text" required="required" value="" name="data['+b+'][up_price]" id="up_price" class="field up_price" number="'+b+'" placeholder="Enter Price" style="width:100px"/><div class="ErrorMessage ErrorMessage_up_price'+b+'"></div></div><div class="price-validate tax_hide_show"><h1 style="padding-left: 10px;">Sales Tax (%)</h1><input type="text" value=""  name="data['+b+'][sales_tax]" id="sales_tax" class="field sales_tax_main" number="'+b+'" placeholder="%" style="width:100px; margin-left: 10px;" /><div class="ErrorMessage ErrorMessage_sales_tax_main'+b+'"></div></div></div><div class="form-light-holder"><label class="ckbox"><input type="checkbox" name="data['+b+'][is_qty_apply]" value="1" ><span>Show Quantity Option For Upsell?</span></label></div><div class="form-light-holder"><h1>Upsell #'+b+' “YES PLEASE! TEXT” DESCRIPTION</h1><input type="text" value="" name="data['+b+'][yes]" id="yes" class="field full_width_input" placeholder="" /></div><div class="form-new-holder"><h1>Upsell #'+b+'  “NO THANK YOU! TEXT” DESCRIPTION</h1><input type="text" value="" name="data['+b+'][no]" id="no" class="field full_width_input" placeholder="" /></div></div>');
 			
 		});
 
@@ -1086,7 +967,7 @@ $('.AddMoreCouponsButton').click(function(){
 			$('.totalAddMoreCoupons').val(k);
 			
 				
-				$('.addMoreCoupons').append('<div class="form-light-holder multi_item_boxes" style="position:relative"><div class="adsUrl"><h1>#'+k+' Coupon Code Name</h1><input value="" name="Coupons['+k+'][coupon_code_name]" class="field coupon_required" placeholder="" type="text" required></div><div class="linkTarget"><h1>Expiry Date</h1><input value="" name="Coupons['+k+'][expiry_date]" id="exp_datepicker'+k+'" class="field" placeholder="yyyy-mm-dd" maxlength="10" required="" type="text"></div><div class="adsUrl"><h1>#'+k+' Discount Type</h1><select name="Coupons['+k+'][coupon_discount_type]" class="field coupon_discount_type" id="" number="'+k+'"><option value="amount" selected="selected">Amount</option><option value="percent">Percent</option></select></div><div class="linkTarget"><div class="amount_box'+k+'" ><h1>#'+k+' Value in Amount (<?php echo $this->query_model->getSiteCurrencyTypeForAdmin() ?>) </h1><input value="" name="Coupons['+k+'][coupon_discount_amount]" id="" number="'+k+'" class="field coupon_amount discount_amount'+k+'" placeholder="Value in Amount (<?php echo $this->query_model->getSiteCurrencyTypeForAdmin() ?>)" type="text" required><div class="ErrorMessage ErrorMessage_price'+k+'" style="color:#ff0000"></div></div><div class="percent_box'+k+'" style="display:none"><h1>#'+k+' Value in Percent (%)</h1><input value="" name="Coupons['+k+'][coupon_discount_percent]" id="" number="'+k+'" class="field coupon_percent discount_percent'+k+'" placeholder="Value in Percent (%)" type="text"><div class="ErrorMessage ErrorMessage_percent'+k+'" style="color:#ff0000"></div></div></div><i class="fa fa-close" style="cursor:pointer; right:15px; top:10px; position:absolute;color:red" onclick="$(this).parent().remove();"> Delete</i></div>');
+				$('.addMoreCoupons').append('<div class="form-light-holder multi_item_boxes" style="position:relative"><div class="adsUrl"><h1>#'+k+' Coupon Code Name</h1><input value="" name="Coupons['+k+'][coupon_code_name]" class="field coupon_required" placeholder="" type="text" required></div><div class="linkTarget"><h1>Expiry Date</h1><input value="" name="Coupons['+k+'][expiry_date]" id="exp_datepicker'+k+'" class="field" placeholder="yyyy-mm-dd" maxlength="10" required="" type="text"></div><div class="adsUrl"><h1>#'+k+' Discount Type</h1><select name="Coupons['+k+'][coupon_discount_type]" class="field coupon_discount_type" id="" number="'+k+'"><option value="amount" selected="selected">Amount</option><option value="percent">Percent</option></select></div><div class="linkTarget"><div class="amount_box'+k+'" ><h1>#'+k+' Value in Amount (<?php echo $this->query_model->getSiteCurrencyTypeForAdmin() ?>) </h1><input value="" name="Coupons['+k+'][coupon_discount_amount]" id="" number="'+k+'" class="field coupon_amount discount_amount'+k+'" placeholder="Value in Amount (<?php echo $this->query_model->getSiteCurrencyTypeForAdmin() ?>)" type="text" required><div class="ErrorMessage ErrorMessage_price'+k+'" style="color:#ff0000"></div></div><div class="percent_box'+k+'" style="display:none"><h1>#'+k+' Value in Percent (%)</h1><input value="" name="Coupons['+k+'][coupon_discount_percent]" id="" number="'+k+'" class="field coupon_percent discount_percent'+k+'" placeholder="Value in Percent (%)" type="text"><div class="ErrorMessage ErrorMessage_percent'+k+'" style="color:#ff0000"></div></div></div><i class="fa fa-close" style="cursor:pointer; right:0px; top:10px; position:absolute;color:red" onclick="$(this).parent().remove();"> Delete</i></div>');
 				
 				
 				$( "#exp_datepicker"+k).datepicker({ dateFormat: "yy-mm-dd" });
@@ -1193,6 +1074,8 @@ $('.AddMoreCouponsButton').click(function(){
 	});	 
 	
 </script>
+
+
 <!-- recent items -->
 <?php $this->load->view("admin/include/footer");?>
 

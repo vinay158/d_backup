@@ -475,7 +475,7 @@ $('.videoType').change(function(){
 	<h1>Is admission for this event paid or free?</h1>
 	<select name="payment_type" class="field payment_type">
 	<option value="free">Free Event</option>
-	<?php if($paymentDetail[0]->authorize_net_payment == 1 || $paymentDetail[0]->braintree_payment == 1  || $paymentDetail[0]->stripe_payment == 1   || $paymentDetail[0]->stripe_ideal_payment == 1  ){ ?>
+	<?php if($paymentDetail[0]->authorize_net_payment == 1 || $paymentDetail[0]->braintree_payment == 1  || $paymentDetail[0]->stripe_payment == 1   || $paymentDetail[0]->stripe_ideal_payment == 1   || $paymentDetail[0]->paypal_payment){ ?>
 	<option value="paid">Paid Event</option>
 	<?php } ?>
 	</select>	

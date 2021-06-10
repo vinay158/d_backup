@@ -475,7 +475,7 @@ $('.videoType').change(function(){
 	<h1>Do you want to accept credit card payments for this tournament?</h1>
 	<select name="payment_type" class="field payment_type">
 	<option value="free">Free Tournament</option>
-	<?php if($paymentDetail[0]->authorize_net_payment == 1 || $paymentDetail[0]->braintree_payment == 1  || $paymentDetail[0]->stripe_payment == 1  || $paymentDetail[0]->stripe_ideal_payment == 1 ){ ?>
+	<?php if($paymentDetail[0]->authorize_net_payment == 1 || $paymentDetail[0]->braintree_payment == 1  || $paymentDetail[0]->stripe_payment == 1  || $paymentDetail[0]->stripe_ideal_payment == 1   || $paymentDetail[0]->paypal_payment){ ?>
 	<option value="paid">Paid Tournament</option>
 	<?php } ?>
 	</select>	

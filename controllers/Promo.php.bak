@@ -16,7 +16,7 @@ class Promo extends CI_Controller {
 			
 		   if (isset($slug)) {
 			   if($_SERVER['SERVER_NAME'] == "localhost"){
-				 $slug = $slug[2];  
+				 $slug = $slug[3];  
 			   }else{
 				   $slug = $slug[2];
 			   }

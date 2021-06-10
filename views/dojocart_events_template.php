@@ -1829,12 +1829,38 @@ function checkAmountAndAction(amount){
 	
   if(amount <= 0){
 	 $('#is_free_payment').val(1);
+	  <?php if($stripePayment['stripe_payment'] == 1 && $stripePayment['stripe_sca_payment'] == 1 ){ ?>
+	
+	<?php }else{ ?>
 	 $('.payment_information').hide();
+	 <?php } ?>
 	 $('#paymentForm').attr('action',custom_payment_url);
   }else{
 	 $('.payment_information').show();
 	 $('#is_free_payment').val(0);
 	 $('#paymentForm').attr('action',original_payment_url);
+	 
+	 <?php if($stripePayment['stripe_payment'] == 1 && $stripePayment['stripe_sca_payment'] == 1 ){ ?>
+	 amount = amount.replace('.','');
+	 $.ajax({
+
+			url : '<?php echo base_url("starttrial/ajaxStripePaymentIntent"); ?>',
+				type : 'POST',
+				dataType :'json',
+				data :{amount:amount, stripe_action: 'CreatePaymentIntent'},
+				success:function(data){
+					
+					if(data.res == 1){
+
+						$('#payment_intent_id').val(data.payment_intent_id);
+						$('.client_secret').attr('data-secret',data.client_secret);
+					}
+					
+				}
+
+		});
+		<?php } ?>
+		
   }
 }
 	

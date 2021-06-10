@@ -88,7 +88,7 @@ class Events extends CI_Controller {
 				
 				
 				$data['calendar'] = $this->event_model->generateCalendar($year,$month,$location_id);
-				//echo '<pre>data'; print_r($data); die;
+				echo '<pre>data'; print_r($data); die;
 				$this->db->order_by("pos", "DESC");		
 				//echo $year.'===>'.$month.'===>'.$location_id; die;
 				$events = $this->event_model->count_num_appointment_for_extracting_all_categories_used($year,$month,$location_id);

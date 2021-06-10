@@ -623,7 +623,7 @@ $category_id = $this->uri->segment('4');
 		});
 		
    
-		$('body').on('focus','.multiple_dates, .multiple_end_dates',function(){
+		$('body').on('focus','.multiple_dates',function(){
 			
 			$(this).datepicker({dateFormat: "yy/mm/dd",altFormat: 'yy/mm/dd'});
 			
