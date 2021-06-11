@@ -49,7 +49,7 @@ class News extends CI_Controller {
 		
 		$config['total_rows'] = $this->pagination_model->record_count('tblnews');
 		$offset = ($page  == 1) ? 0 : ($page * $config['per_page']) - $config['per_page'];
-		$this->db->order_by('pos', 'ASC');
+		$this->db->order_by('pos asc, id desc');
 		$this->db->select(array('id','title','image','published'));
 		$data['staff'] = $this->pagination_model->fetch_data('tblnews',$config["per_page"], $offset, $config['total_rows']);
 		$this->pagination->initialize($config);

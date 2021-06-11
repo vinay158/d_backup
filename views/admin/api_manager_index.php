@@ -472,7 +472,7 @@ $('body').on('click','.delete_item', function(){
 						total_record = parseInt(total_record) + 1; 
 						$('.total_alternating_'+form_type).html(total_record);
 						
-						$('.alternating_'+form_type).append('<li id="menu_'+data.id+'" class="'+form_type+'_'+data.id+'   az-contact-info-header ui-sortable-handle "><div class="manager-item media"><div style="float:left;"><div class="badge-no">. '+new_number+'</div><h4 class="'+form_type+'_heading_'+data.id+'"><a href="javascript:void(0)">'+data.title+'</a></h4></div><div class="manager-item-opts"><nav class="nav"><a href="javascript:void(0)" class="badge badge-primary  full_alternate_popup" data-toggle="modal" data-target="#fullAlternatePopup" action_type="edit" item_id="'+data.id+'" table_name="'+data.table_name+'" form_type="'+form_type+'">Edit</a><a class="badge badge-primary delete_item" data-toggle="modal" data-target="#popupDeleteItem" item_id="'+data.id+'" table_name="'+data.table_name+'" item_title="'+data.title+'" section_type="'+form_type+'">Delete</a><a href="javascript:void(0)" id="unpub_'+data.id+'" class="sections_unpublish" table_name="'+data.table_name+'" is_new="1"><div class="az-toggle az-toggle-success alternate_full_width_toogle toogle_btn on" publish_type="0"><span></span><input type="hidden" name="publish_type" value="0" class="publish_type"></div></a></nav></div></div></li>');
+						$('.alternating_'+form_type).append('<li id="menu_'+data.id+'" class="'+form_type+'_'+data.id+'   az-contact-info-header ui-sortable-handle "><div class="manager-item media"><div style="float:left;"><div class="badge-no">'+new_number+'.</div><h4 class="'+form_type+'_heading_'+data.id+'"><a href="javascript:void(0)">'+data.title+'</a></h4></div><div class="manager-item-opts"><nav class="nav"><a href="javascript:void(0)" class="badge badge-primary  full_alternate_popup" data-toggle="modal" data-target="#fullAlternatePopup" action_type="edit" item_id="'+data.id+'" table_name="'+data.table_name+'" form_type="'+form_type+'">Edit</a><a class="badge badge-primary delete_item" data-toggle="modal" data-target="#popupDeleteItem" item_id="'+data.id+'" table_name="'+data.table_name+'" item_title="'+data.title+'" section_type="'+form_type+'">Delete</a><a href="javascript:void(0)" id="unpub_'+data.id+'" class="sections_unpublish" table_name="'+data.table_name+'" is_new="1"><div class="az-toggle az-toggle-success alternate_full_width_toogle toogle_btn on" publish_type="0"><span></span><input type="hidden" name="publish_type" value="0" class="publish_type"></div></a></nav></div></div></li>');
 						
 						
 						$('#fullAlternatePopup').find('.close').trigger('click');
@@ -604,7 +604,7 @@ if(!empty($webhook_apis_incoming_leads)):?>
 									<li   id="menu_<?=$webhook_api_incoming->id?>" class="full_width_row_<?=$webhook_api_incoming->id?> az-contact-info-header">
 										<div class="manager-item media">
 											<div style="float:left;">
-												<div class="badge-no">. <?=$sr_news?></div>
+												<div class="badge-no"><?=$sr_news?>.</div>
 												
                                                     
 												<h4 class="full_width_row_heading_<?=$webhook_api_incoming->id?>"><a href="javascript:void(0)" ><?=$webhook_api_incoming->api_name;?></a></h4>
@@ -684,7 +684,7 @@ if(!empty($webhook_apis_incoming_leads)):?>
 						<div class="manager-item media">
 							<div style="float:left" >
 								
-								<div class="badge-no">. <?=$sr_news?></div>	
+								<div class="badge-no"><?=$sr_news?>.</div>	
 								<h4  class="little_row_heading_<?=$webhook_api->id?>"><a href="javascript:void(0)" ><?=$webhook_api->api_name;?></a></h4>
 							</div>
 							<div class="manager-item-opts">

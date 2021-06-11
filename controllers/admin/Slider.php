@@ -20,7 +20,7 @@ class Slider extends CI_Controller {
 			$data['title'] = "Sliders";
 			$data['link_type'] = "slider";
 			
-			$this->db->order_by("pos", "ASC");
+			$this->db->order_by('pos asc, id desc');
 			$this->db->select(array('id','image_video','published'));
 			$data['slides'] = $this->query_model->getbyTable("tblslider");
 			//echo '<pre>data'; print_r($data); die;

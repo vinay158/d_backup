@@ -1214,7 +1214,7 @@ class About extends CI_Controller {
 			//$records['override_logos'] = $this->query_model->getbyTable('tbloverride_logos');
 			$records['location_id'] = $this->uri->segment(5);
 			
-			$this->db->order_by("pos", 'asc');
+			$this->db->order_by('pos asc, id desc');
 			$this->db->select(array('id','location_id','title','photo_side','published'));
 			$this->db->where("location_id", $this->uri->segment(5));
 			$records['aboutUsRows'] = $this->query_model->getbyTable('tbl_aboutus_rows');

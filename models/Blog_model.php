@@ -202,6 +202,7 @@ class Blog_model extends CI_Model{
 			$params['is_multiple'] = 0;
 			$params['pos'] = 0;
 			$params['show_even_on_closed_days'] = $show_even_on_closed_days;
+			$ins['end_date'] = $_POST['end_date1'][$i];
 			//echo '<pre>params'; print_r($params); die;
 			$this->db->insert('tblcalendar', $params);
 			

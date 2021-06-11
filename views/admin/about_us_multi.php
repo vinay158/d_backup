@@ -179,7 +179,7 @@ $(document).ready(function(){
 					<li   id="menu_<?=$row->id?>" class="full_width_row_<?=$row->id?> az-contact-info-header">
 						<div class="manager-item media">
 							<div style="float:left;">
-								<div class="badge-no">. <?=$sr_testimonials?></div>
+								<div class="badge-no"><?=$sr_testimonials?>.</div>
 								
 									
 								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?=$row->title;?> ( <?php echo ucfirst($row->photo_side);?> )</a></h4>

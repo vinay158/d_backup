@@ -1541,8 +1541,8 @@ public function sortthisstaff(){
 			//echo '<pre>all_trial_categories'; print_r($data['all_trial_categories']); die;
 				
 			$this->db->where("location_id", $this->uri->segment(4));
+			$this->db->order_by('pos asc, id desc');
 			$records['schoolTestimonials'] = $this->db->get("tbl_school_testimonials")->result();
-			
 			
 			
 			

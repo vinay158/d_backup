@@ -113,7 +113,7 @@
 					<li   id="menu_<?=$row->id?>" class="full_width_row_<?=$row->id?> az-contact-info-header">
 						<div class="manager-item media">
 							<div style="float:left;">
-								<div class="badge-no">. <?=$sr_testimonials?></div>
+								<div class="badge-no"><?=$sr_testimonials?>.</div>
 								
 								<?php if($row->type == 1): ?>
 									<img src="<?php echo !empty($row->link_thumbnail) ? $row->link_thumbnail : base_url().'assets_admin/img/no-image.png'?>" class="list_img">

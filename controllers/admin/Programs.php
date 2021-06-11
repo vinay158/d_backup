@@ -293,7 +293,7 @@ class Programs extends CI_Controller {
 			
 			
 			
-			$this->db->order_by("pos", "ASC");
+			$this->db->order_by('pos asc, id desc');
 			$this->db->select(array('id','program','program_slug','published','category'));
 			$data['blogs'] = $this->query_model->getbySpecific("tblprogram", "category", $data['category_detail'][0]->cat_id);
 			//echo '<pre>data'; print_r($data); die;

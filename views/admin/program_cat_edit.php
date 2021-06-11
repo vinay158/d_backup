@@ -1324,12 +1324,15 @@ try{
 $(".cat_sort_1").sortable({
 update : function () {
 serial = $('.cat_sort_1').sortable('serialize');
+sort_list_li = $(this).find('li');
 $.ajax({
 url: "admin/"+mod_type1+"/sortProgramCatRows/<?=$prog_cat->cat_id?>",
 type: "post",
 data: serial,
-error: function(){
-alert("theres an error with AJAX");
+success: function(){
+	$.each(sort_list_li,function(key, value){
+		$(this).find('.badge-no').html(parseInt(key)+1+'.');
+	});
 }
 });
 }
@@ -1341,12 +1344,15 @@ try{
 $(".cat_sort_4").sortable({
 update : function () {
 serial = $('.cat_sort_4').sortable('serialize');
+sort_list_li = $(this).find('li');
 $.ajax({
 url: "admin/"+mod_type1+"/sortProgramCatSections/<?=$prog_cat->cat_id?>",
 type: "post",
 data: serial,
-error: function(){
-alert("theres an error with AJAX");
+success: function(){
+	$.each(sort_list_li,function(key, value){
+		$(this).find('.badge-no').html(parseInt(key)+1+'.');
+	});
 }
 });
 }
@@ -1565,7 +1571,7 @@ $('body').on('click','.delete_item', function(){
 						total_record = parseInt(total_record) + 1; 
 						$('.total_alternating_'+form_type).html(total_record);
 						
-						$('.alternating_'+form_type).append('<li id="menu_'+data.id+'" class="'+form_type+'_'+data.id+'   az-contact-info-header ui-sortable-handle "><div class="manager-item media"><div style="float:left;"><div class="badge-no">. '+new_number+'</div><h4 class="'+form_type+'_heading_'+data.id+'"><a href="javascript:void(0)">'+data.title+' ( '+data.photo_side+' )</a></h4></div><div class="manager-item-opts"><nav class="nav"><a href="javascript:void(0)" class="badge badge-primary  full_alternate_popup" data-toggle="modal" data-target="#fullAlternatePopup" action_type="edit" item_id="'+data.id+'" table_name="'+data.table_name+'" form_type="'+form_type+'">Edit</a><a class="badge badge-primary delete_item" data-toggle="modal" data-target="#popupDeleteItem" item_id="'+data.id+'" table_name="'+data.table_name+'" item_title="'+data.title+'" section_type="'+form_type+'">Delete</a><a href="javascript:void(0)" id="unpub_'+data.id+'" class="sections_unpublish" table_name="'+data.table_name+'" is_new="1"><div class="az-toggle az-toggle-success alternate_full_width_toogle toogle_btn on" publish_type="0"><span></span><input type="hidden" name="publish_type" value="0" class="publish_type"></div></a></nav></div></div></li>');
+						$('.alternating_'+form_type).append('<li id="menu_'+data.id+'" class="'+form_type+'_'+data.id+'   az-contact-info-header ui-sortable-handle "><div class="manager-item media"><div style="float:left;"><div class="badge-no">'+new_number+'.</div><h4 class="'+form_type+'_heading_'+data.id+'"><a href="javascript:void(0)">'+data.title+' ( '+data.photo_side+' )</a></h4></div><div class="manager-item-opts"><nav class="nav"><a href="javascript:void(0)" class="badge badge-primary  full_alternate_popup" data-toggle="modal" data-target="#fullAlternatePopup" action_type="edit" item_id="'+data.id+'" table_name="'+data.table_name+'" form_type="'+form_type+'">Edit</a><a class="badge badge-primary delete_item" data-toggle="modal" data-target="#popupDeleteItem" item_id="'+data.id+'" table_name="'+data.table_name+'" item_title="'+data.title+'" section_type="'+form_type+'">Delete</a><a href="javascript:void(0)" id="unpub_'+data.id+'" class="sections_unpublish" table_name="'+data.table_name+'" is_new="1"><div class="az-toggle az-toggle-success alternate_full_width_toogle toogle_btn on" publish_type="0"><span></span><input type="hidden" name="publish_type" value="0" class="publish_type"></div></a></nav></div></div></li>');
 						
 						$('#fullAlternatePopup').modal('hide');
 						

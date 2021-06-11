@@ -16,13 +16,13 @@ class Featuredprograms extends CI_Controller {
 	}
 	
 	public function index()
-	{
+	{ 
 		$is_logged_in = $this->session->userdata('is_logged_in');
 		if(!empty($is_logged_in) && $is_logged_in == true){
 			$data['title'] = "Featured Programs";
 			$data['link_type'] = "featuredprograms";
-			$this->db->order_by("pos", "ASC");
 			
+			$this->db->order_by('pos asc, id desc');
 			$this->db->select(array('id','photo_thumb','program_title','p_type','published'));
 			$query = $this->db->get('tblfeaturedprogram');
 			$data['programs'] = $query->result();

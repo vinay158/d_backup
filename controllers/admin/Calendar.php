@@ -86,7 +86,7 @@ class Calendar extends CI_Controller {
 			
 			$config['total_rows'] = $this->pagination_model->record_calender_count('tblcalendar',$category);
 			$offset = ($page  == 1) ? 0 : ($page * $config['per_page']) - $config['per_page'];
-			$this->db->order_by('pos','ASC');
+			$this->db->order_by('pos asc, id desc');
 			$blogs = $this->pagination_model->fetch_calender_data('tblcalendar',$config["per_page"], $offset, $config['total_rows'],$category);
 			$this->pagination->initialize($config);
 		//echo '<pre>'; print_r($blogs);

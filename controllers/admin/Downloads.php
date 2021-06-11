@@ -120,7 +120,7 @@ class Downloads extends CI_Controller {
 			$this->db->order_by("pos", "ASC");
 			$data['cat'] = $this->query_model->getBySpecific('tblcategory','cat_type', "downloads");
 			//$data['cat'] = $this->query_model->getCategory("downloads");
-			$this->db->order_by("pos", "ASC");
+			$this->db->order_by('pos asc, id desc');
 			$data['downloads'] = $this->query_model->getbySpecific("tbldownloads", "category", $data['category_detail'][0]->cat_id);
 
 			$this->db->select('download_thread');

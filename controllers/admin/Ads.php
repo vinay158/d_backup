@@ -22,7 +22,7 @@ class Ads extends CI_Controller {
 				$data['title'] = "Advertisements";
 				$data['link_type'] = "ads";
 				
-				$this->db->order_by("pos", "ASC");
+				$this->db->order_by('pos asc, id desc');
 				$this->db->select(array('id','image_video','video_id','video_type','photo','title','published'));
 				$data['slides'] = $this->query_model->getbyTable("tblads");
 				//echo '<pre>data'; print_r($data); die;

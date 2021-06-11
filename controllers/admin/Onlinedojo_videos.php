@@ -41,7 +41,7 @@ class Onlinedojo_videos extends CI_Controller {
 			
 			
 			$data['album_link_type'] = "onlinedojo_video_albums";
-			$this->db->order_by("pos", "ASC");
+			$this->db->order_by('pos asc, id desc');
 			$this->db->select(array('id','published','album','category','cover','pos'));
 			$data['blogs'] = $this->query_model->getbySpecific("tbl_onlinedojo_galleryname", "category", 26);
 			//echo '<pre>data'; print_r($data); die;

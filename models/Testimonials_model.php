@@ -121,7 +121,7 @@ class Testimonials_model extends CI_Model{
 		
 		$this->db->select('*');
 		$this->db->from('tbltestimonials');
-		$this->db->order_by('pos');
+		$this->db->order_by('pos asc, id desc');
 
 		$query = $this->db->get();
 		$result = $query->result();

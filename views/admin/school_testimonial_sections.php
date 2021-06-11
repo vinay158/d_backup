@@ -1,5 +1,5 @@
 <?php $this->load->view("admin/include/header"); ?>
-<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+
 
 
 <script language="javascript">
@@ -263,7 +263,7 @@ $(document).ready(function(){
 </div>
 <?php } ?>
 
-<div class="form-light-holder">
+<div class="form-new-holder">
 <input type="hidden" value="<?= $location_id; ?>" name="location_id" class="location_id" id="location_id" />
 <input type="hidden" value="trial_offer" name="form_type" />
 		<input type="submit" name="update" value="Save" class="btn-save" />

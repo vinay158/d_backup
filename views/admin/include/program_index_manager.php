@@ -177,12 +177,15 @@ var mod_type1 = $("#mod_type").val().toLowerCase();
 $(".cat_sort_1").sortable({
 update : function () {
 serial = $('.cat_sort_1').sortable('serialize');
+sort_list_li = $(this).find('li');
 $.ajax({
 url: "admin/"+mod_type1+"/sortthis",
 type: "post",
 data: serial,
-error: function(){
-alert("theres an error with AJAX");
+success: function(){
+	$.each(sort_list_li,function(key, value){
+		$(this).find('.badge-no').html(parseInt(key)+1+'.');
+	});
 }
 });
 }

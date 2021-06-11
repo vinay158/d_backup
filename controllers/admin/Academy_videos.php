@@ -154,7 +154,7 @@ class Academy_videos extends CI_Controller {
 				$this->db->where('id', 8);
 				$data['page_title'] = $this->query_model->getbyTable('tbl_studentpagetitle');
 				
-				$this->db->order_by("pos", "ASC");
+				$this->db->order_by('pos asc, id desc');
 				$data['week_academy_pages'] = $this->query_model->getbyTable('tbl_8_week_academy');
 				
 

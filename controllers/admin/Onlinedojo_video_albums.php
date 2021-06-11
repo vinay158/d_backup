@@ -74,7 +74,7 @@ class Onlinedojo_video_albums extends CI_Controller {
 			$data['link_type'] = "onlinedojo_video_albums";
 			$this->db->where("category", $this->uri->segment(5));
 			$data['albums'] = $this->query_model->getbyTable("tbl_onlinedojo_galleryname");
-			$this->db->order_by("pos", "ASC");	
+			$this->db->order_by('pos asc, id desc');
 			$data['media'] = $this->query_model->getbySpecific("tbl_onlinedojo_media", "album", $this->uri->segment(4));
 			$data['type']='';
 			if(is_array($data['media']) && count($data['media'])>0) {

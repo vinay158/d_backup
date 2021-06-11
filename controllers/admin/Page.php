@@ -377,7 +377,7 @@ class Page extends CI_Controller {
 			$data['title'] = 'FAQs';
 			$data['link_type'] = 'programs';
 			
-			$this->db->order_by("pos", 'asc');
+			$this->db->order_by('pos asc, id desc');
 			$this->db->select(array('id','title','published','pos'));
 			$data['programFaqs'] = $this->query_model->getbyTable('tbl_program_faqs');
 			//echo '<pre>data'; print_r($data); die;

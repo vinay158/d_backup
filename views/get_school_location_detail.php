@@ -97,7 +97,7 @@
 	             <?php if($social_contact_fb != ''): ?><li class="social-facebook"><a href="<?= $social_contact_fb; ?>" target="_blank"><i class="fa fa-facebook"></i></a></li><?php endif; ?>
 	            <?php if($social_contact_twitter != ''): ?><li class="social-twitter"><a href="<?= $social_contact_twitter; ?>" target="_blank"><i class="fa fa-twitter"></i></a></li><?php endif; ?>
 	            <?php if($social_contact_instagram != ''): ?><li class="social-instagram"><a href="<?= $social_contact_instagram; ?>" target="_blank"><i class="fa fa-instagram"></i></a></li><?php endif; ?>
-	            <?php if($social_contact_gplus != ''): ?><li class="social-google"><a href="<?= $social_contact_gplus; ?>" target="_blank"><i class="fa fa-google-plus"></i></a></li><?php endif; ?>
+	            <?php /* if($social_contact_gplus != ''): ?><li class="social-google"><a href="<?= $social_contact_gplus; ?>" target="_blank"><i class="fa fa-google-plus"></i></a></li><?php endif; */ ?>
 	            <?php if($social_contact_youtube != ''): ?><li class="social-youtube"><a href="<?= $social_contact_youtube; ?>" target="_blank"><i class="fa fa-youtube-square"></i></a></li><?php endif; ?>
 	            <?php if($social_contact_vimeo != ''): ?><li class="social-vimeo"><a href="<?= $social_contact_vimeo; ?>" target="_blank"><i class="fa fa-vimeo-square"></i></a></li><?php endif; ?>
 				<?php if($social_contact_yelp != ''): ?><li class="social-yelp"><a href="<?= $social_contact_yelp; ?>" target="_blank"><i class="fa fa-yelp"></i></a></li><?php endif; ?>

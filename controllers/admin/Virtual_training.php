@@ -25,9 +25,9 @@ class Virtual_training extends CI_Controller {
 		
 		$data['detail'] = $this->query_model->getbyTable("tbl_virtual_training");
 		
-		$this->db->order_by('pos','asc');
+		$this->db->order_by('pos asc, id desc');
 		$data['rows'] = $this->query_model->getbyTable("tbl_virtual_training_rows");
-		//echo '<pre>data'; print_r($data); die;
+		//echo '<pre>data'; print_r($data['rows']); die;
 			if(isset($_POST['update'])){
 				
 				$updateData['title'] = (isset($_POST['title']) && !empty($_POST['title'])) ? $_POST['title'] : 'Virtual Training';

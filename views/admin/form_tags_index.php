@@ -72,7 +72,7 @@
 					<li   id="menu_<?=$row->id?>" class="full_width_row_<?=$row->id?> az-contact-info-header">
 						<div class="manager-item media">
 							<div style="float:left;">
-								<div class="badge-no">. <?=$sr_testimonials?></div>
+								<div class="badge-no"><?=$sr_testimonials?>.</div>
 								<h4 class="<?php echo $key; ?>_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?=$row->tag;?></a></h4>
 								
 								<?php if(!empty($form_instances)){ ?>
@@ -243,7 +243,7 @@
 								on_off_btn = 'on';
 							}
 							
-							$('.alternating_'+form_type).append('<li id="menu_'+data.id+'" class="full_width_row_'+data.id+'  az-contact-info-header ui-sortable-handle"><div class="manager-item media"><div style="float:left;"><div class="badge-no">. '+new_number+'</div><h4 class="'+form_type+'_heading_'+data.id+'"><a href="javascript:void(0)">'+data.title+'</a></h4></div><div class="manager-item-opts"><nav class="nav"><a href="javascript:void(0)" class="badge-primary badge full_alternate_popup" data-toggle="modal" data-target="#fullAlternatePopup" action_type="edit" item_id="'+data.id+'" table_name="tbl_form_tags" form_type="'+form_type+'">Edit</a><a class="badge badge-primary ajax_record_delete" data-toggle="modal" data-target="#popupDeleteRecord" item_id="'+data.id+'" table_name="tbl_form_tags" item_title="'+data.title+'" section_type="full_width_row_'+form_type+'">Delete</a></nav></div></div></li>');
+							$('.alternating_'+form_type).append('<li id="menu_'+data.id+'" class="full_width_row_'+data.id+'  az-contact-info-header ui-sortable-handle"><div class="manager-item media"><div style="float:left;"><div class="badge-no">'+new_number+'.</div><h4 class="'+form_type+'_heading_'+data.id+'"><a href="javascript:void(0)">'+data.title+'</a></h4></div><div class="manager-item-opts"><nav class="nav"><a href="javascript:void(0)" class="badge-primary badge full_alternate_popup" data-toggle="modal" data-target="#fullAlternatePopup" action_type="edit" item_id="'+data.id+'" table_name="tbl_form_tags" form_type="'+form_type+'">Edit</a><a class="badge badge-primary ajax_record_delete" data-toggle="modal" data-target="#popupDeleteRecord" item_id="'+data.id+'" table_name="tbl_form_tags" item_title="'+data.title+'" section_type="full_width_row_'+form_type+'">Delete</a></nav></div></div></li>');
 							
 							
 							//$('#fullAlternatePopup').find('.close').trigger('click');

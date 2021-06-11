@@ -280,7 +280,7 @@ class Staff extends CI_Controller {
 						$data['link_type'] = 'staff';
 						//echo $this->uri->segment(4); die;
 						
-						$this->db->order_by("pos","asc");
+						$this->db->order_by('pos asc, id desc');
 						$this->db->select(array('id','photo','name','published'));
 						$data['staff'] = $this->query_model->getbySpecific("tblstaff", 'location_id',$this->uri->segment(4));
 						

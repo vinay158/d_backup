@@ -103,7 +103,7 @@ class Albums extends CI_Controller {
 				
 			}
 			
-			$this->db->order_by("pos", "ASC");
+			$this->db->order_by('pos asc, id desc');
 			$this->db->where("type", 2);
 			$data['albums'] = $this->query_model->getbySpecific("tblmedia", "category", $this->uri->segment(4));
 			

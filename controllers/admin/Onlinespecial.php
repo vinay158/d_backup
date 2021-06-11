@@ -46,7 +46,7 @@ class Onlinespecial extends CI_Controller {
 			$data['site_setting'] = $this->query_model->getbyTable('tblsite');
 			//echo '<pre>'; print_r($data['site_setting']); die;
 			
-			$this->db->order_by("pos","asc");
+			$this->db->order_by('pos asc, id desc');
 			$this->db->where("cat_id",$category_id);
 			$this->db->select(array('id','offer_title','trial','display_trial','cat_id','published','title'));
 			$data['offer'] = $this->query_model->getbyTable("tblspecialoffer");
@@ -450,7 +450,7 @@ class Onlinespecial extends CI_Controller {
 			$this->db->where("id", $id);
 			$records['pagedetails'] = $this->db->get("tbl_onlinespecial_text_sections")->result();
 			
-			$this->db->order_by("pos", 'asc');
+			$this->db->order_by('pos asc, id desc');
 			$this->db->select(array('id','title','photo_side','published'));
 			$records['aboutUsRows'] = $this->query_model->getbyTable('tbl_onlinespecial_rows');
 			//echo '<pre>records'; print_r($records); die;
