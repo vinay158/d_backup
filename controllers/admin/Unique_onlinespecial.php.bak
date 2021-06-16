@@ -51,7 +51,7 @@ class Unique_onlinespecial extends CI_Controller {
 			$this->db->where("cat_id",$category_id);
 			$this->db->select(array('id','offer_title','trial','display_trial','cat_id','published','title'));
 			$data['offer'] = $this->query_model->getbyTable("tbl_unique_specialoffer");
-			//echo '<pre>'; print_r($data['offer']); die;
+			echo '<pre>'; print_r($data['offer']); die;
 			$data['multi_location'] = $this->query_model->getbyTable("tblconfigcalendar");
 			
 			$this->db->where("published", 1);

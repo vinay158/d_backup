@@ -204,7 +204,7 @@ $("#delete_files").click(function(){
 			?>
 			<div><img src="upload/downloads/<?=$details->files;?>" style="width: 100px; clear:both;" /></div>
 			<?php } elseif($image_Detail[1] == 'pdf'){ ?>
-			<div><img src="images/pdf_icon.png" style="width: 100px; clear:both;" /></div>
+			<img src="images/pdf_icon.png" style="width: 100px; clear:both;" />
 			<?php } else { ?>
 			<div><img  src="images/Files-Folders.png" style="width: 100px; clear:both;" /></div>
 			<?php } ?>

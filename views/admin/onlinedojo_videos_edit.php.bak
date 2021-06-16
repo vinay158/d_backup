@@ -251,7 +251,7 @@ CKEDITOR.config.toolbar = [
 		
 		$("#delete_img_left").click(function(){
 
-			$('#custom_img_left').remove();
+			$('#custom_img_left').hide();
 			
 			var image_path=$('#custom_img_left').find('img').attr('src');
 			var number=$(this).attr('number');

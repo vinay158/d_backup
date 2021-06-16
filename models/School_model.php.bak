@@ -93,8 +93,7 @@ class School_model extends CI_Model{
 		$this->db->select_max('pos');
 		$query = $this->db->get('tblschool_staff');
 		$row = $query->row();
-		//$data['pos'] = $row->pos + 1;
-		$data['pos'] = 0;
+		$data['pos'] = $row->pos + 1;
 		
 		if(isset($_FILES['userfile']['name']) && !empty($_FILES['userfile']['name'])){
 			$_FILES['userfile']['name'] = time().$_FILES['userfile']['name'];

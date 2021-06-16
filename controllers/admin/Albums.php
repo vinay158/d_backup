@@ -514,5 +514,31 @@ class Albums extends CI_Controller {
 	
 	
 	
+public function deleteVideoCustomImage(){
+		
+		if(count($_POST)>0){			
+					
+			//$photo = $_POST['photo'];
+			$id = $_POST['number'];
+			
+			$query = $this->db->query("update tblmedia set custom_video_thumbnail='' where id=".$id."");
+			
+			if($query)
+			{	
+				/*$dir=pathinfo(BASEPATH);
+				
+				$img=$dir['dirname'].'/'.$_POST['image_path'];				
+				unlink($img);*/					
+				echo 1;
+			}
+			else
+			{
+				echo 0;
+			}
+		}else{
+				echo 0;
+		}
+	
+	}
 	
 }

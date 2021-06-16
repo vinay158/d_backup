@@ -92,28 +92,16 @@
 			 foreach($media as $row):
 			 $sr_testimonials++;
 			 
-				 $v_id=trim($row->video_id);
-				$src='';
-				if($row->video_type=='youtube'){
-					$src="http://img.youtube.com/vi/".$v_id."/0.jpg";	
-				}
-				if($row->video_type=='vimeo'){
-					
-					$src = $this->query_model->getViemoVideoImage($v_id);
-					
-					/***********************************************************************/
-					/*$url="http://vimeo.com/api/v2/video/".$v_id.".php";
-					$data=file_get_contents($url);
-					$data=unserialize($data);									
-					$src=$data[0]['thumbnail_small']; */
-				}
+				$videoData = array('video_type'=>$row->video_type,'video_id'=>trim($row->video_id), 'video_img_type' => $row->video_img_type,'custom_video_thumbnail'=>$row->custom_video_thumbnail);
+				
+				$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
 			?>
 
 
 					<li   id="menu_<?=$row->id?>" class="full_width_row_<?=$row->id?> az-contact-info-header">
 						<div class="manager-item media">
 							<div style="float:left;">
-								<div class="badge-no">. <?=$sr_testimonials?></div>
+								<div class="badge-no"><?=$sr_testimonials?>.</div>
 								
 								<?php if($row->type == 1): ?>
 									<img src="<?php echo !empty($row->link_thumbnail) ? $row->link_thumbnail : base_url().'assets_admin/img/no-image.png'?>" class="list_img">
@@ -134,9 +122,9 @@
 							?>
 							
 							<?php if($row->type == 1) : ?>
-							<input type="hidden" name="media_link_<?=$row->id?>" class="<?=$row->desc?>" id="media_link_<?=$row->id?>" title='<?=$coverImg?>' value="<?=$row->link_thumbnail_2;?>" />
+							<input type="hidden" name="media_link_<?=$row->id?>" class="<?=$row->desc?>" id="media_link_<?=$row->id?>" title='<?=$coverImg?>' value="<?=$row->link_thumbnail_2;?>"  video_img_type="<?=$row->video_img_type?>" custom_video_thumbnail="<?=$row->custom_video_thumbnail?>"  />
 							<?php else: ?>
-							<input type="hidden" name="media_link_<?=$row->id?>" class="<?=$row->desc?>" id="media_link_<?=$row->id?>" title='<?=$coverImg?>' value="<?=$row->link?>" />
+							<input type="hidden" name="media_link_<?=$row->id?>" class="<?=$row->desc?>" id="media_link_<?=$row->id?>" title='<?=$coverImg?>' value="<?=$row->link?>"  video_img_type="<?=$row->video_img_type?>" custom_video_thumbnail="<?=$row->custom_video_thumbnail?>"  />
 							<?php endif; ?>
 							
 							  <a href="javascript:void(0)" class="badge badge-primary edit_video" media_id="<?=$row->id;?>">Edit</a>
@@ -265,6 +253,10 @@ $(document).ready(function(){
 		var desc = $("#media_link_"+media_id).attr("class");
 		var coverlink = $("#media_link_"+media_id).attr("title");
 		var url = $("#media_link_"+media_id).val();	
+		var video_img_type = $("#media_link_"+media_id).attr("video_img_type");	
+		var custom_video_thumbnail = $("#media_link_"+media_id).attr("custom_video_thumbnail");	
+		
+		
 		if(coverlink){
 			$("#album-cover").addClass("check-on");
 			$("#album-cover").removeClass("check-off");
@@ -281,7 +273,74 @@ $(document).ready(function(){
 		$("#embed_edit").val(url);
 		$("#cover_link").val(loc);
 		
+		
+		$.each( $( ".video_img_type" ), function() {
+			if($(this).val() == video_img_type){
+				$(this).prop('checked', true);
+				$(this).attr('checked', 'checked');
+			}
+		});
+		
+		$.each( $( ".video_img_type" ), function() {
+			
+			if($(this).attr('checked') == 'checked'){
+				var video_imgradio_button_value = $(this).val();
+					
+				if(video_imgradio_button_value == "upload_image"){
+					$('.welcome_video_image').show();
+				}else{
+					$('.welcome_video_image').hide();
+				}
+			}
+			
+		});
+		
+		
+		if(video_img_type != "" && custom_video_thumbnail != ""){
+			$('#img_left').show();
+			$('#img_left').find('.old_custom_thumbnail_img').val(custom_video_thumbnail);
+			$('#img_left').find('img').attr('src',"<?php echo base_url().'upload/class_schedule/' ?>"+custom_video_thumbnail);
+			$('#img_left').find('a').attr('number',media_id);
+		}
+		
+		
+		
 	})
+	
+	
+	
+	$("body").on('click','#delete_img_left',function(){
+
+			$('#img_left').remove();
+			
+			var image_path=$('#img_left').find('img').attr('src');
+			var number=$(this).attr('number');
+			
+			$.ajax({ 					
+			type: 'POST',						
+			url: 'admin/academy_videos/deleteVideoCustomImage',						
+			data: {image_path:image_path,number:number}					
+			}).done(function(msg){ 
+			if(eval(msg) == 1){
+				
+			}
+			});
+
+		});
+		
+	$('body').on('click','.video_img_type',function(){
+			var radio_button_value = $(this).val();
+			
+			if(radio_button_value == "automatically"){
+				$('.welcome_video_image').hide();
+			}
+			if(radio_button_value == "upload_image"){
+				$('.welcome_video_image').show();
+						
+				
+			}
+		});
+		
 })
 
 </script>
@@ -526,7 +585,7 @@ $(document).ready(function(){
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-		  <form action="admin/<?=$link_type?>/operateMedia" method="post" id="operateform" onSubmit="javascript:return testUrlForMedia(this);">
+		  <form action="admin/<?=$link_type?>/operateMedia" method="post"  enctype="multipart/form-data"   id="operateform" onSubmit="javascript:return testUrlForMedia(this);">
           <div class="modal-body edit-form">
             <div class="row row-xs align-items-center">
 					<div class="col-md-12 mg-t-5 mg-md-t-0">
@@ -549,14 +608,6 @@ $(document).ready(function(){
 								</select>
 					
 					</div>
-					
-					<?php if($type==2){ ?>  
-					<div class="col-md-12 mg-t-5 mg-md-t-0">					
-						<h1>URL</h1>
-						<input type="text" name="media_url" id="embed_edit" class="field full_width_input edit_video_media_url" value="">
-					</div>
-					<?php } ?>
-					
 					<div class="col-md-12 mg-t-5 mg-md-t-0">
 						<h1>Caption</h1>
 						
@@ -568,6 +619,56 @@ $(document).ready(function(){
 						<input type='hidden' name='video_type' id ='video_type_edit' value=''/>
 						<input type='hidden' name='video_id' id ='video_id_edit' value=''/>
 					</div>
+					
+					<?php if($type==2){ ?>  
+					<div class="col-md-12 mg-t-5 mg-md-t-0">					
+						<h1>URL</h1>
+						<input type="text" name="media_url" id="embed_edit" class="field full_width_input edit_video_media_url" value="">
+					</div>
+					<?php } ?>
+					
+					
+					
+					<div class="col-md-12 mg-t-5 mg-md-t-0">
+						<h1>Upload Video Image</h1>
+						<div class="row row-xs align-items-center">
+							
+							<div class="col-md-12  mg-t-5 mg-md-t-0">
+							<div class="row mg-t-10">
+								<div class="col-lg-6">
+								  <label class="rdiobox">
+									<input type="radio" class="video_img_type" name="video_img_type" value="automatically" /> 
+									<span> Automatically pull from youtube/vimeo</span>
+								  </label>
+								</div><!-- col-3 -->
+								<div class="col-lg-6 mg-t-20 mg-lg-t-0">
+								  <label class="rdiobox">
+									<input type="radio" class="video_img_type" name="video_img_type" value="upload_image" />
+									<span>Upload custom image</span>
+								  </label>
+								</div><!-- col-3 -->
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="col-md-12 mg-t-5 mg-md-t-0 welcome_video_image">
+						<h1 >Upload Video Thumbnail Image</h1>
+						<div class="custom-file half_width_custom_file">
+							<input type="file" name="custom_video_thumbnail" class="custom-file-input" id="customFile4" accept="image/*" />
+						<label class="custom-file-label" for="customFile">Choose file</label></div>
+						
+						<div id="img_left" style="display:none">
+							<img style="width: 100px; clear:both;" src="" class="">
+							<br/>
+							<input name="old_custom_thumbnail_img" class="old_custom_thumbnail_img" value="" type="hidden" />
+						
+							<a href='javascript:void(0);' class='delete_image_btn_new' id='delete_img_left' number="">Delete image</a>
+						</div>
+					</div>
+					
+					
+					
 					
 					<h1>&nbsp;</h1>
 					<div class="col-md-12 mg-t-5 mg-md-t-0">

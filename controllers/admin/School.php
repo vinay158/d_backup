@@ -635,7 +635,7 @@ public function sortthisstaff(){
 					$data['title'] = 'Our School Instructors';
 						$data['link_type'] = 'school';
 						//echo $this->uri->segment(4); die;
-						$this->db->order_by("pos","asc");
+						$this->db->order_by('pos asc, id desc');
 						$this->db->select(array('id','name','photo','published','location_id','pos'));
 						$data['staff'] = $this->query_model->getbySpecific("tblschool_staff", 'location_id',$this->uri->segment(4));
 						

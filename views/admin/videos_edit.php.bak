@@ -130,7 +130,7 @@ $(window).load(function(){
 		
 		$("#delete_img_left").click(function(){
 
-			$('#img_left').remove();
+			$('#img_left').hide();
 			
 			var image_path=$('#img_left').find('img').attr('src');
 			var number=$(this).attr('number');
@@ -142,6 +142,7 @@ $(window).load(function(){
 			}).done(function(msg){ 
 			if(eval(msg) == 1){
 				
+				//setTimeout("window.location.href='admin/"+mod_type+"/edit/"+staff_id+"'",1000);
 			}
 			});
 

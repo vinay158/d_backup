@@ -1543,7 +1543,6 @@ public function sortthisstaff(){
 			$this->db->where("location_id", $this->uri->segment(4));
 			$this->db->order_by('pos asc, id desc');
 			$records['schoolTestimonials'] = $this->db->get("tbl_school_testimonials")->result();
-			echo '<pre>'; print_r($records['schoolTestimonials']); die;
 			
 			
 			

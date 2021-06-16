@@ -647,10 +647,8 @@ if(!empty($unique_trial_boxes)){
 			url: "admin/"+mod_type+"/sortthis",
 			type: "post",
 			data: serial,
-			success: function(){
-				$.each(sort_list_li,function(key, value){
-					$(this).find('.badge-no').html(parseInt(key)+1+'.');
-				});
+			error: function(){
+				alert("theres an error with AJAX");
 			}
 		});
 	}

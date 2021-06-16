@@ -158,7 +158,7 @@ $("#delete_files").click(function(){
 			
 			<div class="custom-file half_width_custom_file">
 				
-			<input type="file" name="files" class="custom-file-input" id="customFile1"  />
+			<input type="file" name="files" class="custom-file-input" id="customFile1" accept=".css" />
 			<label class="custom-file-label" for="customFile">Choose file</label></div>
 			
 			<div><img  src="images/Files-Folders.png" style="width: 100px; clear:both;" /></div>

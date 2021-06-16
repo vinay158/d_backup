@@ -47,7 +47,7 @@
 			items: "li:not(.ui-state-disabled)",
         	update : function () {
 				serial = $('.ui-sortable').sortable('serialize');
-
+				alert('dsafds');
 				$.ajax({
 					url: "admin/"+mod_type1+"/sortcategory",
 					type: "post",

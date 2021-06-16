@@ -90,7 +90,7 @@ class Themes extends CI_Controller {
 			$data['link_type'] = 'themes';	
 			$data['user_level']=$this->session->userdata['user_level'];	
 			
-			$this->db->order_by('id desc');
+			$this->db->order_by('pos asc, id desc');
 			$data['themes'] = $this->query_model->getbyTable("tblthemes");
 			
 			$this->load->view("admin/theme_index", $data);

@@ -52,6 +52,11 @@ endif;
 ?>
 </select>
 </div> --->
+
+<div  class="form-light-holder">
+			<h1 class="descrip">Video caption</h1>
+			<input type="text" name="description" id="description" class="field  full_width_input" style=""/>
+			</div>
 <div class="form-light-holder">
 	<h1>Video URL</h1>
 	<input type="text" value="" name="embed" id="embed" class="field full_width_input" placeholder="Enter your video url" style=""/>
@@ -61,10 +66,6 @@ Vimeo Example: - https://vimeo.com/37865623
 	</em></span>
 </div>
 
-<div  class="form-light-holder">
-			<h1 class="descrip">Video caption</h1>
-			<input type="text" name="description" id="description" class="field  full_width_input" style=""/>
-			</div>
 
 
 
