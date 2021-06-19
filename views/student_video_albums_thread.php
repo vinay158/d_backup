@@ -45,7 +45,7 @@
         </div> 
 			
 			
-		<?php if(!empty($type) && $type =="inner_page"){ ?>
+		<?php if(!empty($type) && $type =="inner_page"){  ?>
 			
 			<?php if(!empty($album['categoryDetail'])){ ?>
 				<!--- sub categories --->
@@ -60,7 +60,7 @@
 						<div class="video-gallery">
 						<div class="album">
 					<?php 
-						if(!empty($album['categoryDetail'][0]->cover)){
+						/*if(!empty($album['categoryDetail'][0]->cover)){
 							$video_type = explode('/',$album['categoryDetail'][0]->cover);
 							
 							if($video_type[2] == 'img.youtube.com'){
@@ -71,9 +71,26 @@
 							
 							$cover_image = $this->query_model->changeVideoImgPathHttp($cover_image);
 						}	
-							$cover_image = !empty($album['categoryDetail'][0]->cover) ? $cover_image : base_url().'images/no_image_available.jpg';
+							$cover_image = !empty($album['categoryDetail'][0]->cover) ? $cover_image : base_url().'images/no_image_available.jpg';*/
+							
+							$this->db->limit(1);
+							$this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+							 $this->db->where('is_cover_image',1);
+							 $coverVideo = $this->query_model->getBySpecific('tblmedia', 'category',$album['categoryDetail'][0]->cat_id);
+							 
+							 $cover_image = base_url().'images/no_image_available.jpg';
+							 
+							 if(!empty($coverVideo)){
+								
+								$videoData = array('video_type'=>$coverVideo[0]->video_type,'video_id'=>trim($coverVideo[0]->video_id), 'video_img_type' => $coverVideo[0]->video_img_type,'custom_video_thumbnail'=>$coverVideo[0]->custom_video_thumbnail);
+								
+								$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
+								
+							 }
+							 
+							$cover_image = $this->query_model->changeVideoImgPathHttp($cover_image);
 					?>
-					  <div class="video-box">
+					  <div class="video-box 1">
 						 <img src="<?= $cover_image; ?>" class="img-responsive videoAlbum">
 					  </div>
 					  
@@ -99,7 +116,7 @@
 									<a class="downloadTitle" href="<?php echo base_url().$student_section_slug->slug.'/videos_albums/'.$sub_cat->cat_id; ?>">
 										<div class="download-box">
 										<?php 
-											if(!empty($sub_cat->cover)):
+											/*if(!empty($sub_cat->cover)):
 												$video_type = explode('/',$sub_cat->cover);
 												
 												if($video_type[2] == 'img.youtube.com'){
@@ -112,10 +129,25 @@
 												
 											endif; 
 												//echo 'cover_image=>'.$sub_cat->cover;
-												$cover_image = !empty($sub_cat->cover) ? $cover_image : base_url().'images/no_image_available.jpg';
+												$cover_image = !empty($sub_cat->cover) ? $cover_image : base_url().'images/no_image_available.jpg';*/
 												
+												$this->db->limit(1);
+												$this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+												 $this->db->where('is_cover_image',1);
+												 $coverVideo = $this->query_model->getBySpecific('tblmedia', 'category',$sub_cat->cat_id);
+												 
+												 $cover_image = base_url().'images/no_image_available.jpg';
+												 
+												 if(!empty($coverVideo)){
+													
+													$videoData = array('video_type'=>$coverVideo[0]->video_type,'video_id'=>trim($coverVideo[0]->video_id), 'video_img_type' => $coverVideo[0]->video_img_type,'custom_video_thumbnail'=>$coverVideo[0]->custom_video_thumbnail);
+													
+													$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
+													
+												 }
+												$cover_image = $this->query_model->changeVideoImgPathHttp($cover_image);
 										?>
-										  <div class="video-box">
+										  <div class="video-box 2">
 											 <img src="<?= $cover_image; ?>" class="img-responsive videoAlbum">
 										  </div>
 										  <?php ?>
@@ -142,7 +174,7 @@
 								$v_id=trim($video->video_id);
 								$video_class = '';
 								if($video->video_type=='youtube'){
-									$src="http://i.ytimg.com/vi/".$v_id."/0.jpg";
+									//$src="http://i.ytimg.com/vi/".$v_id."/0.jpg";
 									
 									$video_id = $v_id;
 									$video_type = 'youtube';
@@ -154,17 +186,23 @@
 								if($video->video_type=='vimeo'){
 									//http://vimeo.com/api/v2/video/17631561.php
 									//$src=getThumbnailImage($v_id);
-									$src=$this->query_model->getViemoVideoImage($v_id);
+								//	$src=$this->query_model->getViemoVideoImage($v_id);
 									$video_id = $v_id;
 									$video_type = 'vimeo';
 								}
 								
-								$src = $this->query_model->changeVideoImgPathHttp($src);
+								
+								$videoData = array('video_type'=>$video->video_type,'video_id'=>trim($video->video_id), 'video_img_type' => $video->video_img_type,'custom_video_thumbnail'=>$video->custom_video_thumbnail);
+				
+								$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
+								
+								$cover_image = $this->query_model->changeVideoImgPathHttp($cover_image);
+								
 						?>
 								<div class="col-md-4 col-sm-4 col-xs-12 videoBoxBottomMargin grid-item ">
 									
-									  <div class="video-box <?= $video_class; ?> videosLightbox">
-											<a href="#" class="slvj-link-lightbox 1" data-videoid="<?= $video_id ?>" data-videosite="<?= $video_type ?>"><img src="<?=$src?>" class="img-responsive videoBox"  data-toggle="modal" data-target=".bs-example-modal-lg" url="<?php echo $video->link; ?>?modestbranding=1&autohide=1&showinfo=0&controls=1"></a>
+									  <div class="video-box 3 <?= $video_class; ?> videosLightbox">
+											<a href="#" class="slvj-link-lightbox 1" data-videoid="<?= $video_id ?>" data-videosite="<?= $video_type ?>"><img src="<?=$cover_image?>" class="img-responsive videoBox"  data-toggle="modal" data-target=".bs-example-modal-lg" url="<?php echo $video->link; ?>?modestbranding=1&autohide=1&showinfo=0&controls=1"></a>
 										
 										
 										<p><?php  $this->query_model->getDescReplace( $video->desc); ?></p>
@@ -186,12 +224,30 @@
 					  <div class="grid-sizer"></div>
 						<?php 
 						if(!empty($album['sub_categories'])){
-						foreach($album['sub_categories'] as $sub_cat): ?>
+						foreach($album['sub_categories'] as $sub_cat):   ?>
 							<div class="col-md-3 col-xs-12 col-sm-6  grid-item ">
 								<a class="downloadTitle" href="<?php echo base_url().$student_section_slug->slug.'/videos_albums/'.$sub_cat->cat_id; ?>">
 									<div class="download-box">
 									<?php 
-											if(!empty($sub_cat->cover)):
+									$this->db->limit(1);
+									 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+									 $this->db->where('is_cover_image',1);
+									 $coverVideo = $this->query_model->getBySpecific('tblmedia', 'category',$sub_cat->cat_id);
+									 
+									 $cover_image = base_url().'images/no_image_available.jpg';
+									 
+									 if(!empty($coverVideo)){
+										
+										$videoData = array('video_type'=>$coverVideo[0]->video_type,'video_id'=>trim($coverVideo[0]->video_id), 'video_img_type' => $coverVideo[0]->video_img_type,'custom_video_thumbnail'=>$coverVideo[0]->custom_video_thumbnail);
+										
+										$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
+										
+									 }
+										
+									
+									$cover_image = $this->query_model->changeVideoImgPathHttp($cover_image);
+											
+											/*if(!empty($sub_cat->cover)):
 												$video_type = explode('/',$sub_cat->cover);
 												
 												if($video_type[2] == 'img.youtube.com'){
@@ -204,10 +260,10 @@
 											
 											endif;
 											
-												$cover_image = !empty($sub_cat->cover) ? $cover_image : base_url().'images/no_image_available.jpg';
+												$cover_image = !empty($sub_cat->cover) ? $cover_image : base_url().'images/no_image_available.jpg';*/
 										?>
-										  <div class="video-box">
-											 <img src="<?= $cover_image; ?>" class="img-responsive videoAlbum">
+										  <div class="video-box 4">
+											 <img src="<?= $cover_image; ?>" class="img-responsive videoAlbum" style="min-width:253px">
 										  </div>
 										  <?php  ?>
 										  <div class="video-desc">
@@ -241,7 +297,7 @@
 								$v_id=trim($video->video_id);
 								$video_class = '';
 								if($video->video_type=='youtube'){
-									$src="http://i.ytimg.com/vi/".$v_id."/0.jpg";
+									//$src="http://i.ytimg.com/vi/".$v_id."/0.jpg";
 									
 									$video_id = $v_id;
 									$video_type = 'youtube';
@@ -253,17 +309,22 @@
 								if($video->video_type=='vimeo'){
 									//http://vimeo.com/api/v2/video/17631561.php
 									//$src=getThumbnailImage($v_id);
-									$src=$this->query_model->getViemoVideoImage($v_id);
+									//$src=$this->query_model->getViemoVideoImage($v_id);
 									$video_id = $v_id;
 									$video_type = 'vimeo';
 								}
 								
-								$src = $this->query_model->changeVideoImgPathHttp($src);
+								$videoData = array('video_type'=>$video->video_type,'video_id'=>trim($video->video_id), 'video_img_type' => $video->video_img_type,'custom_video_thumbnail'=>$video->custom_video_thumbnail);
+				
+								$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
+								
+								$cover_image = $this->query_model->changeVideoImgPathHttp($cover_image);
+								
 						?>
 								<div class="col-md-4 col-sm-4 col-xs-12 videoBoxBottomMargin  grid-item ">
 									
-									  <div class="video-box <?= $video_class; ?> videosLightbox">
-											<a href="#" class="slvj-link-lightbox 1" data-videoid="<?= $video_id ?>" data-videosite="<?= $video_type ?>"><img src="<?=$src?>" class="img-responsive videoBox"  data-toggle="modal" data-target=".bs-example-modal-lg" url="<?php echo $video->link; ?>?modestbranding=1&autohide=1&showinfo=0&controls=1"></a>
+									  <div class="video-box 5 <?= $video_class; ?> videosLightbox">
+											<a href="#" class="slvj-link-lightbox 1" data-videoid="<?= $video_id ?>" data-videosite="<?= $video_type ?>"><img src="<?=$cover_image?>" class="img-responsive videoBox"  data-toggle="modal" data-target=".bs-example-modal-lg" url="<?php echo $video->link; ?>?modestbranding=1&autohide=1&showinfo=0&controls=1"></a>
 										
 										
 										<p><?php  $this->query_model->getDescReplace( $video->desc); ?></p>

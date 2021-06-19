@@ -222,15 +222,20 @@
 								Lead Type: <?php echo $lead_type; ?><br/>
 								Lead ID: <?php echo $lead->id; ?><br/>-->
 								<div class="icon">
+									<?php if(!empty($lead->phone)){ ?>
 									<a href="tel:<?php echo $lead->phone; ?>"><i class="fas fa-phone"></i></a>
-									
-									<?php if($is_mobile_number_linked_twilio == 1){ ?>
-										<a href="<?php echo base_url().'admin/twilio_sms_messenger?kanban_user_phone_number='.$lead->phone ?>"><i class="fas fa-mobile-alt"></i></a>
+									<?php 
+										$this->db->select('id');
+										$is_twilio_user_record = $this->query_model->getBySpecific('twilio_sms_users','phone',$lead->phone);
+									?>
+									<?php if($is_mobile_number_linked_twilio == 1 && !empty($is_twilio_user_record)){ ?>
+										<a href="<?php echo base_url().'admin/twilio_sms_messenger?kanban_user_phone_number='.$lead->phone; ?>"><i class="fas fa-mobile-alt"></i></a>
 										
 										<!--<span data-container="body" data-popover-color="head-primary" data-placement="top" title="Search engine" data-content="The name of the search engine that sends users to your website."><i class="fa fa-question-circle"></i></span> -->
 										
 									<?php }else{ ?>
-										<span class=""  data-toggle="tooltip-primary" data-placement="top" title="" data-original-title="Mobile: <?php echo $lead->phone; ?>"><i class="fas fa-mobile-alt"></i></span>
+										<span class=""  data-toggle="tooltip-primary" data-placement="top" title="" data-original-title="Mobile: <?php echo $lead->phone; ?>"><i class="fas fa-mobile-alt"></i></span> &nbsp;
+									<?php } ?>
 									<?php } ?>
 									
 									
@@ -961,7 +966,9 @@ $(document).ready(function(){
 						$('.kanban_status_'+data.status_type_id).find('.board-item-content').css('border-left','10px solid '+color_code);
 						
 						$('#popup').modal('hide');
-						$('#responsePopup').find('.action_response_msg').html('Successfully tranferd lead '+data.old_kanban_status_name +' to '+data.kanban_status_name);
+						//$('#responsePopup').find('.action_response_msg').html('Successfully Transferred Lead  '+data.old_kanban_status_name +' to '+data.kanban_status_name);
+						
+						$('#responsePopup').find('.action_response_msg').html('Successfully Transferred Lead to '+data.kanban_status_name);
 						
 						$('#responsePopup').modal('show');
 							setTimeout(function() {

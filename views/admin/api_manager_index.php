@@ -135,7 +135,7 @@
 			<!-- Section 3 -->
 			<div class="mb-3 main-content-label">Payment Gateway APIs</div>
 			<div class="accordion_in   <?php echo (!empty($apis_authorize_net_payment['detail']) && $apis_authorize_net_payment['detail']->authorize_net_payment == 1) ? 'acc_active' : ''; ?>">
-				<div class="acc_head">Authorize Net Payment</div>
+				<div class="acc_head">Authorize.net Payment</div>
 				<div class="acc_content">
 					<!-- Your text here. For this demo, the content is generated automatically. -->
 					<?php echo $this->load->view("admin/apis_authorize_net_payment", $apis_authorize_net_payment, TRUE); ?>
@@ -171,7 +171,7 @@
 				<div class="acc_head">Paypal Payment</div>
 				<div class="acc_content">
 					<!-- Your text here. For this demo, the content is generated automatically. -->
-					<?php echo $this->load->view("admin/apis_paypal_payment", $apis_paypal_payment); ?>
+					<?php echo $this->load->view("admin/apis_paypal_payment", $apis_paypal_payment, TRUE); ?>
 				</div>
 			</div>
 			
@@ -760,10 +760,10 @@ if(!empty($webhook_apis_incoming_leads)):?>
           
 		  <div class="modal-footer">
 			  <div class="col-md-6 text-left">
-				<a href="javascript:void(0)" class="btn btn-indigo popup_cancel_btn" data-dismiss="modal">No, cancel please !</a>
+				<a href="javascript:void(0)" class="btn btn-indigo popup_cancel_btn" data-dismiss="modal">No, cancel please!</a>
 			  </div>
 			   <div class="col-md-6 text-right">
-				<a href="javascript:void(0)" class="btn btn-indigo popup_delete_btn">Yes, Delete It !</a>
+				<a href="javascript:void(0)" class="btn btn-indigo popup_delete_btn">Yes, Delete It!</a>
 			   </div>
           </div>
 		  

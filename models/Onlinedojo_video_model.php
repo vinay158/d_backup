@@ -251,7 +251,7 @@ function updateVideo(){
 				
 		 		
 	 } 
-	 //echo $video_img; die;
+	// echo $video_id; die;
 	 $videoimage = '';
 	 if(!empty($video_img)){
 	 	

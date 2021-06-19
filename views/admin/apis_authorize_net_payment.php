@@ -77,7 +77,7 @@ $("#authorizePayment .form-light-holder1 .authorizecheckbox").click(function(){
 ?>
 <div class="form-light-holder1   form-new-holder">
 	<a id="published" class="authorizecheckbox <?php echo $authorize_checkbox_check; ?> " ></a>
-	<h1 class="inline">Authorize Net Payment</h1>
+	<h1 class="inline">Authorize.net Payment</h1>
 	<input type="hidden" value="<?php if(!empty($apis_authorize_net_payment['detail'])){ echo $apis_authorize_net_payment['detail']->authorize_net_payment; } else{ echo 0; }?>" name="authorize_net_payment" class="authorize_hidden_cb" />
 </div>
 

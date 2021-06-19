@@ -37,7 +37,7 @@ class Onlinedojo_users extends CI_Controller {
 	} 
 	
 		if(!empty($is_logged_in) && $is_logged_in == true){
-			$data['title'] = "OnlineDojo User"; //title on view page
+			$data['title'] = "Online Dojo User"; //title on view page
 			$data['link_type'] = "onlinedojo_users"; //cotroller name
 			//$this->db->order_by('id','desc');
 			//$data['user'] = $this->query_model->getbyTable("tbl_onlinedojo_users");

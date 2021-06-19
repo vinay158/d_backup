@@ -43,7 +43,7 @@
           <div class="col-md-6 col-xs-12 col-sm-6">
             <div class="album">
 			 <?php 
-			 	if(!empty($album->cover)):
+			 	/*if(!empty($album->cover)):
 					$video_type = explode('/',$album->cover);
 					
 					if($video_type[2] == 'img.youtube.com'){
@@ -52,13 +52,30 @@
 						$cover_image = str_replace('200x150.jpg','960x720.jpg',$album->cover);
 					}
 					
+					$cover_image = $this->query_model->changeVideoImgPathHttp($cover_image);*/
+					
+					$this->db->limit(1);
+					 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+					 $this->db->where('is_cover_image',1);
+					 $coverVideo = $this->query_model->getBySpecific('tblmedia', 'album',$album->id);
+					 $cover_image = base_url().'assets_admin/img/no-image.png';
+					 
+					 if(!empty($coverVideo)){
+						
+						$videoData = array('video_type'=>$coverVideo[0]->video_type,'video_id'=>trim($coverVideo[0]->video_id), 'video_img_type' => $coverVideo[0]->video_img_type,'custom_video_thumbnail'=>$coverVideo[0]->custom_video_thumbnail);
+						
+						$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
+						
+					 }
+						
+					
 					$cover_image = $this->query_model->changeVideoImgPathHttp($cover_image);
 					
 			?>
               <div class="video-box">
                  <img src="<?= $cover_image; ?>" class="img-responsive videoAlbum">
               </div>
-			  <?php endif; ?>
+			  <?php //endif; ?>
               <div class="video-desc">
                 <h3><?php  $this->query_model->getDescReplace( $album->album); ?></h3>
                 <p><?php  $this->query_model->getDescReplace( $album->desc); ?></p>

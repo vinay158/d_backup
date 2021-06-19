@@ -96,6 +96,22 @@
 			if(!empty($blogs)):
 			 foreach($blogs as $row):
 			 $sr_testimonials++;
+			 
+					$this->db->limit(1);
+					 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+					 $this->db->where('is_cover_image',1);
+					 $coverVideo = $this->query_model->getBySpecific('tblmedia', 'album',$row->id);
+					
+					 $cover_image = base_url().'assets_admin/img/no-image.png';
+					 
+					 if(!empty($coverVideo)){
+						
+						$videoData = array('video_type'=>$coverVideo[0]->video_type,'video_id'=>trim($coverVideo[0]->video_id), 'video_img_type' => $coverVideo[0]->video_img_type,'custom_video_thumbnail'=>$coverVideo[0]->custom_video_thumbnail);
+						
+						$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
+						
+						
+					 }
 			?>
 
 
@@ -104,7 +120,7 @@
 							<div style="float:left;">
 								<div class="badge-no"><?=$sr_testimonials?>. </div>
 								
-								<img src="<?php echo !empty($row->cover) ? $row->cover : base_url().'assets_admin/img/no-image.png'?>" class="list_img">		
+								<img src="<?php echo !empty($cover_image) ? $cover_image : base_url().'assets_admin/img/no-image.png'?>" class="list_img">		
 								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?=character_limiter($row->album, 15);?></a></h4>
 							</div>
 							<div class="manager-item-opts">

@@ -205,7 +205,7 @@ return false;
 
 <!--<div class="btn-addentry add_entry_button"></div>-->
 <h1 > &nbsp;&nbsp; </h1>
-<div class="mb-3 main-content-label page_main_heading">OnlineDojo Users</div>
+<div class="mb-3 main-content-label page_main_heading">Online Dojo Users</div>
 		<div class="row row-xs align-items-center">
 	
 	<div class="col-md-12  mg-t-5 mg-md-t-0">
@@ -333,7 +333,7 @@ return false;
               <thead>
                   <tr>
 					  <th >&nbsp; </th>
-                      <th >S.No</th>
+                      <th >#</th>
 					  <th class="wd-15p">First Name</th>
                       <th class="wd-15p">last Name</th>
                       <th class="wd-15p">E-mail</th>

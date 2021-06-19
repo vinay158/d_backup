@@ -200,7 +200,7 @@ if($multiLoc[11]->field_value == 0){
 			
 			<a href="<?php echo $page_url; ?>#SeoMeta" class="az-contact-item welcome_image">
               <div class="az-contact-body">
-                <h6>Seo/Meta Details</h6>
+                <h6>SEO/Meta Details</h6>
               </div>
             </a>
 			

@@ -46,7 +46,7 @@
 								  <p>You have <span class="total_alternating_full_width_row"><?php echo !empty($programFaqs) ? count($programFaqs) : 0; ?></span> Entries</p>
 								</div>
 								<div>
-								 <a href="admin/<?=$link_type?>/add_program_faq" class="button_class btn btn-indigo ">Add Faq</a>
+								 <a href="admin/<?=$link_type?>/add_program_faq" class="button_class btn btn-indigo ">Add FAQ</a>
 								</div>
 							  </div>
 							  

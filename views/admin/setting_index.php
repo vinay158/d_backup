@@ -1029,7 +1029,7 @@ $st_sec_external_link = 'check-off';
 
 <div id="AddMoreStandAlonePage" style="display:none">
 	<div class="form-new-holder">	
-	<div class=""><h3><a href="javascript:void(0);" class="btn btn-outline-light AddMoreStandAlonePageButton">Add More Logo</a></h3></div>
+	<div class=""><h3><a href="javascript:void(0);" class="btn btn-outline-light AddMoreStandAlonePageButton">Add More Logos</a></h3></div>
 
 <?php  if(!empty($override_logos)){ 
 				$a = 2;

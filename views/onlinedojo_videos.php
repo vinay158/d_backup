@@ -117,6 +117,7 @@ if($this->session->userdata('student_session_login') == 1){
          <?php 
 		 	
 				foreach($videos as $video): 
+				
 				$video_id = '';
 				$video_link = '';
 				$video_class = '';
@@ -153,6 +154,17 @@ if($this->session->userdata('student_session_login') == 1){
 						$video_id = isset($output_array[5]) ? $output_array[5] : '';
 					}
 				}
+				
+			if($video->video_type == "youtube_video" || $video->video_type == "vimeo_video" ){
+				if($video->video_type == "youtube_video"){
+					$video_type = 'youtube';
+				}elseif($video->video_type == "vimeo_video"){
+					$video_type = 'vimeo';
+				}
+				$videoData = array('video_type'=>$video_type,'video_id'=>trim($video->video_id), 'video_img_type' => $video->video_img_type,'custom_video_thumbnail'=>$video->custom_video_thumbnail);
+				
+				$img_src = $this->query_model->getVideoThumbnilImage($videoData);
+			}
 			
 			$title = ucfirst($video->video_title);
 			if(strlen($title) > 40){
@@ -214,12 +226,12 @@ if($this->session->userdata('student_session_login') == 1){
         <div class="video-gallery">
 		<?php 
 		
-				foreach($video_albums as $album): //echo '<pre>'; print_r($album); 
+				foreach($video_albums as $album): 
 		?>
           <div class="col-md-6 col-xs-12 col-sm-6">
             <div class="album">
 			 <?php 
-			 	if(!empty($album->cover)):
+			 	/*if(!empty($album->cover)):
 					$video_type = explode('/',$album->cover);
 					
 					if($video_type[2] == 'img.youtube.com'){
@@ -228,13 +240,30 @@ if($this->session->userdata('student_session_login') == 1){
 						$cover_image = str_replace('200x150.jpg','960x720.jpg',$album->cover);
 					}
 					
-					$cover_image = $this->query_model->changeVideoImgPathHttp($cover_image);
+					$cover_image = $this->query_model->changeVideoImgPathHttp($cover_image);*/
+					
+					
+			 $this->db->limit(1);
+			 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+			 $this->db->where('is_cover_image',1);
+			 $coverVideo = $this->query_model->getBySpecific('tbl_onlinedojo_media', 'album',$album->id);
+			
+			 $cover_image = base_url().'assets_admin/img/no-image.png';
+			 
+			 if(!empty($coverVideo)){
+				
+				$videoData = array('video_type'=>$coverVideo[0]->video_type,'video_id'=>trim($coverVideo[0]->video_id), 'video_img_type' => $coverVideo[0]->video_img_type,'custom_video_thumbnail'=>$coverVideo[0]->custom_video_thumbnail);
+				
+				$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
+				
+				$cover_image = $this->query_model->changeVideoImgPathHttp($cover_image);
+			 }
 					
 			?>
               <div class="video-box">
                  <img src="<?= $cover_image; ?>" class="img-responsive videoAlbum">
               </div>
-			  <?php endif; ?>
+			  <?php // endif; ?>
               <div class="video-desc">
                 <h3><?php  $this->query_model->getDescReplace( $album->album); ?></h3>
                 <p><?php  $this->query_model->getDescReplace( $album->desc); ?></p>

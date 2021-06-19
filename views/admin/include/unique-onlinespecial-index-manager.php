@@ -189,7 +189,7 @@
 									<li   id="menu_<?=$row->id;?>" class="full_width_row_<?=$row->id;?> az-contact-info-header">
 										<div class="manager-item media">
 											<div style="float:left;">
-												<div class="badge-no">. <?=$sr_calendar?></div>
+												<div class="badge-no"><?=$sr_calendar?>. </div>
 												
                                                 
 												
@@ -855,10 +855,10 @@ $(document).ready(function(){
           </div>
           <div class="modal-footer">
 			  <div class="col-md-6 text-left">
-				<a href="javascript:void(0)" class="btn btn-indigo popup_cancel_btn" data-dismiss="modal">No, cancel please !</a>
+				<a href="javascript:void(0)" class="btn btn-indigo popup_cancel_btn" data-dismiss="modal">No, cancel please!</a>
 			  </div>
 			   <div class="col-md-6 text-right">
-				<a href="javascript:void(0)" class="btn btn-indigo popup_delete_btn">Yes, Delete It !</a>
+				<a href="javascript:void(0)" class="btn btn-indigo popup_delete_btn">Yes, Delete It!</a>
 			   </div>
           </div>
 		  </form>

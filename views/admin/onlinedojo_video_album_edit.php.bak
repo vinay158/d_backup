@@ -106,7 +106,7 @@
 								<?php if($row->type == 1): ?>
 									<img src="<?php echo !empty($row->link_thumbnail) ? $row->link_thumbnail : base_url().'assets_admin/img/no-image.png'?>" class="list_img">
 								<?php else: ?>
-									<img src="<?php echo !empty($src) ? $src : base_url().'assets_admin/img/no-image.png'?>" class="list_img">
+									<img src="<?php echo !empty($cover_image) ? $cover_image : base_url().'assets_admin/img/no-image.png'?>" class="list_img">
 								<?php endif;?>
 								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?=strip_tags($row->desc);?> </a></h4>
 							</div>

@@ -100,8 +100,6 @@
 				
 				$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
 				
-			 
-				
 			?>
 
 

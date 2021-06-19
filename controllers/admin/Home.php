@@ -124,7 +124,7 @@ class Home extends CI_Controller {
 				$this->db->delete("tbl_homepage_sections");
 			}
 			
-			$sectionArr = array('featured_programs~1'=>'Featured Programs Section','welcome_text~2'=>'Welcome Text Section','getting_started~3'=>'Getting Started 1-2-3 Section','large_video~4'=>'Large Video Section','advertisements~5'=>'Advertisements Section','testimonial_section~6'=>'Testimonial Section','our_locations~7'=>'Our Locations Section');
+			$sectionArr = array('featured_programs~1'=>'Featured Programs','welcome_text~2'=>'Welcome Text','getting_started~3'=>'Getting Started','large_video~4'=>'Large Video','advertisements~5'=>'Advertisements','testimonial_section~6'=>'Testimonials','our_locations~7'=>'Locations');
 	
 					if(!empty($sectionArr)){
 						foreach($sectionArr as $key => $section){
@@ -137,7 +137,7 @@ class Home extends CI_Controller {
 							$sectionData['published'] = 1;
 							$sectionData['pos'] = $section_pos;
 							$sectionData['page_id'] = $page_id;
-							
+							//echo '<pre>sectionData'; print_r($sectionData); die;
 							$this->query_model->insertData('tbl_homepage_sections',$sectionData);
 						}
 					}

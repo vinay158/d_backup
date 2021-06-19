@@ -432,12 +432,15 @@
 	items: "li:not(.ui-state-disabled)",
 	update : function () {
 		serial = $('.ui-sortable2').sortable('serialize');
+		sort_list_li = $(this).find('li');
 		$.ajax({
 			url: "admin/"+mod_type+"/sortthis",
 			type: "post",
 			data: serial,
-			error: function(){
-				alert("theres an error with AJAX");
+			success: function(){
+				$.each(sort_list_li,function(key, value){
+					$(this).find('.badge-no').html(parseInt(key)+1+'.');
+				});
 			}
 		});
 	}

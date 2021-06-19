@@ -251,7 +251,7 @@ function updateVideo(){
 				
 		 		
 	 } 
-	 //echo $video_img; die;
+	 echo $video_id; die;
 	 $videoimage = '';
 	 if(!empty($video_img)){
 	 	
@@ -401,7 +401,7 @@ function updateVideo(){
 		}
 		
 		
-	$data = array("video_title" => $video_title, "slide_text" => $slide_text, 'video_type'=>$video_type,'youtube_video'=>$youtube_video,'vimeo_video'=>$vimeo_video,'remote_video'=>$remote_video,'video_id'=>$video_id,'videoimage'=>$videoimage,'video_img'=>$main_image_name,'local_video_mp4'=>$local_video_mp4,'local_video_webm'=>$local_video_webm,'embed_video_text'=>$embed_video_text,'local_video_mov'=>$local_video_mov,'local_video_mkv'=>$local_video_mkv,'video_format'=>$video_format);
+	$data = array("video_title" => $video_title, "slide_text" => $slide_text, 'video_type'=>$video_type,'youtube_video'=>$youtube_video,'vimeo_video'=>$vimeo_video,'remote_video'=>$remote_video,'video_id'=>$video_id,'videoimage'=>$videoimage,'video_img'=>$main_image_name,'local_video_mp4'=>$local_video_mp4,'local_video_webm'=>$local_video_webm,'embed_video_text'=>$embed_video_text,'local_video_mov'=>$local_video_mov,'local_video_mkv'=>$local_video_mkv,'video_format'=>$video_format,'video_img_type'=>$video_img_type,'custom_video_thumbnail'=>$custom_video_thumbnail,);
 	
 	if($this->query_model->update("tbl_onlinedojo_videos", $this->uri->segment(4) , $data)):
 			redirect("admin/onlinedojo_videos");

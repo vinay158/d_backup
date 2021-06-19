@@ -4031,7 +4031,7 @@ if(!empty($programRows)):?>
 						<div class="manager-item media">
 							<div style="float:left" >
 								
-								<div class="badge-no">. <?=$sr_testimonials?></div>	
+								<div class="badge-no"><?=$sr_testimonials?>. </div>	
 								<h4  class="little_row_heading_<?=$about_us_row->id?>"><a href="javascript:void(0)" ><?=$about_us_row->title;?>   ( <?php echo ucfirst($about_us_row->photo_side);?> )</a></h4>
 							</div>
 							<div class="manager-item-opts">

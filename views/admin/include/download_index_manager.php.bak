@@ -301,6 +301,7 @@ var mod_type = $("#mod_type").val().toLowerCase();
 	items: "li:not(.ui-state-disabled)",
 	update : function () {
 		serial = $('.ui-sortable2').sortable('serialize');
+		sort_list_li = $(this).find('li');
 		$.ajax({
 			url: "admin/"+mod_type+"/sortthis",
 			type: "post",

@@ -27,6 +27,7 @@
 	if($is_download_thread == 1){
 		
 		$selected_parent_id = !empty($detail) ? $detail->parent_id : 0;
+		$selected_item_id = ($action_type == "edit" && !empty($item_id)) ?  $item_id : 0;
 ?>
 
 <div class="form-item">
@@ -34,7 +35,7 @@
 	<h1>Category</h1>
 	<select id="parent_id" name="parent_id" class="field required_field">
 	<option value="0">-Select Category-</option>
-	<?php echo $this->query_model->getCategoryDropdownOptions('downloads',0, 0,$selected_parent_id); ?>
+	<?php echo $this->query_model->getCategoryDropdownOptions('downloads',0, 0,$selected_parent_id,$selected_item_id); ?>
 	</select>
 </div>
 <?php } } ?>

@@ -478,6 +478,10 @@ $(document).ready(function(){
 					
 					<?php elseif($category =='Videos'): ?>
 						<div class="col-md-12 mg-t-5 mg-md-t-0">
+							<h1 class="descrip">Video caption</h1>
+							<input type="text" name="description" id="description" class="field full_width_input" />
+						</div>
+						<div class="col-md-12 mg-t-5 mg-md-t-0">
 							<h1>Video URL</h1>
 							<textarea name="embed" id="embed" rows="2" style='width:100%'></textarea>
 							 <span>
@@ -486,10 +490,7 @@ $(document).ready(function(){
 							  </span>
 						</div>
 						
-						<div class="col-md-12 mg-t-5 mg-md-t-0">
-							<h1 class="descrip">Video caption</h1>
-							<input type="text" name="description" id="description" class="field full_width_input" />
-						</div>
+						
 					<?php endif; ?>
 				</div>
 				

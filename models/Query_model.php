@@ -7836,7 +7836,7 @@ public function getFormPageUrl($page_url = null,$postData = null){
    
 	
    
-	public function getCategoryDropdownOptions($cat_type = null,  $parent_id = 0,$level, $selected_id){
+	public function getCategoryDropdownOptions($cat_type = null,  $parent_id = 0,$level, $selected_id,$selected_item_id = 0){
 		
       $str = '';
       
@@ -7858,14 +7858,16 @@ public function getFormPageUrl($page_url = null,$postData = null){
 				
 			
 				$selected  = ($selected_id == $cat->cat_id) ? "selected = selected" : '';
-						
-             $str .= '<option value="'.$cat->cat_id.'" '.$selected.'>'.$dashes.$cat->cat_name.'</option>';
+			
+			if($selected_item_id != $cat->cat_id){
+				$str .= '<option value="'.$cat->cat_id.'" '.$selected.'>'.$dashes.$cat->cat_name.'</option>';
+			}
 			 
              
 			
 			 $category['sub_categories'] = $this->getCategoryTreeForParentId($cat_type,$cat->cat_id);
 				 if(!empty($category['sub_categories'])){
-					$str .= $this->getCategoryDropdownOptions($cat_type,$cat->cat_id,$level, $selected_id);                  
+					$str .= $this->getCategoryDropdownOptions($cat_type,$cat->cat_id,$level, $selected_id,$selected_item_id);                  
 					
 				 } 
 			
@@ -10590,6 +10592,7 @@ public function getTotalWebsiteOptinLeads($start_date,$end_date,$result_type,$se
 
 public function getVideoThumbnilImage($video_data){
 	$cover_image = base_url().'assets_admin/img/no-image.png';
+	//echo '<pre>video_data'; print_r($video_data); die;
 	if(!empty($video_data)){
 		
 		if($video_data['video_img_type'] == "upload_image"){
@@ -10605,7 +10608,7 @@ public function getVideoThumbnilImage($video_data){
 			}
 		}
 	}
-	
+	//echo $cover_image; die;
 	return $cover_image;
 }
 

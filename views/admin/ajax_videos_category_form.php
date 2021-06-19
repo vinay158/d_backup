@@ -24,11 +24,14 @@
 <div class="form-item">
 <?php 
 	$selected_category = !empty($detail) ? $detail->parent_id : 0;
+	$selected_item_id = ($action_type == "edit" && !empty($item_id)) ?  $item_id : 0;
+	
 ?>
-	<h1>Category</h1>
+
+	<h1>Category <?php echo $selected_item_id; ?></h1>
 	<select id="parent_id" name="parent_id" class="field">
 	<option value="0">-Select Category-</option>
-	<?php echo $this->query_model->getCategoryDropdownOptions('videos',0, 0,$selected_category); ?>
+	<?php echo $this->query_model->getCategoryDropdownOptions('videos',0, 0,$selected_category,$selected_item_id); ?>
 	</select>
 </div>
 <?php } ?>

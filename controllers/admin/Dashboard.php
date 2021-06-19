@@ -23,7 +23,6 @@ class Dashboard extends CI_Controller {
 		if(!empty($is_logged_in) && $is_logged_in == true){
             $data['title'] = "Dashboard";
 		
-
 		$data['lead_types'] = array('email_opt_in'=>'Email Opt-in','free_trial'=>'Free Trial','paid_trial'=>'Paid Trial','upsell_trial'=>'Upsell Trial','contact_us'=>'Contact Us','dojocart'=>'Dojocart','birthday_parties'=>'Birthday Parties / Summer Camp');
 		
 		$date = isset($_GET['date']) ? $_GET['date'] : date('Y-m');

@@ -71,7 +71,7 @@
 					$v_id=trim($video->video_id);
 					$video_class = '';
 					if($video->video_type=='youtube'){
-						$src="http://i.ytimg.com/vi/".$v_id."/0.jpg";
+						//$src="http://i.ytimg.com/vi/".$v_id."/0.jpg";
 						
 						$video_id = $v_id;
 						$video_type = 'youtube';
@@ -83,17 +83,23 @@
 					if($video->video_type=='vimeo'){
 						//http://vimeo.com/api/v2/video/17631561.php
 						//$src=getThumbnailImage($v_id);
-						$src=$this->query_model->getViemoVideoImage($v_id);
+						//$src=$this->query_model->getViemoVideoImage($v_id);
 						$video_id = $v_id;
 						$video_type = 'vimeo';
 					}
 					
-					$src = $this->query_model->changeVideoImgPathHttp($src);
+					$videoData = array('video_type'=>$video->video_type,'video_id'=>trim($video->video_id), 'video_img_type' => $video->video_img_type,'custom_video_thumbnail'=>$video->custom_video_thumbnail);
+				
+					$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
+					
+					$cover_image = $this->query_model->changeVideoImgPathHttp($cover_image);
+					
+					
 		?>
 		
 		 	 <div class="col-md-4 col-sm-4 col-xs-12">
 				<div class="video-box <?= $video_class; ?> videosLightbox">
-					<a href="#" class="slvj-link-lightbox 1" data-videoid="<?= $video_id ?>" data-videosite="<?= $video_type ?>"><img src="<?=$src?>" class="img-responsive"  data-toggle="modal" data-target=".bs-example-modal-lg" url="<?php echo $video->link; ?>?modestbranding=1&autohide=1&showinfo=0&controls=1"></a>
+					<a href="#" class="slvj-link-lightbox 1" data-videoid="<?= $video_id ?>" data-videosite="<?= $video_type ?>"><img src="<?=$cover_image?>" class="img-responsive"  data-toggle="modal" data-target=".bs-example-modal-lg" url="<?php echo $video->link; ?>?modestbranding=1&autohide=1&showinfo=0&controls=1"></a>
 				</div>
 				<p><?php  $this->query_model->getDescReplace( $video->desc); ?></p>
          	</div>

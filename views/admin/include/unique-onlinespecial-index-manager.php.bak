@@ -647,8 +647,10 @@ if(!empty($unique_trial_boxes)){
 			url: "admin/"+mod_type+"/sortthis",
 			type: "post",
 			data: serial,
-			error: function(){
-				alert("theres an error with AJAX");
+			success: function(){
+				$.each(sort_list_li,function(key, value){
+					$(this).find('.badge-no').html(parseInt(key)+1+'.');
+				});
 			}
 		});
 	}
@@ -853,10 +855,10 @@ $(document).ready(function(){
           </div>
           <div class="modal-footer">
 			  <div class="col-md-6 text-left">
-				<a href="javascript:void(0)" class="btn btn-indigo popup_cancel_btn" data-dismiss="modal">No, cancel please !</a>
+				<a href="javascript:void(0)" class="btn btn-indigo popup_cancel_btn" data-dismiss="modal">No, cancel please!</a>
 			  </div>
 			   <div class="col-md-6 text-right">
-				<a href="javascript:void(0)" class="btn btn-indigo popup_delete_btn">Yes, Delete It !</a>
+				<a href="javascript:void(0)" class="btn btn-indigo popup_delete_btn">Yes, Delete It!</a>
 			   </div>
           </div>
 		  </form>

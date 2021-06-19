@@ -241,7 +241,7 @@ $("#delete_img").click(function(){
 
 </div>
 
-<h3><a href="javascript:void(0);" class="btn btn-outline-light AddMoreStandAlonePageButton">Add More Class Schedule</a></h3>
+<h3><a href="javascript:void(0);" class="btn btn-outline-light AddMoreStandAlonePageButton">Add Another Schedule</a></h3>
 </div>
 
 <div class="form-white-holder" style="padding-bottom:20px;">

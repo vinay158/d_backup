@@ -25,7 +25,7 @@
 <h1 > &nbsp;&nbsp; </h1>
 
 <?php 
-$sectionArr = array('featured_programs'=>'Featured Programs Section','welcome_text'=>'Welcome Text Section','getting_started'=>'Getting Started 1-2-3 Section','large_video'=>'Large Video Section','advertisements'=>'Advertisements Section','testimonial_section'=>'Testimonial Section','our_locations'=>'Our Locations Section');
+$sectionArr = array('featured_programs'=>'Featured Programs','welcome_text'=>'Welcome Text','getting_started'=>'Getting Started','large_video'=>'Large Video','advertisements'=>'Advertisements','testimonial_section'=>'Testimonials','our_locations'=>'Locations');
 ?>
 <div class="program_full_detail page-section new_lisiting_block default_template" id="AlternatingFullWidth">
 

@@ -203,7 +203,7 @@ if($multiLoc[11]->field_value == 0){
 			
 			<a href="<?php echo $page_url; ?>#SeoMeta" class="az-contact-item welcome_image">
               <div class="az-contact-body">
-                <h6>Seo/Meta Details</h6>
+                <h6>SEO/Meta Details</h6>
               </div>
             </a>
 			
@@ -1280,7 +1280,7 @@ $(".form-light-holder .checkbox2").click(function(){
 	
 	<?php  if($mainLocation[0]->id == $this->uri->segment(4)){ ?>
 
-			<h1 style="padding-bottom: 5px;">Head Quarter Picture</h1>
+			<h1 style="padding-bottom: 5px;">Headquarter Picture</h1>
 			<div class="custom-file">
 	<input type="file" name="userfile" id="customFile1" class="custom-file-input" accept="image/*" />
 	<label class="custom-file-label" for="customFile">Choose file</label></div>

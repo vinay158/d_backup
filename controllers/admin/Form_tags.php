@@ -29,7 +29,7 @@ class Form_tags extends CI_Controller {
 			$data['user_level']=$this->session->userdata['user_level'];	
 			
 			$data['tagTypes'] = array(
-									'active_campaign' => 'ActiveCampaign Tags',
+									'active_campaign' => 'Active Campaign Tags',
 									'rainmaker'=>'Rainmaker Tags',
 									'webhook_outgoing_apis'=>"Webhook Outgoing API's Tags"
 								);

@@ -240,7 +240,7 @@ $phone = !empty($mainLocation) ? $mainLocation[0]->phone : '';
 								<div class="badge-no"><?=$sr_testimonials?>. </div>
 								
 									
-								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?php echo ucwords($row->page).' - ';?><?=$row->title;?></a></h4>
+								<h4 class="full_width_row_heading_<?=$row->id?>"><a href="javascript:void(0)" ><?php echo ucwords(str_replace('carrer','career',$row->page)).' - ';?><?=$row->title;?></a></h4>
 							</div>
 							<div class="manager-item-opts">
 							
