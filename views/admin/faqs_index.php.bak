@@ -46,7 +46,7 @@
 								  <p>You have <span class="total_alternating_full_width_row"><?php echo !empty($programFaqs) ? count($programFaqs) : 0; ?></span> Entries</p>
 								</div>
 								<div>
-								 <a href="admin/<?=$link_type?>/add_program_faq" class="button_class btn btn-indigo ">Add Faq</a>
+								 <a href="admin/<?=$link_type?>/add_program_faq" class="button_class btn btn-indigo ">Add FAQ</a>
 								</div>
 							  </div>
 							  
@@ -79,7 +79,7 @@
 									<a class="badge badge-primary ajax_record_delete" data-toggle="modal" data-target="#popupDeleteRecord" item_id="<?=$row->id;?>"   table_name="tbl_program_faqs" item_title="<?=$row->title;?>" section_type="full_width">Delete</a>
 									
 									<a href="javascript:void(0)" id="unpub_<?=$row->id; ?>" class="ajax_record_publish"  table_name="tbl_program_faqs"  is_new="0">
-								<div class="az-toggle az-toggle-success alternate_full_width_toogle toogle_btn <?php echo ($row->published == 1) ? 'on' : '';?>" publish_type="<?php echo ($row->published == 1) ? 0 : 1;?>"><span></span>
+								<div class="az-toggle az-toggle-success alternate_full_width_toogle toogle_btn <?php echo ($row->published == 1) ? 'off' : 'on';?>" publish_type="<?php echo ($row->published == 1) ? 0 : 1;?>"><span></span>
 								<input type="hidden" name="publish_type" value="<?php echo ($row->published == 1) ? 0 : 1;?>" class="publish_type" />
 								</div></a>
 						</nav>

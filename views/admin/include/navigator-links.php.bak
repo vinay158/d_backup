@@ -20,7 +20,7 @@
 		}elseif(strpos($redirect_url, 'admin/dojocart') !== false) {
 			$redirect_url = str_replace('/view','/index',$redirect_url);
 		}elseif(strpos($redirect_url, 'admin/form_emailsignatures') !== false) {
-			$redirect_url = str_replace('/add','',$redirect_url);
+			$redirect_url = str_replace('/view','/index',$redirect_url);
 		}elseif($redirect_url == "admin"){
 			$redirect_url = "admin/dashboard";
 		}else{

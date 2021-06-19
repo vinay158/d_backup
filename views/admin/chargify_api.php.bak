@@ -99,4 +99,4 @@ box-sizing: border-box;
 </div>
 </div>
 <!------------ recent items ----------------->
-<?php $this->load->view("admin/include/footer");?>
+<?php //$this->load->view("admin/include/footer");?>
