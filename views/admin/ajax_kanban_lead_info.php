@@ -2,10 +2,12 @@
  $lead_type = $this->query_model->getKanbanLeadTypeToOrderType($main_lead_detail['order_type']); ?> 
  <div class="modal-content modal-content-demo">
   <div class="modal-header">
-            <button type="button" class="btn btn-success update_lead_status_id" status_type="won" kanban_status_id="<?php echo $main_lead_detail['kanban_status_id']; ?>" lead_type="<?php echo $lead_type; ?>" lead_id="<?php echo $main_lead_detail['id']; ?>">Won</button>
+		<span class="update_kanban_status_reponse"></span>
+		<input type="hidden" class="update_kanban_status_reponse_code" value="0">
+            <button type="button" class="btn btn-success update_lead_status_id" status_type="won" kanban_status_id="<?php echo $main_lead_detail['kanban_status_id']; ?>" lead_type="<?php echo $lead_type; ?>" lead_id="<?php echo $main_lead_detail['id']; ?>">Won <i class="fa fa-check" aria-hidden="true"></i></button>
             <button type="button" class="btn btn-danger update_lead_status_id"  status_type="lost" kanban_status_id="<?php echo $main_lead_detail['kanban_status_id']; ?>"  lead_type="<?php echo $lead_type; ?>" lead_id="<?php echo $main_lead_detail['id']; ?>">Lost</button>
             
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<button type="button" class="close status_update_popup_close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
 			<button type="button" class="ellipsis" >

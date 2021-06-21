@@ -109,10 +109,10 @@ class Students extends CI_Controller {
 
 				$password_setting = $this->query_model->getbyTable('tbl_password_pro');
 				if($password_setting[0]->virtual_training == 1){
-					$ci->db->limit(1);
-					$ci->db->select(array('id'));
-					$ci->db->where('published',1);
-					$virtual_training_rows = $ci->query_model->getbyTable('tbl_virtual_training_rows');
+					$this->db->limit(1);
+					$this->db->select(array('id'));
+					$this->db->where('published',1);
+					$virtual_training_rows = $this->query_model->getbyTable('tbl_virtual_training_rows');
 					if(!empty($virtual_training_rows)){
 						redirect(base_url().'students/virtualtraining','location',301);
 					}

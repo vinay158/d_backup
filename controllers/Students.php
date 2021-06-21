@@ -862,7 +862,7 @@ public function thankyou(){
 						
 						
 					}else{
-						$error .= 'Email address not exists';
+						$error .= 'Email address does not exist';
 					}
 				}else{
 					$error .= 'Please fill required fields';

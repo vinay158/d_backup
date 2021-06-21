@@ -170,8 +170,9 @@ $('body').on('click','.unpublish',function(){
 	var pub_id = $(this).attr("id").substr(6);
 	var mod_type = $("#mod_type").val().toLowerCase();
 	
-	var publish_type = $(this).parents(".table_action_col").children(".publish_type").val();
-	
+	//var publish_type = $(this).parents(".table_action_col").children(".publish_type").val();
+	var publish_type = $(this).attr('user_status');
+	//alert(publish_type); return false;
 	$.ajax({ 					
 	type: 'POST',						
 	url: 'admin/'+mod_type+'/publish',						
@@ -336,14 +337,14 @@ return false;
                       <th >#</th>
 					  <th class="wd-15p">First Name</th>
                       <th class="wd-15p">last Name</th>
-                      <th class="wd-15p">E-mail</th>
+                      <th >E-mail</th>
                       <th class="wd-5p">Type</th>
-                      <th class="wd-15p">Phone</th>
+                      <th>Phone</th>
 					  <?php if($multiLocation[0]->field_value == 1){ ?>
-                      <th class="wd-20p">Location</th>
+                      <th >Location</th>
 					  <?php } ?>
-                      <th class="wd-20p">Date</th>
-                      <th class="wd-10p">Action</th>
+                      <th>Date</th>
+                      <th class="wd-40p">Action</th>
                   </tr>
               </thead>
               <tbody  id="userResults">
@@ -611,7 +612,11 @@ return false;
 			
         });
         $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
-
+			
+			
+		$('body').on('click','.az-toggle', function(){
+	  $(this).toggleClass('on');
+	})
 
 
       });

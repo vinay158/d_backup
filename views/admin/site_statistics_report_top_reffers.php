@@ -376,6 +376,7 @@ var end_date = "<?php echo $dateRanges['end_date'] ?>";
 				
 				/**** page per session ***/
 				var page_per_session = item[2];
+				page_per_session =  Number.parseFloat(page_per_session).toFixed(2);
 				var session_persent = (parseFloat(page_per_session) * 100 ) / parseFloat(total_page_per_session);
 				session_persent =  Number.parseFloat(session_persent).toFixed(1);
 				var session_bg_code = '#DD4B39';

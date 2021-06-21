@@ -264,7 +264,7 @@
 	</div>
 
 
-	<div id="popup" class="modal kanban kanban_lead_info_popup">
+	<div id="popup" class="modal kanban kanban_lead_info_popup" data-backdrop="static">
       <div class="modal-dialog modal-dialog-centered" role="document">
 		<div id="order_lead_info"></div>
        </div><!-- modal-dialog -->
@@ -685,6 +685,13 @@ function updateSortOrders(current_kanban_status_id,event_type){
 	  
 $(document).ready(function(){
 	
+	$('body').on('click','.status_update_popup_close', function(){
+		var reponse_code = $('.update_kanban_status_reponse_code').val();
+		if(reponse_code == 1){
+			location.reload();
+		}
+		
+	})
 
 	$('body').on('click','.filter_result', function(){
 		$('.search_box').toggle('show');
@@ -965,8 +972,8 @@ $(document).ready(function(){
 						
 						$('.kanban_status_'+data.status_type_id).find('.board-item-content').css('border-left','10px solid '+color_code);
 						
-						$('#popup').modal('hide');
 						//$('#responsePopup').find('.action_response_msg').html('Successfully Transferred Lead  '+data.old_kanban_status_name +' to '+data.kanban_status_name);
+						/*$('#popup').modal('hide');
 						
 						$('#responsePopup').find('.action_response_msg').html('Successfully Transferred Lead to '+data.kanban_status_name);
 						
@@ -976,10 +983,19 @@ $(document).ready(function(){
 								location.reload();	
 								}, 3000);
 								
+						*/
+						$('.update_kanban_status_reponse').html('');
+						$('.update_kanban_status_reponse').removeClass('won');
+						$('.update_kanban_status_reponse').removeClass('lost');
+						$('.update_kanban_status_reponse_code').val(1);
+						if(status_type == "won"){
+							$('.update_kanban_status_reponse').html('Great Job! Your lead has booked an intro!');
+							$('.update_kanban_status_reponse').addClass('won');
+						}else if(status_type == "lost"){
+							$('.update_kanban_status_reponse').html('Lead move into archive');
+							$('.update_kanban_status_reponse').addClass('lost');
+						}
 						
-
-							
-							
 					}else{
 						alert('something went wrong'); return false;
 					}
@@ -1007,6 +1023,10 @@ $(document).ready(function(){
 			}).done(function(result){
 				
 				$('#popup').addClass('effect-slide-in-bottom').modal('show');
+				/*$('#popup').modal({
+					backdrop: 'static',
+					keyboard: false
+				})*/
 				
 				$('.user_name_info').html(popup_title);
 				$('#order_lead_info').html(result);
@@ -1120,10 +1140,10 @@ $('body').on('click','.delete_item', function(){
           </div>
           <div class="modal-footer">
 			  <div class="col-md-6 text-left">
-				<a href="javascript:void(0)" class="btn btn-indigo popup_cancel_btn" data-dismiss="modal">No, cancel please !</a>
+				<a href="javascript:void(0)" class="btn btn-indigo popup_cancel_btn" data-dismiss="modal">No, cancel please!</a>
 			  </div>
 			   <div class="col-md-6 text-right">
-				<a href="javascript:void(0)" class="btn btn-indigo popup_delete_btn">Yes, Delete It !</a>
+				<a href="javascript:void(0)" class="btn btn-indigo popup_delete_btn">Yes, Delete It!</a>
 			   </div>
           </div>
 		  </form>

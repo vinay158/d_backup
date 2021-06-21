@@ -320,7 +320,7 @@ if($this->uri->segment(2) != ""){
               <a href="#"><i class="typcn typcn-bell"></i></a>
             </div><!-- az-header-message -->
 			<div class="az-header-message">
-              <a href="https://intercom.help/dojo-industries/en/" target="_blank"><i class="fa fa-question-circle"></i></a>
+              <a href="https://intercom.help/dojo-industries/en/"><i class="fa fa-question-circle"></i></a>
             </div><!-- az-header-message --> 
 
            
