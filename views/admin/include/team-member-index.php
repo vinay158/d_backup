@@ -137,7 +137,7 @@
 			var location_id = $(this).attr('location_id');
 			//fullAlternatePopup
 			
-			$('#fullAlternatePopup').find('.modal-title').html(action_type + ': Team Member');
+			$('#fullAlternatePopup').find('.modal-title').html(action_type + ' Team Member');
 			
 			$.ajax({
 

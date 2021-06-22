@@ -85,7 +85,6 @@
 			
 </div>
 <?php if(!empty($form_instances)){ ?>
-<div class="clearfix"></div>
 <div class="form-light-holder  row row-xs align-items-center form-module page-instance">
 	<div class="col-md-12"><h1>Form Instances</h1></div>
 	

@@ -354,7 +354,10 @@ $('body').on('click','.delete_item', function(){
 				
 				$('.'+form_type+'_'+item_id).remove();
 				
+				reArrageCustomListSortPositions();
+				
 				$('#popupDeleteItem').find('.close').trigger('click');
+				
 				
 				
 				/*$('#popupDeleteItem').modal('hide');
@@ -375,6 +378,26 @@ $('body').on('click','.delete_item', function(){
 			
 	})
 	
+	function reArrageCustomListSortPositions(){
+		if ( $(".alternating_full_width_row").length ) {
+			$.each($('.alternating_full_width_row'),function(k, v){
+				var sort_list_li = $(this).find('li');
+				$.each(sort_list_li,function(key, value){
+					$(this).find('.badge-no').html(parseInt(key)+1+'.');
+				});
+			});
+		}
+		
+		if ( $(".alternating_little_row").length ) {
+			$.each($('.alternating_little_row'),function(k, v){
+				var sort_list_li = $(this).find('li');
+				$.each(sort_list_li,function(key, value){
+					$(this).find('.badge-no').html(parseInt(key)+1+'.');
+				});
+			});
+		}
+		
+	}
 	
 	$('body').on('click','.full_alternate_popup', function(){
 		
@@ -385,9 +408,9 @@ $('body').on('click','.delete_item', function(){
 		//fullAlternatePopup
 		
 		if(form_type == "full_width_row"){
-			$('#fullAlternatePopup').find('.modal-title').html(action_type + ': Webhook Api (Incoming Leads)');
+			$('#fullAlternatePopup').find('.modal-title').html(action_type + ' Webhook Api (Incoming Leads)');
 		}else{
-			$('#fullAlternatePopup').find('.modal-title').html(action_type + ': Webhook Apis (Outgoing Leads)');
+			$('#fullAlternatePopup').find('.modal-title').html(action_type + ' Webhook Apis (Outgoing Leads)');
 		}
 		
 		

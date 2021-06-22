@@ -12,7 +12,6 @@
 		
 	});
 </script>
-
 <div class="az-content-body-left advanced_page custom_full_page" >
 	<div class="az-content-header d-block d-md-flex">
 		<div class="az-dashboard-one-title">
@@ -26,7 +25,6 @@
 
           <div class="col-sm-12 col-xl-12 az-content-body-contacts"  >
 			<div class="card pd-sm-20 edit-form">
-			
 <div class="gen-holder">
 	<div class="gen-panel-holder"  style="width: 100% !important;">
 	<div class="gen-panel">
@@ -44,18 +42,17 @@
 
 <div class="form-light-holder">
 	<h1>Subject</h1>
-	<input type="text" value="<?php echo !empty($details) ? $this->query_model->getStrReplaceAdmin($details->subject) : ''; ?>" name="subject" required="true" id="subject" class="field full_width_input" placeholder="Enter your email subject"  style=""/>
+	<input type="text" value="<?php echo !empty($details) ? $this->query_model->getStrReplaceAdmin($details->subject) : ''; ?>" name="subject" required="true" id="subject" class="field full_width_input" placeholder="Enter your email subject" style="" />
 </div>
-
-
 
 
 <div class="form-light-holder" style="overflow:auto;">
 			<h1 style="padding-bottom: 5px;">Auto Responder</h1>
-			<textarea type="text" id="ckeditor_mini_header_title" name="description" class="field full_width_input"><?php echo !empty($details) ? $details->description : ''; ?></textarea>
+			<textarea type="text" id="ckeditor_mini_header_title" name="description" class="field full_width_input" style=""><?php echo !empty($details) ? $details->description : ''; ?></textarea>
 		<div>
 		</div>
 </div>
+
 <div class="form-light-holder  row row-xs align-items-center  email_varibles" style="overflow:auto;">
 			<div class="col-md-12"><h1 style="padding-bottom: 5px;">Variables:</h1></div>
 			<div class="col-md-12"><em>Please use variables in auto responder textarea</em></div>
@@ -85,7 +82,6 @@
 			
 </div>
 <?php if(!empty($form_instances)){ ?>
-<div class="clearfix"></div>
 <div class="form-light-holder  row row-xs align-items-center form-module page-instance">
 	<div class="col-md-12"><h1>Form Instances</h1></div>
 	
@@ -93,11 +89,12 @@
 	
 		<?php $i = 1;
 		foreach($form_instances as $form_instance){ ?>
-			<div class="col-md-4 form_instance  <?php echo (!empty($form_instances) && count($form_instances) >= 10) ? 'morethan10' : ''; ?>  <?php echo ($i >= 10) ? 'bigval' : 'smallval'; ?>"><span><?php echo $i; ?></span> <?php echo $form_instance->name; ?> </div>
+			<div class="col-md-4 form_instance <?php echo (!empty($form_instances) && count($form_instances) >= 10) ? 'morethan10' : ''; ?>  <?php echo ($i >= 10) ? 'bigval' : 'smallval'; ?>"><span><?php echo $i; ?></span> <?php echo $form_instance->name; ?> </div>
 		<?php $i++; } ?>
 	<?php } ?>
 </div>
 <?php } ?>
+
 <div class="form-white-holder" style="padding-bottom:20px;">
 	<input type="submit" name="update" value="Save" class="btn-save" style="float:left;" />
 </div>
@@ -105,7 +102,7 @@
 
 
 
-		</div>
+	</div>
 
 		</div>
 

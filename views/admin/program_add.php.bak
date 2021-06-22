@@ -1959,12 +1959,12 @@ $('.videoType').change(function(){
 <div class="page-section" id="BenefitsRowImagesSecondSection">
 <div class="mb-3 main-content-label">Benefits Row 2 with 3 Images</div>
 <div class="form-light-holder">
-	<h1>Benefits Row 2 Title</h1>
+	<h1>Benefits Row2 Title</h1>
 	<input type="text" name="benefits_2_title" value="" class="field full_width_input" style="">
 </div>
 
 <div class="form-light-holder">
-	<h1>Benefits Row 2 description</h1>
+	<h1>Benefits Row2 description</h1>
 	<div class="shorterCkeditor"><textarea name="benefits_2_desc" id="ckeditor_mini_benefits_2_desc" class="text ckeditor"></textarea></div>
 </div>
 
@@ -2108,12 +2108,12 @@ $('.videoType').change(function(){
 <div class="page-section" id="BenefitsRowImagesThirdSection">
 <div class="mb-3 main-content-label">Benefits Row 3 with 3 Images</div>
 <div class="form-light-holder">
-	<h1>Benefits Row 3 Title</h1>
+	<h1>Benefits Row3 Title</h1>
 	<input type="text" name="benefits_3_title" value="" class="field  full_width_input">
 </div>
 
 <div class="form-light-holder">
-	<h1>Benefits Row 3 description</h1>
+	<h1>Benefits Row3 description</h1>
 	<div class="shorterCkeditor"><textarea name="benefits_3_desc" id="ckeditor_mini_benefits_3_desc" class="text ckeditor"></textarea></div>
 </div>
 

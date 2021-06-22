@@ -486,7 +486,7 @@ $(document).ready(function(){
 
 
 <div class="page-section" id="Headersection">
-<div class="mb-3 main-content-label">Header</div>
+<div class="mb-3 main-content-label">Header Section</div>
 
 <div class="form-light-holder">
 	<h1>Header</h1>
@@ -545,7 +545,7 @@ $(document).ready(function(){
 </div>	
 
 <div class="page-section" id="WhiteStripeFirstSection">
-<div class="mb-3 main-content-label">White Stripe Under Header</div>
+<div class="mb-3 main-content-label">White Stripe Under Header Section</div>
 <div class="form-light-holder">
 	<h1>Body Title</h1>
 	<textarea type="text" id="ckeditor_mini_body_title" name="body_title"  class="field  full_width_input"></textarea>
@@ -591,7 +591,7 @@ $(document).ready(function(){
 
 <div class="default_template">
 <div class="page-section" id="Calltoaction3ImagesSection">
-<div class="mb-3 main-content-label">Call to Action with 3 Images</div>
+<div class="mb-3 main-content-label">Call to Action with 3 Images Section</div>
 <div class="form-light-holder">
 	<h1>Call to Action Title</h1>
 	<input type="text" name="action_title" value="" class="field  full_width_input">
@@ -721,7 +721,7 @@ $(".form-light-holder .checkbox1").click(function(){
 <div class="default_template">
 <div class="page-section" id="Images3WithTextSection">
 
-<div class="mb-3 main-content-label">3 images + Text</div>
+<div class="mb-3 main-content-label">3 images + Text Section</div>
 
 
 <div class="form-light-holder">
@@ -964,7 +964,7 @@ $(".form2checkbox .checkbox2").click(function(){
 
 <div class="page-section" id="SeoMeta">
 
-<div class="mb-3 main-content-label">SEO/Meta Details</div>
+<div class="mb-3 main-content-label">Seo/Meta Details</div>
 <div class="form-light-holder">
 	<h1>Meta Title</h1>
 	<input type="text" name="meta_title" value="" class="field">

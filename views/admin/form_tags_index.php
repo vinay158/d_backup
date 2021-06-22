@@ -159,7 +159,7 @@
 			var form_type = $(this).attr('form_type');
 			//fullAlternatePopup
 			
-			$('#fullAlternatePopup').find('.modal-title').html(action_type + ': Tag');
+			$('#fullAlternatePopup').find('.modal-title').html(action_type + ' Tag');
 			
 			$.ajax({
 

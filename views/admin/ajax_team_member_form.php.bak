@@ -21,7 +21,7 @@
 
 <div class="form-light-holder">
 	<h1>Name</h1>
-	<input type="text" value="<?php echo !empty($detail) ? $this->query_model->getStrReplaceAdmin($detail->name) : ''; ?>" name="name" id="name" class="field required_field" placeholder=""/>
+	<input type="text" value="<?php echo !empty($detail) ? $this->query_model->getStrReplaceAdmin($detail->name) : ''; ?>" name="name" id="name" class="field required_field" placeholder="Enter your name here"/>
 </div>
 <div class="form-light-holder">
 	<h1>Designation</h1>

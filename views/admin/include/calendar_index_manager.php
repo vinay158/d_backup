@@ -596,6 +596,9 @@ $('body').on('click','.delete_item', function(){
 				
 				$('#responsePopup').modal('show');
 				$('#responsePopup').find('.action_response_msg').html('Successfully deleted!');
+				
+				reArrageCustomListSortPositions();
+				
 				setTimeout(function() {$('#responsePopup').modal('hide');}, 3000);
 				
 				
@@ -611,6 +614,27 @@ $('body').on('click','.delete_item', function(){
 	})
 	
 	
+	function reArrageCustomListSortPositions(){
+		if ( $(".alternating_full_width_row").length ) {
+			$.each($('.alternating_full_width_row'),function(k, v){
+				var sort_list_li = $(this).find('li');
+				$.each(sort_list_li,function(key, value){
+					$(this).find('.badge-no').html(parseInt(key)+1+'.');
+				});
+			});
+		}
+		
+		if ( $(".alternating_little_row").length ) {
+			$.each($('.alternating_little_row'),function(k, v){
+				var sort_list_li = $(this).find('li');
+				$.each(sort_list_li,function(key, value){
+					$(this).find('.badge-no').html(parseInt(key)+1+'.');
+				});
+			});
+		}
+		
+	}
+	
 	$('body').on('click','.full_alternate_popup', function(){
 		
 		var action_type = $(this).attr('action_type');
@@ -619,7 +643,7 @@ $('body').on('click','.delete_item', function(){
 		var form_type = $(this).attr('form_type');
 		//fullAlternatePopup
 		
-		$('#fullAlternatePopup').find('.modal-title').html(action_type + ': Calendar Category');
+		$('#fullAlternatePopup').find('.modal-title').html(action_type + ' Calendar Category');
 		
 		$.ajax({
 

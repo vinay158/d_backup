@@ -82,6 +82,7 @@
 			
 </div>
 <?php if(!empty($form_instances)){ ?>
+<div class="clearfix"></div>
 <div class="form-light-holder  row row-xs align-items-center form-module page-instance">
 	<div class="col-md-12"><h1>Form Instances</h1></div>
 	
@@ -89,7 +90,7 @@
 	
 		<?php $i = 1;
 		foreach($form_instances as $form_instance){ ?>
-			<div class="col-md-4 form_instance <?php echo (count($form_instances) >= 10) ? 'morethan10' : ''; ?>  <?php echo ($i >= 10) ? 'bigval' : 'smallval'; ?>"><span><?php echo $i; ?></span> <?php echo $form_instance->name; ?> </div>
+			<div class="col-md-4 form_instance <?php echo (!empty($form_instances) && count($form_instances) >= 10) ? 'morethan10' : ''; ?>  <?php echo ($i >= 10) ? 'bigval' : 'smallval'; ?>"><span><?php echo $i; ?></span> <?php echo $form_instance->name; ?> </div>
 		<?php $i++; } ?>
 	<?php } ?>
 </div>

@@ -690,6 +690,9 @@ $('body').on('click','.delete_item', function(){
 				
 				$('#responsePopup').modal('show');
 				$('#responsePopup').find('.action_response_msg').html('Successfully deleted!');
+				
+				reArrageCustomListSortPositions();
+				
 				setTimeout(function() {$('#responsePopup').modal('hide');}, 3000);
 				
 				
@@ -705,6 +708,30 @@ $('body').on('click','.delete_item', function(){
 	})
 	
 	
+	
+	function reArrageCustomListSortPositions(){
+		if ( $(".alternating_full_width_row").length ) {
+			$.each($('.alternating_full_width_row'),function(k, v){
+				var sort_list_li = $(this).find('li');
+				$.each(sort_list_li,function(key, value){
+					$(this).find('.badge-no').html(parseInt(key)+1+'.');
+				});
+			});
+		}
+		
+		if ( $(".alternating_little_row").length ) {
+			$.each($('.alternating_little_row'),function(k, v){
+				var sort_list_li = $(this).find('li');
+				$.each(sort_list_li,function(key, value){
+					$(this).find('.badge-no').html(parseInt(key)+1+'.');
+				});
+			});
+		}
+		
+	}
+	
+	
+	
 	$('body').on('click','.full_alternate_popup', function(){
 		
 		var action_type = $(this).attr('action_type');
@@ -714,9 +741,9 @@ $('body').on('click','.delete_item', function(){
 		//fullAlternatePopup
 		
 		if(form_type == "full_width_row"){
-			$('#fullAlternatePopup').find('.modal-title').html(action_type + ': Alternating Full Width Row');
+			$('#fullAlternatePopup').find('.modal-title').html(action_type + ' Alternating Full Width Row');
 		}else{
-			$('#fullAlternatePopup').find('.modal-title').html(action_type + ': Alternating Little Row');
+			$('#fullAlternatePopup').find('.modal-title').html(action_type + ' Alternating Little Row');
 		}
 		
 		
@@ -948,49 +975,49 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 			
             <a href="<?php echo $page_url; ?>#QuestionHeadline" class="az-contact-item">
               <div class="az-contact-body">
-                <h6>Question Headline Section 	</h6>
+                <h6>Question Headline </h6>
               </div><!-- az-contact-body -->
 				
             </a><!-- az-contact-item -->
 			
             <a href="<?php echo $page_url; ?>#Headersection" class="az-contact-item ">
               <div class="az-contact-body">
-                 <h6>Header Section</h6>
+                 <h6>Header</h6>
               </div><!-- az-contact-body -->
 			  
             </a><!-- az-contact-item -->
 			<a href="<?php echo $page_url; ?>#WhiteStripeFirstSection" class="az-contact-item ">
 			
               <div class="az-contact-body">
-                <h6>White Stripe Under Header Section</h6>
+                <h6>White Stripe Under Header</h6>
               </div><!-- az-contact-body -->
 				
             </a><!-- az-contact-item -->
 			
 			<a href="<?php echo $page_url; ?>#BenefitsRowImagesFirstSection" class="az-contact-item">
               <div class="az-contact-body">
-                <h6>Benefits with 3 images Section</h6>
+                <h6>Benefits with 3 images</h6>
               </div><!-- az-contact-body -->
 				
             </a><!-- az-contact-item -->
 			
 			<a href="<?php echo $page_url; ?>#videorowsection" class="az-contact-item">
               <div class="az-contact-body">
-                <h6>Video Row Section</h6>
+                <h6>Video Row</h6>
               </div><!-- az-contact-body -->
 				 
             </a><!-- az-contact-item -->
 			
 			<a href="<?php echo $page_url; ?>#Calltoaction3ImagesSection" class="az-contact-item">
               <div class="az-contact-body">
-                <h6>Call to Action with 3 Images Section</h6>
+                <h6>Call to Action with 3 Images</h6>
               </div><!-- az-contact-body -->
 				
             </a>
 			
 			<a href="<?php echo $page_url; ?>#HeadingboxesSection" class="az-contact-item">
               <div class="az-contact-body">
-                <h6>Heading with 3 boxes Section</h6>
+                <h6>Heading with 3 boxes</h6>
               </div><!-- az-contact-body -->
 				  
             </a><!-- az-contact-item -->
@@ -998,7 +1025,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 			
 			<a href="<?php echo $page_url; ?>#StatisticsimagesSection" class="az-contact-item">
               <div class="az-contact-body">
-                <h6>Statistics with 3 images Section</h6>
+                <h6>Statistics with 3 images</h6>
               </div><!-- az-contact-body -->
 				  
             </a><!-- az-contact-item -->
@@ -1007,7 +1034,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 			
 			<a href="<?php echo $page_url; ?>#BenefitsRowImagesSecondSection" class="az-contact-item">
               <div class="az-contact-body">
-                <h6>Benefits Row2 with 3 Images Section</h6>
+                <h6>Benefits Row 2 with 3 Images</h6>
               </div><!-- az-contact-body -->
 				 
             </a><!-- az-contact-item -->
@@ -1015,14 +1042,14 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 			<a href="<?php echo $page_url; ?>#WhiteStripeSecondSection" class="az-contact-item ">
 			
               <div class="az-contact-body">
-                <h6>White Stripe Row 2 Section</h6>
+                <h6>White Stripe Row 2</h6>
               </div><!-- az-contact-body -->
 				
             </a>
 			
 			<a href="<?php echo $page_url; ?>#BenefitsRowImagesThirdSection" class="az-contact-item">
               <div class="az-contact-body">
-                <h6>Benefits Row2 with 3 Images Section</h6>
+                <h6>Benefits Row 3 with 3 Images</h6>
               </div><!-- az-contact-body -->
 				 
             </a>
@@ -1038,7 +1065,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 			
 			<a href="<?php echo $page_url; ?>#testimonials_faqs" class="az-contact-item">
               <div class="az-contact-body">
-                <h6>Testimonials & Faqs</h6>
+                <h6>Testimonials & FAQs</h6>
               </div><!-- az-contact-body -->
 				 
             </a><!-- az-contact-item -->
@@ -1046,7 +1073,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 			
 			<a href="<?php echo $page_url; ?>#Htmleditor_Basic_detail" class="az-contact-item">
               <div class="az-contact-body">
-                <h6>Html Editor & Basic Detail</h6>
+                <h6>HTML Editor & Basic Details</h6>
               </div><!-- az-contact-body -->
             </a>
 			
@@ -1451,7 +1478,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 
 <div style="display:<?php echo ($multiSchool == 1) ? 'block' :'none'; ?>">
 
-<div class="mb-3 main-content-label">Featured Program Image Section</div>
+<div class="mb-3 main-content-label">Featured Program Image</div>
 <div class="form-light-holder" style="overflow:auto;">
 	
 	<h1 style="padding-bottom: 5px;">Featured Program Image</h1>
@@ -1611,7 +1638,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
  </div>
  
 <div class="page-section" id="QuestionHeadline">
-<div class="mb-3 main-content-label">Question Headline Section</div>
+<div class="mb-3 main-content-label">Question Headline</div>
 <div class="form-light-holder">
 
 	<h1>Question Headline</h1>
@@ -1622,7 +1649,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 </div>
 
 <div class="page-section" id="Headersection">
-<div class="mb-3 main-content-label">Header Section</div>
+<div class="mb-3 main-content-label">Header</div>
 <div class="form-light-holder">
 	<h1>Header</h1>
 	<textarea type="text" id="ckeditor_mini_header_title" name="header_title" class="field ckeditor full_width_input" style=""><?=$details->header_title;?></textarea>
@@ -1757,7 +1784,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 
 
 <div class="page-section" id="WhiteStripeFirstSection">
-<div class="mb-3 main-content-label">White Stripe Under Header Section</div>
+<div class="mb-3 main-content-label">White Stripe Under Header</div>
 <div class="form-light-holder">
 	<h1>Body Title</h1>
 	<textarea type="text" name="body_title" id="ckeditor_mini_body_title1" class="field ckeditor full_width_input" style=""><?=$details->body_title;?></textarea>
@@ -1822,7 +1849,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 
 
 <div class="page-section" id="BenefitsRowImagesFirstSection">
-<div class="mb-3 main-content-label">Benefits with 3 images Section</div>
+<div class="mb-3 main-content-label">Benefits with 3 images</div>
 <div class="form-light-holder">
 	<h1>Benefits Title</h1>
 	<input type="text" name="benefits_title" value="<?=$details->benefits_title;?>" class="field full_width_input" style="">
@@ -2033,7 +2060,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 
 
 <div class="page-section" id="Calltoaction3ImagesSection">
-<div class="mb-3 main-content-label">Call to Action with 3 Images Section</div>
+<div class="mb-3 main-content-label">Call to Action with 3 Images</div>
 <div class="form-light-holder">
 	<h1>Call to Action Title</h1>
 	<input type="text" name="action_title" value="<?php echo $this->query_model->getStrReplaceAdmin($details->action_title);?>" class="field full_width_input" style="">
@@ -2188,7 +2215,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 </div>
 
 <div class="page-section" id="HeadingboxesSection">
-<div class="mb-3 main-content-label">Heading with 3 boxes Section</div>
+<div class="mb-3 main-content-label">Heading with 3 boxes</div>
 <div class="form-light-holder">
 	<h1>Heading  Title</h1>
 	<input type="text" name="headling_title" value="<?php echo $this->query_model->getStrReplaceAdmin($details->headling_title);?>" class="field full_width_input">
@@ -2253,7 +2280,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 </div>
 
 <div class="page-section" id="StatisticsimagesSection">
-<div class="mb-3 main-content-label">Statistics with 3 images Section</div>
+<div class="mb-3 main-content-label">Statistics with 3 images</div>
 <div class="form-light-holder">
 	<h1>Statistics Title</h1>
 	<input type="text" name="statistics_title" value="<?php echo $this->query_model->getStrReplaceAdmin($details->statistics_title);?>" class="field full_width_input">
@@ -2399,14 +2426,14 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 
 
 <div class="page-section" id="BenefitsRowImagesSecondSection">
-<div class="mb-3 main-content-label">Benefits Row2 with 3 Images Section</div>
+<div class="mb-3 main-content-label">Benefits Row 2 with 3 Images</div>
 <div class="form-light-holder">
-	<h1>Benefits Row2 Title</h1>
+	<h1>Benefits Row 2 Title</h1>
 	<input type="text" name="benefits_2_title" value="<?php echo $this->query_model->getStrReplaceAdmin($details->benefits_2_title);?>" class="field full_width_input">
 </div>
 
 <div class="form-light-holder">
-	<h1>Benefits Row2 description</h1>
+	<h1>Benefits Row 2 description</h1>
 	<div class="shorterCkeditor"><textarea name="benefits_2_desc" id="ckeditor_mini_benefits_2_desc" class="text ckeditor"><?=$details->benefits_2_desc;?></textarea></div>
 </div>
 
@@ -2542,7 +2569,7 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 
 
 <div class="page-section" id="WhiteStripeSecondSection">
-<div class="mb-3 main-content-label">White Stripe Row 2 Section</div>
+<div class="mb-3 main-content-label">White Stripe Row 2</div>
 <!-- <div class="form-light-holder">
 	<h1>Title</h1>
 	<input type="text" name="white_stripe2_title" value="<?=$details->white_stripe2_title;?>" class="field" style="width:98%">
@@ -2589,14 +2616,14 @@ $(".form-light-holder .receive_class_button_checkbox").click(function(){
 </div>
 
 <div class="page-section" id="BenefitsRowImagesThirdSection">
-<div class="mb-3 main-content-label">Benefits Row3 with 3 Images Section</div>
+<div class="mb-3 main-content-label">Benefits Row 3 with 3 Images</div>
 <div class="form-light-holder">
-	<h1>Benefits Row3 Title</h1>
+	<h1>Benefits Row 3 Title</h1>
 	<input type="text" name="benefits_3_title" value="<?php echo $this->query_model->getStrReplaceAdmin($details->benefits_3_title);?>" class="field full_width_input">
 </div>
 
 <div class="form-light-holder">
-	<h1>Benefits Row3 description</h1>
+	<h1>Benefits Row 3 description</h1>
 	<div class="shorterCkeditor"><textarea name="benefits_3_desc" id="ckeditor_mini_benefits_3_desc" class="text ckeditor"><?=$details->benefits_3_desc;?></textarea></div>
 </div>
 
@@ -2853,7 +2880,7 @@ $(".form2checkbox .checkbox2").click(function(){
 
 </div>
 <div class="page-section" id="testimonials_faqs">
-<div class="mb-3 main-content-label">Testimonials Section</div>
+<div class="mb-3 main-content-label">Testimonials</div>
 
 <div class="form-light-holder">
 	<h1>h2 above the testimonials</h1>
@@ -2876,7 +2903,7 @@ $(".form2checkbox .checkbox2").click(function(){
 
 
 
-<div class="mb-3 main-content-label">FAQs Section</div>
+<div class="mb-3 main-content-label">FAQs</div>
 
 <div class="form-light-holder">
 	<h1>h2 above the faqs</h1>
@@ -4297,7 +4324,7 @@ if(!empty($programSections)):?>
 $sr_testimonials=0; 
 
 
-$sectionArr = array('question_headline_section'=>'Question Headline Section','white_stripe_section'=>'White Stripe Under Header Section','benefits_1_section'=>'Benefits with 3 images Section','video_row_section'=>'Video Row Section','call_to_action_section'=>'Call to Action with 3 Images Section','headling_section'=>'Heading with 3 boxes Section','statistics_section'=>'Statistics with 3 images Section','benefits_2_section'=>'Benefits Row2 with 3 Images Section','white_stripe_2_section'=>'White Stripe Row 2 Section','benefits_3_section'=>'Benefits Row3 with 3 Images Section','full_width_row_section'=>'Alternating Full Width Rows','little_row_section'=>'Alternating Little Rows','faq_section'=>'Faqs','testimonial_section'=>'Testimonials','html_editor_section'=>'HTML Editor');
+$sectionArr = array('question_headline_section'=>'Question Headline','white_stripe_section'=>'White Stripe Under Header','benefits_1_section'=>'Benefits with 3 images','video_row_section'=>'Video Row','call_to_action_section'=>'Call to Action with 3 Images','headling_section'=>'Heading with 3 boxes','statistics_section'=>'Statistics with 3 images','benefits_2_section'=>'Benefits Row 2 with 3 Images','white_stripe_2_section'=>'White Stripe Row 2','benefits_3_section'=>'Benefits Row 3 with 3 Images','full_width_row_section'=>'Alternating Full Width Rows','little_row_section'=>'Alternating Little Rows','faq_section'=>'FAQs','testimonial_section'=>'Testimonials','html_editor_section'=>'HTML Editor');
 			
 if(!empty($programSections)):?>
 <?php foreach($programSections as $about_us_row):

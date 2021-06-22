@@ -514,7 +514,7 @@ $('.programCheckbox').click(function(){
 
 </div>
 <div class="page-section" id="TimelineSection">
-<div class="mb-3 main-content-label">Timeline</div>
+<div class="mb-3 main-content-label">Timeline Section</div>
 <div class="form-light-holder form2checkbox">
 
 	<a id="published" class="checkbox2 <?php echo (!empty($pagedetails) && $pagedetails[0]->show_timeline == 1) ? 'check-on' : 'check-off'; ?>"></a>

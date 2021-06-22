@@ -35,9 +35,6 @@
 			</div>
 							
 							
-			<div class="action_btn">
-			 &nbsp; 
-			</div>
 			
 			
 				<?php /*if($user->published == 1){?>
@@ -51,9 +48,7 @@
 				<a id="unpub_<?=$user->id; ?>" class="unpublish " user_status="1" title="Active <?=$user->firstname?>">Inactive</a> 
 				</div>
 				<?php } */ ?>
-			<div style="margin-bottom:7px;">	
-				
-			</div>	
+			
 			
 			<!--<div class="action_btn">
 				

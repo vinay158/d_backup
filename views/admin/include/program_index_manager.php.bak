@@ -183,10 +183,10 @@ url: "admin/"+mod_type1+"/sortthis",
 type: "post",
 data: serial,
 success: function(){
-				$.each(sort_list_li,function(key, value){
-					$(this).find('.badge-no').html(parseInt(key)+1+'.');
-				});
-			}
+	$.each(sort_list_li,function(key, value){
+		$(this).find('.badge-no').html(parseInt(key)+1+'.');
+	});
+}
 });
 }
 });
@@ -299,6 +299,9 @@ $('body').on('click','.delete_item', function(){
 				
 				$('#responsePopup').modal('show');
 				$('#responsePopup').find('.action_response_msg').html('Successfully deleted!');
+				
+				reArrageCustomListSortPositions();
+				
 				setTimeout(function() {$('#responsePopup').modal('hide');}, 3000);
 				
 				

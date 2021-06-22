@@ -143,25 +143,25 @@ $(".hide_from_navigation .hide_from_navigation_checkbox").click(function(){
 			
             <a href="<?php echo $page_url; ?>#Headersection" class="az-contact-item ">
               <div class="az-contact-body">
-                 <h6>Header Section</h6>
+                 <h6>Header</h6>
               </div><!-- az-contact-body -->
             </a><!-- az-contact-item -->
 			<a href="<?php echo $page_url; ?>#WhiteStripeFirstSection" class="az-contact-item ">
 			
               <div class="az-contact-body">
-                <h6>White Stripe Under Header Section</h6>
+                <h6>White Stripe Under Header</h6>
               </div><!-- az-contact-body -->
             </a><!-- az-contact-item -->
 			
 			<a href="<?php echo $page_url; ?>#Calltoaction3ImagesSection" class="az-contact-item default_template">
               <div class="az-contact-body">
-                <h6>Call to Action with 3 Images Section</h6>
+                <h6>Call to Action with 3 Images</h6>
               </div><!-- az-contact-body -->
             </a>
 			
 			<a href="<?php echo $page_url; ?>#Images3WithTextSection" class="az-contact-item default_template">
               <div class="az-contact-body">
-                <h6>3 Images with Text Section</h6>
+                <h6>3 Images with Text</h6>
               </div><!-- az-contact-body -->
 				
             </a><!-- az-contact-item -->
@@ -567,7 +567,7 @@ $(document).ready(function(){
 
 
 <div class="page-section" id="Headersection">
-<div class="mb-3 main-content-label">Header Section</div>
+<div class="mb-3 main-content-label">Header</div>
 <div class="form-light-holder">
 	<h1>Header</h1>
 	<textarea type="text" id="ckeditor_mini_header_title" name="header_title" class="field  full_width_input"><?=$prog_cat->header_title;?></textarea>
@@ -642,7 +642,7 @@ $(document).ready(function(){
 </div>	
 
 <div class="page-section" id="WhiteStripeFirstSection">
-<div class="mb-3 main-content-label">White Stripe Under Header Section</div>
+<div class="mb-3 main-content-label">White Stripe Under Header</div>
 <div class="form-light-holder">
 	<h1>Body Title</h1>
 	<textarea type="text" name="body_title" id="ckeditor_mini_body_title" class="field  full_width_input"><?=$prog_cat->body_title;?></textarea>
@@ -687,7 +687,7 @@ $(document).ready(function(){
 
 <div class="default_template">
 <div class="page-section" id="Calltoaction3ImagesSection">
-<div class="mb-3 main-content-label">Call to Action with 3 Images Section</div>
+<div class="mb-3 main-content-label">Call to Action with 3 Images</div>
 <div class="form-light-holder">
 	<h1>Call to Action Title</h1>
 	<input type="text" name="action_title" value="<?php echo $this->query_model->getStrReplaceAdmin($prog_cat->action_title);?>" class="field  full_width_input">
@@ -855,7 +855,7 @@ $(".form-light-holder .checkbox1").click(function(){
 
 <div class="default_template">
 <div class="page-section" id="Images3WithTextSection">
-<div class="mb-3 main-content-label">3 images + Text Section</div>
+<div class="mb-3 main-content-label">3 images + Text</div>
 
 
 <div class="form-light-holder">
@@ -1125,7 +1125,7 @@ $(".form2checkbox .checkbox2").click(function(){
 </div>
 </div>
 <div class="page-section" id="SeoMeta">
-<div class="mb-3 main-content-label">Seo/Meta Details</div>
+<div class="mb-3 main-content-label">SEO/Meta Details</div>
 <div class="form-light-holder">
 	<h1>Meta Title</h1>
 	<input type="text" name="meta_title" value="<?=$prog_cat->meta_title ?>" class="field">
@@ -1454,6 +1454,9 @@ $('body').on('click','.delete_item', function(){
 				
 				$('#responsePopup').modal('show');
 				$('#responsePopup').find('.action_response_msg').html('Successfully deleted!');
+				
+				reArrageCustomListSortPositions();
+				
 				setTimeout(function() {$('#responsePopup').modal('hide');}, 3000);
 				
 				
@@ -1469,6 +1472,30 @@ $('body').on('click','.delete_item', function(){
 	})
 	
 	
+
+	function reArrageCustomListSortPositions(){
+		if ( $(".alternating_full_width_row").length ) {
+			$.each($('.alternating_full_width_row'),function(k, v){
+				var sort_list_li = $(this).find('li');
+				$.each(sort_list_li,function(key, value){
+					$(this).find('.badge-no').html(parseInt(key)+1+'.');
+				});
+			});
+		}
+		
+		if ( $(".alternating_little_row").length ) {
+			$.each($('.alternating_little_row'),function(k, v){
+				var sort_list_li = $(this).find('li');
+				$.each(sort_list_li,function(key, value){
+					$(this).find('.badge-no').html(parseInt(key)+1+'.');
+				});
+			});
+		}
+		
+	}
+	
+	
+	
 	$('body').on('click','.full_alternate_popup', function(){
 		
 		var action_type = $(this).attr('action_type');
@@ -1478,7 +1505,7 @@ $('body').on('click','.delete_item', function(){
 		//fullAlternatePopup
 		
 		if(form_type == "full_width_row"){
-			$('#fullAlternatePopup').find('.modal-title').html(action_type + ': Alternating Full Width Row');
+			$('#fullAlternatePopup').find('.modal-title').html(action_type + ' Alternating Full Width Row');
 		}else{
 			$('#fullAlternatePopup').find('.modal-title').html(action_type + ': Alternating Little Row');
 		}
@@ -1700,7 +1727,7 @@ $(window).load(function(){
 <?php
 $sr_testimonials=0; 
 
-$sectionArr = array('white_stripe_section'=>'White Stripe Under Header Section','full_width_row_section'=>'Full Width Rows Section','call_to_action_section'=>'Call to Action with 3 Images Section','images_text_section'=>'3 images + Text Section','program_listing_section'=>'Porgrams Listing');
+$sectionArr = array('white_stripe_section'=>'White Stripe Under Header','full_width_row_section'=>'Full Width Rows','call_to_action_section'=>'Call to Action with 3 Images','images_text_section'=>'3 images + Text','program_listing_section'=>'Porgrams Listing');
 			
 if(!empty($programSections)):?>
 <?php foreach($programSections as $about_us_row):
@@ -1756,10 +1783,10 @@ if(!empty($programSections)):?>
           </div>
           <div class="modal-footer">
 			  <div class="col-md-6 text-left">
-				<a href="javascript:void(0)" class="btn btn-indigo popup_cancel_btn" data-dismiss="modal">No, cancel please !</a>
+				<a href="javascript:void(0)" class="btn btn-indigo popup_cancel_btn" data-dismiss="modal">No, cancel please!</a>
 			  </div>
 			   <div class="col-md-6 text-right">
-				<a href="javascript:void(0)" class="btn btn-indigo popup_delete_btn">Yes, Delete It !</a>
+				<a href="javascript:void(0)" class="btn btn-indigo popup_delete_btn">Yes, Delete It!</a>
 			   </div>
           </div>
 		  </form>

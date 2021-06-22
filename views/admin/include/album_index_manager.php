@@ -328,7 +328,7 @@ $('body').on('click','.delete_item', function(){
 		var form_type = $(this).attr('form_type');
 		//fullAlternatePopup
 		
-		$('#fullAlternatePopup').find('.modal-title').html(action_type + ': Video Category');
+		$('#fullAlternatePopup').find('.modal-title').html(action_type + ' Video Category');
 		
 		$.ajax({
 

@@ -189,7 +189,7 @@
 									<li   id="menu_<?=$row->id;?>" class="full_width_row_<?=$row->id;?> az-contact-info-header">
 										<div class="manager-item media">
 											<div style="float:left;">
-												<div class="badge-no">. <?=$sr_calendar?></div>
+												<div class="badge-no"><?=$sr_calendar?>. </div>
 												
                                                 
 												
@@ -708,6 +708,9 @@ $('body').on('click','.delete_item', function(){
 				
 				$('#responsePopup').modal('show');
 				$('#responsePopup').find('.action_response_msg').html('Successfully deleted!');
+				
+				reArrageCustomListSortPositions();
+				
 				setTimeout(function() {$('#responsePopup').modal('hide');}, 3000);
 				
 				
