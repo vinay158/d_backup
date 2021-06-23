@@ -34,7 +34,7 @@
 			foreach($week_academy_pages as $week_academy_page){
 				
 				
-				$this->db->order_by('pos', 'asc');
+				$this->db->order_by('pos asc, id desc');
 				$this->db->where('published', 1);
 				$this->db->where('week_academy_id', $week_academy_page->id);
 				$video_albums = $this->query_model->getbySpecific("tbl_academy_galleryname", "category", 26);

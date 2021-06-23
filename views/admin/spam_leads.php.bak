@@ -143,7 +143,7 @@ $(document).ready(function(){
 						<a href="<?php echo 'admin/'.$link_type.'?date='.$preDate; ?>&location=<?php echo (isset($_GET['location'])) ? $_GET['location'] : ''; ?>" class="btn btn-primary" >  &lt;Prev  </a>  
 					</div>
 					
-				<div class="col-lg-2 active">
+				<div class="col-lg-1 active">
 						 <span><?php echo date('F Y', strtotime($activeDate)); ?> </span> 
 					</div>
 				

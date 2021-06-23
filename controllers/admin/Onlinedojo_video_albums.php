@@ -81,7 +81,7 @@ class Onlinedojo_video_albums extends CI_Controller {
 				$data['type']=$data['media'][0]->type;
 			}
 					
-			$this->db->order_by("pos", "ASC");
+			$this->db->order_by('pos asc, cat_id desc');
 			$this->db->select(array('cat_id','cat_name'));
 			$data['cat'] = $this->query_model->getBySpecific('tblcategory','cat_type',"gallery");
 			

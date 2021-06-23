@@ -28,7 +28,7 @@
 	
 ?>
 
-	<h1>Category <?php echo $selected_item_id; ?></h1>
+	<h1>Category</h1>
 	<select id="parent_id" name="parent_id" class="field">
 	<option value="0">-Select Category-</option>
 	<?php echo $this->query_model->getCategoryDropdownOptions('videos',0, 0,$selected_category,$selected_item_id); ?>

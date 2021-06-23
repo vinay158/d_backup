@@ -2247,7 +2247,7 @@ if(!empty($apiKeys->instragram_user_id) && !empty($apiKeys->instragram_access_to
          </div>
 		 <div class="clearfix"></div>
          <div class="action-btn-block">
-		 <?php if(isset($ins_media['data']) && count($ins_media['data']) > 5){ ?>
+		 <?php if(count($ins_media['data']) > 5){ ?>
         	<a href="javascript:void(0);" class="load-more showMoreInstragram"><?php echo $this->query_model->getStaticTextTranslation('load_more'); ?></a> 
 		<?php } ?>
             <a href="#" class="follow-btn"><i class="fa fa-instagram"></i> <?php echo $this->query_model->getStaticTextTranslation('follow'); ?> </a>

@@ -14,7 +14,7 @@ class Virtual_training extends CI_Controller {
 	}
 	
 	public function index(){
-		
+		die('222');
 	$data['user_level']=$this->session->userdata['user_level'];
 	$is_logged_in = $this->session->userdata('is_logged_in');
 
@@ -27,7 +27,7 @@ class Virtual_training extends CI_Controller {
 		
 		$this->db->order_by('pos asc, id desc');
 		$data['rows'] = $this->query_model->getbyTable("tbl_virtual_training_rows");
-		echo '<pre>data'; print_r($data['rows']); die;
+		//echo '<pre>data'; print_r($data['rows']); die;
 			if(isset($_POST['update'])){
 				
 				$updateData['title'] = (isset($_POST['title']) && !empty($_POST['title'])) ? $_POST['title'] : 'Virtual Training';

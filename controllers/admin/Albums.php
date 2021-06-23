@@ -97,12 +97,14 @@ class Albums extends CI_Controller {
 			if(empty($data['category_detail'])){
 				$this->db->select(array('cat_id','cat_name'));
 				$this->db->limit(1);
-				$this->db->order_by("pos", "ASC");
+				$this->db->order_by('pos asc, cat_id desc');
 				$this->db->where("cat_type", "videos");
+				$this->db->where('parent_id',0);
 				$data['category_detail'] = $this->query_model->getbyTable('tblcategory');
 				
 			}
-			
+			$data['selected_cat_id'] = isset($data['category_detail'][0]->cat_id) ? $data['category_detail'][0]->cat_id : 0;
+			//echo '<pre>'; print_r(	$data['category_detail']); die;
 			$this->db->order_by('pos asc, id desc');
 			$this->db->where("type", 2);
 			$data['albums'] = $this->query_model->getbySpecific("tblmedia", "category", $this->uri->segment(4));

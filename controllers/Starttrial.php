@@ -100,7 +100,7 @@ class Starttrial extends CI_Controller {
 				/*if(count($selectedTesti) > 2){
 					$this->db->limit(2);
 				} */
-				$this->db->order_by("pos","asc");
+				$this->db->order_by('pos asc, id desc');
 				$this->db->where_in('id', $selectedTesti);
 			}else{
 				$this->db->limit(2);
@@ -112,7 +112,7 @@ class Starttrial extends CI_Controller {
 		$data['email_options'] = $this->query_model->getbySpecific('tbl_onlinespecial_email_options', 'id', 1);
 		$data['email_options'] = !empty($data['email_options']) ? $data['email_options'][0] : array();
 
-		$this->db->order_by('pos', 'asc');
+		$this->db->order_by('pos asc, id desc');
 		$this->db->where("published", 1);
 		$data['onlinespecialRows'] = $this->query_model->getbySpecific('tbl_onlinespecial_rows', 'published', 1); 
 		

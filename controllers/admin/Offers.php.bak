@@ -23,7 +23,7 @@ class Offers extends CI_Controller {
 			$data['title'] = "Referral Rewards ";
 			$data['link_type'] = "offers";
 			//$this->db->order_by("expire", "DESC"); 
-			$this->db->order_by("pos", "ASC");
+			$this->db->order_by('pos asc, id desc');
 			$this->db->select(array('id','name','expire','photo'));
 			$data['staff'] = $this->query_model->getbyTable("tbloffers");
 			//$data['mini_form_detail'] = $this->query_model->getbyId("tblsite", 1);

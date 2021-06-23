@@ -1,4 +1,4 @@
-<?php $selected_cat = $this->uri->segment(4); ?>
+<?php $selected_cat = $selected_cat_id; ?>
 <style>
 	.download_thread_listing .little_row_heading_<?php echo $selected_cat ?>{background:red; color:#fff;padding:13px 0px;margin-top: -12px;margin-bottom: -8px;}
 	
@@ -107,7 +107,9 @@
 			
 				<?php if($is_download_thread == 1){ ?>
 					<ul class="cat_sort ui-sortable alternating_little_row download_thread_listing" style="">
-					<?php echo $this->query_model->getCategoryTreeHTML("downloads",0,0); ?>
+					<?php 
+						
+						echo $this->query_model->getCategoryTreeHTML("downloads",0,0,$selected_cat_id); ?>
 					</ul>
 				<?php }else{ ?>
 					  <ul class="cat_sort ui-sortable alternating_little_row" style="">
@@ -165,7 +167,7 @@
 								</div>
 								<div>
 								
-								 <a href="admin/<?=$link_type?>/add/<?=$this->uri->segment(4);?>" class="button_class btn btn-indigo" >Add New</a>
+								 <a href="admin/<?=$link_type?>/add/<?=$selected_cat_id;?>" class="button_class btn btn-indigo" >Add New</a>
 								</div>
 							  </div>
 							  

@@ -168,7 +168,7 @@ $(document).ready(function(){
 				</div>
 				<div class="float-right back_to_kanban_box">
 						
-						<a href="<?php echo base_url().'admin/kanban_leads'; ?>"><button class="btn btn-with-icon btn-block"><i class="typcn typcn-folder"></i>Switch to the kanban board</button></a>
+						<a href="<?php echo base_url().'admin/kanban_leads'; ?>"><button class="btn btn-with-icon btn-block"><i class="typcn typcn-folder"></i>Switch to Column View</button></a>
 						
 					</div>
 			</div>
@@ -194,7 +194,7 @@ $(document).ready(function(){
 				<div class="col-md-2">
 						<h1>Status</h1>
 						<select name="lead_status" id="" class="field search_field">
-							<option value="">-All Statusddd-</option>
+							<option value="">-All Status-</option>
 							<?php foreach($kanban_lead_all_status as $key => $status){ ?>
 								<option value="<?php echo $status->id; ?>" <?php echo (isset($_GET['lead_status']) && $_GET['lead_status'] == $status->id) ? "selected=selected" : ''; ?>><?php echo $status->title; ?></option>
 							<?php } ?>
@@ -472,7 +472,7 @@ $(document).ready(function() {
       <div class="modal-dialog modal-dialog-centered sortable-box" role="document">
         <div class="modal-content modal-content-demo">
           <div class="modal-header">
-            <h6 class="modal-title user_name_info">User Attendance Info</h6>
+            <h6 class="modal-title user_name_info"></h6>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

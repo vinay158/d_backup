@@ -41,7 +41,7 @@
 				 	$this->db->order_by('pos asc, id desc');
 					$this->db->where("published", 1);
 				 	$downloads_posts = $this->query_model->getbySpecific('tbldownloads', 'category', $category->cat_id);
-					
+					echo '<pre>downloads_posts'; print_r($downloads_posts); die;
 						if(!empty($downloads_posts)):
 		?>
 		

@@ -110,14 +110,18 @@ class Downloads extends CI_Controller {
 			if(empty($data['category_detail'])){
 				$this->db->select(array('cat_id','cat_name'));
 				$this->db->limit(1);
-				$this->db->order_by("pos", "ASC");
+				$this->db->order_by('pos asc, cat_id desc');
 				$this->db->where("cat_type", "downloads");
+				$this->db->where('parent_id',0);
 				$data['category_detail'] = $this->query_model->getbyTable('tblcategory');
 				
 			}
 			
+			$data['selected_cat_id'] = isset($data['category_detail'][0]->cat_id) ? $data['category_detail'][0]->cat_id : 0;
+			//echo $data['selected_cat_id']; die;
+			//echo '<pre>'; print_r($data['category_detail']); die;
 			$this->db->select(array('cat_id','cat_name','cat_slug','published','parent_id','permission'));
-			$this->db->order_by("pos", "ASC");
+			$this->db->order_by('pos asc, cat_id desc');
 			$data['cat'] = $this->query_model->getBySpecific('tblcategory','cat_type', "downloads");
 			//$data['cat'] = $this->query_model->getCategory("downloads");
 			$this->db->order_by('pos asc, id desc');

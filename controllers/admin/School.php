@@ -838,7 +838,7 @@ public function sortthisstaff(){
 					$data['title'] = 'School Team Members';
 						$data['link_type'] = 'school';
 						//echo $this->uri->segment(4); die;
-						$this->db->order_by("pos","asc");
+						$this->db->order_by('pos asc, id desc');
 						$data['team'] = $this->query_model->getbySpecific("tbl_team_members", 'location_id',$this->uri->segment(4));
 						
 						//$IsAllowMultiStaff = $this->school_model->IsAllowMultiStaff();

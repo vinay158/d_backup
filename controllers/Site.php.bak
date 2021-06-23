@@ -35,7 +35,7 @@ class Site extends CI_Controller {
 		$this->load->helper(array('url'));
 		
 		$this->db->limit(5);
-		$this->db->order_by('pos asc, id desc');	
+		$this->db->order_by("pos", "ASC");	
 			
 		$data['featured'] = $this->query_model->getbySpecific("tblprogram", "featured", 1);
 		//echo '<pre>'; print_r($data['featured']); die;

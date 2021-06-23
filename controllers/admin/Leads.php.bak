@@ -2410,7 +2410,7 @@ public function ajax_spam_lead_info(){
 			
 			if(!empty($lead_id) && !empty($email)){
 				$this->db->where('email',$email);
-				$data['spam_lead'] = $this->query_model->getBySpecific('tbl_sp_leads','id',$lead_id);
+				$data['spam_lead_detail'] = $this->query_model->getBySpecific('tbl_sp_leads','id',$lead_id);
 			}
 		}
 		

@@ -390,12 +390,13 @@ class Students extends CI_Controller {
 								
 								// getting sub categories
 								$this->db->where("published", 1);
-								$this->db->order_by('pos', 'asc');
+								$this->db->order_by('pos asc, cat_id desc');
 								$data['album']['sub_categories'] = $this->query_model->getbySpecific('tblcategory', 'parent_id', $catDetail[0]->cat_id);
-								
+								//echo '<pre>'; print_r($data['album']['sub_categories']); die;
 								// gettind category download files
 								
 								$this->db->where('published',1);
+								$this->db->order_by('pos asc, id desc');
 								$data['album']['videos'] = $this->query_model->getbySpecific('tblmedia', 'category', $catDetail[0]->cat_id);
 								
 								// gettind category download files
@@ -412,14 +413,16 @@ class Students extends CI_Controller {
 							$this->db->where("parent_id", 0);
 							$this->db->order_by('pos', 'asc');
 							$categories =  $this->query_model->getbySpecific("tblcategory", "cat_type", 'videos');
-							
+							//echo '<pre>categories'; print_r($categories); die;
 							if(!empty($categories)){
 								foreach($categories as $key => $cat){
 									$data['albums'][$key]['categories'] = $cat;
+									$this->db->order_by('pos asc, cat_id desc');
 									$data['albums'][$key]['sub_categories'] = $this->query_model->getbySpecific('tblcategory', 'parent_id', $cat->cat_id);
 									
 										
 									// gettind category download files
+									$this->db->order_by('pos asc, id desc');
 									$data['albums'][$key]['videos'] = $this->query_model->getbySpecific('tblmedia', 'category', $cat->cat_id);
 									
 								}
@@ -432,7 +435,7 @@ class Students extends CI_Controller {
 						$this->load->view('student_video_albums_thread', $data);
 				}else{
 					$this->db->where('published', 1);
-					$this->db->order_by('pos', 'asc');
+					$this->db->order_by('pos asc, id desc');
 					$data['video_albums'] = $this->query_model->getbySpecific("tblgalleryname", "category", 26);
 					
 					$this->load->view('student_video_albums', $data);
@@ -461,7 +464,7 @@ class Students extends CI_Controller {
 				}
 				
 				
-				$this->db->order_by('pos', 'asc');
+				$this->db->order_by('pos asc, id desc');
 				$this->db->where('published',1);
 				$data['videos'] = $this->query_model->getbySpecific("tblmedia", "album", $this->uri->segment(3));
 				
@@ -512,7 +515,7 @@ class Students extends CI_Controller {
 	
 	}
 	
-	function downloads(){
+	function downloads(){ 
 			if($this->session->userdata('student_session_login') == 1){
 				
 				$data['student_section_slug'] = $this->query_model->getbySpecific('tblmeta', 'id', 47);
@@ -547,10 +550,11 @@ class Students extends CI_Controller {
 								
 								// getting sub categories
 								$this->db->where("published", 1);
-								$this->db->order_by('pos', 'asc');
+								$this->db->order_by('pos asc, cat_id desc');
 								$data['downloads']['sub_categories'] = $this->query_model->getbySpecific('tblcategory', 'parent_id', $catDetail[0]->cat_id);
 								
 								// gettind category download files
+								$this->db->order_by('pos asc, id desc');
 								$data['downloads']['downloadFiles'] = $this->query_model->getbySpecific('tbldownloads', 'category', $catDetail[0]->cat_id);
 								
 								// gettind category download files
@@ -564,12 +568,19 @@ class Students extends CI_Controller {
 							$data['type'] = 'main_page';
 							$this->db->where("published", 1);
 							$this->db->where("parent_id", 0);
-							$this->db->order_by('pos', 'asc');
+							$this->db->order_by('pos asc, cat_id desc');
 							$categories =  $this->query_model->getbySpecific("tblcategory", "cat_type", 'downloads');
 							if(!empty($categories)){
 								foreach($categories as $key => $cat){
 									$data['downloads'][$key]['categories'] = $cat;
+									
+									$this->db->order_by('pos asc, cat_id desc');
 									$data['downloads'][$key]['sub_categories'] = $this->query_model->getbySpecific('tblcategory', 'parent_id', $cat->cat_id);
+									
+									// gettind category download files
+									$this->db->order_by('pos asc, id desc');
+									$data['downloads'][$key]['downloadFiles'] = $this->query_model->getbySpecific('tbldownloads', 'category', $cat->cat_id);
+									
 								}
 							}
 							
@@ -581,7 +592,7 @@ class Students extends CI_Controller {
 					//$data['page_title'] = 'Downloadsdd';
 					
 					$this->db->where("published", 1);
-					$this->db->order_by('pos', 'asc');
+					$this->db->order_by('pos asc, cat_id desc');
 					$data['download_category'] =  $this->query_model->getbySpecific("tblcategory", "cat_type", 'downloads');
 					
 					
@@ -604,7 +615,7 @@ class Students extends CI_Controller {
 				$data['page_title'] = !empty($data['page_title'])? $data['page_title'][0]->title:'';
 
 				//$data['page_title'] = 'Referral Rewards';
-				$this->db->order_by('pos', 'asc');
+				$this->db->order_by('pos asc, id desc');
 				$data['referral_rewards'] = $this->query_model->getbyTable("tbloffers");
 				
 				$this->db->where("published", 1);
@@ -728,14 +739,14 @@ public function thankyou(){
 			$data['student_section_slug'] = $this->query_model->getbySpecific('tblmeta', 'id', 47);
 			$data['student_section_slug'] = $data['student_section_slug'][0];
 			
-			$this->db->order_by('pos', 'asc');
+			$this->db->order_by('pos asc, id desc');
 			$data['videos'] = $this->query_model->getbySpecific("tbl_onlinedojo_videos", "published", 1);
 			
 			
 			$this->db->where('published', 1);
-			$this->db->order_by('pos', 'asc');
+			$this->db->order_by('pos asc, id desc');
 			$data['video_albums'] = $this->query_model->getbySpecific("tbl_onlinedojo_galleryname", "category", 26);
-			
+			//echo '<pre>'; print_r($data['video_albums']); die;
 			
 			$this->db->where("published", 1);
 			$this->db->order_by("pos","asc");
@@ -758,7 +769,7 @@ public function thankyou(){
 	}
 	
 	public function virtualtraining($slug = ""){
-		
+		die('1');
 		if($this->session->userdata('student_session_login') == 1){	
 			
 			$data['student_section_slug'] = $this->query_model->getbySpecific('tblmeta', 'id', 47);
@@ -775,7 +786,7 @@ public function thankyou(){
 				$data['detail'] = $this->query_model->getbyTable("tbl_virtual_training");
 		
 				$this->db->where('published',1);
-				$this->db->order_by('pos','asc');
+				$this->db->order_by('pos asc, id desc');
 				$data['virtual_training_rows'] = $this->query_model->getbyTable("tbl_virtual_training_rows");
 				
 				$this->load->view('virtual_training', $data);
@@ -783,7 +794,7 @@ public function thankyou(){
 				
 				$this->db->where('published',1);
 				$this->db->where('slug',$slug);
-				$this->db->order_by('pos','asc');
+				$this->db->order_by('pos asc, id desc');
 				$data['detail'] = $this->query_model->getbyTable("tbl_virtual_training_rows");
 				
 				$data['virtual_training'] = $this->query_model->getbyTable("tbl_virtual_training");
@@ -862,7 +873,7 @@ public function thankyou(){
 						
 						
 					}else{
-						$error .= 'Email address not exists';
+						$error .= 'Email address does not exist';
 					}
 				}else{
 					$error .= 'Please fill required fields';
@@ -957,7 +968,7 @@ public function thankyou(){
 				}
 				
 				
-				$this->db->order_by('pos', 'asc');
+				$this->db->order_by('pos asc, id desc');
 				$this->db->where('published',1);
 				$data['videos'] = $this->query_model->getbySpecific("tbl_academy_media", "album", $this->uri->segment(3));
 				
@@ -994,7 +1005,7 @@ public function thankyou(){
 				}
 				
 				
-				$this->db->order_by('pos', 'asc');
+				$this->db->order_by('pos asc, id desc');
 				$this->db->where('published',1);
 				$data['videos'] = $this->query_model->getbySpecific("tbl_onlinedojo_media", "album", $this->uri->segment(3));
 				

@@ -35,7 +35,7 @@ class Virtualtraining extends CI_Controller {
 			
 			
 			$this->db->where('published',1);
-			$this->db->order_by('pos','asc');
+			$this->db->order_by('pos asc, id desc');
 			$data['virtual_training_rows'] = $this->query_model->getbyTable("tbl_virtual_training_rows");
 			
 			$this->load->view('virtual_training', $data);

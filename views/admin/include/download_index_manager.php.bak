@@ -107,7 +107,9 @@
 			
 				<?php if($is_download_thread == 1){ ?>
 					<ul class="cat_sort ui-sortable alternating_little_row download_thread_listing" style="">
-					<?php echo $this->query_model->getCategoryTreeHTML("downloads",0,0); ?>
+					<?php 
+						
+						echo $this->query_model->getCategoryTreeHTML("downloads",0,0,$selected_cat_id); ?>
 					</ul>
 				<?php }else{ ?>
 					  <ul class="cat_sort ui-sortable alternating_little_row" style="">
@@ -165,7 +167,7 @@
 								</div>
 								<div>
 								
-								 <a href="admin/<?=$link_type?>/add/<?=$this->uri->segment(4);?>" class="button_class btn btn-indigo" >Add New</a>
+								 <a href="admin/<?=$link_type?>/add/<?=$selected_cat_id;?>" class="button_class btn btn-indigo" >Add New</a>
 								</div>
 							  </div>
 							  
@@ -418,7 +420,7 @@ $('body').on('click','.delete_item', function(){
 		var form_type = $(this).attr('form_type');
 		//fullAlternatePopup
 		
-		$('#fullAlternatePopup').find('.modal-title').html(action_type + ': Downloads Category');
+		$('#fullAlternatePopup').find('.modal-title').html(action_type + ' Downloads Category');
 		
 		$.ajax({
 

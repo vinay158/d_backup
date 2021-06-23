@@ -79,7 +79,7 @@ class Gallery extends CI_Controller {
 			$this->db->where("category", $this->uri->segment(5));
 			$data['albums'] = $this->query_model->getbyTable("tblgalleryname");
 			
-			$this->db->order_by("pos", "ASC");	
+			$this->db->order_by('pos asc, id desc');	
 			$data['media'] = $this->query_model->getbySpecific("tblmedia", "album", $this->uri->segment(4));
 			$data['type']='';
 			if(is_array($data['media']) && count($data['media'])>0) {
@@ -136,11 +136,11 @@ class Gallery extends CI_Controller {
 		{
 			
 				$data['title'] = "Video Albums";
-				$this->db->order_by("pos", "ASC");
+				//$this->db->order_by("pos", "ASC");
 				//$data['cat'] = $this->query_model->getGalleryCategory("gallery");
 				$data['link_type'] = "gallery";
 				
-				$this->db->order_by("pos", "ASC");
+				$this->db->order_by('pos asc, id desc');
 				$this->db->select(array('id','published','album','category','cover','pos'));
 				$data['blogs'] = $this->query_model->getbySpecific("tblgalleryname", "category", $this->uri->segment(4));
 

@@ -8,7 +8,8 @@ class Events extends CI_Controller {
 		
 		if($this->session->userdata('student_session_login') == 1){	
 		
-		
+			$selected_location_slug = $location;
+			
 				$multi_calendar = $this->default_db->row('tblconfigcalendar',array('field_name'=>'multi_calendar'));
 				$multi_location = $this->default_db->row('tblconfigcalendar',array('field_name'=>'multi_location'));
 
@@ -85,6 +86,15 @@ class Events extends CI_Controller {
 				$location_id = $this->query_model->getMainLocation("tblcontact");
 				$location_id = $location_id[0]->id;
 				
+				/*$selected_location_id = '';
+				if($multi_calendar['field_value'] == 1 && $multi_location['field_value'] == 1){
+					if(!empty($selected_location_slug)){
+						$this->db->select(array('id','name'));
+						$this->db->where('published',1);
+						$selected_location = $this->default_db->row('tblcontact',array('slug'=>$selected_location_slug));
+						$selected_location_id = $selected_location['id'];
+					}
+				}*/
 				
 				
 				$data['calendar'] = $this->event_model->generateCalendar($year,$month,$location_id);

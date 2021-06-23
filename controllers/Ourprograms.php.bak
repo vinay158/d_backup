@@ -264,7 +264,7 @@ class Ourprograms extends CI_Controller {
 						if(count($selectedTesti) > 2){
 							$this->db->limit(2);
 						}
-						$this->db->order_by('pos asc, id desc');
+						$this->db->order_by("pos","asc");
 						$this->db->where("published", 1);
 						$this->db->where_in('id', $selectedTesti);
 					}else{

@@ -18,7 +18,7 @@ class Virtualtraining extends CI_Controller {
 	
 	
 	public function index(){
-			die('1');
+			
 			$data['detail'] = $this->query_model->getbyTable("tbl_virtual_training");
 			
 			if($data['detail'][0]->without_login_virtual_training == 0){

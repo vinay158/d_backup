@@ -31,10 +31,13 @@ class Calendar extends CI_Controller {
 			if(empty($data['category_detail'])){
 				$this->db->select(array('cat_id','cat_name'));
 				$this->db->limit(1);
-				$this->db->order_by("pos", "ASC");
+				$this->db->order_by('pos asc, cat_id desc');
 				$data['category_detail'] = $this->query_model->getbySpecific('tblcategory',"cat_type","calendar");
 				
 			}
+			
+			$data['selected_cat_id'] = isset($data['category_detail'][0]->cat_id) ? $data['category_detail'][0]->cat_id : 0;
+			
 			//echo '<pre>category_detail'; print_r($data['category_detail']); die;
 			//$data['location_data'] = $this->query_model->getAllPublishedLocation();
 			/*if(!empty($data['location']) && count($data['location']) == 1){

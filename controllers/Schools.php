@@ -107,7 +107,7 @@ class Schools extends CI_Controller {
 				$data['school_slug'] = $data['school_slug'][0];
 				
 				// team members
-				$this->db->order_by("pos","asc");
+				$this->db->order_by('pos asc, id desc');
 				$this->db->where("published", 1);
 				$this->db->where("location_id", $data['original_location_id']);
 				$data['teamMembers'] = $this->query_model->getbyTable("tbl_team_members");
@@ -123,13 +123,13 @@ class Schools extends CI_Controller {
 				// Instructor Our School Content
 				$this->db->where("location_id", $data['original_location_id']);
 				$this->db->where("published", 1);
-				$this->db->order_by("pos","asc");
+				$this->db->order_by('pos asc, id desc');
 				$data['ourStaffs'] = $this->query_model->getbyTable("tblschool_staff");
 				
 				// School Rows
 				$this->db->where("location_id", $location_id);
 				$this->db->where("published", 1);
-				$this->db->order_by("pos","asc");
+				$this->db->order_by('pos asc, id desc');
 				$data['schoolRows'] = $this->query_model->getbyTable("tbl_school_rows");
 				
 				// School Video Section
@@ -197,13 +197,13 @@ class Schools extends CI_Controller {
 							
 							$this->db->where_in('id', $testimonialsLists);
 							$this->db->where("published", 1);
-							$this->db->order_by("pos","asc");
+							$this->db->order_by('pos asc, id desc');
 							$schoolTestimonials = $this->query_model->getbyTable("tbltestimonials");
 						}
 					}else{
 						$this->db->where("location_id", $location_id);
 						$this->db->where("published", 1);
-						$this->db->order_by("pos","asc");
+						$this->db->order_by('pos asc, id desc');
 						$schoolTestimonials = $this->query_model->getbyTable("tbl_school_testimonials");
 					}
 					
@@ -249,7 +249,7 @@ class Schools extends CI_Controller {
 				$data['contactDetail'] = $data['contactDetail'][0];
 				
 				$this->db->select(array('id','name','slug','school_location_type','turn_on_nested_location','parent_id','main_location'));
-				$this->db->order_by("pos", "ASC");
+				$this->db->order_by('pos asc, id desc');
 				$this->db->where("school_location_type", 'nested');
 				$data['child_locations'] = $this->query_model->getBySpecific('tblcontact','parent_id',$location_id);
 		

@@ -12,7 +12,6 @@ class Offer_model extends CI_Model{
 	$end = $_POST['expire'];
 	$image = $_FILES['userfile']['name'];
 	$position = $this->db->count_all_results($this->table);
-	//$pos = $position + 1;
 	$pos = 0;
 	
 	if(!empty($image)){

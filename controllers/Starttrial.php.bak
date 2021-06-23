@@ -100,7 +100,7 @@ class Starttrial extends CI_Controller {
 				/*if(count($selectedTesti) > 2){
 					$this->db->limit(2);
 				} */
-				$this->db->order_by("pos","asc");
+				$this->db->order_by('pos asc, id desc');
 				$this->db->where_in('id', $selectedTesti);
 			}else{
 				$this->db->limit(2);
@@ -3620,7 +3620,7 @@ class Starttrial extends CI_Controller {
 					// you can find documentation on curl options at http://www.php.net/curl_setopt
 					curl_close($request); // close curl object
 					
-					echo '<pre>response'; print_r($response); die;
+					
 					$response = json_decode($response);
 					
 					

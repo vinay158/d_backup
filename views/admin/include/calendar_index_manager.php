@@ -279,7 +279,7 @@ $('.calender_layout').change(function(){
 								  <p>You have <span class="total_alternating_full_width_row"><?php echo !empty($blogs) ? count($blogs) : 0; ?></span> Entries</p>
 								</div>
 								<div>
-								 <a href="admin/<?=$link_type?>/add/<?=$this->uri->segment(4);?>" class="button_class btn btn-indigo" >Add Calendar Event</a>
+								 <a href="admin/<?=$link_type?>/add/<?=$selected_cat_id;?>" class="button_class btn btn-indigo" >Add Calendar Event</a>
 								</div>
 							  </div>
 							  

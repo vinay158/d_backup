@@ -7750,7 +7750,7 @@ public function getFormPageUrl($page_url = null,$postData = null){
 		  return $categories;
 	}
 	
-	public function getCategoryTreeHTML($cat_type = null, $parent_id = 0,$level){
+	public function getCategoryTreeHTML($cat_type = null, $parent_id = 0,$level, $selected_cat_id = 0){
 		
       $str = '';
       
@@ -7767,7 +7767,7 @@ public function getFormPageUrl($page_url = null,$postData = null){
 			 $level++;
 			 foreach($result as $cat){
 				 
-				if($cat->cat_id == $this->uri->segment(4)){
+				if($cat->cat_id == $this->uri->segment(4) || $cat->cat_id == $selected_cat_id){
 					//$activeClass = 'active selected';
 					$activeClass = 'active';
 				}else{

@@ -24,12 +24,14 @@
 		}elseif($redirect_url == "admin"){
 			$redirect_url = "admin/dashboard";
 		}else{
-			$replaceArr[] = '/view';
+			if($redirect_url != "admin/school/view" && $redirect_url != "admin/albums/view"){
+				$replaceArr[] = '/view';
+			}
 		}
 		$redirect_url = str_replace($replaceArr,'',$redirect_url);
 	}
 	
-	
+	//echo $redirect_url; die;
 	
 ?>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

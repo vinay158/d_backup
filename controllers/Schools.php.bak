@@ -107,7 +107,7 @@ class Schools extends CI_Controller {
 				$data['school_slug'] = $data['school_slug'][0];
 				
 				// team members
-				$this->db->order_by("pos","asc");
+				$this->db->order_by('pos asc, id desc');
 				$this->db->where("published", 1);
 				$this->db->where("location_id", $data['original_location_id']);
 				$data['teamMembers'] = $this->query_model->getbyTable("tbl_team_members");
@@ -123,13 +123,13 @@ class Schools extends CI_Controller {
 				// Instructor Our School Content
 				$this->db->where("location_id", $data['original_location_id']);
 				$this->db->where("published", 1);
-				$this->db->order_by("pos","asc");
+				$this->db->order_by('pos asc, id desc');
 				$data['ourStaffs'] = $this->query_model->getbyTable("tblschool_staff");
 				
 				// School Rows
 				$this->db->where("location_id", $location_id);
 				$this->db->where("published", 1);
-				$this->db->order_by("pos","asc");
+				$this->db->order_by('pos asc, id desc');
 				$data['schoolRows'] = $this->query_model->getbyTable("tbl_school_rows");
 				
 				// School Video Section
@@ -169,6 +169,7 @@ class Schools extends CI_Controller {
 								$schoolProgramsArr[$programsList['order_number']][] = $this->query_model->getbyTable("tblprogram");
 							}else{
 								$this->db->select(array('id','featured_program_img','category','featured_program_img_alt_text','program','ages','program_slug','landing_checkbox','landing_program','landing_page_url','show_learn_more','landing_checkbox'));
+								$this->db->where('published', 1);
 								$this->db->where('id', $programsList);
 								$schoolPrograms[] = $this->query_model->getbyTable("tblprogram");
 							}
@@ -196,13 +197,13 @@ class Schools extends CI_Controller {
 							
 							$this->db->where_in('id', $testimonialsLists);
 							$this->db->where("published", 1);
-							$this->db->order_by("pos","asc");
+							$this->db->order_by('pos asc, id desc');
 							$schoolTestimonials = $this->query_model->getbyTable("tbltestimonials");
 						}
 					}else{
 						$this->db->where("location_id", $location_id);
 						$this->db->where("published", 1);
-						$this->db->order_by("pos","asc");
+						$this->db->order_by('pos asc, id desc');
 						$schoolTestimonials = $this->query_model->getbyTable("tbl_school_testimonials");
 					}
 					
