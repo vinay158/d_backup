@@ -137,7 +137,7 @@
 							<a href="tel:<?php echo $lead->phone; ?>"><i class="fas fa-mobile-alt"></i></a>
 							<a href="mailto:<?php echo $lead->email; ?>"><i class="fas fa-envelope"></i></a>
 						</div>
-						<div class="heading"><?php echo !empty($lead->name) ? $lead->name : '&nbsp;' ?></div>
+						<div class="heading"><?php echo $lead->name ?></div>
 						
 						<div class="day"><?php echo $this->query_model->getTimeAgo(date('Y-m-d H:i:s',$created)); ?></div>
 						<div class="status " style="background:<?php echo $status_color_code; ?>"><?php echo !empty($lead->kanban_status_id) ?  $this->query_model->getKanbanStatusNameByID($lead->kanban_status_id) : '';  ?></div>

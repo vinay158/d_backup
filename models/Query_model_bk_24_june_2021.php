@@ -9585,7 +9585,6 @@ public function customCurlRequest($requestData){
 				
 				if(!empty($msgData)){
 					
-					$twilio_user_name = (isset($msgData['twilio_user_name']) && !empty($msgData['twilio_user_name'])) ? $msgData['twilio_user_name'] : '';
 					$phone = (isset($msgData['phone']) && !empty($msgData['phone'])) ? $msgData['phone'] : '';
 					$author_name = (isset($msgData['author_name']) && !empty($msgData['author_name'])) ? $msgData['author_name'] : '';
 					
@@ -9606,15 +9605,11 @@ public function customCurlRequest($requestData){
 						
 						$twilio = new Twilio\Rest\Client($sid, $token);
 						
-						/*$msg_record_student_chatboard = $twilio->conversations->v1->conversations('CHbe6073113e71457aaf2745b310a028ce')
-                                     ->messages("IM3aed9fe739154b6f860dce64df74a6bc")
-                                     ->fetch();
-						echo '<pre>msg_record_student_chatboard'; print_r($msg_record_student_chatboard); die;*/
+					
 						
 						$clientPhoneNumber = trim(str_replace(array("(",")"," ","-"),'',$phone));
 						if($reciever_by == "admin"){
 							$clientPhoneNumber = $clientPhoneNumber;
-							//echo 'admin==>'. $clientPhoneNumber; die;
 						}else{
 							$clientPhoneNumber = $twilioChatApi[0]->country_phone_code.$clientPhoneNumber;
 						}
@@ -9623,9 +9618,9 @@ public function customCurlRequest($requestData){
 							
 							$this->db->select(array('id','chat_conversation_sid'));
 							$user_detail = $this->query_model->getBySpecific('twilio_sms_users','id',$twilio_user_id);
-						
+							
 						  if(!empty($user_detail) && !empty($user_detail[0]->chat_conversation_sid) ){
-						    				 
+							
 							$message = $twilio->conversations->v1->conversations($user_detail[0]->chat_conversation_sid)
 													 ->messages
 													 ->create([
@@ -9634,9 +9629,7 @@ public function customCurlRequest($requestData){
 															  ]
 													 ); 
 							$updateData = array();
-							$updateData['name']  =  $twilio_user_name;
 							$updateData['chat_message_sid']  =  $message->sid;
-							$updateData['last_updated_date']  =  date('Y-m-d H:i:s');
 							$this->query_model->update('twilio_sms_users', $twilio_user_id, $updateData);
 							
 							$smsUpdateData['chat_message_sid']  =  $message->sid;
@@ -9660,7 +9653,6 @@ public function customCurlRequest($requestData){
 														   ]
 												  );
 
- 
 									if(isset($conversation->sid) && !empty($conversation->sid)){
 									
 									//echo 'conversation id=>'.$conversation->sid.'<br/>';
@@ -9672,8 +9664,8 @@ public function customCurlRequest($requestData){
 															  "messagingBindingProxyAddress" => $twilioChatApi[0]->from_phone_number
 														  ]
 												 );
-										
-										
+												 
+										//echo '<pre>participant'; print_r($participant);
 										if(isset($participant->sid) && !empty($participant->sid)){
 											
 											
@@ -9795,7 +9787,6 @@ public function customCurlRequest($requestData){
 							if($current_time >= $template_start_time && $current_time <= $template_end_time){
 								$template_msg_status = "sent";
 							}*/
-							
 							$template_msg_status = "sent";
 							
 							$msg_template = $this->query_model->replaceAutoResponderVaribles($twilio_sms_flows[0]->msg_template, $formData, '');
@@ -9814,9 +9805,8 @@ public function customCurlRequest($requestData){
 							
 							$phone = (!empty($twilio_user_detail) && !empty($twilio_user_detail[0]->phone)) ? $twilio_user_detail[0]->phone : '';
 							$author_name = 'Dojo Admin';
-							//$msg_template = 'hello us1';
-							$msgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>'student','phone'=>$phone,'msg_type'=>'admin_to_student','message'=>$msg_template,'twilio_sms_msg_id'=>$twilio_sms_msg_id,'author_name'=>$author_name,'twilio_user_name'=>$twilioUserArr['name']);
-						//	echo '<pre>$msgDatastudent=>'; print_r($msgData);	
+							$msgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>'student','phone'=>$phone,'msg_type'=>'admin_to_student','message'=>$msg_template,'twilio_sms_msg_id'=>$twilio_sms_msg_id,'author_name'=>$author_name);
+								
 							if($template_msg_status == "sent"){
 								
 								$this->query_model->sendMsgTwilioChatApi($msgData);
@@ -9829,33 +9819,7 @@ public function customCurlRequest($requestData){
 							
 						
 						
-						/******** SEND ADMIN SMS ****/
-							$admin_phone_number = trim(str_replace(array("(",")"," ","-"),'',$twilioChatApi[0]->twilio_admin_phone_number));
-							$this->db->where('phone',$admin_phone_number);
-							$adminUserRecord = $this->query_model->getBySpecific('twilio_sms_users','conversation_type','admin');
-							//echo '<pre>adminUserRecord'; print_r($adminUserRecord); die;
-							if(empty($adminUserRecord)){
-								$twilioAdminUserArr = array();
-								$twilioAdminUserArr['name'] = 'Admin';
-								$twilioAdminUserArr['phone'] =  $twilioChatApi[0]->twilio_admin_phone_number;
-								$twilioAdminUserArr['conversation_type'] =  'admin';
-								$twilioAdminUserArr['last_updated_date'] = date('Y-m-d H:i:s');
-								
-								$this->query_model->insertData('twilio_sms_users',$twilioAdminUserArr);
-								$twilio_admin_user_id = $this->db->insert_id();
-								$admin_user_type = "add";
-								
-								//$admin_phone_number = trim(str_replace(array("(",")"," ","-"),'',$twilioChatApi[0]->twilio_admin_phone_number));
-								$this->db->select(array('id','name','phone'));
-								$this->db->where('conversation_type','admin');
-								$adminUserRecord = $this->query_model->getBySpecific('twilio_sms_users','phone',$admin_phone_number);
-							}else{
-									
-								$twilio_admin_user_id = $adminUserRecord[0]->id;
-								$admin_user_type = "edit"; 
-								
-							}
-							
+						/******** SEND ADMIN SMS ****/	
 							$admin_twilio_sms_template = 'admin_sms_template';
 							$admin_twilio_sms_flows = $this->query_model->getBySpecific('tbl_twilio_sms_flows','msg_type',$admin_twilio_sms_template);
 							if(!empty($admin_twilio_sms_flows)){
@@ -9864,7 +9828,7 @@ public function customCurlRequest($requestData){
 								
 								$insertSMSData = array();
 								$insertSMSData['sender_by'] = 'student';
-								$insertSMSData['admin_id'] = $twilio_admin_user_id;
+								$insertSMSData['admin_id'] = 1;
 								$insertSMSData['sms_users_id'] = $twilio_user_id;
 								$insertSMSData['message'] = $admin_msg_template;
 								$insertSMSData['template_msg_type'] = $admin_twilio_sms_template;
@@ -9875,10 +9839,10 @@ public function customCurlRequest($requestData){
 								$admin_twilio_sms_msg_id = $this->db->insert_id();
 								
 								//$admin_phone = (!empty($twilio_user_detail) && !empty($twilio_user_detail[0]->phone)) ? $twilio_user_detail[0]->phone : '';
-								$admin_phone = trim(str_replace(array("(",")"," ","-"),'',$adminUserRecord[0]->phone));
+								$admin_phone = $twilioChatApi[0]->twilio_admin_phone_number;
 								$admin_author_name = 'user_'.$twilio_user_id;
-								//$admin_msg_template = 'hello ad1';
-								$adminMsgData = array('twilio_user_id' => $twilio_admin_user_id,'reciever_by'=>'admin','phone'=>$admin_phone,'msg_type'=>'student_to_admin','message'=>$admin_msg_template,'twilio_sms_msg_id'=>$admin_twilio_sms_msg_id,'author_name'=>$admin_author_name,'twilio_user_name'=>$adminUserRecord[0]->name);
+								
+								$adminMsgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>'admin','phone'=>$admin_phone,'msg_type'=>'student_to_admin','message'=>$admin_msg_template,'twilio_sms_msg_id'=>$admin_twilio_sms_msg_id,'author_name'=>$admin_author_name);
 								
 								//echo '<pre>adminMsgData'; print_r($adminMsgData); die;
 								
@@ -9919,8 +9883,7 @@ public function getAllTwilioUserConversations(){
 						$twilio = new Twilio\Rest\Client($sid, $token);
 						
 						$this->db->order_by('id','desc');
-						$this->db->select(array('id','name','phone','chat_conversation_sid','conversation_type'));
-						//$this->db->where('conversation_type','admin');
+						$this->db->select(array('id','name','phone','chat_conversation_sid'));
 						$twilio_users = $this->query_model->getBySpecific('twilio_sms_users','is_deleted',0);
 						
 						if(!empty($twilio_users)){
@@ -9935,15 +9898,14 @@ public function getAllTwilioUserConversations(){
                                       ->messages
                                       ->read(2000);
 									
-									echo '<pre>messages'; print_r($messages); die;
+									//echo '<pre>messages'; print_r($messages); die;
 									
 									if(!empty($messages)){
 										
 										foreach ($messages as $msg) {
-										//	echo '<pre>msg'; print_r($msg); die;
+											
 											$this->db->select(array('id'));
 											$msg_exit = $this->query_model->getBySpecific('twilio_sms_messenger','chat_message_sid',$msg->sid);
-											
 											
 											if(empty($msg_exit)){
 												
@@ -9953,64 +9915,32 @@ public function getAllTwilioUserConversations(){
 												/*$userMessages[$twilio_user->chat_conversation_sid][$msg->sid]['msg'] = $msg->body;
 												$userMessages[$twilio_user->chat_conversation_sid][$msg->sid]['created'] = $date_created;*/
 												
-												$twilio_user_id = $twilio_user->id;
-												$twilio_user_name = $twilio_user->name;
 												
-												$insertSMSData = array();
-												
-												if($twilio_user->conversation_type == "admin"){
-													if(!empty($msg->author)){
-														$msg_user_id = explode('_',$msg->author);
-														$msg_user_id = (isset($msg_user_id[1]) && !empty($msg_user_id[1])) ? $msg_user_id[1] : '';
-														
-														if(!empty($msg_user_id)){
-															
-															$this->db->select(array('id','name','phone','chat_conversation_sid','conversation_type'));
-															$this->db->where('id',$msg_user_id);
-															$user_detail = $this->query_model->getBySpecific('twilio_sms_users','is_deleted',0);
-															
-															if(!empty($user_detail)){
-																$insertSMSData['sender_by'] = 'admin';
-																$insertSMSData['admin_id'] = $twilio_user_id;
-																$insertSMSData['sms_users_id'] = $user_detail[0]->id;
-																$phone = $user_detail[0]->phone;
-																$author_name = 'Dojo Admin';
-																$reciever_by = 'student';
-																$msg_type = 'admin_to_student';
-																$twilio_user_name = $user_detail[0]->name;
-																$twilio_user_id = $user_detail[0]->id;
-															}
-															
-														}
-													}
-												}else{
-													if($msg->author != "Dojo Admin"){
-														$insertSMSData['sender_by'] = 'admin';
-														$insertSMSData['admin_id'] = 0;
-														
-														$phone = (!empty($twilio_user) && !empty($twilio_user->phone)) ? $twilio_user->phone : '';
-														$author_name = 'user_'.$twilio_user_id;
-														$reciever_by = 'student';
-														$msg_type = 'admin_to_student';
-													}else{
-														$insertSMSData['sender_by'] = 'student';
-														$insertSMSData['admin_id'] = 0;
-														
-														$phone = $twilioChatApi[0]->twilio_admin_phone_number;
-														$author_name = 'Dojo Admin';
-														$reciever_by = 'admin';
-														$msg_type = 'student_to_admin';
-													}
-													
-													$insertSMSData['sms_users_id'] = $twilio_user_id;
-												}
 											
+												$insertSMSData = array();
+												if($msg->author == "Dojo Admin"){
+													$insertSMSData['sender_by'] = 'admin';
+													$insertSMSData['admin_id'] = 0;
+													
+													$phone = (!empty($twilio_user) && !empty($twilio_user->phone)) ? $twilio_user->phone : '';
+													$author_name = 'user_'.$twilio_user_id;
+													$reciever_by = 'student';
+													$msg_type = 'admin_to_student';
+												}else{
+													$insertSMSData['sender_by'] = 'student';
+													$insertSMSData['admin_id'] = 0;
+													
+													$phone = $twilioChatApi[0]->twilio_admin_phone_number;
+													$author_name = 'Dojo Admin';
+													$reciever_by = 'admin';
+													$msg_type = 'student_to_admin';
+												}
 												
-												
+												$insertSMSData['sms_users_id'] = $twilio_user->id;
 												$insertSMSData['message'] = $msg->body;
 												$insertSMSData['created'] = $date_created;
 												$insertSMSData['chat_message_sid'] = $msg->sid;
-												//echo '<prE>insertSMSData'; print_r($insertSMSData); die;
+												
 												$this->query_model->insertData('twilio_sms_messenger',$insertSMSData);
 												$twilio_sms_msg_id = $this->db->insert_id();
 												
@@ -10020,13 +9950,12 @@ public function getAllTwilioUserConversations(){
 												}
 												$updateData['chat_message_sid']  =  $msg->sid;
 												$updateData['last_updated_date']  =  $date_created;
-												$this->query_model->update('twilio_sms_users', $twilio_user_id, $updateData);
+												$this->query_model->update('twilio_sms_users', $twilio_user->id, $updateData);
 												
 												
 												
 												
-												$msgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>$reciever_by,'phone'=>$phone,'msg_type'=>$msg_type,'message'=>$msg->body,'twilio_sms_msg_id'=>$twilio_sms_msg_id,'author_name'=>$author_name,'twilio_user_name'=>$twilio_user_name);
-												
+												$msgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>$reciever_by,'phone'=>$phone,'msg_type'=>$msg_type,'message'=>$msg->body,'twilio_sms_msg_id'=>$twilio_sms_msg_id,'author_name'=>$author_name);
 												
 												//// delete msg before send again ////
 												$chat_conversation_sid = $twilio_user->chat_conversation_sid;

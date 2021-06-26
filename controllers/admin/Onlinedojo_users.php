@@ -558,6 +558,8 @@ class Onlinedojo_users extends CI_Controller {
 			if(!empty($user_email)){
 				$this->db->like('email', $user_email, 'after');
 			}
+			
+			$this->db->order_by('id','desc');
 			$data['users_list'] = $this->query_model->getByTable('tbl_onlinedojo_users');
 			//echo '<pre>data'; print_r($data); die;
 			$data['multiLocation'] = $this->query_model->getbyTable("tblconfigcalendar");

@@ -200,6 +200,7 @@ class Blog_model extends CI_Model{
 			$params["repeat"]		= $post['repeat1'][$k];
 			$params["content"]		= $post['text'];
 			$params['is_multiple'] = 0;
+			//$params['is_multiple'] = 1;
 			$params['pos'] = 0;
 			$params['show_even_on_closed_days'] = $show_even_on_closed_days;
 			$ins['end_date'] = $_POST['end_date1'][$i];
@@ -207,6 +208,7 @@ class Blog_model extends CI_Model{
 			$this->db->insert('tblcalendar', $params);
 			
 		}else{
+		
 		
 		  	// HERE we are going to handle the multiple events one.
 				

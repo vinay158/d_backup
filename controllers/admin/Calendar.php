@@ -250,6 +250,7 @@ class Calendar extends CI_Controller {
 					$multiple_dates = $this->db->get('tbl_calendar_dates')->result_array();
 					
 					$data['multiple_dates'] = $multiple_dates;
+					//echo '<pre>1'; print_r($data['multiple_dates']); die;
 					// pre($data);exit;
 					$this->load->view("admin/calendar_edit_multiple", $data);	
 					
@@ -268,7 +269,7 @@ class Calendar extends CI_Controller {
 					$data['multiple_dates'][0]['isWhole']	= $data['details']['isWhole'];
 					$data['multiple_dates'][0]['event_id']	= $data['details']['id'];
 					$data['multiple_dates'][0]['created']	= date('Y-m-d H:i:s');
-					
+					//echo '<pre>1'; print_r($data['multiple_dates']); die;
 					// pre($data);exit;
 					$this->load->view("admin/calendar_edit_multiple", $data);
 					// $this->load->view("admin/calendar_edit", $data);	

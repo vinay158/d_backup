@@ -366,9 +366,13 @@ $('.calender_layout').change(function(){
 																if($multi_check[0]['repeat'] == 'Every year'){
 																	echo 'Every Year - '.date_format(date_create($multi_check[0]['date']), 'M jS').
 																			' '.$multi_check[0]['start'].' - '.$multi_check[0]['end'];
+																}elseif($multi_check[0]['repeat'] == 'Every week'){
+																	echo 'Every Week - '.date_format(date_create($multi_check[0]['date']), 'l').
+																			' '.$multi_check[0]['start'].' - '.$multi_check[0]['end'];
 																}else{
+																	
 																	if($multi_check[0]['isWhole'] != 1)
-																		echo $multi_check[0]['start'].' - '.$multi_check[0]['end'];
+																		echo $multi_check[0]['repeat'].' - '.$multi_check[0]['start'].' - '.$multi_check[0]['end'];
 																}
 	
 															}
@@ -415,7 +419,7 @@ $('.calender_layout').change(function(){
 													if($this->uri->segment(4) != 22 || $this->uri->segment(4) != 52){	// changelog v2 Remove exceptions from events and closed day that don't repeat
 														if($brow['repeat'] == 'Every year' || $brow['repeat'] == 'Every week'){	// exceptions will only show for year and week
 												?>
-												<a href="admin/calendar/exception/<?=$brow['id'].'/view/'.$this->uri->segment(4)?>"  class="badge badge-primary">Exception</a>
+											<!--	<a href="admin/calendar/exception/<?=$brow['id'].'/view/'.$this->uri->segment(4)?>"  class="badge badge-primary">Exception</a> -->
 												<?php 	}
 												} ?>
 												

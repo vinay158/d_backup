@@ -12,7 +12,9 @@ class Events extends CI_Controller {
 			
 				$multi_calendar = $this->default_db->row('tblconfigcalendar',array('field_name'=>'multi_calendar'));
 				$multi_location = $this->default_db->row('tblconfigcalendar',array('field_name'=>'multi_location'));
-
+				
+				$data['multi_calendar_val'] = $multi_calendar['field_value'];
+				$data['multi_location_val'] = $multi_location['field_value'];
 				
 				if(!empty($location)){
 					$publish = $this->default_db->row('tblcontact',array('slug'=>$location));
@@ -86,7 +88,7 @@ class Events extends CI_Controller {
 				$location_id = $this->query_model->getMainLocation("tblcontact");
 				$location_id = $location_id[0]->id;
 				
-				/*$selected_location_id = '';
+				$selected_location_id = '';
 				if($multi_calendar['field_value'] == 1 && $multi_location['field_value'] == 1){
 					if(!empty($selected_location_slug)){
 						$this->db->select(array('id','name'));
@@ -94,11 +96,19 @@ class Events extends CI_Controller {
 						$selected_location = $this->default_db->row('tblcontact',array('slug'=>$selected_location_slug));
 						$selected_location_id = $selected_location['id'];
 					}
-				}*/
+				}
+				$data['selected_location_id'] = $selected_location_id;
 				
+				$this->db->select(array('id','name','slug'));
+				$this->db->where("published", 1);
+				$this->db->where("location_type", 'regular_link');
+				$this->db->order_by('pos', 'asc');
+				$data['eventAllLocations'] = $this->query_model->getbyTable("tblcontact");
 				
-				$data['calendar'] = $this->event_model->generateCalendar($year,$month,$location_id);
-				//echo '<pre>data'; print_r($data); die;
+				//echo $selected_location_id; die;
+				
+				$data['calendar'] = $this->event_model->generateCalendar($year,$month,$selected_location_id);
+				//echo '<pre>data'; print_r($data['calendar']); die;
 				$this->db->order_by("pos", "DESC");		
 				//echo $year.'===>'.$month.'===>'.$location_id; die;
 				$events = $this->event_model->count_num_appointment_for_extracting_all_categories_used($year,$month,$location_id);
@@ -176,7 +186,8 @@ class Events extends CI_Controller {
 	public function requested($year = NULL, $month = NULL,$location_id = '')
 	{   
 	
-					
+		$selected_location_id = $location_id;
+		
 		if($year == NULL):
 			$year=date("Y");
 		endif;
@@ -234,9 +245,30 @@ class Events extends CI_Controller {
 	$location_id = $this->query_model->getMainLocation("tblcontact");
 	$location_id = $location_id[0]->id;
 	
+	// custom code for events according location
+	$multi_calendar = $this->default_db->row('tblconfigcalendar',array('field_name'=>'multi_calendar'));
+	$multi_location = $this->default_db->row('tblconfigcalendar',array('field_name'=>'multi_location'));
+	$data['multi_calendar_val'] = $multi_calendar['field_value'];
+	$data['multi_location_val'] = $multi_location['field_value'];
 	
+	if($multi_calendar['field_value'] == 1 && $multi_location['field_value'] == 1){
+		if(!empty($selected_location_id)){
+			$this->db->select(array('id','name'));
+			$this->db->where('published',1);
+			$selected_location = $this->default_db->row('tblcontact',array('id'=>$selected_location_id));
+			$selected_location_id = !empty($selected_location) ?  $selected_location['id'] : '';
+		}
+	}
+	$data['selected_location_id'] = $selected_location_id;
 	
-	$data['calendar'] = $this->event_model->generateCalendar($year,$month,$location_id);
+	$this->db->select(array('id','name','slug'));
+	$this->db->where("published", 1);
+	$this->db->where("location_type", 'regular_link');
+	$this->db->order_by('pos', 'asc');
+	$data['eventAllLocations'] = $this->query_model->getbyTable("tblcontact");
+				
+	//echo $selected_location_id; die;
+	$data['calendar'] = $this->event_model->generateCalendar($year,$month,$selected_location_id);
 	
 	$data['month'] = $month;
 		$data['year'] = $year;

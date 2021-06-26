@@ -143,7 +143,7 @@ $(document).ready(function(){
 						<a href="<?php echo 'admin/'.$link_type.'?date='.$preDate; ?>&location=<?php echo (isset($_GET['location'])) ? $_GET['location'] : ''; ?>" class="btn btn-primary" >  &lt;Prev  </a>  
 					</div>
 					
-				<div class="col-lg-1 active">
+				<div class="col-lg-2 active">
 						 <span><?php echo date('F Y', strtotime($activeDate)); ?> </span> 
 					</div>
 				
@@ -224,7 +224,7 @@ $(document).ready(function(){
                                     	<a href="javascript:void(0)" class='delete_record' number="<?=$contact->id?>" >Delete</a>-->
 										
 										<div class="manager-item-opts">
-											<nav class="nav">
+											<nav class="nav" style="width:118px">
 												 
 												  <a href="javascript:void(0)" class="badge badge-primary view_lead_detail lb-preview "  lead_type="spam_lead" lead_id="<?php echo $contact->id; ?>" email="<?php echo $contact->email; ?>" popup_title="<?=$contact->email?>" > View</a>
 												  

@@ -335,7 +335,7 @@ return false;
                   <tr>
 					  <th >&nbsp; </th>
                       <th >#</th>
-					  <th  class="wd-15p">First Name</th>
+					  <th class="wd-15p">First Name</th>
                       <th class="wd-15p">last Name</th>
                       <th >E-mail</th>
                       <th class="wd-5p">Type</th>
@@ -605,7 +605,7 @@ return false;
 
         $('#example1').DataTable({
 			responsive: true,
-			paging: false,
+			//paging: false,
 			searching: false,
 			info: false,
 			ordering: false,

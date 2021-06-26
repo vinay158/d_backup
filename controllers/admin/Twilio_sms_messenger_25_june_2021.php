@@ -11,7 +11,7 @@ class Twilio_sms_messenger extends CI_Controller{
 			$data['title'] = "SMS messenger";
 			$data['link_type'] = "twilio_sms_messenger";
 			
-			$data['lead_users'] = $this->db->query("SELECT `id`,`name`,`phone`,`last_updated_date`, (select count(*) from twilio_sms_messenger where sms_users_id = twilio_sms_users.id and is_read_msg = 0  and sender_by = 'student' ) as total_msgs FROM `twilio_sms_users` WHERE is_deleted = 0 and  conversation_type != 'admin' order by last_updated_date DESC")->result();
+			$data['lead_users'] = $this->db->query("SELECT `id`,`name`,`phone`,`last_updated_date`, (select count(*) from twilio_sms_messenger where sms_users_id = twilio_sms_users.id and is_read_msg = 0  and sender_by = 'student' ) as total_msgs FROM `twilio_sms_users` WHERE is_deleted = 0 order by last_updated_date DESC")->result();
 			
 			/*date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 			if (date_default_timezone_get()) {
@@ -95,14 +95,14 @@ class Twilio_sms_messenger extends CI_Controller{
 					
 					
 					/**** code for send twilio msg ****/
-					$this->db->select(array('id','phone','name'));
+					$this->db->select(array('id','phone'));
 					$user_detail = $this->query_model->getBySpecific('twilio_sms_users','id',$user_id);
 					$phone = (!empty($user_detail) && !empty($user_detail[0]->phone)) ? $user_detail[0]->phone : '';
 					$author_name = 'Dojo Admin';
 					
-					$msgData = array('twilio_user_id' => $user_id,'reciever_by'=>'student','phone'=>$phone,'msg_type'=>'admin_to_student','message'=>$message,'twilio_sms_msg_id'=>$twilio_sms_msg_id,'author_name'=>$author_name,'twilio_user_name'=>$user_detail[0]->name);
+					$msgData = array('twilio_user_id' => $user_id,'reciever_by'=>'student','phone'=>$phone,'msg_type'=>'admin_to_student','message'=>$message,'twilio_sms_msg_id'=>$twilio_sms_msg_id,'author_name'=>$author_name);
 					
-					//echo '<pre>msgData'; print_r($msgData); die;
+					
 					$this->query_model->sendMsgTwilioChatApi($msgData);
 					
 					
@@ -151,7 +151,7 @@ public function get_twilio_user_conversations(){
 	
 	$this->query_model->getAllTwilioUserConversations();
 	
-	$lead_users = $this->db->query("SELECT `id`,`last_updated_date`,(select count(*) from twilio_sms_messenger where sms_users_id = twilio_sms_users.id and is_read_msg = 0  and sender_by = 'student' ) as total_msgs FROM `twilio_sms_users` WHERE is_deleted = 0 and  conversation_type != 'admin' order by last_updated_date DESC")->result();
+	$lead_users = $this->db->query("SELECT `id`,`last_updated_date`,(select count(*) from twilio_sms_messenger where sms_users_id = twilio_sms_users.id and is_read_msg = 0  and sender_by = 'student' ) as total_msgs FROM `twilio_sms_users` WHERE is_deleted = 0 order by last_updated_date DESC")->result();
 	
 	$result = array();
 	$result['response'] = 0;

@@ -27,19 +27,40 @@
 <div class="main container clearfix">
 	
 	<div class="main_content" id="top">
+	
 	<div class="title-main">
-		<?php if(isset($location) && !empty($location)){?> 
-			 <h2><span><?php echo $title; ?><?= $location_count > 1 && ($multi_location == 1) ? " - ".$location : '' ?></span></h2>
+		<?php if($multi_calendar_val == 1 && $multi_location_val == 1 && !empty($selected_location_id)){ ?> 
+			<?php 
+				$this->db->select(array('id','name','slug'));
+				$this->db->where('published',1);
+				$selected_location = $this->default_db->row('tblcontact',array('id'=>$selected_location_id));
+			?>
+			 <h2><span><?php echo $title; ?> - <?php echo $selected_location['name']; ?></span></h2>
 		<?php }else{?>
 			 <h2><span><?php echo $title; ?></span></h2>
 		<?php }?>
 		</div>
 		
-		
+	<?php if($multi_calendar_val == 1 && $multi_location_val == 1){ ?>
+	<div class="calendar_location_box">
+		<select name="location_id" class="field form-control location_id" style="opacity:1">
+					<option value="">All Location</option>
+					<?php 
+						if(!empty($eventAllLocations)){ 
+							foreach($eventAllLocations as $loc){
+					?>
+							<option value="<?php echo $loc->slug; ?>" location_id="<?php echo $loc->id; ?>" <?php echo ($selected_location_id == $loc->id) ? 'selected=selected' : ''; ?>><?php echo $loc->name; ?></option>
+					<?php } } ?>
+		</select>
+	</div>
+		<?php } ?>	
+	<div class="clearfix"></div>	
 		<div class="calendar_wrapper">
 		<?php 
-	if($calender_setting[0]->calender_layout == "default_calender"){		
-		if(!empty($categories)):  
+	if($calender_setting[0]->calender_layout == "default_calender"){ ?>
+
+		
+		<?php if(!empty($categories)):  
 //echo "<pre>"; print_r($categories); die;
 			?>
 			<form class="calendar_categories">
@@ -84,6 +105,35 @@
 <?php if($calender_setting[0]->calender_layout == "default_calender"){ ?>
 		<script language="javascript">
 
+		$(document).ready(function(){
+			<?php if($multi_calendar_val == 1 && $multi_location_val == 1){ ?>
+				$('.calendar_location_box').find('select').css('opacity',1);
+				$('.calendar_location_box').find('span').hide();
+				
+				$('body').on('change','.location_id', function(){
+					var redirect_path = '';
+					<?php if(strstr($_SERVER['REQUEST_URI'],'/requested')){ ?>
+						var location_id = $('option:selected', this).attr('location_id');
+						if(typeof location_id === 'undefined'){
+							 redirect_path = "<?php echo base_url(); ?>martial-arts-events/requested/<?php echo $this->uri->segments[3]; ?>/<?php echo $this->uri->segments[4]; ?>";
+						}else{
+							 redirect_path = "<?php echo base_url(); ?>martial-arts-events/requested/<?php echo $this->uri->segments[3]; ?>/<?php echo $this->uri->segments[4]; ?>/"+location_id;
+						}
+					<?php }else{?>
+						var location_slug = $(this).val();
+						if(location_slug  == '' || location_slug  == null){
+							redirect_path = "<?php echo base_url(); ?>martial-arts-events";
+						}else{
+							redirect_path = "<?php echo base_url(); ?>martial-arts-events/"+location_slug;
+						}
+						
+						
+					<?php } ?>
+					//alert(redirect_path);return false;
+					window.location.href = redirect_path;
+				})
+			<?php } ?>
+		})
 		function getCookie(c_name)
 		{
 		var c_value = document.cookie;		

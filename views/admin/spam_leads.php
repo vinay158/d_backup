@@ -224,7 +224,7 @@ $(document).ready(function(){
                                     	<a href="javascript:void(0)" class='delete_record' number="<?=$contact->id?>" >Delete</a>-->
 										
 										<div class="manager-item-opts">
-											<nav class="nav">
+											<nav class="nav" style="width:118px">
 												 
 												  <a href="javascript:void(0)" class="badge badge-primary view_lead_detail lb-preview "  lead_type="spam_lead" lead_id="<?php echo $contact->id; ?>" email="<?php echo $contact->email; ?>" popup_title="<?=$contact->email?>" > View</a>
 												  
@@ -303,7 +303,7 @@ $(document).ready(function() {
         });
 		
 		
-		 $('.view_lead_detail').click(function(){
+		 $('body').on('click','.view_lead_detail',function(){
 			   var lead_id = $(this).attr('lead_id');
 			   var email = $(this).attr('email');
 			   var popup_title = $(this).attr('popup_title');
