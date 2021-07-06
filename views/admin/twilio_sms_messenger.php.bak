@@ -4,7 +4,7 @@
 <!--<script language="javascript" type="text/javascript" src="<?=THEMEPATH;?>themes/global/js/jquery-1.7.2.js"></script>--->
 <!---------------wysiwyg editor script ------------>
 
- <div class="az-content-body-left  advanced_page custom_full_page" >
+ <div class="az-content-body-left  advanced_page custom_full_page twilio_sms_chat_page" >
 
        <div class="row row-sm">
 
@@ -31,7 +31,7 @@
 				$i = 1;
 				foreach($lead_users as $user){
 		?>
-            <div class="media user_number_<?php echo $i; ?> new sms_users_list twilio_u_list" user_id="<?php echo $user->id ?>" user_name="<?php echo $user->name ?>" msg_last_seen="<?php echo $this->query_model->getTimeAgo($user->last_updated_date); ?>" user_number="<?php echo $i; ?>">
+            <div class="media user_number_<?php echo $i; ?> twilio_user_id_<?php echo $user->id ?> new sms_users_list twilio_u_list" user_id="<?php echo $user->id ?>" user_name="<?php echo $user->name ?>" msg_last_seen="<?php echo $this->query_model->getTimeAgo($user->last_updated_date); ?>" user_number="<?php echo $i; ?>">
               <div class="az-img-user">
                 <img src="https://via.placeholder.com/500" alt="">
 				<?php //if(!empty($user->total_msgs)){ ?>
@@ -61,9 +61,9 @@
             </div>
             <nav class="nav">
               <a href="" class="nav-link"><i class="icon ion-md-more"></i></a>
-              <a href="" class="nav-link" data-toggle="tooltip" title="Call"><i class="icon ion-ios-call"></i></a>
-              <a href="" class="nav-link" data-toggle="tooltip" title="Archive"><i class="icon ion-ios-filing"></i></a>
-              <a href="" class="nav-link" data-toggle="tooltip" title="Trash"><i class="icon ion-md-trash"></i></a>
+            <!--  <a href="" class="nav-link" data-toggle="tooltip" title="Call"><i class="icon ion-ios-call"></i></a>
+              <a href="" class="nav-link" data-toggle="tooltip" title="Archive"><i class="icon ion-ios-filing"></i></a>-->
+              <a href="" class="nav-link ajax_twilio_record_delete"  data-toggle="modal" data-target="#popupDeleteTwilioRecord" user_id="" item_title="" data-toggle="tooltip" title="Trash"><i class="icon ion-md-trash"></i></a>
               <a href="javascript:void(0)" class="nav-link view_user_info" data-toggle="tooltip" title="View Info" user_id="0"><i class="icon ion-md-information-circle"></i></a>
             </nav>
           </div> 
@@ -81,12 +81,12 @@
          
 		
 		 <div class="az-chat-footer">
-            <nav class="nav">
+           <!-- <nav class="nav">
               <a href="" class="nav-link" data-toggle="tooltip" title="Add Photo"><i class="fas fa-camera"></i></a>
               <a href="" class="nav-link" data-toggle="tooltip" title="Attach a File"><i class="fas fa-paperclip"></i></a>
               <a href="" class="nav-link" data-toggle="tooltip" title="Add Emoticons"><i class="far fa-smile"></i></a>
               <a href="" class="nav-link"><i class="fas fa-ellipsis-v"></i></a>
-            </nav>
+            </nav> -->
             <input type="text" class="form-control text_message" placeholder="Type your message here...">
             <a href="javascript:void(0)" class="az-msg-send send_user_msg" user_id="0"><i class="fas fa-arrow-circle-right"></i></a>
           </div><!-- az-chat-footer -->
@@ -122,8 +122,7 @@ $(window).load(function(){
 	?>
 		var twilio_user_id = "<?php echo $twilio_user_id[0]->id; ?>";
 		
-		$('.user_number_'+twilio_user_id).trigger( "click" );
-		$('.user_number_'+twilio_user_id).addClass( "selected" );
+		$('.twilio_user_id_'+twilio_user_id).trigger( "click" );
 		
 		var phone_number = "<?php echo $kanban_user_phone_number; ?>";
 		phone_number = phone_number.toLowerCase();
@@ -131,6 +130,8 @@ $(window).load(function(){
 		$(".sms_users_list").filter(function() {
 		  $(this).toggle($(this).text().toLowerCase().indexOf(phone_number) > -1)
 		});
+	
+		$('.twilio_user_id_'+twilio_user_id).addClass( "selected" );
 		
 	<?php } }else{?>
 		if($('.user_number_1').length > 0){
@@ -164,7 +165,7 @@ $(document).ready(function(){
 						
 						$('#popupTwilioUserInfo').modal('show');
 				
-						$('#popupTwilioUserInfo').find('.modal-title').html('Student Info: '+data.twilio_user_detail.name);
+						$('#popupTwilioUserInfo').find('.modal-title').html('User Info: '+data.twilio_user_detail.name);
 						$('#popupTwilioUserInfo').find('.popup_user_name').html(data.twilio_user_detail.name);
 						$('#popupTwilioUserInfo').find('.popup_user_phone').html(data.twilio_user_detail.phone);
 						$('#popupTwilioUserInfo').find('.popup_user_last_seen').html(data.last_updated_date);
@@ -187,6 +188,8 @@ $(document).ready(function(){
 				$('.twilio_user_name').html(user_name);
 				$('.twilio_user_last_seen').html('Last seen: '+msg_last_seen);
 				$('.view_user_info').attr('user_id',user_id);
+				$('.ajax_twilio_record_delete').attr('user_id',user_id);
+				$('.ajax_twilio_record_delete').attr('item_title',user_name);
 				
 				$('.sms_users_list').removeClass('selected');
 				$(this).addClass('selected');
@@ -217,6 +220,7 @@ $(document).ready(function(){
 						
 						$('.total_msgs_'+user_id).hide();
 						$('.send_user_msg').attr('user_id',user_id);
+						
 						
 						$('.single_user_msgs').html(data);
 						

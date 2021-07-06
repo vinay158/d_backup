@@ -23,33 +23,6 @@ class Dashboard extends CI_Controller {
 		if(!empty($is_logged_in) && $is_logged_in == true){
             $data['title'] = "Dashboard";
 		
-		require_once 'vendor/google_autoload.php';
-		$credentials_file_path = "D:\xampp_7_2\htdocs\dojo_demov5\google_my_business_reviews_credentials.json";
-		
-		$client = new Google_Client();
-		$client->setScopes(array('https://www.googleapis.com/auth/plus.business.manage'));
-	
-		// provide the service account JSON file.
-		// which holds all required information (private key, email, etc)
-		putenv('GOOGLE_APPLICATION_CREDENTIALS='.$credentials_file_path);
-	 
-		// apply the JSON file on the current client
-		$client->useApplicationDefaultCredentials();
-	 
-		if ($client->isAccessTokenExpired()) {
-		  $client->refreshTokenWithAssertion();
-		}
-	 
-		// an array with information about access token
-		$arrayInfo = $client->getAccessToken();
-		
-		$mybusinessService = new Google_Service_Mybusiness($client);
-		$reviews = $mybusinessService->accounts_locations_reviews;
-		echo '<pre>reviews'; print_r($reviews); 
-		echo '<pre>mybusinessService'; print_r($mybusinessService); 
-		echo '<pre>client'; print_r($client); 
-		echo '<pre>arrayInfo'; print_r($arrayInfo); die;
-
 		$data['lead_types'] = array('email_opt_in'=>'Email Opt-in','free_trial'=>'Free Trial','paid_trial'=>'Paid Trial','upsell_trial'=>'Upsell Trial','contact_us'=>'Contact Us','dojocart'=>'Dojocart','birthday_parties'=>'Birthday Parties / Summer Camp');
 		
 		$date = isset($_GET['date']) ? $_GET['date'] : date('Y-m');

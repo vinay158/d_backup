@@ -254,7 +254,9 @@ $(document).ready(function(){
 			<?php }else{ ?>
 			
 			<?php if(!empty($unique_trial_offer_tab)){ ?>
-				<?php foreach ($unique_trial_offer_tab as $key => $value): ?>	
+				<?php foreach ($unique_trial_offer_tab as $key => $value): 
+						$checked_5 = '';
+				?>	
 						<label class="ckbox"><input type="checkbox" name="unique_trial_offer[]" value="<?=$value['slug']?>"  <?php echo (strstr($slug, $value['slug'])) ? 'checked="checked"' : ''; ?>><span><?=$value['title']?></span></label>
 						
 				<?php endforeach; ?>

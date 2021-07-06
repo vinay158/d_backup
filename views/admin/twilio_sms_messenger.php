@@ -4,7 +4,7 @@
 <!--<script language="javascript" type="text/javascript" src="<?=THEMEPATH;?>themes/global/js/jquery-1.7.2.js"></script>--->
 <!---------------wysiwyg editor script ------------>
 
- <div class="az-content-body-left  advanced_page custom_full_page" >
+ <div class="az-content-body-left  advanced_page custom_full_page twilio_sms_chat_page" >
 
        <div class="row row-sm">
 
@@ -21,7 +21,7 @@
         <div class="az-content-left az-content-left-chat">
 		
 		<div class="form-light-holder">
-			<input type="text" value="" name="title" id="search_user" class="field full_width_input form-control" placeholder="Search here..." style="width: 95% !important;" autocomplete>
+			<input type="text" value="" name="title" id="search_user" class="field full_width_input form-control" placeholder="Search here..." autocomplete>
 		</div>
 
           <div id="azChatList" class="az-chat-list">
@@ -61,9 +61,9 @@
             </div>
             <nav class="nav">
               <a href="" class="nav-link"><i class="icon ion-md-more"></i></a>
-              <a href="" class="nav-link" data-toggle="tooltip" title="Call"><i class="icon ion-ios-call"></i></a>
-              <a href="" class="nav-link" data-toggle="tooltip" title="Archive"><i class="icon ion-ios-filing"></i></a>
-              <a href="" class="nav-link" data-toggle="tooltip" title="Trash"><i class="icon ion-md-trash"></i></a>
+            <!--  <a href="" class="nav-link" data-toggle="tooltip" title="Call"><i class="icon ion-ios-call"></i></a>
+              <a href="" class="nav-link" data-toggle="tooltip" title="Archive"><i class="icon ion-ios-filing"></i></a>-->
+              <a href="" class="nav-link ajax_twilio_record_delete"  data-toggle="modal" data-target="#popupDeleteTwilioRecord" user_id="" item_title="" data-toggle="tooltip" title="Trash"><i class="icon ion-md-trash"></i></a>
               <a href="javascript:void(0)" class="nav-link view_user_info" data-toggle="tooltip" title="View Info" user_id="0"><i class="icon ion-md-information-circle"></i></a>
             </nav>
           </div> 
@@ -81,12 +81,12 @@
          
 		
 		 <div class="az-chat-footer">
-            <nav class="nav">
+           <!-- <nav class="nav">
               <a href="" class="nav-link" data-toggle="tooltip" title="Add Photo"><i class="fas fa-camera"></i></a>
               <a href="" class="nav-link" data-toggle="tooltip" title="Attach a File"><i class="fas fa-paperclip"></i></a>
               <a href="" class="nav-link" data-toggle="tooltip" title="Add Emoticons"><i class="far fa-smile"></i></a>
               <a href="" class="nav-link"><i class="fas fa-ellipsis-v"></i></a>
-            </nav>
+            </nav> -->
             <input type="text" class="form-control text_message" placeholder="Type your message here...">
             <a href="javascript:void(0)" class="az-msg-send send_user_msg" user_id="0"><i class="fas fa-arrow-circle-right"></i></a>
           </div><!-- az-chat-footer -->
@@ -165,7 +165,7 @@ $(document).ready(function(){
 						
 						$('#popupTwilioUserInfo').modal('show');
 				
-						$('#popupTwilioUserInfo').find('.modal-title').html('Student Info: '+data.twilio_user_detail.name);
+						$('#popupTwilioUserInfo').find('.modal-title').html('User Info: '+data.twilio_user_detail.name);
 						$('#popupTwilioUserInfo').find('.popup_user_name').html(data.twilio_user_detail.name);
 						$('#popupTwilioUserInfo').find('.popup_user_phone').html(data.twilio_user_detail.phone);
 						$('#popupTwilioUserInfo').find('.popup_user_last_seen').html(data.last_updated_date);
@@ -188,6 +188,8 @@ $(document).ready(function(){
 				$('.twilio_user_name').html(user_name);
 				$('.twilio_user_last_seen').html('Last seen: '+msg_last_seen);
 				$('.view_user_info').attr('user_id',user_id);
+				$('.ajax_twilio_record_delete').attr('user_id',user_id);
+				$('.ajax_twilio_record_delete').attr('item_title',user_name);
 				
 				$('.sms_users_list').removeClass('selected');
 				$(this).addClass('selected');
@@ -218,6 +220,7 @@ $(document).ready(function(){
 						
 						$('.total_msgs_'+user_id).hide();
 						$('.send_user_msg').attr('user_id',user_id);
+						
 						
 						$('.single_user_msgs').html(data);
 						

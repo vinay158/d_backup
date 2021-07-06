@@ -228,8 +228,15 @@
 										$this->db->select('id');
 										$is_twilio_user_record = $this->query_model->getBySpecific('twilio_sms_users','phone',$lead->phone);
 									?>
-									<?php if($is_mobile_number_linked_twilio == 1 && !empty($is_twilio_user_record)){ ?>
-										<a href="<?php echo base_url().'admin/twilio_sms_messenger?kanban_user_phone_number='.$lead->phone; ?>"><i class="fas fa-mobile-alt"></i></a>
+									<?php if($is_mobile_number_linked_twilio == 1){ ?>
+										<?php if(!empty($is_twilio_user_record)){ ?>
+											<a href="<?php echo base_url().'admin/twilio_sms_messenger?kanban_user_phone_number='.$lead->phone; ?>"><i class="fas fa-mobile-alt"></i></a>
+											
+										<?php }else{ ?>
+											
+											<a href="javascript:void(0)" class="send_twilio_new_sms_popup sms_popup_<?php echo $lead->lead_type; ?>_<?php echo $lead->id; ?>"  data-toggle="tooltip-primary" data-placement="top" title="" data-original-title="Mobile: <?php echo $lead->phone; ?>" data-target="#sendTwilioMsgPopup" action_type="add" form_type="full_width_row"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" phone="<?php echo $lead->phone; ?>" user_name="<?php echo $lead->name; ?>" popup_title="<?=$lead->email?>"><i class="fas fa-mobile-alt"></i></a>
+											
+										<?php } ?>
 										
 										<!--<span data-container="body" data-popover-color="head-primary" data-placement="top" title="Search engine" data-content="The name of the search engine that sends users to your website."><i class="fa fa-question-circle"></i></span> -->
 										
@@ -319,23 +326,6 @@
 		
        
 
-        $('#azSidebarToggle').on('click', function(e){
-
-          e.preventDefault();
-
-
-
-          if(window.matchMedia('(min-width: 992px)').matches) {
-
-            $('body').toggleClass('az-sidebar-hide');
-
-          } else {
-
-            $('body').toggleClass('az-sidebar-show');
-
-          }
-
-        });
 
 
 
@@ -890,6 +880,92 @@ $(document).ready(function(){
 			
 	})
 	
+	
+	
+	$('body').on('click','.send_twilio_new_sms_popup', function(){
+		
+		var action_type = $(this).attr('action_type');
+		var lead_type = $(this).attr('lead_type');
+		var lead_id = $(this).attr('lead_id');
+		var email = $(this).attr('email');
+		var phone = $(this).attr('phone');
+		var form_type = $(this).attr('form_type');
+		var name = $(this).attr('user_name');
+		var phone = $(this).attr('phone');
+		
+		$('#sendTwilioMsgPopup').find('.modal-title').html('Twilio SMS');
+		
+		$.ajax({
+
+				url : 'admin/twilio_sms_messenger/ajax_send_twilio_new_sms_popup_form',
+				type : 'POST',
+				data :{action_type : action_type, lead_type : lead_type, lead_id : lead_id, email : email,form_type:form_type,name:name,phone:phone},
+				success:function(data){
+					$('#sendTwilioMsgPopup').modal('show');
+					$('#form_twilio_sms_popup').html(data);
+					
+				}
+
+		});
+		
+	})
+	
+	
+	$('body').on('click','.send_twilio_user_msg', function(){
+		
+		
+		$('.form_error_msg').hide();
+		var error = 0;
+		$.each($('.required_field'),function(){
+			var check = $(this).val();
+			if(check == '') {
+				$(this).css('border','1px solid red');
+				error = 1;
+			}
+		})
+		
+		if(error == 0){
+			
+			var formData = $('#twilioSmsAddForm').serialize();
+			
+			$.ajax({ 					
+				type: 'POST',						
+				url : 'admin/twilio_sms_messenger/ajax_send_twilio_new_sms',
+				dataType : 'json',
+				data: { formData : formData}					
+				}).done(function(data){ 
+				
+				$('#sendTwilioMsgPopup').modal('hide');
+						
+				if(data.res == 1){
+					$('.sms_popup_'+data.lead_type+'_'+data.lead_id).attr('href','<?php echo base_url(); ?>admin/twilio_sms_messenger?kanban_user_phone_number='+data.phone);
+					$('.sms_popup_'+data.lead_type+'_'+data.lead_id).attr('data-original-title','');
+					
+					$('#responsePopup').find('.action_response_msg').html('Successfully sent message.');
+				
+				}else if(data.res == 2){
+					$('#responsePopup').find('.action_response_msg').html('Message already sent.');
+				
+				}else{
+					$('#responsePopup').find('.action_response_msg').html('Something went wrong.');
+				}
+				
+				$('#responsePopup').modal('show');
+					setTimeout(function() {
+						$('#responsePopup').modal('hide');
+							
+						}, 3000);
+			});
+			
+		}else{
+			$('.form_error_msg').show();
+		}
+		
+			
+	})
+	
+	
+	
 	$('body').on('click','.add_lead_comment',function(){
 		var comment = $('.lead_comment').val();
 		var lead_type = $(this).attr('lead_type');
@@ -1107,8 +1183,26 @@ $('body').on('click','.delete_item', function(){
 		  <form id="fullAlternateAddForm" action="" method="post" enctype="multipart/form-data">
 		  <div id="form_alternate_popup"></div>
 		  
-		  <input type="hidden" name="program_id" value="<?php echo $this->uri->segment(4) ?>" class="" />
-		  <input type="hidden" name="cat_id" value="<?php echo $this->uri->segment(6) ?>" class="" />
+		 <!-- <input type="hidden" name="program_id" value="<?php echo $this->uri->segment(4) ?>" class="" />
+		  <input type="hidden" name="cat_id" value="<?php echo $this->uri->segment(6) ?>" class="" />-->
+		  </form>
+        </div>
+      </div><!-- modal-dialog -->
+    </div><!-- modal -->
+	
+	
+<div id="sendTwilioMsgPopup" class="modal">
+      <div class="modal-dialog modal-dialog-centered sortable-box" role="document">
+        <div class="modal-content modal-content-demo">
+          <div class="modal-header">
+            <h6 class="modal-title"></h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+		  <form id="twilioSmsAddForm" action="" method="post" enctype="multipart/form-data">
+		  <div id="form_twilio_sms_popup"></div>
+		  
 		  </form>
         </div>
       </div><!-- modal-dialog -->

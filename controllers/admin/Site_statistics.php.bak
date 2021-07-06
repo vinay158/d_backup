@@ -55,7 +55,7 @@ class Site_statistics extends CI_Controller {
 				
 				
 				if($_SERVER['HTTP_HOST'] == "localhost"){
-					$data['access_token'] = 'ya29.c.Kp8BBQgqla607ohCVuWDUOe3_TTr3Rxks_-4i3PQJaCL3BflRXsWEEWdXJk3HMu_Z4-HJRsd9yGnnVEDrqlhz4lshBb3EXQDcGw_pwMBjTPh9JLSzcHJqOu2GA136lSe3KZ8n87IPyFpWTV91XsDqg4Sh4b9_GLrrBPz0tFq24ju9Ef0d3CZOzWetS4mbLkdlIMkdqqwEm-hiwqmyxw8br8K';
+					$data['access_token'] = 'ya29.c.Kp0B7wcaOXfoDQMcGToIWsxF0Qardx5gnSI3w5yYJya1viwrEHXRVEX50PgnB7azSi3IARRl6uJHB5qFi3jroC0TxtuJ_XE_FbSRCe_pkLJzaKDXUdjwf0wtqI0ecfSZNzcB6yt3G47xZBqgw0lPJsYQ6O7lSm2TxQng_7-PgZhDc_WUor95vKV7lj7XhXNiHJITGmchjWIp_KImdGJEtg';
 				}else{
 					$client = new Google_Client();
 					$client->setScopes(array('https://www.googleapis.com/auth/analytics'));

@@ -151,22 +151,11 @@ $pwa_setting = $this->query_model->getbySpecific('tbl_pwa_settings', 'id', 1);
           <h2><?php echo $site_settings['title']; ?></h2>
 		  
 		  
-			 <div class="form-group text-center">
-				<!--<div class=" FacebookError"><?php echo $this->session->userdata('facebookError'); ?></div>-->
-				<?php 
-					if(isset($_GET['fb_error']) && $_GET['fb_error'] == 1){
-						if(isset($_GET['fb_error_res']) && !empty($_GET['fb_error_res'])){
-				?>
-				<div class="facebook_error_msg">
-				<p class="facebookErrorText">Incorrect Facebook Login</p><p>The facebook login you entered does not have access to this CMS. </p><p>Please try using the facebook account we connected to your CMS.</p><p>Contact Website Dojo Support if you need assistance, <span class="emailAddress"><a href="mailto:support@websitedojo.com?Subject=Incorrect Facebook Login" class="button scroll">support@websitedojo.com</a><span>.</p><p class="logoutFBtext"><a href="<?php echo $_GET['fb_error_res']; ?>" TARGET = "_blank" class="facebookLogout">Try Again</a></p><p class="tryAgain" style="display:none;">Try Again</p>
-				</div>
-				<?php 
-						}
-					}
-				?>
+			<!--  <div class="form-group text-center">
+				<div class=" FacebookError"><?php echo $this->session->flashdata('facebookError'); ?></div>
 				<a href="<?=base_url();?>admin/facebooklogin/login"><img src="<?php echo base_url().'/img/new/fb.png'; ?>"  alt="fb-btn"></a>
 				<div class="or_login_text"> <span>Or</span></div>
-			  </div> 
+			  </div> -->
           <form action="<?=base_url();?>admin/login/validate_credential" method="post">
 		  
 		  <?php

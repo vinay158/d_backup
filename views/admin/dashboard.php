@@ -18,7 +18,7 @@
 	
       </div><!-- az-content-header -->
 
-      <div class="az-content-body homepageupdates">
+      <div class="az-content-body homepageupdates <?php echo ($this->session->userdata['user_level'] != 1) ? 'not_admin_dashboard_page' : ''; ?>">
 
        <div class="row row-sm">
 			
@@ -210,7 +210,7 @@
      </div><!-- az-content-body -->
 	
    </div><!-- az-content -->
-	<div class="az-content-body-right">
+	<div class="az-content-body-right  <?php echo ($this->session->userdata['user_level'] != 1) ? 'not_admin_dashboard_page' : ''; ?>">
           
           <label class="az-content-label tx-base mg-b-25">2 Recent Reviews</label>
           <div class="az-media-list-reviews">
@@ -527,24 +527,7 @@ var owl = $('.owl-carousel');
         }
       })
 
-        $('#azSidebarToggle').on('click', function(e){
-
-          e.preventDefault();
-
-
-
-          if(window.matchMedia('(min-width: 992px)').matches) {
-
-            $('body').toggleClass('az-sidebar-hide');
-
-          } else {
-
-            $('body').toggleClass('az-sidebar-show');
-
-          }
-
-        });
-
+       
 
 
         new PerfectScrollbar('.az-sidebar-body', {

@@ -127,12 +127,12 @@ $(document).ready(function(){
 <div class="form-light-holder   d-md-flex  dual_input">
 	<div class="adsUrl form-group">
 	<h1>User Name</h1>
-	<input type="text" value="" name="username" id="username" class="field" placeholder="Enter user name here"   autocomplete="new-username"/>
+	<input type="text" value="" name="username" id="username" class="field" placeholder="Enter user name here"/>
 	</div>
 	
 	<div class="linkTarget form-group">
 		<h1>Password</h1>
-		<input type="password" name="password" id="password" class="field" placeholder="Enter password here"  autocomplete="new-password"/>
+		<input type="password" name="password" id="password" class="field" placeholder="Enter password here"/>
 	</div>
 </div>
 
@@ -273,7 +273,7 @@ $(document).ready(function(){
 				<?php foreach ($unique_trial_offer_tab as $key => $value): 
 						$checked_5 = '';
 				?>	
-						<label class="ckbox"><input type="checkbox" name="unique_trial_offer[]" value="<?=$value['slug']?>" <?= $checked_5; ?>><span><?=$value['title']?></span></label>
+						<label class="ckbox"><input type="checkbox" name="trial_offer[]" value="<?=$value['slug']?>" <?= $checked_5; ?>><span><?=$value['title']?></span></label>
 						
 				<?php endforeach; ?>
 			<?php } ?>

@@ -32,6 +32,7 @@ class Leads extends CI_Controller {
 		
 		$data['date_sort'] = (isset($_GET['date_sort']) && !empty($_GET['date_sort'])) ? $_GET['date_sort'] : 'current_month';
 		$data['dateRanges'] = $this->getStartAndEndDate($data['date_sort']);
+		//echo '<pre>'; print_r($data['dateRanges']); die;
 		$lead_status = (isset($_GET['lead_status']) && !empty($_GET['lead_status'])) ? $_GET['lead_status'] : '';
 		$tags = (isset($_GET['tags']) && !empty($_GET['tags'])) ? $_GET['tags'] : '';
 		
@@ -2357,7 +2358,8 @@ public function getStartAndEndDate($sort){
 				$current_month = date('Y-m-01');
 				$current_month = strtotime($current_month);
 				$start_date = date("Y-m-d", strtotime("-".$number." months",$current_month));
-				$end_date = date('Y-m-d', strtotime('last day of last month'));
+				//$end_date = date('Y-m-d', strtotime('last day of last month'));
+				$end_date = date('Y-m-d');
 				
 			}
 			

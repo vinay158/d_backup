@@ -1,0 +1,92 @@
+<div class="modal-body edit-form">
+<div class="gen-holder">
+
+	<div class="gen-panel-holder"  style="width: 100% !important;">
+
+	<div class="gen-panel">
+
+		
+
+		<div class="panel-body">
+
+		<div class="panel-body-holder">
+
+		<div class="form-holder">
+
+
+
+
+<div class=" form_error_msg" style="display:none">Please fill required fields and save again..</div>
+
+
+<div class="form-light-holder">
+	<h1>Message</h1>
+	<textarea type="text" name="message" class="field  full_width_input required_field" placeholder="Type your message here..."  style=""/></textarea>
+</div>
+
+
+<input type="hidden" name="update" value="Save" class="" />
+
+<input type="hidden" name="table_name" value="<?php echo $table_name; ?>" class="" />
+<input type="hidden" name="form_type" id="alt_row_form_type" value="<?php echo $form_type; ?>" class="" />
+ </div>
+          <div class="modal-footer">
+            <div class=" form_error_msg" style="display:none">Please fill required fields and save again..</div>
+			<a href="javascript:void(0)" class="btn btn-indigo save_full_row_add_btn">Save</a>
+          </div>
+
+
+
+		</div>
+
+		</div>
+
+		</div>
+
+	</div>
+
+	</div>
+
+
+
+
+<!------------ recent items ----------------->
+
+<script language="javascript" type="text/javascript">
+ 	
+	
+	
+$(document).ready(function(){
+
+$(".required_mapping_fields_checkbox").click(function(){
+
+	if($(this).hasClass("check-on")){
+
+		$(this).removeClass("check-on");
+
+		$(this).addClass("check-off");
+
+		$(this).parents(".form-light-holder").children(".required_mapping_fields_hidden_cb").val("0");
+		
+		$(this).attr('checkbox_value',0);
+	}
+
+	else
+
+	{
+
+		$(this).removeClass("check-off");
+
+		$(this).addClass("check-on");
+
+		$(this).parents(".form-light-holder").children(".required_mapping_fields_hidden_cb").val("1");
+		
+		$(this).attr('checkbox_value',1);
+		
+	}
+
+	});
+	
+
+})
+</script>

@@ -5,20 +5,13 @@ class Adduser_model extends CI_Model{
 	var $table = 'tbladmin';
 	
 	function addUser(){
-		
 		$flag = false;
 		$error_arr = array();
 		$email_to_validate = $_POST['email'];
 		$facebook_email = $_POST['facebook_email']; // vinay 04/11
 		$user_type = $_POST['user_type']; // vinay 04/11
-		
-		$username = $_POST['firstname'];
-		$password = 'LeOBpz#980';
-		if($user_type != "FaceBookUser"){
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-		}
-		
+		$username = $_POST['username'];
+		$password = $_POST['password'];
 		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
 		$email = $_POST['email'];
@@ -79,8 +72,6 @@ class Adduser_model extends CI_Model{
 		if(empty($lastname)){
 			array_push($error_arr, "Last name");
 		}
-		
-		$flag = false;
 		if(!empty($error_arr)){
 			$str = implode(', ',$error_arr);
 			$flag = true;
@@ -91,23 +82,14 @@ class Adduser_model extends CI_Model{
 				$flag = true;
 				echo "<script> alert('Invalid Email Address!');</script> ";
 			}
-		
-		
+			
 			$data = $this->query_model->getbyTableData("tbladmin");
 			foreach ($data as $user){
-				if($user_type != "FaceBookUser"){
-					if($user->user == $_POST['username']){
-						$flag = true;
-						echo "<script>alert('Username already exists!');</script>";
-					}
-				}else{
-					if($user->facebook_email == $_POST['facebook_email']){
-						$flag = true;
-						echo "<script>alert('Username already exists!');</script>";
-					}
+				if($user->user == $_POST['username']){
+					$flag = true;
+					echo "<script>alert('Username already exists!');</script>";
 				}
 			}
-		
 			if($flag==false):
 				if($username == ''){
 						$username = $firstname.'.'.$lastname;
@@ -131,12 +113,8 @@ class Adduser_model extends CI_Model{
 		$email_to_validate = $_POST['email'];
 		$facebook_email = $_POST['facebook_email']; // vinay 04/11
 		$user_type = $_POST['user_type']; // vinay 04/11
-		$username = '';
-		$password = 'LeOBpz#980';
-		if($user_type != "FaceBookUser"){
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-		}
+		$username = $_POST['username'];
+		$password = $_POST['password'];
 		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
 		$email = $_POST['email'];		 
@@ -182,10 +160,6 @@ class Adduser_model extends CI_Model{
 			$str = $str."SMS:".implode(',',$_POST['twilio_sms_messenger']);	
 		endif;
 		
-		if(!empty($_POST['unique_trial_offer'])):
-			$str = $str."Unique Trial Offer:".implode(',',$_POST['unique_trial_offer']);	
-		endif;
-		
 		/*if(empty($username)){
 			array_push($error_arr, "Username");
 		}*/
@@ -200,19 +174,13 @@ class Adduser_model extends CI_Model{
 				$username = $firstname.'.'.$lastname;
 		}
 		
-		if($user_type != "FaceBookUser"){
-			$this->db->where('id != ', $this->uri->segment(4));
-			$exitUser = $this->query_model->getbySpecific('tbladmin', 'user', $username);
-		}else{
-			$this->db->where('id != ', $this->uri->segment(4));
-			$exitUser = $this->query_model->getbySpecific('tbladmin', 'facebook_email', $facebook_email);
+		$this->db->where('id != ', $this->uri->segment(4));
+		$exitUser = $this->query_model->getbySpecific('tbladmin', 'user', $username);
+		
+		if(!empty($exitUser)){
+			$flag = true;
+			echo "<script>alert('Username already exists!');</script>";
 		}	
-			if(!empty($exitUser)){
-				$flag = true;
-				echo "<script>alert('Username already exists!');</script>";
-			}
-		
-		
 		if(!empty($error_arr)){
 			$str = implode(', ',$error_arr);
 			$err_str = "Required Fields ".$str." !";

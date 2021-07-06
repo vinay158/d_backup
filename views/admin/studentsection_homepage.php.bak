@@ -97,7 +97,7 @@
 </div>
 
 
-<div class="form-new-holder">
+<div class="form-light-holder">
     	<input type="submit" name="update" value="Update" class="btn-save" />
 </div>
 </form>	</div>

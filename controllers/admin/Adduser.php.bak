@@ -108,8 +108,6 @@ class Adduser extends CI_Controller {
 		$data['others'] =  $this->query_model->getOtherPages(0,7);
 		$data['school_info_tab'] = $this->query_model->getMenuTabPages('admin/school_info', 7);
 		$data['trial_offer_tab'] = $this->query_model->getMenuTabPages('admin/onlinespecial', 7);
-		$data['unique_trial_offer_tab'] = $this->query_model->getMenuTabPages('admin/unique_onlinespecial', 7);
-		
 		$data['forms_tab'] = $this->query_model->getMenuTabPages('admin/form_builder', 7);
 		
 		$data['school_tab'] = array('admin/school/about_school_header'=>'School Header','admin/school/about_ourschool'=>'About Us','admin/school/text_sections'=>'Text Section','admin/school/video_section'=>'Video Section','admin/school/testimonial_sections'=>'Testimonial / Trial Offer','admin/school/team_member_index'=>'Team Member', 'admin/school/school_staff_index'=>'Our Instructor','admin/school/school_apikeys'=>'Social Api Key');

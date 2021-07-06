@@ -1,5 +1,5 @@
 <?php 
-//session_start();
+session_start();
 require 'vendor/Facebook/autoload.php';
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
@@ -32,23 +32,20 @@ class Facebooklogin extends CI_Controller {
 		$apiKey = $apiKey[0];
 		
 		if(!empty($apiKey->facebook_api_id) && !empty($apiKey->facebook_secret_id)){
-			
+		
 			// init app with app id and secret
 			FacebookSession::setDefaultApplication( $apiKey->facebook_api_id,$apiKey->facebook_secret_id );
 			// login helper with redirect_uri
-			$helper = new FacebookRedirectLoginHelper(base_url().'admin/facebooklogin/login');
+			$helper = new FacebookRedirectLoginHelper(site_url('admin/facebooklogin/login'));
 			
 			try {
 			  $session = $helper->getSessionFromRedirect();
-			  //echo '<pre>session'; print_r($session); die;
 			} catch( FacebookRequestException $ex ) {
-				//echo '<prE>ex'; print_r($ex); die;
 			  // When Facebook returns an error
 			} catch( Exception $ex ) {
 			  // When validation fails or other local issues
-			  //echo '<prE>ex'; print_r($ex); die;
 			}
-		
+			
 			// see if we have a session
 			if ( isset( $session ) ) {
 			  // graph api request for user data
@@ -62,13 +59,13 @@ class Facebooklogin extends CI_Controller {
 				$fb_email = $graphObject->getProperty('email');
 				$fb_first_name = $graphObject->getProperty('first_name');
 				$fb_last_name = $graphObject->getProperty('last_name');
-			
-			  $exitUserRecord = $this->query_model->getbySpecific('tbladmin','facebook_email',$fb_email);
+				
+			  $exitUserRecord = $this->query_model->getbySpecific('tbladmin','facebook_email',$user_email);
 			  
 			  if(count($exitUserRecord) == 1){
 					foreach($exitUserRecord as $row){
 						$data = array(
-						'user' => $fb_fullname,
+						'user' => $fbfullname,
 						'fname' => ucfirst($fb_first_name),
 						'lname' => ucfirst($fb_last_name),
 						'email' => $fb_email,
@@ -81,20 +78,17 @@ class Facebooklogin extends CI_Controller {
 					
 					
 					$this->session->set_userdata($data);	
-					//echo '<pre>data'; print_r($data); die;
 					redirect("admin/dashboard");
 				} else{
 					
-					//$logoutUrl = $helper->getLogoutUrl($session,base_url().'admin/facebooklogin/login');
-					$logoutUrl = $helper->getLogoutUrl($session,base_url().'admin/logout');
+					$logoutUrl = $helper->getLogoutUrl($session,site_url('admin/facebooklogin/login'));
 					
-					//echo '<pre>logoutUrl'; print_r($logoutUrl); die;
 					
 					 $this->session->set_flashdata('facebookError',  '<p class="facebookErrorText">Incorrect Facebook Login</p><p>The facebook login you entered does not have access to this CMS. </p><p>Please try using the facebook account we connected to your CMS.</p><p>Contact Website Dojo Support if you need assistance, <span class="emailAddress"><a href="mailto:support@websitedojo.com?Subject=Incorrect Facebook Login" class="button scroll">support@websitedojo.com</a><span>.</p><p class="logoutFBtext"><a href="'.$logoutUrl.'" TARGET = "_blank" class="facebookLogout">Try Again</a></p><p class="tryAgain" style="display:none;">Try Again</p>');
 					
 					
 					
-					redirect('admin/login?fb_error=1&fb_error_res='.$logoutUrl); 
+					redirect('admin/login'); die;
 					
 				}
 				/*	$fbid = $graphObject->getProperty('id');              // To Get Facebook ID
@@ -104,14 +98,12 @@ class Facebooklogin extends CI_Controller {
 					$_SESSION['FULLNAME'] = $fbfullname;
 					$_SESSION['EMAIL'] =  $femail; */
 				/* ---- header location after session ----*/
-			//  header("Location: index.php");
+			  header("Location: index.php");
 			} else {
 			  $loginUrl = $helper->getLoginUrl(array(
 			   'scope' => 'email'
 			 ));
-			 
-			 redirect($loginUrl); 
-			// header("Location: ".$loginUrl);
+			 header("Location: ".$loginUrl);
 			}
 		}
 		

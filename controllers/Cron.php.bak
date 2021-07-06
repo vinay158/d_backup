@@ -314,7 +314,7 @@ public function cron_for_twilio_sms_flow_msgs(){
 									$twilio_sms_msg_id = $this->db->insert_id();
 									
 									$author_name = 'Dojo Admin';
-									$newMsgData = array('twilio_user_id' => $twilio_user->id,'reciever_by'=>'student','phone'=>$phone,'msg_type'=>'admin_to_student','message'=>$msg_template,'twilio_sms_msg_id'=>$twilio_sms_msg_id,'author_name'=>$author_name,'twilio_user_name'=>$twilio_user->name);
+									$newMsgData = array('twilio_user_id' => $twilio_user->id,'reciever_by'=>'student','phone'=>$phone,'msg_type'=>'admin_to_student','message'=>$msg_template,'twilio_sms_msg_id'=>$twilio_sms_msg_id,'author_name'=>$author_name,'twilio_user_name'=>$twilio_user_detail[0]->name);
 									
 									$twilio_message_id = $this->query_model->sendMsgTwilioChatApi($newMsgData);
 									

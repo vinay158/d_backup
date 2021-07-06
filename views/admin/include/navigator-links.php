@@ -11,7 +11,7 @@
 	if(!empty($redirect_url)){
 		
 		$redirect_url = ltrim($redirect_url, '/');
-		
+		//echo $redirect_url.'=>';
 		$replaceArr = array('/view/22','/view/27','/view/26','/view/60','/view/1');
 		
 		$notReplacedArr = array('admin/offers/view','admin/form_modules/view','admin/form_instances/view');
@@ -28,6 +28,7 @@
 				$replaceArr[] = '/view';
 			}
 		}
+		
 		$redirect_url = str_replace($replaceArr,'',$redirect_url);
 	}
 	

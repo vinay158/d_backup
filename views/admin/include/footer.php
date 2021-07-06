@@ -332,6 +332,41 @@ $(window).scroll(function() {
     </div><!-- modal -->
 	
 	
+	<div id="popupDeleteTwilioRecord" class="modal">
+      <div class="modal-dialog modal-dialog-centered sortable-box" role="document">
+        <div class="modal-content modal-content-demo">
+          <div class="modal-header">
+            <h6 class="modal-title delete_modal_lead_title"></h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+		  <form action="admin/twilio_sms_messenger/ajax_delete_twilio_conversaction" method="post" id="">
+          <div class="modal-body edit-form">
+            <div class="row row-xs align-items-center delete_popup_text_block">
+					<div class="col-md-12 mg-t-5 mg-md-t-0 text-center">
+						<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+						<h2 class="heading">Are you sure?</h2>
+						<h5 class="subheading">You will not be able to recover the deleted record.</h5>
+					</div>
+				</div>
+				<input type="hidden" name="delete-item-id" id="delete_lead_id" value="">
+          </div>
+          <div class="modal-footer">
+			  <div class="col-md-6 text-left">
+				<a href="javascript:void(0)" class="btn btn-indigo popup_cancel_btn"  data-dismiss="modal">No, cancel please!</a>
+			  </div>
+			   <div class="col-md-6 text-right">
+				<a href="javascript:void(0)" class="btn btn-indigo ajax_popup_twilio_conversaction_delete">Yes, Delete It!</a>
+			   </div>
+          </div>
+		  </form>
+        </div>
+      </div><!-- modal-dialog -->
+    </div><!-- modal -->
+	
+	
+	
 	
 
 
