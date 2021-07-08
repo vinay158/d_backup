@@ -146,6 +146,9 @@ public function get_twilio_user_info(){
 	echo json_encode($resultArr); die;
 }
 
+/*public function testconv(){
+	$this->query_model->getAllTwilioUserConversations();
+}*/
 
 public function get_twilio_user_conversations(){
 	
@@ -610,6 +613,7 @@ public function ajax_send_twilio_new_sms(){
 		
 }
 
+/*
 public function twilio_msgs(){
 		
 		$twilioChatApi = $this->query_model->getbySpecific('tbl_twilio_chat_api','id',1);
@@ -642,6 +646,6 @@ public function twilio_msgs(){
 						
 			}
 		}
-}
+}*/
 
 }

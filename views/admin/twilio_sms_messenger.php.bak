@@ -20,8 +20,13 @@
 	  
         <div class="az-content-left az-content-left-chat">
 		
-		<div class="form-light-holder">
-			<input type="text" value="" name="title" id="search_user" class="field full_width_input form-control" placeholder="Search here..." style="width: 95% !important;" autocomplete>
+		<div class="form-light-holder search_bar_box">
+			<div class="search_input_box">
+			<input type="text" value="" name="title" id="search_user" class="field full_width_input form-control" placeholder="Search here..." autocomplete>
+			</div>
+			<div class="back_btn_box">
+				<span><a href="javascript:void(0)" class="clear_search_user">Back</a></span>
+			</div>
 		</div>
 
           <div id="azChatList" class="az-chat-list">
@@ -133,6 +138,27 @@ $(window).load(function(){
 	
 		$('.twilio_user_id_'+twilio_user_id).addClass( "selected" );
 		
+	<?php } }elseif(isset($_GET['kanban_user_id']) && !empty($_GET['kanban_user_id'])){ 
+			
+			$kanban_user_id = $_GET['kanban_user_id'];
+			
+			$this->db->select(array('id','phone'));
+			$twilio_user_id = $this->query_model->getBySpecific('twilio_sms_users','id',$kanban_user_id);
+			if(!empty($twilio_user_id)){
+	?>
+		var twilio_user_id = "<?php echo $twilio_user_id[0]->id; ?>";
+		
+		$('.twilio_user_id_'+twilio_user_id).trigger( "click" );
+		
+		var phone_number = "<?php echo $kanban_user_phone_number; ?>";
+		phone_number = phone_number.toLowerCase();
+		$('#search_user').val(phone_number);
+		$(".sms_users_list").filter(function() {
+		  $(this).toggle($(this).text().toLowerCase().indexOf(phone_number) > -1)
+		});
+	
+		$('.twilio_user_id_'+twilio_user_id).addClass( "selected" );
+		
 	<?php } }else{?>
 		if($('.user_number_1').length > 0){
 			$('.user_number_1').trigger( "click" );
@@ -142,6 +168,14 @@ $(window).load(function(){
 })
 
 $(document).ready(function(){ 
+
+		$('.clear_search_user').click(function(){
+			$('#search_user').val('');
+			var value = $('#search_user').val().toLowerCase();
+			$(".sms_users_list").filter(function() {
+			  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		})
 		  
 		   $("#search_user").on("keyup", function() {
 				var value = $(this).val().toLowerCase();

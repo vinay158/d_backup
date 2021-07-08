@@ -305,7 +305,7 @@ public function cron_for_twilio_sms_flow_msgs(){
 									$insertSMSData['sender_by'] = 'admin';
 									$insertSMSData['admin_id'] = 0;
 									$insertSMSData['sms_users_id'] = $twilio_user->id;
-									$insertSMSData['message'] = $twilio_sms_flow->msg_template;
+									$insertSMSData['message'] = $msg_template;
 									$insertSMSData['template_msg_type'] = $twilio_sms_flow->msg_type;
 									$insertSMSData['template_msg_status'] = "sent";
 									$insertSMSData['created'] = date('Y-m-d H:i:s');

@@ -146,13 +146,10 @@ public function get_twilio_user_info(){
 	echo json_encode($resultArr); die;
 }
 
-/*public function testconv(){
-	$this->query_model->getAllTwilioUserConversations();
-}*/
 
 public function get_twilio_user_conversations(){
 	
-	$this->query_model->getAllTwilioUserConversations();
+	//$this->query_model->getAllTwilioUserConversations();
 	
 	$lead_users = $this->db->query("SELECT `id`,`last_updated_date`,(select count(*) from twilio_sms_messenger where sms_users_id = twilio_sms_users.id and is_read_msg = 0  and sender_by = 'student' ) as total_msgs FROM `twilio_sms_users` WHERE is_deleted = 0 and  conversation_type != 'admin' order by last_updated_date DESC")->result();
 	

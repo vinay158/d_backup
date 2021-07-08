@@ -38,6 +38,8 @@
 					<?php $formData = array('name'=>$sms_user_detail[0]->name,'phone'=> $sms_user_detail[0]->phone,'location'=>'','last_name'=>'','email'=>'','program'=>'','message'=>'');
 						$formData['twilio_msg_user_id'] = $sms_user_detail[0]->id;
 					$message = nl2br($msg->message);
+					//$message = preg_replace('/\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/i', '', $message);  
+
 						echo  $this->query_model->replaceAutoResponderVaribles($message, $formData, ''); ?>
                   </div><!-- az-msg-wrapper -->
                   <div><span><?php echo date('h:i a', strtotime($msg->created)); ?></span>  

@@ -1411,6 +1411,11 @@ $('.AddMoreStandAlonePageButton').click(function(){
 			<input type="radio" name="ata_database" class="" <?php if($setting->ata_database == 2){ echo 'checked=checked'; }?> value="2" /><span>CKD</span>
 		  </label>
 		</div>
+		<div class="col-lg-2">
+		  <label class="rdiobox">
+			<input type="radio" name="ata_database" class="" <?php if($setting->ata_database == 3){ echo 'checked=checked'; }?> value="3" /><span>Gtma</span>
+		  </label>
+		</div>
 		
 		</div>
 	</div>

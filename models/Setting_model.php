@@ -487,7 +487,9 @@ class Setting_model extends CI_Model{
 					$this->session->set_userdata('database','db2');
 				}elseif($result_db['ata_database'] == 2){
 					$this->session->set_userdata('database','db3');
-				} else{
+				}elseif($result_db['ata_database'] == 3){
+					$this->session->set_userdata('database','db4');
+				}else{
 					//$this->load->database('default', TRUE);
 					$this->session->set_userdata('database','default');
 				}
@@ -526,7 +528,9 @@ class Setting_model extends CI_Model{
 					$this->session->set_userdata('database','db2');
 				}elseif($result_db['ata_database'] == 2){
 					$this->session->set_userdata('database','db3');
-				} else{
+				}elseif($result_db['ata_database'] == 3){
+					$this->session->set_userdata('database','db4');
+				}else{
 					//$this->load->database('default', TRUE);
 					$this->session->set_userdata('database','default');
 				}

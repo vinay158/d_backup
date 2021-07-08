@@ -1,5 +1,5 @@
 <?php 
-class Twilio_sms_messenger extends CI_Controller{
+class Sms extends CI_Controller{
 	
 
 	function index(){
@@ -613,6 +613,7 @@ public function ajax_send_twilio_new_sms(){
 		
 }
 
+/*
 public function twilio_msgs(){
 		
 		$twilioChatApi = $this->query_model->getbySpecific('tbl_twilio_chat_api','id',1);
@@ -645,6 +646,6 @@ public function twilio_msgs(){
 						
 			}
 		}
-}
+}*/
 
 }
