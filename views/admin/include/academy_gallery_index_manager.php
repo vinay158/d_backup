@@ -254,9 +254,18 @@ $(document).ready(function(){
 					$this->db->limit(1);
 					 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
 					 $this->db->where('is_cover_image',1);
+					 $this->db->where('published',1);
 					 $this->db->where('week_academy_id',$row->week_academy_id);
 					 $coverVideo = $this->query_model->getBySpecific('tbl_academy_media', 'album',$row->id);
 					
+					if(empty($coverVideo)){
+						 $this->db->limit(1);
+						 $this->db->order_by('pos asc, id desc');
+						 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+						 $this->db->where('published',1);
+						 $coverVideo = $this->query_model->getBySpecific('tbl_academy_media', 'album',$row->id); 
+					 }
+					 
 					 $cover_image = base_url().'assets_admin/img/no-image.png';
 					 
 					 if(!empty($coverVideo)){

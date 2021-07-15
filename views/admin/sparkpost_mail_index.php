@@ -34,9 +34,19 @@
 
 <div class="program_full_detail new_lisiting_block default_template" id="AlternatingFullWidth">
 
-				<div class="mb-3 main-content-label " style="margin-top:0px !important" ><?php echo $sparkpost_flow->title; ?>
+				<div class="mb-3 main-content-label " style="margin-top:0px !important" >
+				<span class="flow_title_<?php echo $sparkpost_flow->id; ?>"><?php echo $sparkpost_flow->title; ?></span>
+				<input type="text" value="<?php echo $sparkpost_flow->title; ?>" class="flow_title_edit_input flow_title_input_<?php echo $sparkpost_flow->id; ?>"  flow_id="<?php echo $sparkpost_flow->id; ?>" style="display:none">
+				<a href="javascript:void(0)" class="flow_title_edit" flow_id="<?php echo $sparkpost_flow->id; ?>"><i class="fas fa-edit "></i></a>
 				
-				<span style="float:right"><a  class="duplicate_mail_flow_btn ajax_record_duplicate" data-toggle="modal" data-target="#popupDuplicateItem" item_id="<?=$sparkpost_flow->id;?>"   table_name="tbl_sparkpost_mail_flows" item_title="<?=$sparkpost_flow->title;?>" section_type="full_width" form_action="admin/<?=$link_type?>/duplicate_form" redirect_path="admin/<?=$link_type?>">Duplicate Email Flow</a></span>
+				<span style="float:right"><a  class="duplicate_mail_flow_btn ajax_record_duplicate" data-toggle="modal" data-target="#popupDuplicateItem" item_id="<?=$sparkpost_flow->id;?>"   table_name="tbl_sparkpost_mail_flows" item_title="<?=$sparkpost_flow->title;?>" section_type="full_width" form_action="admin/<?=$link_type?>/duplicate_form" redirect_path="admin/<?=$link_type?>">Duplicate Email Flow</a>
+				
+				<?php if($sparkpost_flow->id != 1){ ?>
+					<a id="delitem_<?=$sparkpost_flow->id?>" class="duplicate_mail_flow_btn ajax_record_delete" title='Delete <?=$sparkpost_flow->title;?>' data-toggle="modal" data-target="#popupDeleteRecord" item_id="<?=$sparkpost_flow->id;?>"   table_name="tbl_sparkpost_mail_flows" item_title="<?=$sparkpost_flow->title;?>" section_type="little_row"><i class="fa fa-trash" ></i> Delete</a>
+				<?php } ?>
+				</span>
+				
+				
 				</div>
 				<div class="row row-xs align-items-center  mg-t-25 mg-b-5">
 					<div class="col-md-12">
@@ -52,7 +62,8 @@
 			
 							  <div class="az-mail-header">
 								<div>
-								  <h4 class="az-content-title mg-b-5"><?php echo $sparkpost_flow->title; ?></h4>
+								  <h4 class="az-content-title mg-b-5 flow_title_<?php echo $sparkpost_flow->id; ?>">
+								 <?php echo $sparkpost_flow->title; ?></h4>
 								  <p>You have <span class="total_alternating_full_width_row_<?php echo $sparkpost_flow->id; ?>"><?php echo !empty($sparkpost_templates['days_template'][$sparkpost_flow->id]) ? count($sparkpost_templates['days_template'][$sparkpost_flow->id]) : 0; ?></span> Entries</p>
 								</div>
 								<div>
@@ -202,11 +213,11 @@
 							<?php if($user_level == 1) {?> 
 							  <a href="admin/<?=$link_type;?>/edit_template/<?php echo $row->id; ?>" class="badge badge-primary">Edit</a>
 							  
-							  <a  class="badge badge-primary ajax_record_duplicate" data-toggle="modal" data-target="#popupDuplicateItem" item_id="<?=$row->id;?>"   table_name="tbl_sparkpost_mail_templates" item_title="<?=$row->title;?>" section_type="full_width" form_action="admin/<?=$link_type?>/duplicate_form" redirect_path="admin/<?=$link_type?>">Duplicate</a>
+							<!--  <a  class="badge badge-primary ajax_record_duplicate" data-toggle="modal" data-target="#popupDuplicateItem" item_id="<?=$row->id;?>"   table_name="tbl_sparkpost_mail_templates" item_title="<?=$row->title;?>" section_type="full_width" form_action="admin/<?=$link_type?>/duplicate_form" redirect_path="admin/<?=$link_type?>">Duplicate</a>-->
 							  
 							  <?php //if($i > $deleteBtnLimit){ ?>
 							 <a class="badge badge-primary ajax_record_delete" data-toggle="modal" data-target="#popupDeleteRecord" item_id="<?=$row->id;?>"   table_name="tbl_sparkpost_mail_templates" item_title="<?=$row->title;?>" section_type="full_width_row_<?php echo $sparkpost_flow->id; ?>">Delete</a>
-							  <?php //} ?>
+							  <?php //} ?> 
 							<?php } ?>
 							
 						</nav>
@@ -236,4 +247,48 @@
 </div>
 </div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		$('body').on('click','.flow_title_edit',function(){
+			var flow_id = $(this).attr('flow_id');
+			
+			$('.flow_title_input_'+flow_id).toggle('show');
+			$('.flow_title_'+flow_id).toggle('hide');
+			
+		})
+		
+		$('body').on('keyup','.flow_title_edit_input',function(){
+			var flow_id = $(this).attr('flow_id');
+			var new_title = $(this).val();
+			
+			$.ajax({ 					
+			type: 'POST',						
+			url: "admin/sparkpost_mail/ajax_update_flow_title",						
+			data: { flow_id : flow_id,title:new_title,'action':'update_title'}					
+			}).done(function(msg){ 
+			if(msg == 1){
+				$('.flow_title_'+flow_id).html(new_title);
+			}
+			else{
+				alert("Oops! Something went wrong!");
+				return false;
+						
+			}
+		});
+		})
+		
+		
+		/*$( ".flow_title_edit_input" ).mouseout(function() {
+			$.each($('.flow_title_edit'),function(){
+				var flow_id = $(this).attr('flow_id');
+			
+				$('.flow_title_input_'+flow_id).hide();
+				$('.flow_title_'+flow_id).show();
+			})
+		});*/
+		
+		
+	})
+</script>
 <?php $this->load->view("admin/include/footer");?>

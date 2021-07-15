@@ -408,12 +408,7 @@ return false;
 <div class="program_full_detail page-section new_lisiting_block default_template" id="AlternatingFullWidth">
 
 				<div class="mb-3 main-content-label" >User Email Templates</div>
-				<div class="row row-xs align-items-center  mg-t-25 mg-b-5">
-					<div class="col-md-12">
-						<p>You may rearrange the order of the items below by dragging them above or below other item rows. Changes will automatically be saved.</p>
-					</div>
-					
-				</div>
+				
 				
 				<div class="row row-xs align-items-center mg-b-20  alternating-row-section ">
 					
@@ -605,7 +600,7 @@ return false;
 
         $('#example1').DataTable({
 			responsive: true,
-			//paging: false,
+			paging: false,
 			searching: false,
 			info: false,
 			ordering: false,

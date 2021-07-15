@@ -98,7 +98,7 @@
 <div class="form-light-holder">
 	<h1 style="padding-bottom: 5px;">Icon Image</h1>
 	<div class="custom-file half_width_custom_file">
-		<input type="file" name="userfile"   class="custom-file-input <?php ?>require_field" id="customFile1"  accept="image/png"  />
+		<input type="file" name="userfile"   class="custom-file-input <?php echo (!empty($detail) && !empty($detail->background_color)) ? '' : 'require_field' ?>" id="customFile1"  accept="image/png"  />
 	<label class="custom-file-label" for="customFile">Choose file</label></div>
 	<br/><em>Note: Recommended image size: 512x512 and image type : png</em>
 	

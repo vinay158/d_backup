@@ -35,10 +35,15 @@
 			if(!empty(!empty($lead_users))){
 				$i = 1;
 				foreach($lead_users as $user){
+					
+					 $this->db->select(array('image'));
+					 $profile_img = $this->query_model->getBySpecific('tbl_lead_profile_img','email',$user->email);
+					 
+					 $user_image = !empty($profile_img) ? base_url().'upload/kanban_user_profiles/thumb/'.$profile_img[0]->image : base_url().'assets_admin/img/lead_blank_profile_img.png';
 		?>
-            <div class="media user_number_<?php echo $i; ?> twilio_user_id_<?php echo $user->id ?> new sms_users_list twilio_u_list" user_id="<?php echo $user->id ?>" user_name="<?php echo $user->name ?>" msg_last_seen="<?php echo $this->query_model->getTimeAgo($user->last_updated_date); ?>" user_number="<?php echo $i; ?>">
+            <div class="media user_number_<?php echo $i; ?> twilio_user_id_<?php echo $user->id ?> new sms_users_list twilio_u_list" user_id="<?php echo $user->id ?>" user_name="<?php echo $user->name ?>" msg_last_seen="<?php echo $this->query_model->getTimeAgo($user->last_updated_date); ?>" user_number="<?php echo $i; ?>" user_profile_image="<?php echo $user_image; ?>">
               <div class="az-img-user">
-                <img src="https://via.placeholder.com/500" alt="">
+                <img src="<?php echo $user_image; ?>" alt="">
 				<?php //if(!empty($user->total_msgs)){ ?>
                 <span class="total_msgs_<?php echo $user->id ?> user_new_msgs" style="display:<?php echo ($user->total_msgs > 0) ? 'flex' : 'none'; ?>"><?php echo $user->total_msgs ?></span>
 				<?php //} ?>
@@ -59,7 +64,7 @@
 		 
 				<!--<div class="single_user_msgs"></div> -->
 			<div class="az-chat-header">
-            <div class="az-img-user"><img src="https://via.placeholder.com/500" alt=""></div>
+            <div class="az-img-user"><img src="<?php echo base_url().'assets_admin/img/lead_blank_profile_img.png'; ?>" class="twilio_user_image" alt=""></div>
             <div class="az-chat-msg-name">
               <h6 class="twilio_user_name"></h6>
               <small class="twilio_user_last_seen"></small>
@@ -218,8 +223,10 @@ $(document).ready(function(){
 				var user_id = $(this).attr('user_id');
 				var user_name = $(this).attr('user_name');
 				var msg_last_seen = $(this).attr('msg_last_seen');
+				var user_profile_image = $(this).attr('user_profile_image');
 				
 				$('.twilio_user_name').html(user_name);
+				$('.twilio_user_image').attr("src",user_profile_image);
 				$('.twilio_user_last_seen').html('Last seen: '+msg_last_seen);
 				$('.view_user_info').attr('user_id',user_id);
 				$('.ajax_twilio_record_delete').attr('user_id',user_id);
@@ -284,12 +291,13 @@ $(document).ready(function(){
 				var chat_conversation_sid = $(this).attr("chat_conversation_sid");
 				var chat_message_sid = $(this).attr("chat_message_sid");
 				var twilio_user_id = $(this).attr("twilio_user_id");
+				var sender_by = $(this).attr("sender_by");
 				
 				$.ajax({
 					url: "admin/twilio_sms_messenger/ajax_delete_twilio_msg",
 					type: "post",
 					dataType: "json",
-					data: {chat_conversation_sid:chat_conversation_sid,chat_message_sid:chat_message_sid,twilio_user_id:twilio_user_id,'action':'delete_msg'},
+					data: {chat_conversation_sid:chat_conversation_sid,chat_message_sid:chat_message_sid,twilio_user_id:twilio_user_id,sender_by:sender_by,'action':'delete_msg'},
 					success:function(data){
 						
 						if(data == 1){

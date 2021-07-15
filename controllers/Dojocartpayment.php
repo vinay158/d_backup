@@ -2828,7 +2828,7 @@ public function stripe_payment_gateway($product_id = null){
 			
 			/****************Stripe payment*******************/
 			
-			include("./vendor/Stripe.php");
+		//	include("./vendor/Stripe.php");
 			
 					$card_info = [
 							'cardholderName' =>mysqli_real_escape_string($this->db->conn_id,$_POST['card_name']),
@@ -2855,19 +2855,21 @@ public function stripe_payment_gateway($product_id = null){
 					$pubkey = $params['public_live_key'];
 				} */
 				
+				include('./vendor/stripe-latest/init.php');
+				
 				$params = array(
 						"private_test_key" => $stripe_secret_key,
 						"public_test_key"  => $stripe_publishable_key
 					);	
 
-				Stripe::setApiKey($params['private_test_key']);
+				\Stripe\Stripe::setApiKey($params['private_test_key']);
 				$pubkey = $params['public_test_key'];
 				
 				$payment_error = '';
 				$card_error = 0;
 				
 				try{
-					$generateToken = Stripe_Token::create(
+					$generateToken = \Stripe\Token::create(
 						array(
 							"card" => array(
 								"name" => mysqli_real_escape_string($this->db->conn_id,$_POST['card_name']),
@@ -2878,7 +2880,7 @@ public function stripe_payment_gateway($product_id = null){
 							)
 						)
 					);
-				} catch(Stripe_CardError $e) {			
+				} catch(Stripe\Error\Card $e) {			
 
 						$payment_error = $e->getMessage();
 						$results['result'] = 0;
@@ -2887,21 +2889,25 @@ public function stripe_payment_gateway($product_id = null){
 					
 				}
 				
-			//echo '<pre>payment_error'; print_r($payment_error); die;
+			
 				//$stripeToken = isset($generateToken['id']) ? $generateToken['id'] : '';
 				if($card_error == 0){
-					$stripeToken = isset($generateToken['id']) ? $generateToken['id'] : '';
-					$description = 'Dojo Cart:- '.$product_title;										$stripe_username = isset($_POST['name']) ? $_POST['name'] : '';					$stripe_userphone = isset($_POST['phone']) ? $_POST['phone'] : '';
-					$customer = Stripe_Customer::create(array(
+					$stripeToken = isset($generateToken->id) ? $generateToken->id : ''; 
+					$description = 'Dojo Cart:- '.$product_title;	
+					$stripe_username = isset($_POST['name']) ? $_POST['name'] : '';		
+					$stripe_userphone = isset($_POST['phone']) ? $_POST['phone'] : '';
+					$customer = \Stripe\Customer::create(array(
 										'source'   => $stripeToken,
-										'email'    => $_POST['email'],																				'name'    => $stripe_username,																					'phone'    => $stripe_userphone,
+										'email'    => $_POST['email'],
+										'name'    => $stripe_username,
+										'phone'    => $stripe_userphone,
 										'description'     => $description,
 										//'account_balance' => $amount_cents,
 									)
 								);
 						//echo '<pre>customer'; print_r($customer); die;	
 						$clientId = !empty($customer) ? $customer->id : '';
-						$stripeToken = isset($generateToken['id']) ? $generateToken['id'] : '';
+						$stripeToken = isset($generateToken->id) ? $generateToken->id : '';
 						
 				}
 				
@@ -2918,7 +2924,7 @@ public function stripe_payment_gateway($product_id = null){
 					//$invoiceid = mt_rand( 10000000, 99999999);                      // Invoice ID
 					$description = 'Dojo Cart:- '.$product_title;
 					try {
-						$payment_result = Stripe_Charge::create(array(		 
+						$payment_result = \Stripe\Charge::create(array(		 
 							  "amount" => $amount_cents,
 							  "currency" => $currency_type,
 							 // 'email'    => $_POST['email'],
@@ -2937,7 +2943,7 @@ public function stripe_payment_gateway($product_id = null){
 							}
 						}
 						
-					} catch(Stripe_CardError $e) {			
+					} catch(Stripe\Error\InvalidRequest $e) {			
 
 						$payment_error = $e->getMessage();
 					

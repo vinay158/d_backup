@@ -68,6 +68,7 @@
          <?php 
 		 	if(!empty($videos)):
 				foreach($videos as $video):
+				echo '<pre>video'; print_r($video); die;
 					$v_id=trim($video->video_id);
 					$video_class = '';
 					if($video->video_type=='youtube'){
@@ -88,6 +89,10 @@
 						$video_type = 'vimeo';
 					}
 					
+					if($video->video_img_type=='upload_image' && !empty($video->custom_video_thumbnail)){
+						$video_class = 'video-box-min ';
+					}
+					
 					$videoData = array('video_type'=>$video->video_type,'video_id'=>trim($video->video_id), 'video_img_type' => $video->video_img_type,'custom_video_thumbnail'=>$video->custom_video_thumbnail);
 				
 					$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
@@ -99,7 +104,7 @@
 		
 		 	 <div class="col-md-4 col-sm-4 col-xs-12">
 				<div class="video-box <?= $video_class; ?> videosLightbox">
-					<a href="#" class="slvj-link-lightbox 1" data-videoid="<?= $video_id ?>" data-videosite="<?= $video_type ?>"><img src="<?=$src?>" class="img-responsive"  data-toggle="modal" data-target=".bs-example-modal-lg" url="<?php echo $video->link; ?>?modestbranding=1&autohide=1&showinfo=0&controls=1"></a>
+					<a href="#" class="slvj-link-lightbox 1" data-videoid="<?= $video_id ?>" data-videosite="<?= $video_type ?>"><img src="<?=$cover_image?>" class="img-responsive"  data-toggle="modal" data-target=".bs-example-modal-lg" url="<?php echo $video->link; ?>?modestbranding=1&autohide=1&showinfo=0&controls=1"></a>
 				</div>
 				<p><?php  $this->query_model->getDescReplace( $video->desc); ?></p>
          	</div>

@@ -307,19 +307,21 @@ function updateVideo(){
 				$width = $imagedetails[0];
 				$height = $imagedetails[1];
 			
-			if($width >= 360 && $height <= 220){
+			if($width >= 340 && $height <= 255){
 				$config['width'] = $width;
-				$config['height'] =220;
-			} elseif($height >= 220 && $width <= 360){
-				$config['width'] = 360;
+				$config['height'] =255;
+			} elseif($height >= 255 && $width <= 340){
+				$config['width'] = 340;
 				$config['height'] = $height;
 			}else{
-				$config['height'] =220;
-				$config['width'] = 360;
+				$config['height'] =255;
+				$config['width'] = 340;
 			}
-						
+			
 			$this->load->library('image_lib', $config);			 			
-	        $this->image_lib->initialize($config);        
+	        $this->image_lib->initialize($config); 
+
+			
 	        
 			if (!$this->image_lib->resize())
 			{

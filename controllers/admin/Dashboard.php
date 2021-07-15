@@ -771,6 +771,27 @@ public function getFreePaidTrialLeads($start_date,$end_date,$location = '',$sear
 					}
 				}
 				
+			}elseif($table_name == "tbl_sparkpost_mail_flows"){
+				
+				$this->db->select(array('id','template_id'));
+				$sparkpost_templates = $this->query_model->getBySpecific('tbl_sparkpost_mail_templates','mail_flow_id',$id);
+				
+				if(!empty($sparkpost_templates)){
+					foreach($sparkpost_templates as $sparkpost_template){
+						
+						if(isset($sparkpost_template->template_id) && !empty($sparkpost_template->template_id)){
+								
+								$requestData = array('template_id'=>$sparkpost_template->template_id);
+								
+								$request_result = $this->sparkpost_mail_model->requestSparkPostApi('delete_template',$requestData);
+								
+								
+							}
+					}
+				}
+				
+				$this->db->where("mail_flow_id", $id);
+				$this->db->delete('tbl_sparkpost_mail_templates');
 			}
 			
 			$this->db->where("id", $id);

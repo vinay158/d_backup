@@ -71,8 +71,9 @@
 								 <a href="admin/<?=$link_type?>/add" class="button_class btn btn-indigo ">Add News</a>
 								</div>
 							  </div>
-							  
-			<ul class="ajax_record_sortable alternating_full_width_row"  table_name="tblnews" >
+			
+<!-- ajax_record_sortable -->			
+			<ul class=" alternating_full_width_row"  table_name="tblnews" >
 
 			<?php
 			$sr_testimonials=0; 

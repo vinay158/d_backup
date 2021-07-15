@@ -68,6 +68,7 @@
          <?php 
 		 	if(!empty($videos)):
 				foreach($videos as $video):
+				//echo '<pre>video'; print_r($video); die;
 					$v_id=trim($video->video_id);
 					$video_class = '';
 					if($video->video_type=='youtube'){
@@ -86,6 +87,10 @@
 						//$src=$this->query_model->getViemoVideoImage($v_id);
 						$video_id = $v_id;
 						$video_type = 'vimeo';
+					}
+					
+					if($video->video_img_type=='upload_image' && !empty($video->custom_video_thumbnail)){
+						$video_class = 'video-box-min ';
 					}
 					
 					$videoData = array('video_type'=>$video->video_type,'video_id'=>trim($video->video_id), 'video_img_type' => $video->video_img_type,'custom_video_thumbnail'=>$video->custom_video_thumbnail);

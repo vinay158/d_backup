@@ -2588,7 +2588,9 @@ public function stripe_payment_gateway(){
 			}
 		
 			
-			include("./vendor/Stripe.php");
+			//include("./vendor/Stripe.php");
+			
+			
 			
 					$card_info = [
 							'cardholderName' =>mysqli_real_escape_string($this->db->conn_id,$_POST['card_name']),
@@ -2615,18 +2617,22 @@ public function stripe_payment_gateway(){
 					$pubkey = $params['public_live_key'];
 				} */
 				
+				include('./vendor/stripe-latest/init.php');
+				
 				$params = array(
 						"private_test_key" => $stripe_secret_key,
 						"public_test_key"  => $stripe_publishable_key
 					);	
 				
-				Stripe::setApiKey($params['private_test_key']);
+				\Stripe\Stripe::setApiKey($params['private_test_key']);
+				
+				
 				$pubkey = $params['public_test_key'];
 				
 				$payment_error = '';
 				$card_error = 0;
 				try{
-					$generateToken = Stripe_Token::create(
+					$generateToken = \Stripe\Token::create(
 						array(
 							"card" => array(
 								"name" => mysqli_real_escape_string($this->db->conn_id,$_POST['card_name']),
@@ -2637,9 +2643,10 @@ public function stripe_payment_gateway(){
 							)
 						)
 					);
-				} catch(Stripe_CardError $e) {	
+				} catch(Stripe\Error\Card $e) {	
 						
 						$payment_error = $e->getMessage();
+						
 						$results['result'] = 0;
 						$results['error_msg'] = $payment_error;
 						$card_error = 1;
@@ -2647,7 +2654,8 @@ public function stripe_payment_gateway(){
 				
 				
 				
-				$stripeToken = isset($generateToken['id']) ? $generateToken['id'] : '';
+				
+				$stripeToken = isset($generateToken->id) ? $generateToken->id : '';
 				
 				
 				
@@ -2661,14 +2669,17 @@ public function stripe_payment_gateway(){
 						$amount_cents = str_replace(".","",$_POST['amount']);  // Chargeble amount
 						$invoiceid = mt_rand( 10000000, 99999999);                      // Invoice ID
 						$description = 'Trial Offer:- '.$trialTitle;
-						$stripe_username = isset($_POST['name']) ? $_POST['name'] : '';						$stripe_userphone = isset($_POST['phone']) ? $_POST['phone'] : '';
-					$customer = Stripe_Customer::create(array(
+						$stripe_username = isset($_POST['name']) ? $_POST['name'] : '';						
+						$stripe_userphone = isset($_POST['phone']) ? $_POST['phone'] : '';
+					$customer = \Stripe\Customer::create(array(
 								'source'   => $stripeToken,
-								'email'    => $_POST['form_email_2'],																'name'    => $stripe_username,								'phone'    => $stripe_userphone,
+								'email'    => $_POST['form_email_2'],																'name'    => $stripe_username,								
+								'phone'    => $stripe_userphone,
 								'description'     => $description,
 								//'account_balance' => $amount_cents,
 							)
 						);
+					
 					
 					$clientId = !empty($customer) ? $customer->id : '';
 					$clientToken = $stripeToken;
@@ -2677,7 +2688,7 @@ public function stripe_payment_gateway(){
 					try {
 						
 							
-						$payment_result = Stripe_Charge::create(array(		 
+						$payment_result = \Stripe\Charge::create(array(		 
 							  "amount" => $amount_cents,
 							  "currency" => $currency_type,
 							 // "source" => $stripeToken,
@@ -2694,11 +2705,13 @@ public function stripe_payment_gateway(){
 							}
 						}
 						
-					} catch(Stripe_CardError $e) {			
+					} catch(Stripe\Error\InvalidRequest $e) {			
 
 						$payment_error = $e->getMessage();
 					
 					}
+					
+					
 				}else{
 					$results['result'] = 0;
 					$results['error_msg'] = $payment_error;

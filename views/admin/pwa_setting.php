@@ -107,9 +107,9 @@
 	<input type="hidden" id="last-photo" name="last-photo" value="<?=$detail->icon_image;?>" />
 	<?php endif;?>
 	
-	<?php if(!empty($detail) && !empty($detail->icon_image)){ 
+	<?php /*if(!empty($detail) && !empty($detail->icon_image)){ 
 			echo "<a href='javascript:void(0);' id='delete_img' class='delete_image_btn_new' >Delete image</a>";
-			}
+			}*/
 	?>
 	
 	</div>

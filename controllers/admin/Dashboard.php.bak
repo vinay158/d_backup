@@ -29,7 +29,7 @@ class Dashboard extends CI_Controller {
 			
 		$data['date_sort'] = (isset($_GET['date_sort']) && !empty($_GET['date_sort'])) ? $_GET['date_sort'] : 'current_month';
 		$data['dateRanges'] = $this->getStartAndEndDate($data['date_sort']);
-		
+		//echo '<pre>'; print_r($data['dateRanges']); die;
 		$lead_status = (isset($_GET['lead_status']) && !empty($_GET['lead_status'])) ? $_GET['lead_status'] : '';
 		$tags = (isset($_GET['tags']) && !empty($_GET['tags'])) ? $_GET['tags'] : '';
 		
@@ -553,7 +553,8 @@ public function getStartAndEndDate($sort){
 				$current_month = date('Y-m-01');
 				$current_month = strtotime($current_month);
 				$start_date = date("Y-m-d", strtotime("-".$number." months",$current_month));
-				$end_date = date('Y-m-d', strtotime('last day of last month'));
+				//$end_date = date('Y-m-d', strtotime('last day of last month'));
+				$end_date = date('Y-m-d');
 				
 			}
 			
@@ -770,6 +771,27 @@ public function getFreePaidTrialLeads($start_date,$end_date,$location = '',$sear
 					}
 				}
 				
+			}elseif($table_name == "tbl_sparkpost_mail_flows"){
+				
+				$this->db->select(array('id','template_id'));
+				$sparkpost_templates = $this->query_model->getBySpecific('tbl_sparkpost_mail_templates','mail_flow_id',$id);
+				
+				if(!empty($sparkpost_templates)){
+					foreach($sparkpost_templates as $sparkpost_template){
+						
+						if(isset($sparkpost_template->template_id) && !empty($sparkpost_template->template_id)){
+								
+								$requestData = array('template_id'=>$sparkpost_template->template_id);
+								
+								$request_result = $this->sparkpost_mail_model->requestSparkPostApi('delete_template',$requestData);
+								
+								
+							}
+					}
+				}
+				
+				$this->db->where("id", $id);
+				$this->db->delete($table_name);
 			}
 			
 			$this->db->where("id", $id);
@@ -821,6 +843,71 @@ public function getFreePaidTrialLeads($start_date,$end_date,$location = '',$sear
 			}
 		}
 		
+	}
+	
+	
+	
+	public function google_reviews(){
+		
+		require_once 'vendor/google_autoload.php';
+		
+		$credentials_file_path = "/home/demov5/public_html/google_my_business_reviews_credentials.json";
+		
+		$client = new Google_Client();
+		$client->setScopes(array('https://www.googleapis.com/auth/plus.business.manage',"https://www.googleapis.com/auth/business.manage"));
+	
+		// provide the service account JSON file.
+		// which holds all required information (private key, email, etc)
+		putenv('GOOGLE_APPLICATION_CREDENTIALS='.$credentials_file_path);
+	 
+		// apply the JSON file on the current client
+		$client->useApplicationDefaultCredentials();
+	 
+		if ($client->isAccessTokenExpired()) {
+		  $client->refreshTokenWithAssertion();
+		}
+	 
+		// an array with information about access token
+		$arrayInfo = $client->getAccessToken();
+		
+		/*$my_business_account = new Google_Service_MyBusinessAccountManagement($client);
+		$list_accounts_response = $my_business_account->accounts->listAccounts();
+		Var_dump($list_accounts_response); 
+		echo '<pre>list_accounts_response'; print_r($list_accounts_response); die;*/
+		
+		$locationName = "accounts/*/locations/*";
+		$mybusinessService = new Google_Service_Mybusiness($client);
+		$reviews = $mybusinessService->accounts_locations_reviews->listAccountsLocationsReviews($locationName);
+		echo '<pre>reviews'; print_r($reviews); die;
+		/*do{
+			$listReviewsResponse = $reviews->listAccountsLocationsReviews($locationName, array('pageSize' => 100,
+								'pageToken' => $listReviewsResponse->nextPageToken));
+
+			$reviewsList = $listReviewsResponse->getReviews();
+			foreach ($reviewsList as $index => $review) {
+				
+				echo '<prE>review'; print_r($review); die;
+				
+				//Accesing $review Object
+
+				// $review->createTime;
+				// $review->updateTime;
+				// $review->starRating;
+				// $review->reviewer->displayName;
+				// $review->reviewReply->comment;
+				// $review->getReviewReply()->getComment();
+				// $review->getReviewReply()->getUpdateTime();
+				
+
+			}
+
+		}while($listReviewsResponse->nextPageToken);*/
+
+		echo '<pre>mybusinessService==>'; print_r($mybusinessService); 
+		echo '<pre>reviews==>'; print_r($reviews); 
+		echo '<pre>client==>'; print_r($client); 
+		echo '<pre>arrayInfo==>'; print_r($arrayInfo); die;
+
 	}
 	
 }

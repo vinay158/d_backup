@@ -202,11 +202,22 @@
 					$position_x = isset($sort_positions->position_x) ? $sort_positions->position_x : 0;
 					$position_y = isset($sort_positions->position_y) ? $sort_positions->position_y : 0;*/
 		?>
-          <aside class="board-item muuri-item order_items_<?php echo $status->id; ?> muuri-item-shown lead_<?php echo $lead_type; ?>_<?php echo $lead->id; ?>" lead_type="<?php echo $lead_type; ?>" lead_id="<?php echo $lead->id; ?>" kanban_status_id="<?php echo $status->id; ?>">
+          <aside class="board-item muuri-item order_items_<?php echo $status->id; ?> muuri-item-shown lead_<?php echo $lead_type; ?>_<?php echo $lead->id; ?>" lead_type="<?php echo $lead_type; ?>" lead_id="<?php echo $lead->id; ?>" kanban_status_id="<?php echo $status->id; ?>" lead_created="<?php echo strtotime($lead->created); ?>">
 		  
 		  <div class="board-item-content modal-effect " data-toggle="modal" data-effect="effect-scale"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>"  style="border-left:10px solid <?php echo !empty($status->color_code) ? $status->color_code : 'red'; ?>">
 		  
-		  <a href="" class="az-img-user"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>"><i class="typcn typcn-user"></i></a>
+		  <?php 
+			$this->db->select(array('image'));
+			$profile_img = $this->query_model->getBySpecific('tbl_lead_profile_img','email',$lead->email);
+		  ?>
+		  <a href="" class="az-img-user <?php echo !empty($profile_img) ? 'profile_img_exist' : ''; ?> profile_img_<?php echo $lead_type; ?>_<?php echo $lead->id; ?>"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>">
+		  <?php if(!empty($profile_img)){ ?>
+			<img src="<?php echo base_url().'upload/kanban_user_profiles/thumb/'.$profile_img[0]->image; ?>">
+		<?php }else{ ?>
+			<i class="typcn typcn-user"></i>
+		<?php }?>
+		  
+		  </a>
 		  
 								<a href="" class="username"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>"><h4> <?php echo $lead->name; ?></h4></a>
 								<span class="detail"><strong>Date Added:</strong> <?php echo date('M d, Y ', strtotime($lead->created)); ?></span>
@@ -455,6 +466,7 @@ itemContainers.forEach(function (container) {
 	 var old_kanban_status_id = newdata.getAttribute('kanban_status_id');
 	 var lead_type = newdata.getAttribute('lead_type');
 	 var lead_id = newdata.getAttribute('lead_id');
+	 var lead_created = newdata.getAttribute('lead_created');
 	 var new_kanban_status_id = $('.lead_'+lead_type+'_'+lead_id).parents('.board-column').attr('kanban_status_id');
 	
 	//console.log('old_kanban_status_id=>'+old_kanban_status_id+'=>'+'lead_type=>'+lead_type+'=>'+'lead_id=>'+lead_id+'=>'+'new_kanban_status_id=>'+new_kanban_status_id);
@@ -464,7 +476,7 @@ itemContainers.forEach(function (container) {
 				url: "admin/kanban_leads/update_move_lead_status_id",
 				type: "post",
 				dataType: "json",
-				data: {lead_type:lead_type,lead_id:lead_id,new_kanban_status_id:new_kanban_status_id,old_kanban_status_id:old_kanban_status_id,'action':'update_lead_status'},
+				data: {lead_type:lead_type,lead_id:lead_id,lead_created:lead_created,new_kanban_status_id:new_kanban_status_id,old_kanban_status_id:old_kanban_status_id,'action':'update_lead_status'},
 				success:function(data){
 					$('#popup').modal('hide');
 					if(data.response == 1){
@@ -627,15 +639,16 @@ function updateSortOrders(current_kanban_status_id,event_type){
 		 var final_total_result = parseInt(total_result) - 1;
 		 var lead_type = $(this).attr('lead_type');
 		 var lead_id = $(this).attr('lead_id');
+		 var lead_created = $(this).attr('lead_created');
 		 var positionX = $(this).css('transform').split(',')[4];
 		 var positionY = $(this).css('transform').split(',')[5];
 		 if(event_type == "move"){
 			if(current_kanban_status_id == kanban_status_id){
 				if(i != 0){
-					responseData.push({lead_type: lead_type, lead_id: lead_id,position:$(this).css('transform').split(',')[5],positionX:positionX,positionY:positionY});
+					responseData.push({lead_type: lead_type, lead_id: lead_id, lead_created: lead_created,position:$(this).css('transform').split(',')[5],positionX:positionX,positionY:positionY});
 				 }
 			 }else{
-				  responseData.push({lead_type: lead_type, lead_id: lead_id,position:$(this).css('transform').split(',')[5],positionX:positionX,positionY:positionY});
+				  responseData.push({lead_type: lead_type, lead_id: lead_id, lead_created: lead_created,position:$(this).css('transform').split(',')[5],positionX:positionX,positionY:positionY});
 			 }
 		 }else{
 			 //responseData.push({lead_type: lead_type, lead_id: lead_id,position:$(this).css('transform').split(',')[5],positionX:positionX,positionY:positionY}); 
@@ -675,6 +688,13 @@ function updateSortOrders(current_kanban_status_id,event_type){
 	  
 $(document).ready(function(){
 	
+	$('body').on('click','#OpenImgUpload',function(){ 
+		$('#imgupload').trigger('click'); 
+	});
+	
+
+
+
 	$('body').on('click','.status_update_popup_close', function(){
 		var reponse_code = $('.update_kanban_status_reponse_code').val();
 		if(reponse_code == 1){

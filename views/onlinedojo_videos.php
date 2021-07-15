@@ -45,7 +45,7 @@
 /* New Updated css for online dojo*/
 
 .onlinedojo_video .video_list_box h4{font-size:18px !important}
-.onlinedojo_video .video-box img{width:360px; height:220px}
+.onlinedojo_video .video-box img{width:360px !important; height:220px !important}
 .onlinedojo_video .video_list_box{background:#f5f5f0; padding-top:15px; border:5px solid #fff}
 #videoPlayerPopup #video_title{color:#fff; font-size:25px; font-weight:bold; padding-top:20px}
 #videoPlayerPopup #video_description p{color:#fff;}
@@ -246,8 +246,17 @@ if($this->session->userdata('student_session_login') == 1){
 			 $this->db->limit(1);
 			 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
 			 $this->db->where('is_cover_image',1);
+			 $this->db->where('published',1);
 			 $coverVideo = $this->query_model->getBySpecific('tbl_onlinedojo_media', 'album',$album->id);
 			
+			if(empty($coverVideo)){
+				 $this->db->limit(1);
+				 $this->db->order_by('pos asc, id desc');
+				 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+				 $this->db->where('published',1);
+				 $coverVideo = $this->query_model->getBySpecific('tbl_onlinedojo_media', 'album',$album->id); 
+			 }
+			 
 			 $cover_image = base_url().'assets_admin/img/no-image.png';
 			 
 			 if(!empty($coverVideo)){

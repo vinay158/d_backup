@@ -20,6 +20,8 @@
 .video-box-min img {display: inline-block;margin-top: 0;max-height: 200px;}
 .videolist .video-box{ border:1px solid #ccc; width:100%; padding:10px; text-align:center;}
 .img-responsive{ display:inline-block;}
+.videoBoxBottomMargin{margin-bottom: 10px;}
+.download-box .videoAlbum{width: 255px;}
 </style>
 <div class="mobile-contact">
   <div class="container">
@@ -76,7 +78,17 @@
 							$this->db->limit(1);
 							$this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
 							 $this->db->where('is_cover_image',1);
+							 $this->db->where('published',1);
 							 $coverVideo = $this->query_model->getBySpecific('tblmedia', 'category',$album['categoryDetail'][0]->cat_id);
+							 
+							 if(empty($coverVideo)){
+								 $this->db->limit(1);
+								 $this->db->order_by('pos asc, id desc');
+								 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+								 $this->db->where('published',1);
+								 $coverVideo = $this->query_model->getBySpecific('tblmedia', 'category',$album['categoryDetail'][0]->cat_id); 
+							 }
+							 
 							 
 							 $cover_image = base_url().'images/no_image_available.jpg';
 							 
@@ -134,7 +146,17 @@
 												$this->db->limit(1);
 												$this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
 												 $this->db->where('is_cover_image',1);
+												 $this->db->where('published',1);
 												 $coverVideo = $this->query_model->getBySpecific('tblmedia', 'category',$sub_cat->cat_id);
+												//echo '<pre>coverVideo'; print_r($coverVideo); die;
+												 
+												 if(empty($coverVideo)){
+													 $this->db->limit(1);
+													 $this->db->order_by('pos asc, id desc');
+													 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+													 $this->db->where('published',1);
+													 $coverVideo = $this->query_model->getBySpecific('tblmedia', 'category',$sub_cat->cat_id); 
+												 }
 												 
 												 $cover_image = base_url().'images/no_image_available.jpg';
 												 
@@ -191,6 +213,10 @@
 									$video_type = 'vimeo';
 								}
 								
+								if($video->video_img_type=='upload_image' && !empty($video->custom_video_thumbnail)){
+									$video_class = 'video-box-min ';
+								}
+								
 								
 								$videoData = array('video_type'=>$video->video_type,'video_id'=>trim($video->video_id), 'video_img_type' => $video->video_img_type,'custom_video_thumbnail'=>$video->custom_video_thumbnail);
 				
@@ -232,7 +258,17 @@
 									$this->db->limit(1);
 									 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
 									 $this->db->where('is_cover_image',1);
+									 $this->db->where('published',1);
 									 $coverVideo = $this->query_model->getBySpecific('tblmedia', 'category',$sub_cat->cat_id);
+									//  echo '<pre>coverVideo'; print_r($coverVideo); die;
+									 
+									 if(empty($coverVideo)){
+										 $this->db->limit(1);
+										 $this->db->order_by('pos asc, id desc');
+										 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+										 $this->db->where('published',1);
+										 $coverVideo = $this->query_model->getBySpecific('tblmedia', 'category',$sub_cat->cat_id); 
+									 }
 									 
 									 $cover_image = base_url().'images/no_image_available.jpg';
 									 
@@ -314,6 +350,10 @@
 									$video_type = 'vimeo';
 								}
 								
+								if($video->video_img_type=='upload_image' && !empty($video->custom_video_thumbnail)){
+									$video_class = 'video-box-min ';
+								}
+								
 								$videoData = array('video_type'=>$video->video_type,'video_id'=>trim($video->video_id), 'video_img_type' => $video->video_img_type,'custom_video_thumbnail'=>$video->custom_video_thumbnail);
 				
 								$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
@@ -324,7 +364,9 @@
 								<div class="col-md-4 col-sm-4 col-xs-12 videoBoxBottomMargin  grid-item ">
 									
 									  <div class="video-box 5 <?= $video_class; ?> videosLightbox">
-											<a href="#" class="slvj-link-lightbox 1" data-videoid="<?= $video_id ?>" data-videosite="<?= $video_type ?>"><img src="<?=$cover_image?>" class="img-responsive videoBox"  data-toggle="modal" data-target=".bs-example-modal-lg" url="<?php echo $video->link; ?>?modestbranding=1&autohide=1&showinfo=0&controls=1"></a>
+											<a href="#" class="slvj-link-lightbox 1" data-videoid="<?= $video_id ?>" data-videosite="<?= $video_type ?>">
+											<img src="<?=$cover_image?>" class="img-responsive videoBox"  data-toggle="modal" data-target=".bs-example-modal-lg" url="<?php echo $video->link; ?>?modestbranding=1&autohide=1&showinfo=0&controls=1" style="<?php echo strstr($cover_image,'/video_album_cover') ? 'padding-bottom: 20px;' : '';?>">
+											</a>
 										
 										
 										<p><?php  $this->query_model->getDescReplace( $video->desc); ?></p>

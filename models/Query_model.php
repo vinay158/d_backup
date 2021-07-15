@@ -9776,11 +9776,14 @@ public function customCurlRequest($requestData){
 				$twilioUserArr = array();
 				$twilioUserArr['name'] = (isset($formData['name']) && !empty($formData['name'])) ? $formData['name'] : '';
 				$twilioUserArr['phone'] =  (isset($formData['phone']) && !empty($formData['phone'])) ? $formData['phone'] : '';
+				$twilioUserArr['email'] =  (isset($formData['email']) && !empty($formData['email'])) ? $formData['email'] : '';
 				$twilioUserArr['lead_type'] = (isset($leadData['lead_type']) && !empty($leadData['lead_type'])) ? $leadData['lead_type'] : '';
 				$twilioUserArr['lead_id'] = (isset($leadData['lead_id']) && !empty($leadData['lead_id'])) ? $leadData['lead_id'] : '';
 				$twilioUserArr['last_updated_date'] = date('Y-m-d H:i:s');
 				
 				if(!empty($twilioUserArr['name']) && !empty($twilioUserArr['phone'])){
+					
+					$twilio_sms_template = ($twilioUserArr['lead_type'] == "trial_forms") ? 'trial_offer_template' : 'opt_in_form_template';
 					
 					$this->db->select(array('id','name','phone'));
 					$twilio_user_detail = $this->query_model->getBySpecific('twilio_sms_users','phone',$twilioUserArr['phone']);
@@ -9797,10 +9800,21 @@ public function customCurlRequest($requestData){
 					}else{
 						$twilio_user_id = $twilio_user_detail[0]->id;
 						$user_type = "edit"; 
+						
+						$updateTwilioUserData = array();
+						$updateTwilioUserData['is_msg_sent_by_phone'] = 0;
+						$updateTwilioUserData['sms_flows_status'] = 'pending';
+						if($twilio_sms_template == "trial_offer_template"){
+							$updateTwilioUserData['sms_flows_status'] = 'all_sent';
+						}
+						
+						$this->query_model->update('twilio_sms_users', $twilio_user_id, $updateTwilioUserData);
 					}
 					
+					
+					
 					if(!empty($twilio_user_id)){
-						$twilio_sms_template = ($twilioUserArr['lead_type'] == "trial_forms") ? 'trial_offer_template' : 'opt_in_form_template';
+						
 						$twilio_sms_flows = $this->query_model->getBySpecific('tbl_twilio_sms_flows','msg_type',$twilio_sms_template);
 						
 						if(!empty($twilio_sms_flows)){
@@ -10354,21 +10368,61 @@ public function getKanbanOrderSortNumber($kanban_status_id,$lead_type,$lead_id){
 	return $sort_number;
 }
 
-public function createAndGetKanbanOrderSortNumber($kanban_status_id,$lead_type,$lead_id){
+public function createAndGetKanbanOrderSortNumber($kanban_status_id,$lead_type,$lead_id,$sort_type,$created = ''){
 	
 	if(!empty($kanban_status_id) && !empty($lead_type) && !empty($lead_id)){
-		$this->db->select(array('sort_number'));
-		$this->db->order_by('sort_number','asc');
-		$this->db->limit(1);
-		$last_sort_numbers = $this->query_model->getBySpecific('tbl_kanban_lead_sort_numbers','kanban_status_id',$kanban_status_id);
+		$is_new_record = 0;
+		if(!empty($created) && $sort_type == "onload"){
+			
+			$created_month = date('m-Y',$created);
+			$current_month = date('m-Y');
+			
+			$this->db->select(array('id','sort_type','created'));
+			$this->db->order_by('created','desc');
+			$this->db->limit(1);
+			$last_sort_record = $this->query_model->getBySpecific('tbl_kanban_lead_sort_numbers','kanban_status_id',$kanban_status_id);
+			if(!empty($last_sort_record)){
+				if($last_sort_record[0]->created < $created){
+					$is_new_record = 1;
+					
+					$this->db->select(array('sort_number'));
+					$this->db->order_by('sort_number','asc');
+					$this->db->limit(1);
+					$last_sort_numbers = $this->query_model->getBySpecific('tbl_kanban_lead_sort_numbers','kanban_status_id',$kanban_status_id);
+					
+					$new_sort_number = !empty($last_sort_numbers) ? $last_sort_numbers[0]->sort_number - 1 : 10001;
+				}
+			}
+		}
+		
+		//echo $is_new_record.'===>'.$new_sort_number; die;
+	
+		if($is_new_record == 0){
+			
+			$sort_order_type = ($sort_type == "drag") ? 'asc' : 'desc';
+		
+			$this->db->select(array('sort_number'));
+			$this->db->order_by('sort_number',$sort_order_type);
+			$this->db->limit(1);
+			$last_sort_numbers = $this->query_model->getBySpecific('tbl_kanban_lead_sort_numbers','kanban_status_id',$kanban_status_id);
+			
+			if($sort_type == "drag"){
+				$new_sort_number = !empty($last_sort_numbers) ? $last_sort_numbers[0]->sort_number - 1 : 10001;
+			}else{
+				$new_sort_number = !empty($last_sort_numbers) ? $last_sort_numbers[0]->sort_number + 1 : 10001;
+			}
+		}
 		
 		
-		$new_sort_number = !empty($last_sort_numbers) ? $last_sort_numbers[0]->sort_number - 1 : 999;
 		$insertData = array();
 		$insertData['kanban_status_id'] = $kanban_status_id;
 		$insertData['lead_type'] = $lead_type;
 		$insertData['lead_id'] = $lead_id;
 		$insertData['sort_number'] = $new_sort_number;
+		$insertData['sort_type'] = $sort_type;
+		if(!empty($created)){
+			$insertData['created'] = $created;
+		}
 		
 		$this->db->insert('tbl_kanban_lead_sort_numbers',$insertData);
 		
@@ -10728,6 +10782,7 @@ public function getVideoThumbnilImage($video_data){
 		}else{
 			$v_id=trim($video_data['video_id']);
 			if($video_data['video_type']=='youtube'){
+				//$cover_image="http://img.youtube.com/vi/".$v_id."/0.jpg";	
 				$cover_image="http://img.youtube.com/vi/".$v_id."/0.jpg";	
 			}elseif($video_data['video_type'] =='vimeo'){
 				$cover_image = $this->query_model->getViemoVideoImage($v_id);

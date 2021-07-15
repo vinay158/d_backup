@@ -27,9 +27,9 @@
 
 				<div class="mb-3 main-content-label " style="margin-top:0px !important" ><?=$title?></div>
 				<div class="row row-xs align-items-center  mg-t-25 mg-b-5">
-					<div class="col-md-12">
+					<!--<div class="col-md-12">
 						<p>You may rearrange the order of the items below by dragging them above or below other item rows. Changes will automatically be saved.</p>
-					</div>
+					</div>-->
 					
 				</div>
 				

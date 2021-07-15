@@ -11,7 +11,7 @@ class Twilio_sms_messenger extends CI_Controller{
 			$data['title'] = "SMS messenger";
 			$data['link_type'] = "twilio_sms_messenger";
 			
-			$data['lead_users'] = $this->db->query("SELECT `id`,`name`,`phone`,`last_updated_date`, (select count(*) from twilio_sms_messenger where sms_users_id = twilio_sms_users.id and is_read_msg = 0  and sender_by = 'student' ) as total_msgs FROM `twilio_sms_users` WHERE is_deleted = 0 and  conversation_type != 'admin' order by last_updated_date DESC")->result();
+			$data['lead_users'] = $this->db->query("SELECT `id`,`name`,`phone`,`email`,`last_updated_date`, (select count(*) from twilio_sms_messenger where sms_users_id = twilio_sms_users.id and is_read_msg = 0  and sender_by = 'student' ) as total_msgs FROM `twilio_sms_users` WHERE is_deleted = 0 and  conversation_type != 'admin' order by last_updated_date DESC")->result();
 			
 			/*date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 			if (date_default_timezone_get()) {
@@ -42,7 +42,7 @@ class Twilio_sms_messenger extends CI_Controller{
 					$this->db->where('sms_users_id',$user_id);
 					$this->db->update('twilio_sms_messenger');
 					
-					$this->db->select(array('id','name','phone','last_updated_date','chat_conversation_sid'));
+					$this->db->select(array('id','name','email','phone','last_updated_date','chat_conversation_sid'));
 					$this->db->order_by('last_updated_date','desc');
 					$this->db->where('id',$user_id);
 					$data['sms_user_detail'] = $this->query_model->getbySpecific('twilio_sms_users','is_deleted',0);
@@ -152,7 +152,10 @@ public function get_twilio_user_info(){
 
 public function get_twilio_user_conversations(){
 	
-	$this->query_model->getAllTwilioUserConversations();
+	if($_SERVER['HTTP_HOST'] != "localhost"){
+		$this->query_model->getAllTwilioUserConversations();
+	}
+	
 	
 	$lead_users = $this->db->query("SELECT `id`,`last_updated_date`,(select count(*) from twilio_sms_messenger where sms_users_id = twilio_sms_users.id and is_read_msg = 0  and sender_by = 'student' ) as total_msgs FROM `twilio_sms_users` WHERE is_deleted = 0 and  conversation_type != 'admin' order by last_updated_date DESC")->result();
 	
@@ -193,6 +196,7 @@ public function ajax_delete_twilio_msg(){
 				$chat_conversation_sid = (isset($_POST['chat_conversation_sid']) && !empty($_POST['chat_conversation_sid'])) ? $_POST['chat_conversation_sid'] : '';
 				$chat_message_sid = (isset($_POST['chat_message_sid']) && !empty($_POST['chat_message_sid'])) ? $_POST['chat_message_sid'] : '';
 				$twilio_user_id = (isset($_POST['twilio_user_id']) && !empty($_POST['twilio_user_id'])) ? $_POST['twilio_user_id'] : '';
+				$sender_by = (isset($_POST['sender_by']) && !empty($_POST['sender_by'])) ? $_POST['sender_by'] : 'admin';
 				
 				
 				if(!empty($chat_conversation_sid) && !empty($chat_message_sid) && !empty($twilio_user_id)){
@@ -212,9 +216,13 @@ public function ajax_delete_twilio_msg(){
 								
 								$twilio = new Twilio\Rest\Client($sid, $token);
 								
-								$delete_msg = $twilio->conversations->v1->conversations($chat_conversation_sid)
+								if($sender_by == "student"){
+									
+								}else{
+									$delete_msg = $twilio->conversations->v1->conversations($chat_conversation_sid)
 																	  ->messages($chat_message_sid)
 																		  ->delete();
+								}
 								
 								
 								

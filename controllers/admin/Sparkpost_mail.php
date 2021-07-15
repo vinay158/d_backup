@@ -97,7 +97,12 @@ class Sparkpost_mail extends CI_Controller {
 				$data['details'] = $this->query_model->getbySpecific('tbl_sparkpost_mail_templates','id', $this->uri->segment(4));
 				$data['details'] = $data['details'][0];
 				
-				$data['template_types'] = array('day_1'=>'Day 1','day_2'=>'Day 2','day_3'=>'Day 3','day_4'=>'Day 4','day_5'=>'Day 5','day_6'=>'Day 6','paid_trial_purchased'=>'Paid Trial Purchased');
+			//	$data['template_types'] = array('day_1'=>'Day 1','day_2'=>'Day 2','day_3'=>'Day 3','day_4'=>'Day 4','day_5'=>'Day 5','day_6'=>'Day 6','paid_trial_purchased'=>'Paid Trial Purchased');
+				if($data['details']->template_type == "paid_trial_purchased"){
+					$data['template_types'] = array('paid_trial_purchased'=>'Paid Trial Purchased');
+				}else{
+					$data['template_types'] = array('day_1'=>'Day 1','day_2'=>'Day 2','day_3'=>'Day 3','day_4'=>'Day 4','day_5'=>'Day 5','day_6'=>'Day 6');
+				}
 				
 				
 				
@@ -235,6 +240,20 @@ public function add_template(){
 		}
 	}
 	
+	public function ajax_update_flow_title(){
+		
+		$action = (isset($_POST['action']) && !empty($_POST['action'])) ? $_POST['action'] : '';
+		$flow_id = (isset($_POST['flow_id']) && !empty($_POST['flow_id'])) ? $_POST['flow_id'] : '';
+		$title = (isset($_POST['title']) && !empty($_POST['title'])) ? $_POST['title'] : '';
+		
+		if(!empty($action) && !empty($flow_id) && !empty($title)){
+			$updateData = array();
+			$updateData['title'] = $title;
+			$this->query_model->updateData('tbl_sparkpost_mail_flows','id',$flow_id, $updateData);
+		}
+		
+		echo 1;
+	}
 	
 	public function duplicate_form(){
 		

@@ -50,8 +50,9 @@
 			<h1 style="padding-bottom: 5px;">Template Type</h1>
 			<select class="field" name="template_type" required="true" >
 				<option value="">-Select Template Type-</option>
-				<?php foreach($template_types as $key => $template_type){?>
-					<option value="<?php echo $key; ?>" <?php echo (!empty($details) && $details->template_type == $key) ? 'selected=selected' : ''; ?>><?php echo $template_type; ?></option>
+				<?php foreach($template_types as $key => $template_type){
+				?>
+				<option value="<?php echo $key; ?>" <?php echo (!empty($details) && $details->template_type == $key) ? 'selected=selected' : ''; ?>><?php echo $template_type; ?></option>
 				<?php } ?>
 			</select>
 		<div>

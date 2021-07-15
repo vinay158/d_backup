@@ -32,7 +32,7 @@ class Kanban_leads extends CI_Controller {
 		
 		$data['date_sort'] = (isset($_GET['date_sort']) && !empty($_GET['date_sort'])) ? $_GET['date_sort'] : 'current_month';
 		$data['dateRanges'] = $this->getStartAndEndDate($data['date_sort']);
-		
+		//echo '<pre>'; print_r($data['dateRanges']); die;
 		if($data['date_sort'] == "custom_range"){
 			
 			$data['start_date'] = (isset($_GET['start_date']) && !empty($_GET['start_date'])) ? $_GET['start_date'] : '';
@@ -179,14 +179,15 @@ class Kanban_leads extends CI_Controller {
 				$orderLeadsSortCreatedDate[$created_date] = $newlead_data;
 			}
 			
-			ksort($orderLeadsSortCreatedDate);
+			krsort($orderLeadsSortCreatedDate);
 		}
-	
+	echo '<pre>orderLeadsSortCreatedDate'; print_r($orderLeadsSortCreatedDate); die;
 		//echo '<pre>orderLeadsSortCreatedDate'; print_r($orderLeadsSortCreatedDate); die;
 		//ksort($orderLeadsSortEmail);
 		
 		if(!empty($orderLeadsSortCreatedDate)){
-			foreach($orderLeadsSortCreatedDate as $newlead_data){
+			foreach($orderLeadsSortCreatedDate as $created => $newlead_data){
+			//	echo '<pre>created'; print_r($created); die;
 				$lead = array();
 				$lead = isset($data['filterd_leads'][$newlead_data['email']][$newlead_data['unique_id']]) ? $data['filterd_leads'][$newlead_data['email']][$newlead_data['unique_id']] : '';
 				
@@ -196,7 +197,7 @@ class Kanban_leads extends CI_Controller {
 					$sort_number = $this->query_model->getKanbanOrderSortNumber($lead->kanban_status_id,$new_lead_type,$lead->id);
 					
 					if(empty($sort_number) || $sort_number == 0){
-						$sort_number = $this->query_model->createAndGetKanbanOrderSortNumber($lead->kanban_status_id,$new_lead_type,$lead->id);
+						$sort_number = $this->query_model->createAndGetKanbanOrderSortNumber($lead->kanban_status_id,$new_lead_type,$lead->id,'onload',$created);
 					}
 					
 					$lead->sort_number = $sort_number;
@@ -239,12 +240,14 @@ class Kanban_leads extends CI_Controller {
 		$this->db->select('tag');
 		$data['kanban_lead_tags'] = $this->query_model->getbyTable("tbl_kanban_lead_tags");
 		
+		$is_mobile_number_linked_twilio = 0;
 		$twilioChatApi = $this->query_model->getbySpecific('tbl_twilio_chat_api','id',1);
 		if(!empty($twilioChatApi) && $twilioChatApi[0]->type == 1){
 			if(!empty($twilioChatApi[0]->sid) && !empty($twilioChatApi[0]->token) ){
-			
+				$is_mobile_number_linked_twilio = 1;
 			}
 		}
+		$data['is_mobile_number_linked_twilio'] = $is_mobile_number_linked_twilio;
 		//echo '<pre>'; print_r($data); die;	
 		
 		$this->load->view('admin/kanban_leads',$data);
@@ -701,7 +704,8 @@ public function getStartAndEndDate($sort){
 				$current_month = date('Y-m-01');
 				$current_month = strtotime($current_month);
 				$start_date = date("Y-m-d", strtotime("-".$number." months",$current_month));
-				$end_date = date('Y-m-d', strtotime('last day of last month'));
+				//$end_date = date('Y-m-d', strtotime('last day of last month'));
+				$end_date = date('Y-m-d');
 				
 			}
 			
@@ -872,13 +876,14 @@ public function ajax_sort_kanban_status(){
 }
 
 public function update_move_lead_status_id(){
-	
+	//echo '<pre>POST'; print_r($_POST); die;
 	$lead_type = (isset($_POST['lead_type']) && !empty($_POST['lead_type'])) ? $_POST['lead_type'] : '';
 	$lead_id = (isset($_POST['lead_id']) && !empty($_POST['lead_id'])) ? $_POST['lead_id'] : '';
 	$new_kanban_status_id = (isset($_POST['new_kanban_status_id']) && !empty($_POST['new_kanban_status_id'])) ? $_POST['new_kanban_status_id'] : '';
 	$old_kanban_status_id = (isset($_POST['old_kanban_status_id']) && !empty($_POST['old_kanban_status_id'])) ? $_POST['old_kanban_status_id'] : '';
 	$action = (isset($_POST['action']) && !empty($_POST['action'])) ? $_POST['action'] : '';
-	
+	$lead_created = (isset($_POST['lead_created']) && !empty($_POST['lead_created'])) ? $_POST['lead_created'] : '';
+	//echo 'new_kanban_status_id=>'.$new_kanban_status_id.'==>old_kanban_status_id=>'.$old_kanban_status_id; die;
 	$data = array();
 	$data['response'] = 0;
 	if(!empty($lead_type) && !empty($lead_id) && !empty($new_kanban_status_id) && !empty($old_kanban_status_id) && $action == "update_lead_status"){
@@ -893,12 +898,16 @@ public function update_move_lead_status_id(){
 			$updateData['kanban_status_id'] = $new_kanban_status_id;
 			$this->query_model->updateData($table_name,'id',$lead_id, $updateData);
 			
-			$this->db->where('kanban_status_id',$old_kanban_status_id);
-			$this->db->where('lead_type',$lead_type);
-			$this->db->where('lead_id',$lead_id);
-			$this->db->delete('tbl_kanban_lead_sort_numbers');
+			if($new_kanban_status_id != $old_kanban_status_id){
+				
+				$this->db->where('kanban_status_id',$old_kanban_status_id);
+				$this->db->where('lead_type',$lead_type);
+				$this->db->where('lead_id',$lead_id);
+				$this->db->delete('tbl_kanban_lead_sort_numbers');
+				
+				$this->query_model->createAndGetKanbanOrderSortNumber($new_kanban_status_id,$lead_type,$lead_id,'drag',$lead_created);
+			}
 			
-			$this->query_model->createAndGetKanbanOrderSortNumber($new_kanban_status_id,$lead_type,$lead_id);
 			
 			$data['response'] = 1;
 			$data['status_type_id'] = $new_kanban_status_id;
@@ -914,7 +923,7 @@ public function ajax_sort_kanban_leads(){
 	$responseData = (isset($_POST['responseData']) && !empty($_POST['responseData'])) ? $_POST['responseData'] : '';
 	$kanban_status_id = (isset($_POST['kanban_status_id']) && !empty($_POST['kanban_status_id'])) ? $_POST['kanban_status_id'] : '';
 	$action = (isset($_POST['action']) && !empty($_POST['action'])) ? $_POST['action'] : '';
-	
+	//echo '<prE>responseData'; print_r($responseData); die;
 	$data = array();
 	$data['response'] = 0;
 	if(!empty($responseData) && !empty($kanban_status_id) && $action == "sort_kanban_leads"){
@@ -930,13 +939,15 @@ public function ajax_sort_kanban_leads(){
 		$this->db->where('kanban_status_id',$kanban_status_id);
 		$this->db->delete('tbl_kanban_lead_sort_numbers');
 		
-		$i = 1000;
+		$i = 10000;
 		foreach($sortPositions as $sort_position => $sort_data){
 			$insertData = array();
 			$insertData['sort_number'] = $i;
 			$insertData['lead_type'] = $sort_data['lead_type'];
 			$insertData['lead_id'] = $sort_data['lead_id'];
 			$insertData['kanban_status_id'] = $kanban_status_id;
+			$insertData['sort_type'] = 'drag';
+			$insertData['created'] = $sort_data['lead_created'];
 			$this->query_model->insertData('tbl_kanban_lead_sort_numbers',$insertData);
 		$i++;
 		}
@@ -1077,6 +1088,80 @@ public function delete_kanban_status(){
 		}
 		exit();	
 }
+
+public function ajaxSaveLeadProfileImage(){
+	
+		$file = '';
+		if(isset($_FILES['file']['name']) && !empty($_FILES['file']['name'])){
+			//$_FILES['file']['name'] = time().$_FILES['file']['name'];
+				//$file = $_FILES['file'];
+				$this->load->library('image_lib');
+	
+				$config['upload_path'] = 'upload/kanban_user_profiles/';
+				$config['allowed_types'] = 'gif|jpg|png';
+	
+				$this->load->library('upload', $config);
+	
+				if ( $this->upload->do_upload('file')){
+					$image_data = $this->upload->data();
+					$file = $image_data['file_name'];
+				}
+	
+				$resize_config['source_image'] = 'upload/kanban_user_profiles/'.$file;
+				$get_size = getimagesize($resize_config['source_image']);
+	
+				$image_info = array(
+					'width' => $get_size[0],
+					'height' => $get_size[1]
+				);
+	
+				$resize_config['create_thumb'] = FALSE;
+	
+				$resize_config['new_image'] = 'upload/kanban_user_profiles/thumb/'.$file;
+				
+				//echo '<pre>'; print_r($image_info); echo '</pre>';
+			
+	
+				if($image_info['width']  >= 150){				
+					$new_width = 150;
+					$new_height = round((150/$image_info['width'])*$image_info['height']);				
+					
+					$resize_config['width'] = $new_width;
+					$resize_config['height'] = $new_height;
+					$this->image_lib->initialize($resize_config);
+					$this->image_lib->resize();	
+				}
+				
+					
+				// Tiny Image Campress and resize
+				$this->query_model->tinyImageCampressAndResize('upload/kanban_user_profiles/'.$file);
+				
+				$this->query_model->tinyImageCampressAndResize('upload/kanban_user_profiles/thumb/'.$file);
+				
+				if(!empty($file) && isset($_POST['email']) && !empty($_POST['email'])){
+					$lead_email = $_POST['email'];
+					
+					$record = $this->query_model->getBySpecific('tbl_lead_profile_img','email',$lead_email);
+					
+					if(!empty($record)){
+						
+						$updateData['image']  = $file;
+						$updateData['created']  = date('Y-m-d H:i:s');
+						$this->query_model->update('tbl_lead_profile_img', $record[0]->id, $updateData);
+					}else{
+						$insertData['email']  = $lead_email;
+						$insertData['image']  = $file;
+						$insertData['created']  = date('Y-m-d H:i:s');
+						$this->query_model->insertData('tbl_lead_profile_img',$insertData);
+					}
+					
+				}
+		
+			}
+		echo  $file;	
+	}
+	
+	
 	
 }
 

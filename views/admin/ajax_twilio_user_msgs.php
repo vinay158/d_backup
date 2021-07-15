@@ -30,8 +30,21 @@
             <label class="az-chat-time"><span><?php echo $this->query_model->getTimeAgo($msg_date, 'day_format'); ?></span></label>
 			<?php } ?>
             
+			
+			<?php 
+				if($msg->sender_by == "admin"){
+					 $this->db->select(array('image'));
+					 $profile_img = $this->query_model->getBySpecific('tbl_lead_profile_img','email',$sms_user_detail[0]->email);
+					 
+					 $user_image = !empty($profile_img) ? base_url().'upload/kanban_user_profiles/thumb/'.$profile_img[0]->image : base_url().'assets_admin/img/lead_blank_profile_img.png';
+				}else{
+					 $user_image = base_url().'assets_admin/img/lead_blank_profile_img.png';
+				}
+				
+				 
+			?>
 			 <div class="media twilio_single_msg msg_<?php echo $msg->chat_message_sid; ?> <?php echo ($msg->sender_by == "admin") ? ' flex-row-reverse' : ''; ?>">
-                <div class="az-img-user online"><img src="https://via.placeholder.com/500" alt=""></div>
+                <div class="az-img-user online"><img src="<?php echo $user_image; ?>" alt=""></div>
                 <div class="media-body"> 
                   <div class="az-msg-wrapper">
                     <?php //$this->query_model->getDescReplace($msg->message); ?>
@@ -44,7 +57,8 @@
                   </div><!-- az-msg-wrapper -->
                   <div><span><?php echo date('h:i a', strtotime($msg->created)); ?></span>  
 				  <?php if($msg->template_msg_status == "hold"){ ?><span class="msg_on_hold">Message On Hold</span> <?php } ?>
-					<a href="javascript:void(0)" class="delete_twilio_user_msg" chat_conversation_sid="<?php echo $sms_user_detail[0]->chat_conversation_sid; ?>" chat_message_sid="<?php echo $msg->chat_message_sid; ?>" twilio_user_id="<?php echo $sms_user_detail[0]->id; ?>"  style="display:none" ><i class="fa fa-trash"></i></a></div>
+				  
+					<a href="javascript:void(0)" class="delete_twilio_user_msg" chat_conversation_sid="<?php echo $sms_user_detail[0]->chat_conversation_sid; ?>" chat_message_sid="<?php echo $msg->chat_message_sid; ?>" twilio_user_id="<?php echo $sms_user_detail[0]->id; ?>" sender_by="<?php echo $msg->sender_by; ?>" style="display:none" ><i class="fa fa-trash"></i></a></div>
                 </div><!-- media-body -->
               </div><!-- media -->
 			

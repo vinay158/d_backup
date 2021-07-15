@@ -159,9 +159,18 @@
 			 
 			 $this->db->limit(1);
 			 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+			 $this->db->where('published',1);
 			 $this->db->where('is_cover_image',1);
 			 $coverVideo = $this->query_model->getBySpecific('tbl_onlinedojo_media', 'album',$row->id);
 			
+			 if(empty($coverVideo)){
+				 $this->db->limit(1);
+				 $this->db->order_by('pos asc, id desc');
+				 $this->db->select(array('id','video_id','video_type','is_cover_image','video_img_type','custom_video_thumbnail'));
+				 $this->db->where('published',1);
+				 $coverVideo = $this->query_model->getBySpecific('tbl_onlinedojo_media', 'album',$row->id); 
+			 }
+			 echo '<prE>coverVideo'; print_r($coverVideo); die;
 			 $cover_image = base_url().'assets_admin/img/no-image.png';
 			 
 			 if(!empty($coverVideo)){
@@ -169,6 +178,7 @@
 				$videoData = array('video_type'=>$coverVideo[0]->video_type,'video_id'=>trim($coverVideo[0]->video_id), 'video_img_type' => $coverVideo[0]->video_img_type,'custom_video_thumbnail'=>$coverVideo[0]->custom_video_thumbnail);
 				
 				$cover_image = $this->query_model->getVideoThumbnilImage($videoData);
+				
 				
 			 }
 			?>

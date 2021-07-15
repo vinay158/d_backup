@@ -9,6 +9,29 @@
 }(window,document,'script'));
 
 </script>
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+
+<!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDx7tovEzSELY1D8ZZyAPAMGfk1okpjIqw"></script>-->
+
+<!--
+<script src="<?php echo base_url() ?>assets_admin/js/google-places.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyA_ClFBOg08eWAFemb7iM0uSNFplaqoIjM"></script>
+
+
+<script>
+    jQuery(document).ready(function() {
+        $("#google-reviews").googlePlaces({
+            placeId: 'ChIJ9ahCmLyCf4gRxPbeAbuzetg',
+            render: ['reviews'],
+            min_rating: 1,
+            max_rows: 5
+        });
+    });
+</script>
+<div id="google-reviews">test</div>-->
+
+
     
       <div class="az-content-header d-block d-md-flex mg-t-0">
 
@@ -49,6 +72,7 @@
               <div class="media">
                 <div class="media-body">
 				<span>Leads to Call Back</span>
+				
                   <h6 class="total_unique_leads"><?php echo isset($website_leads['total_unique_leads']) ? $website_leads['total_unique_leads'] : 0; ?></h6>
                   <div class="notify">
 					<div data-container="body"   data-popover-color="head-primary" data-placement="top" title="" data-content="The number of users that come to the page.The number of users is different from the number of sessions. Users can create multiple sessions.The number of users shows the unique users." data-original-title="Leads to Call Back " aria-describedby="popover86564"><i class="fa fa-question-circle"></i></div>
@@ -210,12 +234,14 @@
      </div><!-- az-content-body -->
 	
    </div><!-- az-content -->
-	<div class="az-content-body-right">
+	<div class="az-content-body-right  <?php echo ($this->session->userdata['user_level'] != 1) ? 'not_admin_dashboard_page' : ''; ?>">
+	
+	
           
           <label class="az-content-label tx-base mg-b-25">2 Recent Reviews</label>
           <div class="az-media-list-reviews">
             <div class="media">
-              <div class="az-img-user"><img src="https://via.placeholder.com/500" alt=""></div>
+              <div class="az-img-user"><img src="<?php echo base_url().'assets_admin/img/lead_blank_profile_img.png'; ?>" alt=""></div>
               <div class="media-body">
                 <div class="d-flex justify-content-between mg-b-10">
                   <div>

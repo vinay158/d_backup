@@ -1,5 +1,11 @@
 <?php //echo '<pre>main_lead_detail'; print_r($main_lead_detail); 
- $lead_type = $this->query_model->getKanbanLeadTypeToOrderType($main_lead_detail['order_type']); ?> 
+ $lead_type = $this->query_model->getKanbanLeadTypeToOrderType($main_lead_detail['order_type']); 
+ 
+ $this->db->select(array('image'));
+ $profile_img = $this->query_model->getBySpecific('tbl_lead_profile_img','email',$main_lead_detail['email']);
+ 
+ $user_image = !empty($profile_img) ? base_url().'upload/kanban_user_profiles/thumb/'.$profile_img[0]->image : base_url().'assets_admin/img/lead_blank_profile_img.png';
+?> 
  <div class="modal-content modal-content-demo">
   <div class="modal-header">
 		<span class="update_kanban_status_reponse"></span>
@@ -17,7 +23,12 @@
           <div class="modal-body">
             <div class="cont">
 				<div class="detail">
-					<div class="az-img-user avatar-xxl d-none d-sm-block"><img src="https://via.placeholder.com/500" class="rounded-circle" alt=""></div>
+					<div class="az-img-user avatar-xxl d-none d-sm-block">
+					<img id="OpenImgUpload" src="<?php echo $user_image; ?>" class="rounded-circle" alt="">
+					<input type="hidden" name="lead_profile_img" id="lead_profile_img"  value=""  />
+					<input type="file" id="imgupload"  field_name="lead_profile_img" email="<?php echo $main_lead_detail['email']; ?>"  lead_type="<?php echo $lead_type; ?>" lead_id="<?php echo $main_lead_detail['id']; ?>" style="display:none"/> 
+					
+					</div>
 					<div class="media-body">
 						<h4><?php echo $main_lead_detail['name']; ?></h4>
 						<a href="tel:<?php echo $main_lead_detail['phone']; ?>" class="nav-link"><i class="fas fa-phone"></i><?php echo $main_lead_detail['phone']; ?></a>
@@ -108,3 +119,95 @@
           </div>
           
 </div>
+
+<script>
+	$(document).ready(function(){
+		// upload image by ajax
+$('body').on('change','#imgupload',function(){
+	
+	var file = $(this)[0].files[0];
+	var field_name = $(this).attr('field_name');
+	var email = $(this).attr('email');
+	var lead_type = $(this).attr('lead_type');
+	var lead_id = $(this).attr('lead_id');
+	var upload = new Upload(file);
+	
+	upload.doUpload(field_name,email,lead_type,lead_id);
+		
+})
+
+
+
+	var Upload = function (file) {
+    this.file = file;
+};
+
+Upload.prototype.getType = function() {
+    return this.file.type;
+};
+Upload.prototype.getSize = function() {
+    return this.file.size;
+};
+Upload.prototype.getName = function() {
+	var uniqueNumber = new Date().getTime(); 
+	var imageName = uniqueNumber+this.file.name;
+	//alert(imageName+'==>'+uniqueNumber);
+    return imageName;
+};
+Upload.prototype.doUpload = function (field_name,email,lead_type,lead_id) {
+	/*$('.save_full_row_add_btn').css("pointer-events", "none");
+	$('.upload_img_pre_loader').show();*/
+	
+    var that = this;
+    var formData = new FormData();
+
+    // add assoc key values, this will be posts values
+    formData.append("file", this.file, this.getName());
+    formData.append("upload_file", true);
+    formData.append("email", email);
+	
+	//$("#"+field_name).val(this.getName());
+	
+    $.ajax({
+        type: "POST",
+        url: "admin/kanban_leads/ajaxSaveLeadProfileImage",
+        xhr: function () {
+            var myXhr = $.ajaxSettings.xhr();
+            if (myXhr.upload) {
+				myXhr.upload.addEventListener('progress', that.progressHandling, false);
+            }
+            return myXhr;
+        },
+        success: function (data) {
+			$("#"+field_name).val(data);
+			var image_path = '<?php echo base_url() ?>upload/kanban_user_profiles/thumb/'+data;
+			$('#OpenImgUpload').attr('src',image_path);
+			$('.profile_img_'+lead_type+'_'+lead_id).addClass('profile_img_exist');
+			$('.profile_img_'+lead_type+'_'+lead_id).html('<img src="'+image_path+'">');
+			/*$('.upload_img_pre_loader').hide();
+			$('.save_full_row_add_btn').css("pointer-events", "all");*/
+			//$('.saveProgramButton').removeAttr("disabled");
+			//alert(data);
+            // your callback here
+        },
+        error: function (error) {
+			/*$('.upload_img_pre_loader').show();
+			$('.save_full_row_add_btn').css("pointer-events", "none");*/
+			//$('.saveProgramButton').removeAttr("disabled");
+            // handle error
+        },
+        async: true,
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        timeout: 60000
+    });
+};
+
+Upload.prototype.progressHandling = function (event) {
+	
+    
+};
+	})
+</script>
