@@ -38,6 +38,7 @@
 
 
 <div class="form-light-holder" style="overflow:auto;">
+		<div class="adsUrl">
 			<h1 style="padding-bottom: 5px;">Template Type</h1>
 			<select class="field" name="template_type" required="true" >
 				<option value="">-Select Template Type-</option>
@@ -45,15 +46,23 @@
 					<option value="<?php echo $key; ?>"><?php echo $template_type; ?></option>
 				<?php } ?>
 			</select>
-		<div>
 		</div>
+		<div class="linkTarget send_sms_time_box"  style="display:none">
+			<h1 style="padding-bottom: 5px;">Time</h1>
+			<select class="field send_sms_time" name="send_sms_time">
+				<option value="">-Select Time-</option>
+				 <?php foreach($times as $key => $time){ ?>
+					<option value="<?php echo $key; ?>"><?php echo $time; ?> </option>
+				  <?php } ?>
+			</select>
+		</div>
+		
 </div>
 
 <div class="form-light-holder" style="overflow:auto;">
 			<h1 style="padding-bottom: 5px;">Template</h1>
 			<textarea type="text" name="description" class="text field full_width_input"  rows="10"></textarea>
-		<div>
-		</div>
+		
 </div>
 <div class="form-light-holder  row row-xs align-items-center  email_varibles" style="overflow:auto;">
 			<div class="col-md-12"><h1 style="padding-bottom: 5px;">Variables:</h1></div>
@@ -82,7 +91,7 @@
 			
 </div>
 <div class="form-white-holder" style="padding-bottom:20px;">
-	<input type="hidden" value="<?php echo $this->uri->segment(4); ?>" name="mail_flow_id" id="mail_flow_id" class="field"/>
+	<input type="hidden" value="<?php echo $this->uri->segment(4); ?>" name="sms_flow_id" id="sms_flow_id" class="field"/>
 	<input type="submit" name="update" value="Save" class="btn-save" style="float:left;" />
 </div>
 </form>
@@ -104,7 +113,30 @@
 </div>
 </div>
 
-
+<script>
+$(window).load(function(){
+	var template_type = $('.template_type').val();
+	$('.send_sms_time_box').hide();
+	$('.send_sms_time').removeAttr('required');
+	if(template_type != "day_1" && template_type != "paid_trial_template" && template_type != "admin_sms_template"){
+		$('.send_sms_time_box').show();
+		$('.send_sms_time').prop('required',true);
+	}
+})
+	$(document).ready(function(){
+		$('.template_type').change(function(){
+			var template_type = $(this).val();
+			
+			$('.send_sms_time_box').hide();
+			$('.send_sms_time').removeAttr('required');
+			if(template_type != "day_1" && template_type != "paid_trial_template" && template_type != "admin_sms_template"){
+				$('.send_sms_time_box').show();
+				$('.send_sms_time').prop('required',true);
+			}
+			
+		})
+	})
+</script>
 
 <!------------ recent items ----------------->
 <?php $this->load->view("admin/include/footer");?>

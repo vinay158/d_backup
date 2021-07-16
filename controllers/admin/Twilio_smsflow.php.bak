@@ -37,30 +37,45 @@ class Twilio_smsflow extends CI_Controller {
 			$data['template_types']['admin_sms_template'] = 'Admin SMS Template';
 			
 			
-			$data['sparkpost_mail_flows'] = $this->query_model->getByTable('twilio_sms_flows');
+			$data['twilio_sms_flows'] = $this->query_model->getByTable('twilio_sms_flows');
 
 			
-			if(!empty($data['sparkpost_mail_flows'])){
-				foreach($data['sparkpost_mail_flows'] as $sparkpost_flow){
+			if(!empty($data['twilio_sms_flows'])){
+				foreach($data['twilio_sms_flows'] as $twilio_sms_flow){
 					
-					$this->db->order_by('pos','ASC');
-					$this->db->select(array('id','title','sms_flow_id','status','pos','created','template_type'));
+					$this->db->order_by('template_type','ASC');
+					$this->db->select(array('id','title','sms_flow_id','status','pos','created','template_type','send_sms_time'));
 					$this->db->where('template_type !=','paid_trial_template');
 					$this->db->where('template_type !=','admin_sms_template');
-					$data['sparkpost_templates']['days_template'][$sparkpost_flow->id] = $this->query_model->getbySpecific('tbl_twilio_sms_templates', 'sms_flow_id',$sparkpost_flow->id);
+					$data['twilio_sms_templates']['days_template'][$twilio_sms_flow->id] = $this->query_model->getbySpecific('tbl_twilio_sms_templates', 'sms_flow_id',$twilio_sms_flow->id);
 					
-					if($sparkpost_flow->id == 1){
+					if($twilio_sms_flow->id == 1){
 						$this->db->order_by('pos','ASC');
 						$this->db->select(array('id','title','sms_flow_id','status','pos','created','template_type'));
 						$this->db->where('template_type','paid_trial_template');
 						$this->db->or_where('template_type','admin_sms_template');
-						$data['sparkpost_templates']['other_templates'][$sparkpost_flow->id] = $this->query_model->getbySpecific('tbl_twilio_sms_templates', 'sms_flow_id',$sparkpost_flow->id);
+						$data['twilio_sms_templates']['other_templates'][$twilio_sms_flow->id] = $this->query_model->getbySpecific('tbl_twilio_sms_templates', 'sms_flow_id',$twilio_sms_flow->id);
 					}
 					
 					
 				}
 			}
 			
+			$this->db->where_in('type', ['trial_forms','program_forms']);
+			$data['form_types'] = $this->query_model->getByTable('tbl_form_types');
+			$data['form_types_list'] = array();
+			if(!empty($data['form_types'])){
+				foreach($data['form_types'] as $form_type){
+					
+					$data['pages_list'][$form_type->type] = $this->query_model->getAllPagesListForSmsFlows($form_type->id);
+					$data['form_types_list'][$form_type->type] = $form_type->name;
+					/*
+					$this->db->order_by('id','ASC');
+					$this->db->select(array('id','name'));
+					$data['form_modules'][$form_type->type] = $this->query_model->getbySpecific('tbl_form_modules', 'form_type_id',$form_type->id);*/
+				}
+			}
+			//echo '<prE>data'; print_r($data); die;
 		
 			$this->load->view("admin/twilio_sms_flows", $data);
 		}
@@ -77,8 +92,9 @@ class Twilio_smsflow extends CI_Controller {
 			
 			if( $this->uri->segment(4) != NULL ){
 				
-				$data['title'] = "Edit: Email Template";
+				$data['title'] = "Edit: Sms Template";
 				
+				$data['times'] = $this->get_hours_range();
 				$data['details'] = $this->query_model->getbySpecific('tbl_twilio_sms_templates','id', $this->uri->segment(4));
 				$data['details'] = $data['details'][0];
 				
@@ -95,17 +111,16 @@ class Twilio_smsflow extends CI_Controller {
 					}
 				}
 				
-				
-				
-				
+				//echo '<prE>data'; print_r($data); die;
 				
 				
 				if(isset($_POST['update'])):
-				
+					
 						$postData['title'] = isset($_POST['title']) ? trim($_POST['title']) : '';
 						$postData['description'] = isset($_POST['description']) ? trim($_POST['description']) : '';
 						$postData['created'] = date('Y-m-d h:i:s');
 						$postData['sms_flow_id'] = (isset($_POST['sms_flow_id']) && !empty($_POST['sms_flow_id'])) ? $_POST['sms_flow_id'] : 0;
+						$postData['send_sms_time'] = (isset($_POST['send_sms_time']) && !empty($_POST['send_sms_time'])) ? $_POST['send_sms_time'] : 0;
 						$postData['template_type'] = (isset($_POST['template_type']) && !empty($_POST['template_type'])) ? $_POST['template_type'] : '';
 						$this->query_model->updateData('tbl_twilio_sms_templates','id',$this->uri->segment(4), $postData);
 
@@ -127,12 +142,14 @@ public function add_template(){
 	$is_logged_in = $this->session->userdata('is_logged_in');
 		if(!empty($is_logged_in) && $is_logged_in == true)
 		{
-		$data['title'] = "Add: Email Template";
+		$data['title'] = "Add: Sms Template";
 		$data['template_types'] = array();
 		
+		$data['times'] = $this->get_hours_range();
+		
 		$template_types_arr = array();
-		for($i = 1; $i <= 14; $i++){
-			$data['template_types']['day_'.$i] = 'Day '.$i;
+		for($i = 1; $i <= 4; $i++){
+			$template_types_arr['day_'.$i] = 'Day '.$i;
 		}
 		//$template_types_arr['paid_trial_template'] = 'Paid Trial Template';
 		//$template_types_arr['admin_sms_template'] = 'Admin SMS Template';
@@ -148,7 +165,6 @@ public function add_template(){
 				$selectedTemplateTypes[$template_type_group->template_type] = $template_type_group->template_type;
 			}
 		}
-		
 		
 		
 		foreach($template_types_arr as $key => $template_type){
@@ -198,6 +214,22 @@ public function add_template(){
 		if(!empty($action) && !empty($flow_id) && !empty($title)){
 			$updateData = array();
 			$updateData['title'] = $title;
+			$this->query_model->updateData('twilio_sms_flows','id',$flow_id, $updateData);
+		}
+		
+		echo 1;
+	}
+	
+	
+	public function ajax_update_flow_page_url(){
+		
+		$action = (isset($_POST['action']) && !empty($_POST['action'])) ? $_POST['action'] : '';
+		$flow_id = (isset($_POST['flow_id']) && !empty($_POST['flow_id'])) ? $_POST['flow_id'] : '';
+		$page_url = (isset($_POST['page_url']) && !empty($_POST['page_url'])) ? $_POST['page_url'] : '';
+		
+		if(!empty($action) && !empty($flow_id) && !empty($page_url)){
+			$updateData = array();
+			$updateData['page_url'] = $page_url;
 			$this->query_model->updateData('twilio_sms_flows','id',$flow_id, $updateData);
 		}
 		
@@ -322,5 +354,19 @@ public function add_template(){
 			}
 		}
 	}
+	
+	
+	
+	 
+function get_hours_range( $start = 0, $end = 86400, $step = 3600, $format = 'g:i a' ) {
+        $times = array();
+        foreach ( range( $start, $end, $step ) as $timestamp ) {
+                $hour_mins = gmdate( 'H:i', $timestamp );
+                if ( ! empty( $format ) )
+                        $times[$hour_mins] = gmdate( $format, $timestamp );
+                else $times[$hour_mins] = $hour_mins;
+        }
+        return $times;
+}
 	
 }

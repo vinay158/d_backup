@@ -790,8 +790,11 @@ public function getFreePaidTrialLeads($start_date,$end_date,$location = '',$sear
 					}
 				}
 				
-				$this->db->where("id", $id);
-				$this->db->delete($table_name);
+				$this->db->where("mail_flow_id", $id);
+				$this->db->delete('tbl_sparkpost_mail_templates');
+			}elseif($table_name == "twilio_sms_flows"){
+				$this->db->where("sms_flow_id", $id);
+				$this->db->delete('tbl_twilio_sms_templates');
 			}
 			
 			$this->db->where("id", $id);
