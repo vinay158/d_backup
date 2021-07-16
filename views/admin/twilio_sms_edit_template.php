@@ -63,7 +63,7 @@
 
 <div class="form-light-holder" style="overflow:auto;">
 			<h1 style="padding-bottom: 5px;">Template</h1>
-			<textarea type="text"  name="description" class="text field full_width_input"  rows="10"><?php echo !empty($details) ? $details->description : ''; ?></textarea>
+			<textarea type="text"  name="msg_template" class="text field full_width_input"  rows="10"><?php echo !empty($details) ? $details->msg_template : ''; ?></textarea>
 		
 </div>
 

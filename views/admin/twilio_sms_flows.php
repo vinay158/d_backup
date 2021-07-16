@@ -133,9 +133,9 @@
 							  
 							  <a  class="badge badge-primary ajax_record_duplicate" data-toggle="modal" data-target="#popupDuplicateItem" item_id="<?=$row->id;?>"   table_name="tbl_twilio_sms_templates" item_title="<?=$row->title;?>" section_type="full_width" form_action="admin/<?=$link_type?>/duplicate_form" redirect_path="admin/<?=$link_type?>">Duplicate</a>
 							  
-							  <?php //if($i > $deleteBtnLimit){ ?>
+							  <?php if($row->template_type != "day_1"){ ?>
 							 <a class="badge badge-primary ajax_record_delete" data-toggle="modal" data-target="#popupDeleteRecord" item_id="<?=$row->id;?>"   table_name="tbl_twilio_sms_templates" item_title="<?=$row->title;?>" section_type="full_width_row_<?php echo $twilio_sms_flow->id; ?>">Delete</a>
-							  <?php //} ?>
+							  <?php } ?>
 							<?php } ?>
 							
 						</nav>

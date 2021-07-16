@@ -257,7 +257,7 @@
 			var flow_id = $(this).attr('flow_id');
 			var page_url = $(this).val();
 			if(page_url == "" || page_url == null){
-				alert('Please select page for sms flow');
+				alert('Please select page for sms flow'); return false
 			}else{
 				$.ajax({ 					
 					type: 'POST',						

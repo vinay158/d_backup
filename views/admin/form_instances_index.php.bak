@@ -231,9 +231,7 @@ $(".delete_item").click(function(){
 					}
 					$this->db->where("page_url",$url);
 					$exitResult = $this->query_model->getbySpecific('tbl_form_instances', 'form_type_id',$form_type->id);
-					$selected_form_module = !empty($exitResult) ? $exitResult[0]->form_module_id : 0;
-					
-					
+					$selected_form_module = !empty($exitResult) ? $exitResult[0]->form_module_id : 0;	
 		?>
 				<div class="form-light-holder  d-md-flex  dual_input <?php echo ($selected_form_module == 0) ? 'notconnected_form_instance' :''; ?>">
 					<div class="adsUrl  form-group">

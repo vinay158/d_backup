@@ -122,8 +122,10 @@
 $(window).load(function(){
 	var template_type = $('.template_type').val();
 	$('.send_sms_time_box').hide();
+	$('.send_sms_time').removeAttr('required');
 	if(template_type != "day_1" && template_type != "paid_trial_template" && template_type != "admin_sms_template"){
 		$('.send_sms_time_box').show();
+		$('.send_sms_time').prop('required',true);
 	}
 })
 	$(document).ready(function(){
@@ -131,8 +133,10 @@ $(window).load(function(){
 			var template_type = $(this).val();
 			
 			$('.send_sms_time_box').hide();
+			$('.send_sms_time').removeAttr('required');
 			if(template_type != "day_1" && template_type != "paid_trial_template" && template_type != "admin_sms_template"){
 				$('.send_sms_time_box').show();
+				$('.send_sms_time').prop('required',true);
 			}
 			
 		})

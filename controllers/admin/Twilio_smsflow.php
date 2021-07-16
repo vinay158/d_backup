@@ -117,7 +117,7 @@ class Twilio_smsflow extends CI_Controller {
 				if(isset($_POST['update'])):
 					
 						$postData['title'] = isset($_POST['title']) ? trim($_POST['title']) : '';
-						$postData['description'] = isset($_POST['description']) ? trim($_POST['description']) : '';
+						$postData['msg_template'] = isset($_POST['msg_template']) ? trim($_POST['msg_template']) : '';
 						$postData['created'] = date('Y-m-d h:i:s');
 						$postData['sms_flow_id'] = (isset($_POST['sms_flow_id']) && !empty($_POST['sms_flow_id'])) ? $_POST['sms_flow_id'] : 0;
 						$postData['send_sms_time'] = (isset($_POST['send_sms_time']) && !empty($_POST['send_sms_time'])) ? $_POST['send_sms_time'] : 0;
@@ -183,8 +183,9 @@ public function add_template(){
 			
 				
 				$postData['title'] = isset($_POST['title']) ? trim($_POST['title']) : '';
-				$postData['description'] = isset($_POST['description']) ? trim($_POST['description']) : '';
+				$postData['msg_template'] = isset($_POST['msg_template']) ? trim($_POST['msg_template']) : '';
 				$postData['sms_flow_id'] = (isset($_POST['sms_flow_id']) && !empty($_POST['sms_flow_id'])) ? $_POST['sms_flow_id'] : 0;
+				$postData['send_sms_time'] = (isset($_POST['send_sms_time']) && !empty($_POST['send_sms_time'])) ? $_POST['send_sms_time'] : 0;
 				$postData['template_type'] = (isset($_POST['template_type']) && !empty($_POST['template_type'])) ? $_POST['template_type'] : '';
 				$postData['created'] = date('Y-m-d h:i:s');
 				$postData['status'] = 1;

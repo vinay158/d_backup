@@ -9773,6 +9773,11 @@ public function customCurlRequest($requestData){
 				
 				date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 				
+				$page_url = isset($_POST['page_url']) ? $_POST['page_url'] : '';
+				$page_url = $this->query_model->reconstruct_url($page_url);
+				$page_url = $this->query_model->getFormPageUrl($page_url,$_POST);
+				
+				
 				$twilioUserArr = array();
 				$twilioUserArr['name'] = (isset($formData['name']) && !empty($formData['name'])) ? $formData['name'] : '';
 				$twilioUserArr['phone'] =  (isset($formData['phone']) && !empty($formData['phone'])) ? $formData['phone'] : '';
@@ -9783,7 +9788,8 @@ public function customCurlRequest($requestData){
 				
 				if(!empty($twilioUserArr['name']) && !empty($twilioUserArr['phone'])){
 					
-					$twilio_sms_template = ($twilioUserArr['lead_type'] == "trial_forms") ? 'trial_offer_template' : 'opt_in_form_template';
+					$twilio_sms_template = ($twilioUserArr['lead_type'] == "trial_forms") ? 'paid_trial_template' : 'opt_in_form_template';
+					
 					
 					$this->db->select(array('id','name','phone'));
 					$twilio_user_detail = $this->query_model->getBySpecific('twilio_sms_users','phone',$twilioUserArr['phone']);
@@ -9804,7 +9810,7 @@ public function customCurlRequest($requestData){
 						$updateTwilioUserData = array();
 						$updateTwilioUserData['is_msg_sent_by_phone'] = 0;
 						$updateTwilioUserData['sms_flows_status'] = 'pending';
-						if($twilio_sms_template == "trial_offer_template"){
+						if($twilio_sms_template == "paid_trial_template"){
 							$updateTwilioUserData['sms_flows_status'] = 'all_sent';
 						}
 						
@@ -9815,13 +9821,40 @@ public function customCurlRequest($requestData){
 					
 					if(!empty($twilio_user_id)){
 						
-						$twilio_sms_flows = $this->query_model->getBySpecific('tbl_twilio_sms_flows','msg_type',$twilio_sms_template);
 						
-						if(!empty($twilio_sms_flows)){
+						
+						if($twilio_sms_template == "paid_trial_template"){
+							$twilio_sms_flows = $this->query_model->getBySpecific('twilio_sms_flows','page_url','all_forms');
+							$this->db->where('template_type',$twilio_sms_template);
+							$twilio_sms_flow_template = $this->query_model->getBySpecific('tbl_twilio_sms_templates','sms_flow_id',$twilio_sms_flows[0]->id);
 							
+						}else{
 							
-							/*$template_start_time = $twilio_sms_flows[0]->start_time;
-							$template_end_time = $twilio_sms_flows[0]->end_time;
+							$twilio_sms_template = 'day_1';
+							$twilio_sms_flows = $this->query_model->getBySpecific('twilio_sms_flows','page_url',$page_url);
+							if(empty($twilio_sms_flows)){
+								$twilio_sms_flows = $this->query_model->getBySpecific('twilio_sms_flows','page_url','all_forms');
+							}
+							
+							$this->db->where('template_type',$twilio_sms_template);
+							$twilio_sms_flow_template = $this->query_model->getBySpecific('tbl_twilio_sms_templates','sms_flow_id',$twilio_sms_flows[0]->id);
+							
+						}
+						
+						
+						if(!empty($twilio_sms_flows) && !empty($twilio_sms_flow_template)){
+							
+							$updateTwilioUserData = array();
+							$updateTwilioUserData['sms_flows_id'] = $twilio_sms_flows[0]->id;
+							$updateTwilioUserData['msg_template_type'] = $twilio_sms_template;
+							$updateTwilioUserData['lead_created'] = date('Y-m-d H:i:s');
+							
+							$this->query_model->update('twilio_sms_users', $twilio_user_id, $updateTwilioUserData);
+							
+							die('1');
+							
+							/*$template_start_time = $twilio_sms_flow_template[0]->start_time;
+							$template_end_time = $twilio_sms_flow_template[0]->end_time;
 							$current_time = date("H:i");
 							$template_msg_status = "hold";
 							if($current_time >= $template_start_time && $current_time <= $template_end_time){
@@ -9831,7 +9864,7 @@ public function customCurlRequest($requestData){
 							$template_msg_status = "sent";
 							$formData['twilio_msg_user_id'] = $twilio_user_id;
 							//echo '<prE>formData'; print_r($formData); die;
-							$msg_template = $this->query_model->replaceAutoResponderVaribles($twilio_sms_flows[0]->msg_template, $formData, '');
+							$msg_template = $this->query_model->replaceAutoResponderVaribles($twilio_sms_flow_template[0]->msg_template, $formData, '');
 							
 							//echo '<prE>msg_template'; print_r($msg_template); die;
 							
@@ -9891,15 +9924,19 @@ public function customCurlRequest($requestData){
 							}
 							
 							$admin_twilio_sms_template = 'admin_sms_template';
-							$admin_twilio_sms_flows = $this->query_model->getBySpecific('tbl_twilio_sms_flows','msg_type',$admin_twilio_sms_template);
-							if(!empty($admin_twilio_sms_flows)){
+							
+							$admin_twilio_sms_flows = $this->query_model->getBySpecific('twilio_sms_flows','page_url','all_forms');
+							$this->db->where('template_type',$admin_twilio_sms_template);
+							$admin_twilio_sms_flow_template = $this->query_model->getBySpecific('tbl_twilio_sms_templates','sms_flow_id',$admin_twilio_sms_flows[0]->id);
+							
+							if(!empty($admin_twilio_sms_flows) && !empty($admin_twilio_sms_flow_template)){
 								
 								$formData['twilio_msg_user_id'] = $twilio_user_id;
-								$admin_msg_template = $this->query_model->replaceAutoResponderVaribles($admin_twilio_sms_flows[0]->msg_template, $formData, '');
-								//echo '<pre>admin_msg_template'; print_r($admin_msg_template); die;
-								//echo '<pre>admin_msg_template'; print_r($admin_msg_template); 
+								$admin_msg_template = $this->query_model->replaceAutoResponderVaribles($admin_twilio_sms_flow_template[0]->msg_template, $formData, '');
+								
 								unset($formData['twilio_msg_user_id']);
-								$admin_msg_template_cms = $this->query_model->replaceAutoResponderVaribles($admin_twilio_sms_flows[0]->msg_template, $formData, '');
+								$admin_msg_template_cms = $this->query_model->replaceAutoResponderVaribles($admin_twilio_sms_flow_template[0]->msg_template, $formData, '');
+								
 								
 								//echo '<pre>admin_msg_template_cms'; print_r($admin_msg_template_cms); die;
 								
@@ -10888,7 +10925,7 @@ public function getVideoThumbnilImage($video_data){
 						if(!empty($trial_offers)){
 							foreach($trial_offers as $trial_offer){
 								if($trial_offer->trial == 0){
-									$free_trial_page_url = 'starttrial/buyspecial~'.$trial_category->id;
+									$free_trial_page_url = 'starttrial/buyspecial~'.$trial_offer->id;
 									$pages[$add_url.$free_trial_page_url] = $trial_offer_slug->page_label.'- '.$trial_category->name.' ('.$this->query_model->getMetaDescReplace($trial_offer->offer_title).') FREE';
 								}
 							}
