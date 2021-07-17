@@ -17,6 +17,11 @@ class Twilio_smsflow extends CI_Controller {
 		
 		$this->load->model("sparkpost_mail_model");
 		
+		$twilio_chat_api_is_active = $this->query_model->checkTwilioApiIsActive();
+		if($twilio_chat_api_is_active == 0){
+			redirect('/admin');
+		}
+		
 	}
 	
 	public function index(){
@@ -75,6 +80,7 @@ class Twilio_smsflow extends CI_Controller {
 					$data['form_modules'][$form_type->type] = $this->query_model->getbySpecific('tbl_form_modules', 'form_type_id',$form_type->id);*/
 				}
 			}
+			
 			//echo '<prE>data'; print_r($data); die;
 		
 			$this->load->view("admin/twilio_sms_flows", $data);
@@ -229,8 +235,20 @@ public function add_template(){
 		$page_url = (isset($_POST['page_url']) && !empty($_POST['page_url'])) ? $_POST['page_url'] : '';
 		
 		if(!empty($action) && !empty($flow_id) && !empty($page_url)){
+			
+			$pageUrl = explode('~',$page_url);
+			$action_id = '';
+			if(isset($pageUrl[1]) && isset($pageUrl[2])){
+				$newpage_url = $pageUrl[0].'~'.$pageUrl[1];
+				$action_id = $pageUrl[2];
+			}else{
+				$newpage_url = $pageUrl[0];
+			}
+			
+			
 			$updateData = array();
-			$updateData['page_url'] = $page_url;
+			$updateData['page_url'] = $newpage_url;
+			$updateData['action_id'] = $action_id;
 			$this->query_model->updateData('twilio_sms_flows','id',$flow_id, $updateData);
 		}
 		

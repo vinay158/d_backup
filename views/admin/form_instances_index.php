@@ -233,11 +233,37 @@ $(".delete_item").click(function(){
 					$exitResult = $this->query_model->getbySpecific('tbl_form_instances', 'form_type_id',$form_type->id);
 					$selected_form_module = !empty($exitResult) ? $exitResult[0]->form_module_id : 0;
 					
+					$sms_flow_title = '';
+					$twilio_chat_api_is_active = $this->query_model->checkTwilioApiIsActive();
+					if($twilio_chat_api_is_active == 1){
+						
+						if($form_type->id == 1 || $form_type->id == 2){
+						
+							if (strstr($pageViewUrl,'trial_upsells_payment/') || strstr($page_name,' PAID') ) {
+							
+							}else{
+								$this->db->select(array('id','title'));
+								$exit_twilio_sms_flow = $this->query_model->getbySpecific('twilio_sms_flows','page_url',$mainUrl);
+								
+								if(empty($exit_twilio_sms_flow)){
+									$this->db->select(array('id','title'));
+									$exit_twilio_sms_flow = $this->query_model->getbySpecific('twilio_sms_flows','page_url','all_forms');
+								}
+								
+								$sms_flow_title = $exit_twilio_sms_flow[0]->title;
+							}
+							
+						}
+					}
+					
 					
 		?>
 				<div class="form-light-holder  d-md-flex  dual_input <?php echo ($selected_form_module == 0) ? 'notconnected_form_instance' :''; ?>">
 					<div class="adsUrl  form-group">
 						<h1><?php echo $page_name; ?></h1>
+						<?php if(!empty($sms_flow_title)){ ?>
+							<span class="form-module-sms-flow-title">Sms Flow: <?php echo $sms_flow_title; ?></span>
+						<?php } ?>
 						<p class="form-module-page-instances"><?php echo $pageViewUrl; ?></p>
 					</div>
 					<div class="linkTarget  form-group">

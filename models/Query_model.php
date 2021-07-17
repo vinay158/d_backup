@@ -9845,7 +9845,7 @@ public function customCurlRequest($requestData){
 						if(!empty($twilio_sms_flows) && !empty($twilio_sms_flow_template)){
 							
 							$updateTwilioUserData = array();
-							$updateTwilioUserData['sms_flows_id'] = $twilio_sms_flows[0]->id;
+							$updateTwilioUserData['sms_flow_id'] = $twilio_sms_flows[0]->id;
 							$updateTwilioUserData['msg_template_type'] = $twilio_sms_template;
 							$updateTwilioUserData['lead_created'] = date('Y-m-d H:i:s');
 							
@@ -10925,7 +10925,7 @@ public function getVideoThumbnilImage($video_data){
 						if(!empty($trial_offers)){
 							foreach($trial_offers as $trial_offer){
 								if($trial_offer->trial == 0){
-									$free_trial_page_url = 'starttrial/buyspecial~'.$trial_offer->id;
+									$free_trial_page_url = 'starttrial/buyspecial~'.$trial_category->id.'~'.$trial_offer->id;
 									$pages[$add_url.$free_trial_page_url] = $trial_offer_slug->page_label.'- '.$trial_category->name.' ('.$this->query_model->getMetaDescReplace($trial_offer->offer_title).') FREE';
 								}
 							}
@@ -10984,6 +10984,18 @@ public function getVideoThumbnilImage($video_data){
 		
 	}
 	
+public function checkTwilioApiIsActive(){
+	$result = 0;
+	$this->db->select(array('type'));
+	$twilioChatApi = $this->query_model->getBySpecific('tbl_twilio_chat_api','id',1);
 	
+	if(!empty($twilioChatApi)){
+		if($twilioChatApi[0]->type == 1){
+			$result = 1;
+		}
+	}
+	
+	return $result;
+}
 
 }

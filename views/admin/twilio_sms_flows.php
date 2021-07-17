@@ -50,8 +50,11 @@
 							<option value="">--Select Page--</option>
 							<?php foreach($pages_list as $key => $pages){ ?>
 								<option value=""><?php echo isset($form_types_list[$key]) ? $form_types_list[$key] : ''; ?></option>
-								<?php foreach($pages as $url => $page_name){ ?>
-									<option value="<?php echo $url; ?>" <?php echo ($twilio_sms_flow->page_url == $url) ? 'selected=selected' : ''; ?>><?php echo $page_name; ?></option>
+								<?php foreach($pages as $url => $page_name){ 
+										$page_url = !empty($twilio_sms_flow->action_id) ? $twilio_sms_flow->page_url.'~'.$twilio_sms_flow->action_id : $twilio_sms_flow->page_url;
+										
+								?>
+									<option value="<?php echo $url; ?>" <?php echo ($page_url == $url) ? 'selected=selected' : ''; ?>><?php echo $page_name; ?></option>
 								<?php } ?>
 							<?php } ?>
 						<?php } ?>

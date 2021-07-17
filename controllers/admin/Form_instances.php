@@ -31,6 +31,8 @@ class Form_instances extends CI_Controller {
 			
 			$data['form_types'] = $this->query_model->getByTable('tbl_form_types');
 			
+			
+			
 			if(!empty($data['form_types'])){
 				foreach($data['form_types'] as $form_type){
 					
