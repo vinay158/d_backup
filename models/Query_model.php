@@ -9517,9 +9517,9 @@ public function customCurlRequest($requestData){
 	public function getCurrentDateTimeZone(){
 		
 		$this->db->select('timezone');
-		$twilioChatApi = $this->query_model->getbySpecific('tbl_twilio_chat_api','id',1);
+		$site_setting = $this->query_model->getbySpecific('tblsite','id',1);
 		
-		$timezone = !empty($twilioChatApi[0]->timezone) ? $twilioChatApi[0]->timezone : 'America/New_York';
+		$timezone = !empty($site_setting[0]->timezone) ? $site_setting[0]->timezone : 'America/New_York';
 		
 		return $timezone;
 	}
@@ -9810,6 +9810,8 @@ public function customCurlRequest($requestData){
 						$updateTwilioUserData = array();
 						$updateTwilioUserData['is_msg_sent_by_phone'] = 0;
 						$updateTwilioUserData['sms_flows_status'] = 'pending';
+						$updateTwilioUserData['lead_type'] = $twilioUserArr['lead_type'];
+						$updateTwilioUserData['lead_id'] = $twilioUserArr['lead_id'];
 						if($twilio_sms_template == "paid_trial_template"){
 							$updateTwilioUserData['sms_flows_status'] = 'all_sent';
 						}
@@ -9831,7 +9833,18 @@ public function customCurlRequest($requestData){
 						}else{
 							
 							$twilio_sms_template = 'day_1';
+							
+							
+							if(isset($_POST['trial_offer_cat_id']) && !empty($_POST['trial_offer_cat_id'])){
+								if(isset($_POST['trial_id']) && !empty($_POST['trial_id'])){
+									if(isset($formData['trial_type']) && $formData['trial_type'] == "Free"){
+										$page_url = 'all_free_trial_forms';
+									}
+								}
+							}
+							
 							$twilio_sms_flows = $this->query_model->getBySpecific('twilio_sms_flows','page_url',$page_url);
+							//echo '<pre>twilio_sms_flows'; print_r($twilio_sms_flows); die;
 							if(empty($twilio_sms_flows)){
 								$twilio_sms_flows = $this->query_model->getBySpecific('twilio_sms_flows','page_url','all_forms');
 							}
@@ -10517,7 +10530,7 @@ public function sendEmailFromSparkpostApi($postData, $leadData = array()){
 						if(!empty($formModelDetail[0]->sparkpost_mail_flow_id)){
 							
 							$sparkpost_mail_flow = $this->query_model->getBySpecific('tbl_sparkpost_mail_flows','id',$formModelDetail[0]->sparkpost_mail_flow_id);
-							
+							//echo '<pre>'; print_r($sparkpost_mail_flow); die;
 							if(!empty($sparkpost_mail_flow)){
 								
 				
@@ -10540,10 +10553,10 @@ public function sendEmailFromSparkpostApi($postData, $leadData = array()){
 								
 								if(!empty($sparkPostUserArr['email']) && !empty($sparkpost_mail_flow[0]->id)){
 									
-									$this->db->select(array('id','name','email'));
+									$this->db->select(array('id','name','email','mail_template_type','email_flows_status','is_stop_mail'));
 									$this->db->where('mail_flow_id',$sparkpost_mail_flow[0]->id);
 									$sparkpost_user_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_users','email',$sparkPostUserArr['email']);
-									//echo '<pre>sparkpost_user_detail'; print_r($sparkpost_user_detail); die;
+									
 									if(empty($sparkpost_user_detail)){
 										
 										$this->query_model->insertData('tbl_sparkpost_mail_users',$sparkPostUserArr);
@@ -10555,6 +10568,24 @@ public function sendEmailFromSparkpostApi($postData, $leadData = array()){
 										$this->db->where('mail_flow_id',$sparkpost_mail_flow[0]->id);
 										$sparkpost_user_detail = $this->query_model->getBySpecific('tbl_sparkpost_mail_users','email',$sparkPostUserArr['email']);
 									}else{
+										//echo '<pre>sparkpost_user_detail'; print_r($sparkpost_user_detail); die;
+										if($mail_template_type != "paid_trial_purchased"){
+											
+											if($sparkpost_user_detail[0]->email_flows_status == "all_sent" && $sparkpost_user_detail[0]->is_stop_mail == 1){
+												$updateSparkpostUserData = array();
+												$updateSparkpostUserData['mail_template_type'] = $mail_template_type;
+												$updateSparkpostUserData['email_flows_status'] = 'pending';
+												$updateSparkpostUserData['is_stop_mail'] = 0;
+												$updateSparkpostUserData['lead_type'] = $sparkPostUserArr['lead_type'];
+												$updateSparkpostUserData['lead_id'] = $sparkPostUserArr['lead_id'];
+												$updateSparkpostUserData['created'] = date('Y-m-d H:i:s');
+												//echo '<pre>updateSparkpostUserData'; print_r($updateSparkpostUserData); die;
+												$this->query_model->update('tbl_sparkpost_mail_users', $sparkpost_user_detail[0]->id, $updateSparkpostUserData);
+											}
+											
+										}
+										
+										
 										$sparkpost_user_id = $sparkpost_user_detail[0]->id;
 										$user_type = "edit"; 
 									}
@@ -10611,6 +10642,8 @@ public function sendEmailFromSparkpostApi($postData, $leadData = array()){
 												$updateData['mail_template_type']  = 'paid_trial_purchased';
 												$updateData['email_flows_status']  = 'all_sent';
 												$updateData['is_stop_mail']  = 1;
+												$updateData['lead_type'] = $sparkPostUserArr['lead_type'];
+												$updateData['lead_id'] = $sparkPostUserArr['lead_id'];
 												$this->query_model->update('tbl_sparkpost_mail_users', $sparkpost_user_id, $updateData);
 											}
 											
@@ -10904,9 +10937,10 @@ public function getVideoThumbnilImage($video_data){
 					}
 				}
 				
-				$pages[$add_url.$start_trial_slug->slug] = $start_trial_slug->page_label;
+				$pages[$add_url.$start_trial_slug->slug] = 'Opt-in form trial offer page';
+				$pages['all_free_trial_forms'] = 'All Free Trial Forms';
 				
-				$tbl_onlinespecial_categories = $this->query_model->getTrialOffersCategoryTableName();
+				/*$tbl_onlinespecial_categories = $this->query_model->getTrialOffersCategoryTableName();
 				$isUniqueSpecialOffer = $this->query_model->isUniqueSpecialOffer();
 				$this->db->order_by('pos', 'asc');
 				$this->db->where("published", 1);
@@ -10937,7 +10971,7 @@ public function getVideoThumbnilImage($video_data){
 					}
 					
 					
-				}
+				}*/
 				
 				//echo '<pre>pages'; print_r($pages); die;
 		}

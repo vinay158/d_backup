@@ -48,7 +48,7 @@ class Twilio_sms_messenger extends CI_Controller{
 					$data['sms_user_detail'] = $this->query_model->getbySpecific('twilio_sms_users','is_deleted',0);
 					
 					
-					$this->db->select(array('id','sender_by','message','email','created','chat_message_sid','template_msg_status'));
+					$this->db->select(array('id','sender_by','message','created','chat_message_sid','template_msg_status'));
 					$this->db->order_by('created','asc');
 					$this->db->where('sms_users_id',$user_id);
 					$data['messages'] = $this->query_model->getbySpecific('twilio_sms_messenger','is_deleted',0);
@@ -502,13 +502,29 @@ public function ajax_send_twilio_new_sms_popup_form(){
 			$records['form_type'] = $_POST['form_type'];
 			$records['table_name'] = 'twilio_sms_users'; 
 			//$records['link_type'] = 'albums';
-			//echo '<pre>records'; print_r($records); 
+			
+			/*$new_lead_type = $this->query_model->getKanbanLeadTypeToOrderType($records['lead_type']);
+			$main_lead_detail =  $this->getMainLeadById($records['lead_id'],$records['lead_type']);
+			
+			if($new_lead_type == "trial_offer_lead"){
+				if(isset($main_lead_detail['page_url']) && !empty($main_lead_detail['page_url'])){
+					$PagesList = $this->query_model->getMenuMainPages(0,3);
+					$pagesListing = array();
+					foreach($PagesList as $pages){
+						$pagesListing =  $this->query_model->getAllPagesForAddCode($pages['id'], $pages['slug']);
+					}
+					
+					$page_name = isset($pagesListing[$data['main_lead_detail']['page_url']]) ? $pagesListing[$data['main_lead_detail']['page_url']] : '';
+				}
+			}*/
 			
 			$this->load->view("admin/ajax_send_twilio_new_sms_popup_form", $records);
 			
 			
 		}
 }
+
+
 
 
 public function ajax_send_twilio_new_sms(){
@@ -525,6 +541,7 @@ public function ajax_send_twilio_new_sms(){
 				$message = isset($searcharray['message']) ? trim($searcharray['message']) : '';
 				$lead_type = isset($searcharray['lead_type']) ? $searcharray['lead_type'] : '';
 				$lead_id = isset($searcharray['lead_id']) ? trim($searcharray['lead_id']) : '';
+				$lead_email = isset($searcharray['lead_email']) ? trim($searcharray['lead_email']) : '';
 				
 				if(!empty($phone) && !empty($message)){
 					
@@ -542,16 +559,16 @@ public function ajax_send_twilio_new_sms(){
 						$orderDetail = $this->query_model->getBySpecific($lead_table_name,'id',$lead_id);
 						if(!empty($orderDetail)){
 							if($lead_table_name == "tblorders"){
-								if($orderDetail[0]->offer_type == "Free" || $orderDetail[0]->offer_type == "Paid"){
+								if($orderDetail[0]->offer_type == "Paid"){
 									$twilio_user_lead_type = 'trial_forms';
-									$twilio_sms_template = 'trial_offer_template';
+									$twilio_sms_template = 'paid_trial_template';
 								}else{
 									$twilio_user_lead_type = 'opt_in_form';
-									$twilio_sms_template = 'opt_in_form_template';
+									$twilio_sms_template = 'day_1';
 								}
 							}elseif($lead_table_name == "tblbirthdayparty"){
 								$twilio_user_lead_type = 'opt_in_form';
-								$twilio_sms_template = 'opt_in_form_template';
+								$twilio_sms_template = 'day_1';
 							}
 						}
 						
@@ -559,10 +576,14 @@ public function ajax_send_twilio_new_sms(){
 						$twilioUserArr = array();
 						$twilioUserArr['name'] = $name;
 						$twilioUserArr['phone'] = $phone;
+						$twilioUserArr['email'] = $lead_email;
 						$twilioUserArr['conversation_type'] = 'user';
 						$twilioUserArr['lead_type'] = $twilio_user_lead_type;
 						$twilioUserArr['lead_id'] = $lead_id;
 						$twilioUserArr['last_updated_date'] = date('Y-m-d H:i:s');
+						$twilioUserArr['sms_flow_id'] = 0;
+						$twilioUserArr['msg_template_type'] = $twilio_sms_template;
+						$twilioUserArr['lead_created'] = date('Y-m-d H:i:s');
 						
 						//echo '<pre>twilioUserArr'; print_r($twilioUserArr); die;
 						$this->query_model->insertData('twilio_sms_users',$twilioUserArr);
@@ -596,7 +617,7 @@ public function ajax_send_twilio_new_sms(){
 							//$msg_template = 'hello us1';
 							$msgData = array('twilio_user_id' => $twilio_user_id,'reciever_by'=>'student','phone'=>$phone,'msg_type'=>'admin_to_student','message'=>$msg_template,'twilio_sms_msg_id'=>$twilio_sms_msg_id,'author_name'=>$author_name,'twilio_user_name'=>$twilio_user_detail[0]->name);
 							
-							//echo '<prE>msgData'; print_r($msgData); die;
+							echo '<prE>msgData'; print_r($msgData); die;
 							$this->query_model->sendMsgTwilioChatApi($msgData);
 							
 							$result['res'] = 1;

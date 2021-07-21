@@ -203,6 +203,7 @@ class Starttrial extends CI_Controller {
 				
 				$this->query_model->checkFormModuleApplyAPI($_POST);
 				//$autoResponder = $this->query_model->checkFormModuleAutoResponder($_POST);				
+				
 				$this->query_model->saveFormDataOnMATApi($_POST);
 				
 				$sessionLeadsData = array('sessionLeadsData' => $_POST);
@@ -211,13 +212,24 @@ class Starttrial extends CI_Controller {
 				$this->sendQuickEnquiry();	
 		
 			
+			
 			$this->query_model->insertData('tblpayments', $insertData);			
 			
 			$this->query_model->insertData('tblorders', $orderData);
 			
 			$order_id = $this->db->insert_id();
-	
+			
+			
+				
 			if(!empty($order_id)){
+				
+				
+				$leadTypeArr = array('lead_type'=>'opt_in_form','lead_id'=>$order_id);
+				$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
+				
+				$this->query_model->updateOrderForKabanLeads($order_id,'tblorders','',$_POST);
+				
+				
 				$current_email_info = $this->query_model->getOrderEmailInfo($_POST['form_email_2'], $_POST['name'],$orderData['page_url'],$order_id);
 				
 			}
@@ -1150,7 +1162,7 @@ class Starttrial extends CI_Controller {
 
 	$insertOrder['offer_type'] = 'Paid';
 
-	$insertOrder['created'] = date('Y-m-d H:i:s');
+	$insertOrder['created'] = date('Y-m-d h-i-s');
 
 	
 
@@ -2491,6 +2503,8 @@ class Starttrial extends CI_Controller {
 					$order_id = $this->db->insert_id();
 	
 					if(!empty($order_id)){
+						$this->query_model->updateOrderForKabanLeads($order_id,'tblorders','',$_POST);
+				
 						$current_email_info = $this->query_model->getOrderEmailInfo($_POST['form_email_2'], $_POST['name'],$orderData['page_url'],$order_id);
 						
 					}

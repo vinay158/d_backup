@@ -1410,7 +1410,7 @@ class Cartorder_model extends CI_Model {
 			$insertOrder['term_condition'] = isset($_POST['term_condition']) ? $_POST['term_condition'] : 0;
 			$insertOrder['offer_type'] = 'Free';
 			$insertOrder['trans_status'] = 'Success';
-			$insertOrder['created'] = date('Y-m-d H:i:s');
+			$insertOrder['created'] = date('Y-m-d h-i-s');
 			$insertOrder['location'] = $location_data['id'];
 			$insertOrder['custom_fields'] = $dojocart_custom_fields_serialize;
 			

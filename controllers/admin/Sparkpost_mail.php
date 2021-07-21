@@ -36,7 +36,7 @@ class Sparkpost_mail extends CI_Controller {
 			if(!empty($data['sparkpost_mail_flows'])){
 				foreach($data['sparkpost_mail_flows'] as $sparkpost_flow){
 					
-					$this->db->order_by('pos','ASC');
+					$this->db->order_by('template_type','ASC');
 					$this->db->select(array('id','title','mail_flow_id','status','pos','created','template_id','template_type'));
 					$this->db->where('template_type !=','paid_trial_purchased');
 					$data['sparkpost_templates']['days_template'][$sparkpost_flow->id] = $this->query_model->getbySpecific('tbl_sparkpost_mail_templates', 'mail_flow_id',$sparkpost_flow->id);

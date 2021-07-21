@@ -28,7 +28,7 @@ class Starttrial extends CI_Controller {
 
 	{
 		
-		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		
 		$folder_name = $_SERVER['CONTEXT_PREFIX'];
   		$_SERVER['REQUEST_URI'] = str_replace($folder_name,'',$_SERVER['REQUEST_URI']);
@@ -112,7 +112,7 @@ class Starttrial extends CI_Controller {
 		$data['email_options'] = $this->query_model->getbySpecific('tbl_onlinespecial_email_options', 'id', 1);
 		$data['email_options'] = !empty($data['email_options']) ? $data['email_options'][0] : array();
 
-		$this->db->order_by('pos', 'asc');
+		$this->db->order_by('pos asc, id desc');
 		$this->db->where("published", 1);
 		$data['onlinespecialRows'] = $this->query_model->getbySpecific('tbl_onlinespecial_rows', 'published', 1); 
 		
@@ -172,7 +172,7 @@ class Starttrial extends CI_Controller {
 			$orderData['last_name'] = $data['last_name'];
 			$orderData['email'] = $data['form_email_2'];
 			$orderData['trial_cat_id'] = $data['trial_cat_id'];
-			$orderData['created'] = date('Y-m-d h:i:s');
+			$orderData['created'] = date('Y-m-d H:i:s');
 			$orderData['page_url'] = isset($_POST['page_url']) ? $_POST['page_url'] : '';
 			
 			$ipAddress = $this->query_model->getCountryNameToIpAddress();
@@ -405,6 +405,8 @@ class Starttrial extends CI_Controller {
 	
 
 	function sendQuickEnquiry(){
+		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		
 		/** geting from, replyto and cc email address **/
 		$emailIdManager = $this->query_model->getbyTable('tblsite');
@@ -2184,7 +2186,7 @@ class Starttrial extends CI_Controller {
 		
 		if(isset($_POST['submitEmail']) && !empty($_POST['submitEmail'])){
 			
-			
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());	
 		
 			/** geting from, replyto and cc email address **/
 		$emailIdManager = $this->query_model->getbyTable('tblsite');
@@ -2482,7 +2484,7 @@ class Starttrial extends CI_Controller {
 					$insertData['email'] = $data['form_email_2'];
 					
 					$orderData['email'] = $data['form_email_2'];
-					$orderData['created'] = date('Y-m-d h:i:s');
+					$orderData['created'] = date('Y-m-d H:i:s');
 					$orderData['page_url'] = (isset($_POST['page_url']) && !empty($_POST['page_url'])) ? $_POST['page_url'] : '';
 					$orderData['trial_cat_id'] = isset($_POST['trial_offer_id']) ? $_POST['trial_offer_id'] : 0;
 					$orderData['program_id'] = isset($_POST['program_id']) ? $_POST['program_id'] : '';

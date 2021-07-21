@@ -66,9 +66,12 @@
 								 <?php echo $sparkpost_flow->title; ?></h4>
 								  <p>You have <span class="total_alternating_full_width_row_<?php echo $sparkpost_flow->id; ?>"><?php echo !empty($sparkpost_templates['days_template'][$sparkpost_flow->id]) ? count($sparkpost_templates['days_template'][$sparkpost_flow->id]) : 0; ?></span> Entries</p>
 								</div>
+								
+								<?php if(isset($sparkpost_templates['days_template'][$sparkpost_flow->id]) && count($sparkpost_templates['days_template'][$sparkpost_flow->id]) <= 2){ ?>
 								<div>
 								 <a href="admin/<?=$link_type;?>/add_template/<?php echo $sparkpost_flow->id; ?>" class="button_class btn btn-indigo ">Add New Template</a>
 								</div>
+								<?php } ?>
 							  </div>
 							  
 			<!-- ajax_record_sortable  class for sort templates--->				  
@@ -213,11 +216,11 @@
 							<?php if($user_level == 1) {?> 
 							  <a href="admin/<?=$link_type;?>/edit_template/<?php echo $row->id; ?>" class="badge badge-primary">Edit</a>
 							  
-							<!--  <a  class="badge badge-primary ajax_record_duplicate" data-toggle="modal" data-target="#popupDuplicateItem" item_id="<?=$row->id;?>"   table_name="tbl_sparkpost_mail_templates" item_title="<?=$row->title;?>" section_type="full_width" form_action="admin/<?=$link_type?>/duplicate_form" redirect_path="admin/<?=$link_type?>">Duplicate</a>
+							<!--  <a  class="badge badge-primary ajax_record_duplicate" data-toggle="modal" data-target="#popupDuplicateItem" item_id="<?=$row->id;?>"   table_name="tbl_sparkpost_mail_templates" item_title="<?=$row->title;?>" section_type="full_width" form_action="admin/<?=$link_type?>/duplicate_form" redirect_path="admin/<?=$link_type?>">Duplicate</a>-->
 							  
 							  <?php //if($i > $deleteBtnLimit){ ?>
 							 <a class="badge badge-primary ajax_record_delete" data-toggle="modal" data-target="#popupDeleteRecord" item_id="<?=$row->id;?>"   table_name="tbl_sparkpost_mail_templates" item_title="<?=$row->title;?>" section_type="full_width_row_<?php echo $sparkpost_flow->id; ?>">Delete</a>
-							  <?php //} ?> -->
+							  <?php //} ?> 
 							<?php } ?>
 							
 						</nav>

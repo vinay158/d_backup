@@ -101,7 +101,8 @@ $_POST['submit'] = 'Purchase Now';
 			if(!isset($_POST['credit_card_number']) || !isset($_POST['exp_month']) || !isset($_POST['exp_year']) || !isset($_POST['cvv'])){
 				redirect('/site/page_not_found');
 			}
-			
+		
+			date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		//echo '<pre>_POST'; print_r($_POST); die;
 		// checking hunney Post
 		$this->query_model->checkHunneyPost($_POST);
@@ -640,7 +641,7 @@ if(!empty($payment_response)){
 
 	$insertOrder['offer_type'] = 'Paid';
 
-	$insertOrder['created'] = date('Y-m-d h-i-s');
+	$insertOrder['created'] = date('Y-m-d H:i:s');
 	
 	$insertOrder['ip_address'] =isset($_POST['ip_address']) ? $_POST['ip_address'] : '';
 	$insertOrder['gdpr_compliant_checkbox'] =isset($_POST['gdpr_compliant_checkbox']) ? $_POST['gdpr_compliant_checkbox'] : 0;
@@ -1282,6 +1283,8 @@ public function brainTreePaymentGateway(){
 				redirect('/site/page_not_found');
 			}
 		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
+		
 		$this->query_model->checkHunneyPost($_POST);
 		
 		$currency_type = $this->query_model->getSiteCurrencyTypeForPaymentGateway();
@@ -1551,7 +1554,7 @@ public function brainTreePaymentGateway(){
 	$insertOrder['ip_address'] =isset($_POST['ip_address']) ? $_POST['ip_address'] : '';
 	$insertOrder['gdpr_compliant_checkbox'] =isset($_POST['gdpr_compliant_checkbox']) ? $_POST['gdpr_compliant_checkbox'] : 0;
 
-	$insertOrder['created'] = date('Y-m-d h-i-s');
+	$insertOrder['created'] = date('Y-m-d H:i:s');
 	$insertOrder['client_id'] = $clientId;
 	$insertOrder['client_token'] = $clientToken;
 	$insertOrder['last_order_id'] = 0;
@@ -2260,7 +2263,7 @@ public function brainTreePaymentGateway(){
 			$insertOrder['trial_id'] =$this->input->post('trial_id');
 			$insertOrder['offer_type'] = 'Paid';
 			$insertOrder['trans_status'] = 'Third Party Url';
-			$insertOrder['created'] = date('Y-m-d h-i-s');
+			$insertOrder['created'] = date('Y-m-d H:i:s');
 			
 			$this->query_model->insertData('tblorders', $insertOrder);	
 
@@ -2474,6 +2477,8 @@ public function stripe_payment_gateway(){
 					redirect('/site/page_not_found');
 				}
 			}
+		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		
 		$this->query_model->checkHunneyPost($_POST);
 		$currency_type = $this->query_model->getSiteCurrencyTypeForPaymentGateway();
@@ -2792,7 +2797,7 @@ public function stripe_payment_gateway(){
 
 	$insertOrder['offer_type'] = 'Paid';
 
-	$insertOrder['created'] = date('Y-m-d h-i-s');
+	$insertOrder['created'] = date('Y-m-d H:i:s');
 	
 	$insertOrder['ip_address'] =isset($_POST['ip_address']) ? $_POST['ip_address'] : '';
 	$insertOrder['gdpr_compliant_checkbox'] =isset($_POST['gdpr_compliant_checkbox']) ? $_POST['gdpr_compliant_checkbox'] : 0;
@@ -3337,6 +3342,7 @@ public function stripe_ideal_payment_gateway(){
 			if(!isset($_POST['account_holder_name']) || !isset($_POST['bank_name'])){
 				redirect('/site/page_not_found');
 			}
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		// checking hunney Post
 		$this->query_model->checkHunneyPost($_POST);
 		$currency_type = $this->query_model->getSiteCurrencyTypeForPaymentGateway();
@@ -3447,6 +3453,8 @@ public function mwalteSpIdlPymSvdj(){
 		if(!isset($_POST['account_holder_name']) || !isset($_POST['bank_name'])){
 			redirect('/site/page_not_found');
 		}
+		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		
 		// checking hunney Post
 			$this->query_model->checkHunneyPost($_POST);
@@ -3604,7 +3612,7 @@ public function mwalteSpIdlPymSvdj(){
 
 			$insertOrder['offer_type'] = 'Paid';
 
-			$insertOrder['created'] = date('Y-m-d h-i-s');
+			$insertOrder['created'] = date('Y-m-d H:i:s');
 			
 			$insertOrder['ip_address'] =isset($_POST['ip_address']) ? $_POST['ip_address'] : '';
 			$insertOrder['gdpr_compliant_checkbox'] =isset($_POST['gdpr_compliant_checkbox']) ? $_POST['gdpr_compliant_checkbox'] : 0;
@@ -4155,6 +4163,8 @@ public function mwalteSpIdlPymSvdj(){
 }
 	
 	public function stripe_ideal_payment_webhook(){
+		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		
 		$source_id = (isset($_GET['source']) && !empty($_GET['source'])) ? $_GET['source'] : '';
 		
@@ -4794,7 +4804,7 @@ public function mwalteSpIdlPymSvdj(){
 		if(isset($_POST['submit'])){
 			
 		
-			
+			date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		
 			$this->query_model->checkHunneyPost($_POST);
 			$currency_type = $this->query_model->getSiteCurrencyTypeForPaymentGateway();
@@ -4986,7 +4996,7 @@ public function mwalteSpIdlPymSvdj(){
 					$insertOrder['ip_address'] =isset($_POST['ip_address']) ? $_POST['ip_address'] : '';
 					$insertOrder['gdpr_compliant_checkbox'] =isset($_POST['gdpr_compliant_checkbox']) ? $_POST['gdpr_compliant_checkbox'] : 0;
 
-					$insertOrder['created'] = date('Y-m-d h-i-s');
+					$insertOrder['created'] = date('Y-m-d H:i:s');
 					$insertOrder['client_id'] = '';
 					$insertOrder['client_token'] = '';
 					$insertOrder['last_order_id'] = 0;
@@ -5058,6 +5068,8 @@ public function mwalteSpIdlPymSvdj(){
 	
 	
 	public function paypal_success(){
+		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		
 		$paypalDetail = $this->query_model->getbySpecific('tbl_payments','id',1);
 			
@@ -5447,6 +5459,7 @@ public function mwalteSpIdlPymSvdj(){
 	
 	public function paypal_cancel(){
 		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		
 		$paypalDetail = $this->query_model->getbySpecific('tbl_payments','id',1);
 			

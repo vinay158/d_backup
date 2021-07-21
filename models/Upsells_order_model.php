@@ -11,6 +11,9 @@ class Upsells_order_model extends CI_Model {
 	
 
 	function addTrialNew_($data, $product_id){
+		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
+		
 		$tblspecialoffer = $this->query_model->getTrialSpecialOffersTableName();
 		$offer_detail = array();
 		$this->db->limit(1);
@@ -231,7 +234,7 @@ class Upsells_order_model extends CI_Model {
 			$insertOrder['term_condition'] = $this->input->post('term_condition');
 			
 			$insertOrder['trans_status'] = 'Success';
-			$insertOrder['created'] = date('Y-m-d h-i-s');
+			$insertOrder['created'] = date('Y-m-d H:i:s');
 			
 			//$insertOrder['product_id'] = isset($_POST['product_id'])? $_POST['product_id'] : 0;
 			

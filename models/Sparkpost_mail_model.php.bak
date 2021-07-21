@@ -64,8 +64,7 @@ class Sparkpost_mail_model extends CI_Model{
 		$site_setting = $this->query_model->getbyTable('tblsite');
 		$site_title = $site_setting[0]->title;
 		
-		try {
-			$create_template_promise = $sparky->request('POST', 'templates', [
+		$create_template_promise = $sparky->request('POST', 'templates', [
 				  'name' => $name,
 				  'published' => true,
 				  'content' => [
@@ -76,7 +75,7 @@ class Sparkpost_mail_model extends CI_Model{
 				  ],
 				]);
 
-				
+				try {
 					$create_template_response_code = $create_template_promise->getStatusCode();
 					$create_template = $create_template_promise->getBody();
 					
@@ -89,8 +88,8 @@ class Sparkpost_mail_model extends CI_Model{
 					}
 					
 				} catch (\Exception $e) {
-					//echo $e->getCode()."\n";
-					//echo $e->getMessage()."\n";
+					echo $e->getCode()."\n";
+					echo $e->getMessage()."\n";
 				}
 		
 		return $result;
@@ -119,8 +118,7 @@ class Sparkpost_mail_model extends CI_Model{
 		$site_setting = $this->query_model->getbyTable('tblsite');
 		$site_title = $site_setting[0]->title;
 		
-		try {
-			$update_template_promise = $sparky->request('PUT', 'templates/'.$template_id, [
+		$update_template_promise = $sparky->request('PUT', 'templates/'.$template_id, [
 					'name' => $name,
 					'published' => true,
 					'content' => [
@@ -135,7 +133,7 @@ class Sparkpost_mail_model extends CI_Model{
 					],
 				]);
 
-				
+				try {
 					$response_code = $update_template_promise->getStatusCode();
 					$response = $update_template_promise->getBody();
 					
@@ -144,8 +142,8 @@ class Sparkpost_mail_model extends CI_Model{
 					}
 					
 				} catch (\Exception $e) {
-					//echo $e->getCode()."\n";
-					//echo $e->getMessage()."\n";
+					echo $e->getCode()."\n";
+					echo $e->getMessage()."\n";
 				}
 		
 		return $result;
@@ -174,7 +172,6 @@ class Sparkpost_mail_model extends CI_Model{
 		$site_setting = $this->query_model->getbyTable('tblsite');
 		$site_title = $site_setting[0]->title;
 		
-		try {
 		$update_template_promise = $sparky->request('PUT', 'templates/'.$template_id, [
 					'name' => $name,
 					'published' => true,
@@ -189,7 +186,7 @@ class Sparkpost_mail_model extends CI_Model{
 					],
 				]);
 
-				
+				try {
 					$response_code = $update_template_promise->getStatusCode();
 					$response = $update_template_promise->getBody();
 					
@@ -198,8 +195,8 @@ class Sparkpost_mail_model extends CI_Model{
 					}
 					
 				} catch (\Exception $e) {
-					//echo $e->getCode()."\n";
-					//echo $e->getMessage()."\n";
+					echo $e->getCode()."\n";
+					echo $e->getMessage()."\n";
 				}
 		
 		/*echo '<pre>template_id'; print_r($template_id); 
@@ -284,7 +281,8 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 						  ],
 						  'content' => [
 							//'template_id' => 'bounce-template-2'
-							'template_id' => $mail_template_id,
+							'template_id' => 3424324324,
+							//'template_id' => $mail_template_id,
 							//'reply_to' => $reply_to,
 						  ],
 						  'recipients' => [
@@ -292,7 +290,7 @@ public function sendEmailByTemplateToSparkpostApi($sparkPostDetail,$requestData)
 						  ],
 						]);
 			
-
+			
 			// code for send mail with inline html without template ID
 			
 			/*$promise = $sparky->transmissions->post([

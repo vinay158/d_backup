@@ -54,7 +54,7 @@
 										$page_url = !empty($twilio_sms_flow->action_id) ? $twilio_sms_flow->page_url.'~'.$twilio_sms_flow->action_id : $twilio_sms_flow->page_url;
 										
 								?>
-									<option value="<?php echo $url; ?>" <?php echo ($twilio_sms_flow->page_url == $url) ? 'selected=selected' : ''; ?>><?php echo $page_name; ?></option>
+									<option value="<?php echo $url; ?>" <?php echo ($page_url == $url) ? 'selected=selected' : ''; ?>><?php echo $page_name; ?></option>
 								<?php } ?>
 							<?php } ?>
 						<?php } ?>
@@ -87,9 +87,11 @@
 								 <?php echo $twilio_sms_flow->title; ?></h4>
 								  <p>You have <span class="total_alternating_full_width_row_<?php echo $twilio_sms_flow->id; ?>"><?php echo !empty($twilio_sms_templates['days_template'][$twilio_sms_flow->id]) ? count($twilio_sms_templates['days_template'][$twilio_sms_flow->id]) : 0; ?></span> Entries</p>
 								</div>
+								<?php if(isset($twilio_sms_templates['days_template'][$twilio_sms_flow->id]) && count($twilio_sms_templates['days_template'][$twilio_sms_flow->id]) <=4){ ?>
 								<div>
 								 <a href="admin/<?=$link_type;?>/add_template/<?php echo $twilio_sms_flow->id; ?>" class="button_class btn btn-indigo ">Add New Template</a>
 								</div>
+								<?php } ?>
 							  </div>
 							  
 			<!-- ajax_record_sortable  class for sort templates--->				  

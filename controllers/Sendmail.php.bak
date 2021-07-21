@@ -86,7 +86,7 @@ class Sendmail extends CI_Controller {
 			$insert_data['ip_address'] = $ipAddress['client_ip_address'];
 			$insert_data['client_country_name'] = $ipAddress['client_country_name'];
 			$insert_data['request_detail'] = isset($_SERVER) ? serialize($_SERVER) : '';
-			$insert_data['date_added'] =  date('Y-m-d H:i:s');
+			$insert_data['date_added'] = isset($_SERVER) ? serialize($_SERVER) : '';
 			//$month = $_POST['party_date_month'];
 			//$day = $_POST['party_date_day'];
 			

@@ -35,6 +35,7 @@ public function authorized_payment_gateway($product_id = null){
 
 		if(isset($_POST['submit'])){
 			//echo '<pre>_POST'; print_r($_POST); die;
+			date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 			// checking hunney Post
 			$this->query_model->checkHunneyPost($_POST);
 			$currency_type = $this->query_model->getSiteCurrencyTypeForPaymentGateway();
@@ -510,7 +511,7 @@ public function authorized_payment_gateway($product_id = null){
 
 	$insertOrder['offer_type'] = 'Paid';
 
-	$insertOrder['created'] = date('Y-m-d h-i-s');
+	$insertOrder['created'] = date('Y-m-d H:i:s');
 	$insertOrder['product_id'] = isset($_POST['product_id'])? $_POST['product_id'] : 0;
 	$insertOrder['quantity'] = isset($_POST['quantity']) ? $_POST['quantity'] : 0;
 	$insertOrder['term_condition'] = isset($_POST['term_condition'])? $_POST['term_condition'] : 0;
@@ -1122,6 +1123,7 @@ public function brainTreePaymentGateway($product_id = null){
 		$_POST['submit'] = 'Purchase Now';
 
 		if(isset($_POST['submit'])){
+			date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 			//echo '<pre>POST'; print_r($_POST); die;
 			// checking hunney Post
 			$this->query_model->checkHunneyPost($_POST);
@@ -1476,7 +1478,7 @@ public function brainTreePaymentGateway($product_id = null){
 
 	$insertOrder['offer_type'] = 'Paid';
 
-	$insertOrder['created'] = date('Y-m-d h-i-s');
+	$insertOrder['created'] = date('Y-m-d H:i:s');
 
 	$insertOrder['quantity'] = isset($_POST['quantity'])? $_POST['quantity'] : 0;
 
@@ -2220,7 +2222,7 @@ public function brainTreePaymentGateway($product_id = null){
 			$insertOrder['trial_id'] =$this->input->post('trial_id');
 			$insertOrder['offer_type'] = 'Paid';
 			$insertOrder['trans_status'] = 'Third Party Url';
-			$insertOrder['created'] = date('Y-m-d h-i-s');
+			$insertOrder['created'] = date('Y-m-d H:i:s');
 			
 			$this->query_model->insertData('tbl_dojocart_orders', $insertOrder);	
 
@@ -2608,6 +2610,7 @@ public function stripe_payment_gateway($product_id = null){
 		$_POST['submit'] = 'Purchase Now';
 		//echo '<pre>POST'; print_r($_POST); die;
 		if(isset($_POST['submit'])){
+			date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 			$stripeData = $this->query_model->getStripePaymentKeys();
 			
 			$currency_type = $this->query_model->getSiteCurrencyTypeForPaymentGateway();
@@ -3030,7 +3033,7 @@ public function stripe_payment_gateway($product_id = null){
 
 	$insertOrder['offer_type'] = 'Paid';
 
-	$insertOrder['created'] = date('Y-m-d h-i-s');
+	$insertOrder['created'] = date('Y-m-d H:i:s');
 
 	$insertOrder['quantity'] = isset($_POST['quantity'])? $_POST['quantity'] : 0;
 	$insertOrder['product_id'] = isset($_POST['product_id'])? $_POST['product_id'] : 0;
@@ -3609,6 +3612,8 @@ public function stripe_payment_gateway($product_id = null){
 				redirect('/site/page_not_found');
 			}
 			
+			date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
+			
 			$currency_type = $this->query_model->getSiteCurrencyTypeForPaymentGateway();
 			$site_currency_type = $this->query_model->getSiteCurrencyType();
 			// checking hunney Post
@@ -3691,7 +3696,9 @@ public function stripe_payment_gateway($product_id = null){
 
 	public function mwalteSpIdlPymSvdj(){
 		$source_id = (isset($_GET['source']) && !empty($_GET['source'])) ? $_GET['source'] : '';
-	
+		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
+		
 		$_POST = $this->session->userdata('stripeIdealDojocartFormData');
 		//echo '<pre>_POST'; print_R($_POST); die;
 		$this->session->unset_userdata('stripeIdealDojocartFormData');
@@ -3958,7 +3965,7 @@ public function stripe_payment_gateway($product_id = null){
 
 	$insertOrder['offer_type'] = 'Paid';
 
-	$insertOrder['created'] = date('Y-m-d h-i-s');
+	$insertOrder['created'] = date('Y-m-d H:i:s');
 
 	$insertOrder['quantity'] = isset($_POST['quantity'])? $_POST['quantity'] : 0;
 	$insertOrder['product_id'] = isset($_POST['product_id'])? $_POST['product_id'] : 0;
@@ -4530,6 +4537,7 @@ public function stripe_payment_gateway($product_id = null){
 	
 	public function stripe_ideal_payment_webhook(){
 		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		
 		$source_id = (isset($_GET['source']) && !empty($_GET['source'])) ? $_GET['source'] : '';
 
@@ -5307,6 +5315,7 @@ public function stripe_payment_gateway($product_id = null){
 
 		if(isset($_POST['submit'])){
 			
+			date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 			// checking hunney Post
 			$this->query_model->checkHunneyPost($_POST);
 			
@@ -5607,7 +5616,7 @@ public function stripe_payment_gateway($product_id = null){
 
 	$insertOrder['offer_type'] = 'Paid';
 
-	$insertOrder['created'] = date('Y-m-d h-i-s');
+	$insertOrder['created'] = date('Y-m-d H:i:s');
 
 	$insertOrder['quantity'] = isset($_POST['quantity'])? $_POST['quantity'] : 0;
 
@@ -5688,7 +5697,7 @@ public function stripe_payment_gateway($product_id = null){
 	
 	public function paypal_success(){
 		
-		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		
 		$paypalDetail = $this->query_model->getbySpecific('tbl_payments','id',1);
 			
@@ -6183,6 +6192,8 @@ public function stripe_payment_gateway($product_id = null){
 	
 	
 	public function paypal_cancel(){
+		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		
 		$paypalDetail = $this->query_model->getbySpecific('tbl_payments','id',1);
 			

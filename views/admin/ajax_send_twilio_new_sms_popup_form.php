@@ -38,6 +38,7 @@
 <input type="hidden" name="lead_id" value="<?php echo $lead_id; ?>" class="" />
 <input type="hidden" name="action_type" value="<?php echo $action_type; ?>" class="" />
 <input type="hidden" name="lead_phone" value="<?php echo $phone; ?>" class="" />
+<input type="hidden" name="lead_email" value="<?php echo $email; ?>" class="" />
 <input type="hidden" name="table_name" value="<?php echo $table_name; ?>" class="" />
 <input type="hidden" name="form_type" id="alt_row_form_type" value="<?php echo $form_type; ?>" class="" />
  </div>

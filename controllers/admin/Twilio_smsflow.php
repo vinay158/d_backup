@@ -48,7 +48,7 @@ class Twilio_smsflow extends CI_Controller {
 			if(!empty($data['twilio_sms_flows'])){
 				foreach($data['twilio_sms_flows'] as $twilio_sms_flow){
 					
-					$this->db->order_by('template_type','ASC');
+					$this->db->order_by('convert (SUBSTRING(template_type, POSITION("_" IN template_type ) + 1 , LENGTH(template_type)), signed) ASC');
 					$this->db->select(array('id','title','sms_flow_id','status','pos','created','template_type','send_sms_time'));
 					$this->db->where('template_type !=','paid_trial_template');
 					$this->db->where('template_type !=','admin_sms_template');
@@ -283,6 +283,8 @@ public function add_template(){
 							if($detail == $title){
 								$postData[$key] = $title .' Duplicate';
 							}
+						}elseif($key == "page_url"){
+							//
 						}else{
 							$postData[$key] = $detail;
 						}

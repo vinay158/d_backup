@@ -66,9 +66,12 @@
 								 <?php echo $sparkpost_flow->title; ?></h4>
 								  <p>You have <span class="total_alternating_full_width_row_<?php echo $sparkpost_flow->id; ?>"><?php echo !empty($sparkpost_templates['days_template'][$sparkpost_flow->id]) ? count($sparkpost_templates['days_template'][$sparkpost_flow->id]) : 0; ?></span> Entries</p>
 								</div>
+								
+								<?php if(isset($sparkpost_templates['days_template'][$sparkpost_flow->id]) && count($sparkpost_templates['days_template'][$sparkpost_flow->id]) <= 6){ ?>
 								<div>
 								 <a href="admin/<?=$link_type;?>/add_template/<?php echo $sparkpost_flow->id; ?>" class="button_class btn btn-indigo ">Add New Template</a>
 								</div>
+								<?php } ?>
 							  </div>
 							  
 			<!-- ajax_record_sortable  class for sort templates--->				  

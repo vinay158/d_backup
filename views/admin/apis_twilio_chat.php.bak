@@ -146,7 +146,7 @@ $("#twilioChatApi .form-light-holder1 .authorizecheckbox").click(function(){
 </div>
 <?php 
 	$timezones = array('America/Denver','America/New_York'); 
-	//$timezones = DateTimeZone::listIdentifiers(DateTimeZone::ALL);
+	$timezones = DateTimeZone::listIdentifiers(DateTimeZone::ALL);
 ?>
 <div class=" form-new-holder" style="display:none">
 		<h1>Timezones</h1>

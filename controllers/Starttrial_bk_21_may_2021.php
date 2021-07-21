@@ -1162,7 +1162,7 @@ class Starttrial extends CI_Controller {
 
 	$insertOrder['offer_type'] = 'Paid';
 
-	$insertOrder['created'] = date('Y-m-d h-i-s');
+	$insertOrder['created'] = date('Y-m-d H:i:s');
 
 	
 

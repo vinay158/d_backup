@@ -14,6 +14,8 @@ class Trial_model extends CI_Model {
 
 	function addTrial_($data, $offer_detail){
 		
+		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
+		
 		/** geting from, replyto and cc email address **/
 		$emailIdManager = $this->query_model->getbyTable('tblsite');
 		
@@ -191,7 +193,7 @@ class Trial_model extends CI_Model {
 			$insertOrder['trans_status'] = 'Success';
 			$insertOrder['last_order_id'] = 0;
 			$insertOrder['is_unique_trial'] = $this->query_model->isUniqueSpecialOffer();
-			$insertOrder['created'] = date('Y-m-d h-i-s');
+			$insertOrder['created'] = date('Y-m-d H:i:s');
 			//$insertOrder['ip_address'] =isset($_POST['ip_address']) ? $_POST['ip_address'] : '';
 			$insertOrder['gdpr_compliant_checkbox'] =isset($_POST['gdpr_compliant_checkbox']) ? $_POST['gdpr_compliant_checkbox'] : 0;
 			$ipAddress = $this->query_model->getCountryNameToIpAddress();
@@ -203,7 +205,7 @@ class Trial_model extends CI_Model {
 			$order_id = $this->db->insert_id();
 			if(!empty($order_id)){
 				
-				$leadTypeArr = array('lead_type'=>'trial_forms','lead_id'=>$order_id);
+				$leadTypeArr = array('lead_type'=>'opt_in_form','lead_id'=>$order_id);
 				$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
 				
 				

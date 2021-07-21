@@ -2,7 +2,7 @@
 
 
 
-class Cartorder_model extends CI_Model {
+class Trial_model extends CI_Model {
 
 	
 
@@ -10,17 +10,22 @@ class Cartorder_model extends CI_Model {
 
 	
 
-	function addTrialNew_($data, $product_id){
+	
+
+	function addTrial_($data, $offer_detail){
 		
 		date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 		
-		$tblspecialoffer = $this->query_model->getTrialSpecialOffersTableName();
-		$offer_detail = array();
-		$this->db->limit(1);
-		$offer_detail = $this->query_model->getbySpecific("$tblspecialoffer", 'trial', 0);
+		/** geting from, replyto and cc email address **/
+		$emailIdManager = $this->query_model->getbyTable('tblsite');
 		
-		$productDetail = $this->query_model->getbySpecific('tbl_dojocarts', 'id', $product_id);
-		$product_title =  isset($productDetail[0]->product_title) ? $productDetail[0]->product_title : '';
+		$fromEmailId = (!empty($emailIdManager) && !empty($emailIdManager[0]->from_email)) ? $emailIdManager[0]->from_email : '';
+		
+		$replyEmailId = (!empty($emailIdManager) && !empty($emailIdManager[0]->replyto_email)) ? $emailIdManager[0]->replyto_email : '';
+		
+		$cc_email = (!empty($emailIdManager) && !empty($emailIdManager[0]->cc_email)) ? $emailIdManager[0]->cc_email : '';
+		/*** end  code **/
+		
 		$check_mailchimp = $this->query_model->getbySpecific('tblmailchimp', 'id', 1);
 		
 		$mailchimp_type = 0;
@@ -32,39 +37,18 @@ class Cartorder_model extends CI_Model {
 			$mailchimp_api_key =  $check_mailchimp[0]->api_key;
 		}
 
-		/** geting from, replyto and cc email address **/
-		$emailIdManager = $this->query_model->getbyTable('tblsite');
-		
-		$fromEmailId = (!empty($emailIdManager) && !empty($emailIdManager[0]->from_email)) ? $emailIdManager[0]->from_email : '';
-		
-		$replyEmailId = (!empty($emailIdManager) && !empty($emailIdManager[0]->replyto_email)) ? $emailIdManager[0]->replyto_email : '';
-		
-		$cc_email = (!empty($emailIdManager) && !empty($emailIdManager[0]->cc_email)) ? $emailIdManager[0]->cc_email : '';
-		/*** end  code **/
 		
 		
 		
 		$name = $_POST['name'];
 		$last_name = $_POST['last_name'];
+		$phone = $_POST['phone'];
+		$email = trim($_POST['form_email_2']);
 
-		$phone = str_replace(' ', '-', $_POST['phone']);
-		$email = trim($_POST['email']);
+
+		$program = $_POST['program_id'];
+
 		
-		$address1 = $_POST['address'];
-
-		$address2 = isset($_POST['address_line2'])? $_POST['address_line2'] : '';
-
-		$city = $_POST['city'];
-
-		$state = $_POST['state'];
-
-		$zip = $_POST['zip'];
-
-		$program = isset($_POST['program']) ? $_POST['program'] : '';
-
-		$dojocart_custom_fields = (isset($_POST['custom_field']) && !empty($_POST['custom_field'])) ? $_POST['custom_field'] : '';
-		$dojocart_custom_fields_serialize = !empty($dojocart_custom_fields) ? serialize($dojocart_custom_fields) : '';
-		//echo $program;
 
 
 		/*
@@ -74,11 +58,17 @@ class Cartorder_model extends CI_Model {
 		
 		$this->query_model->checkFormModuleApplyAPI($_POST);
 		
-		$extraContentArr  = array('dojocart_title' => $product_title,'dojocart_custom_fields'=>$dojocart_custom_fields);
+		$trial_offer_name = !empty($offer_detail) ? $offer_detail[0]->offer_title : '';
+		$trial_offer_amount = (!empty($offer_detail) && $offer_detail[0]->trial == 1) ? '$'.$offer_detail[0]->amount : '';
+		$trial_offer_type = (!empty($offer_detail) && $offer_detail[0]->trial == 1) ? 'PAID' : 'FREE';
+		
+		//echo $trial_offer_name; die;
+		$extraContentArr  = array('trial_offer_name' => $trial_offer_name, 'trial_offer_amount' => $trial_offer_amount, 'trial_offer_type'=> $trial_offer_type);
+		
 		$emailAutoResponder = $this->query_model->checkFormModuleAutoResponder($_POST,$extraContentArr);	
 		
 		// sending msg by twillio api
-		$this->query_model->connectFormToTwillioAPi($_POST,'dojocart',$extraContentArr);
+		$this->query_model->connectFormToTwillioAPi($_POST,'free_trial',$extraContentArr);
 		
 
 		if($program != 0){
@@ -92,8 +82,6 @@ class Cartorder_model extends CI_Model {
 			$program = '';
 
 		}
-
-
 
 		
 
@@ -116,8 +104,7 @@ class Cartorder_model extends CI_Model {
 			
 
 		}
-
-
+		
 		//echo $noreply_email_address; die;
 		
 		// vinay 16_2
@@ -145,7 +132,6 @@ class Cartorder_model extends CI_Model {
 				$site_setting = $this->query_model->getbyTable('tblsite');	
 				$noreply_email_address = $site_setting[0]->email;
 		}
-		//echo 'noreply_email_address=>'.$noreply_email_address; die;
 		
 		
 		
@@ -153,14 +139,13 @@ class Cartorder_model extends CI_Model {
 
 		$message = '';
 
-		$amount = !empty($offer_detail) ? $offer_detail[0]->amount : 0;
+		$amount = $offer_detail[0]->amount;
 
 		$paypalEmail = 'info@websitedojo.com';
 
 								
-				
-				if(!empty($offer_detail) && $offer_detail[0]->trial==1){
-					
+
+				if($offer_detail[0]->trial==1){
 
 					$data = array("name" => $name,"last_name"=>$last_name, "phone" => $phone, "email" => $email, "program_of_interest" => $program,"school_of_interest" => $location_name, "amount" => $amount, "message" => $message);
 
@@ -192,40 +177,47 @@ class Cartorder_model extends CI_Model {
 
 					}
 
-
-
-			/*** Save Order in tbl_dojocart_orders table **/
+			/*** Save Order in orders table **/
 		
 			$insertOrder = array();
 			$insertOrder['name'] =$this->input->post('name');
 			$insertOrder['last_name'] =$this->input->post('last_name');
-			$insertOrder['email'] =$this->input->post('email');
+			$insertOrder['email'] =$this->input->post('form_email_2');
 			$insertOrder['phone'] =$this->input->post('phone');
-			$insertOrder['product_id'] = $product_id;
-			$insertOrder['address'] =$this->input->post('address');
-			$insertOrder['address_line2'] =$this->input->post('address_line2');
-			$insertOrder['city'] =$this->input->post('city');
-			$insertOrder['state'] =$this->input->post('state');
-			$insertOrder['zip'] =$this->input->post('zip');
-			$insertOrder['term_condition'] = $this->input->post('term_condition');
+			$insertOrder['program_id'] =isset($_POST['program_id']) ? $_POST['program_id'] : 0;
+			$insertOrder['child_name'] =(isset($_POST['child_name']) && !empty($_POST['child_name'])) ? $_POST['child_name'] : '';
+			$insertOrder['child_age'] =(isset($_POST['child_age']) && !empty($_POST['child_age'])) ? $_POST['child_age'] : '';
+			$insertOrder['location_id'] =$this->input->post('location_id');
+			$insertOrder['trial_id'] =$this->input->post('trial_id');
 			$insertOrder['offer_type'] = 'Free';
 			$insertOrder['trans_status'] = 'Success';
-			$insertOrder['created'] = date('Y-m-d H:i:s');
-			$insertOrder['location'] = $location_data['id'];
-			$insertOrder['custom_fields'] = $dojocart_custom_fields_serialize;
-			//$insertOrder['is_unique_trial'] = $this->query_model->isUniqueSpecialOffer();
+			$insertOrder['last_order_id'] = 0;
+			$insertOrder['is_unique_trial'] = $this->query_model->isUniqueSpecialOffer();
+			$insertOrder['created'] = date('Y-m-d h-i-s');
+			//$insertOrder['ip_address'] =isset($_POST['ip_address']) ? $_POST['ip_address'] : '';
+			$insertOrder['gdpr_compliant_checkbox'] =isset($_POST['gdpr_compliant_checkbox']) ? $_POST['gdpr_compliant_checkbox'] : 0;
 			$ipAddress = $this->query_model->getCountryNameToIpAddress();
 			$insertOrder['ip_address'] = $ipAddress['client_ip_address'];
 			$insertOrder['client_country_name'] = $ipAddress['client_country_name'];
+			$insertOrder['request_detail'] = isset($_SERVER) ? serialize($_SERVER) : '';
 			
-			$insertOrder['product_id'] = isset($_POST['product_id'])? $_POST['product_id'] : 0;
-			$this->query_model->insertData('tbl_dojocart_orders', $insertOrder);	
+			$this->query_model->insertData('tblorders', $insertOrder);
 			$order_id = $this->db->insert_id();
 			if(!empty($order_id)){
 				
-				$this->query_model->updateOrderForKabanLeads($order_id,'tbl_dojocart_orders','Dojo Cart Opt-in',$_POST);
+				$leadTypeArr = array('lead_type'=>'opt_in_form','lead_id'=>$order_id);
+				$this->query_model->saveMsgFromTwilioChatApi($_POST, $leadTypeArr);
+				
+				
+				$leadTypeArr = array('lead_type'=>'opt_in_form','lead_id'=>$order_id);
+				$this->query_model->sendEmailFromSparkpostApi($_POST, $leadTypeArr);
+			
+				$this->query_model->updateOrderForKabanLeads($order_id,'tblorders','',$_POST);
+				
+				$current_email_info = $this->query_model->getOrderEmailInfo($_POST['form_email_2'], $_POST['name'] );
 					
-			}
+			}	
+
 
 					$this->load->library("email");
 
@@ -233,7 +225,7 @@ class Cartorder_model extends CI_Model {
 
 					foreach($query as $row):
 
-					//	$site_email = trim($row->email);
+					
 
 						$school_name = $row->title;
 
@@ -243,17 +235,13 @@ class Cartorder_model extends CI_Model {
 				$multi_calendar_result = $multi_calendar_qry->result();
 				$multi_calendar = $multi_calendar_result[0];				 
 				
+				
 	
 			/*********Start CODE FOR ADMIN PHONE MESSAGES ******/
-			/*********Start CODE FOR ADMIN PHONE MESSAGES ******/
-			
-			$unique_email_address = !empty($productDetail[0]->unique_email_address) ? $productDetail[0]->unique_email_address : '';
-			
 			if(isset($emailAutoResponder['admin_email'])){
 				
-				//echo $_POST['location_id']; die;
 				$multiple_loc = $this->query_model->getbyTable("tblconfigcalendar");
-				if($multiple_loc[0]->field_value == 1 && isset($_POST['location_id'])){
+				if($multiple_loc[0]->field_value == 1){
 					$loc_detail = $this->query_model->getbySpecific('tblcontact', 'id',$_POST['location_id']);
 					$text_address = $loc_detail[0]->text_address;
 				}else{
@@ -261,16 +249,16 @@ class Cartorder_model extends CI_Model {
 					$text_address = $loc_detail[0]->text_address;
 				}
 				
-				//echo 'text_address=>'.$text_address; die;
-				//echo str_replace(' ','_',"Free Trial | ".$school_name.' | '.$name.' '.$last_name); die;
-				$adminTextMsgTemplate = $this->query_model->adminTextMessageTemplate($_POST,'dojocart',$extraContentArr);
+				
+				
+				$adminTextMsgTemplate = $this->query_model->adminTextMessageTemplate($_POST,'free_trial',$extraContentArr);
 				$type = '';
 				$mes  = isset($adminTextMsgTemplate['admin_text_message_template']) ? $adminTextMsgTemplate['admin_text_message_template'] : '';
 
 
-				if(!empty($text_address) && !empty($mes)){	
+				if(!empty($text_address) && !empty($mes)){
 					
-				//	$type =  isset($emailAutoResponder['admin_email_subject']) ? $emailAutoResponder['admin_email_subject'] : '';
+					//$type = isset($emailAutoResponder['admin_email_subject']) ? $emailAutoResponder['admin_email_subject'] : '';
 					
 					$config['charset'] = 'iso-8859-1';
 
@@ -281,7 +269,6 @@ class Cartorder_model extends CI_Model {
 					$this->email->initialize($config);
 
 					//$this->email->from($email);
-								
 					if(!empty($fromEmailId)){
 						$this->email->from($fromEmailId);
 					}
@@ -292,18 +279,19 @@ class Cartorder_model extends CI_Model {
 						$this->email->bcc($cc_email);
 					}
 					
-					
 
 					$this->email->to($text_address);
 
 					$this->email->subject($type);
 
-					
+										
+
 					//$mes  = isset($emailAutoResponder['admin_auto_responder']) ? $emailAutoResponder['admin_auto_responder'] : '';
 
 					//$mes .= "<br/>";
 					//$mes .= isset($emailAutoResponder['email_signature']) ? $emailAutoResponder['email_signature'] : '';
 
+					
 					
 					
 					
@@ -317,7 +305,7 @@ class Cartorder_model extends CI_Model {
 
 					$this->email->to('leads@websitedojo.com');
 
-					$this->email->subject($type.' - '.$school_name);
+					$this->email->subject($type);
 
 					$this->email->message($mes);					
 
@@ -325,9 +313,11 @@ class Cartorder_model extends CI_Model {
 			}		
 /********* Ends CODE FOR ADMIN PHONE MESSAGES ******/
 					
-				//Mail to admin	
+			// Mail to admin
+
 					
-					$type =  isset($emailAutoResponder['admin_email_subject']) ? $emailAutoResponder['admin_email_subject'] : '';
+
+					$type = isset($emailAutoResponder['admin_email_subject']) ? $emailAutoResponder['admin_email_subject'] : '';
 
 					$config['charset'] = 'iso-8859-1';
 
@@ -338,7 +328,6 @@ class Cartorder_model extends CI_Model {
 					$this->email->initialize($config);
 
 					//$this->email->from($email);
-								
 					if(!empty($fromEmailId)){
 						$this->email->from($fromEmailId);
 					}
@@ -349,20 +338,17 @@ class Cartorder_model extends CI_Model {
 						$this->email->bcc($cc_email);
 					}
 					
-					$site_email = !empty($unique_email_address) ? $unique_email_address : $site_email;
-
+					
 					$this->email->to($site_email);
 
 					$this->email->subject($type);
 
 										
 
-					
 					$mes  = isset($emailAutoResponder['admin_auto_responder']) ? $emailAutoResponder['admin_auto_responder'] : '';
 
 					$mes .= "<br/>";
-					//$mes .= isset($emailAutoResponder['email_signature']) ? $emailAutoResponder['email_signature'] : '';
-					
+					//$mes .= isset($emailAutoResponder['email_signature']) ? $emailAutoResponder['email_signature'] : '';					
 
 					$this->email->message($mes);
 
@@ -370,6 +356,8 @@ class Cartorder_model extends CI_Model {
 
 					$this->email->send();
 			}
+				// Mailt to admin end
+
 					
 
 					// send email to websitedojo.com
@@ -380,7 +368,7 @@ class Cartorder_model extends CI_Model {
 
 					$this->email->to('leads@websitedojo.com');
 
-					$this->email->subject($type.' - '.$school_name);
+					$this->email->subject($type);
 
 					$this->email->message($mes);					
 
@@ -390,14 +378,11 @@ class Cartorder_model extends CI_Model {
 
 					
 
-					// Email to user
-				
-				
-				if(isset($emailAutoResponder['customer_email']) && $emailAutoResponder['customer_email'] == 1){
-					
-					$type = isset($emailAutoResponder['customer_email_subject']) ? $emailAutoResponder['customer_email_subject'] : '';
+			// Email to user
+		if(isset($emailAutoResponder['customer_email']) && $emailAutoResponder['customer_email'] == 1){
+			$type = isset($emailAutoResponder['customer_email_subject']) ? $emailAutoResponder['customer_email_subject'] : '';
 
-					$cont = "Thank you, your order was accepted! A representative from our school will contact you shortly with more information."; 
+					$cont = "Thank you, your request was accepted! A representative from our school will contact you shortly with more information. old"; 
 
 					$config['charset'] = 'iso-8859-1';
 
@@ -419,10 +404,13 @@ class Cartorder_model extends CI_Model {
 
 						$this->email->from($site_email,$school_name);
 
-					}*/
-
+					} */
 					
 					$this->email->from($noreply_email_address, $school_name);
+
+					
+					//$reply_to_add = str_replace('webmaster','noreply',$_SERVER['SERVER_ADMIN']);
+					//$this->email->reply_to($reply_to_add);
 					$this->email->reply_to($noreply_email_address, $school_name);
 
 					$this->email->to($email);
@@ -430,36 +418,155 @@ class Cartorder_model extends CI_Model {
 					$this->email->subject($type);
 
 												
+
 					$mes  = isset($emailAutoResponder['customer_auto_responder']) ? $emailAutoResponder['customer_auto_responder'] : '';
 
 					//$mes .= "<br/>";
 					$mes .= isset($emailAutoResponder['email_signature']) ? $emailAutoResponder['email_signature'] : '';
 
 
+				
 
 					$this->email->message($mes);
 
-					$this->email->send();
+					$this->email->send();	
+			}
+		
+				$tblspecialoffer = $this->query_model->getTrialSpecialOffersTableName();
+				$trial_record = $this->query_model->getbySpecific("$tblspecialoffer",'id',$_POST['trial_id']);
+				
+				$_POST['order_id'] = $order_id;
+				$thankYouPageDetail = $this->query_model->getFormModuleThankYouPage($_POST, 'free');
+				
+				
+				if(!empty($trial_record)){
+						if($trial_record[0]->third_party_tiral_url_type == 1){
+							redirect($trial_record[0]->third_party_trial_url);
+						}else{
+							$trial_offer_thankyou_url = $this->query_model->getTrialOfferThankyouUrl($_POST);
+							redirect(@base_url().$trial_offer_thankyou_url);
+							//redirect(@base_url().'starttrial/thankyou');
+						}
+					}else{
+						$trial_offer_thankyou_url = $this->query_model->getTrialOfferThankyouUrl($_POST);
+							redirect(@base_url().$trial_offer_thankyou_url);
+						//redirect(@base_url().'starttrialsent?status=suc&mode=free');
+						//redirect(@base_url().'starttrial/thankyou');
+					}
+
+				}
+
+				
+
+				if($this->query_model->insertData($this->table, $data)):
+
+					$last_id = mysqli_insert_id($this->db->conn_id);	
 					
-				}
-				
-				
-				$this->query_model->getThankYouPageMessage($_POST);
-				
-				
-				$dojocart_thankyou_url = $this->query_model->getDojocartThankyouUrl($productDetail[0]->slug);
-				
-				redirect(@base_url().$dojocart_thankyou_url);
-						//redirect(@base_url().'site/thankyou');
+					
+
+					$log_message=array();
+
+	    			$log_title = "Test Post : Add entry to database";	    	
+
+		    		$log_message=$data;
+
+		    		$file='payment_test';
+
+		    		$this->fnMakeLog($log_title,$log_message,$file);
+
+					
+
+					// PayPal settings
+
+					$paypal_email = $paypalEmail;
+
+					 					
+
+					$return_url =  @base_url().'starttrialsent?status=suc';
+
+					$cancel_url =  @base_url().'starttrialsent?status=can';
+
+					$notify_url =  @base_url().'starttrialsent?status=ipn';
+
 						
-				//$this->load->view("dojocart-trial-sent");
+
+					// Check if paypal request or response
+
+					if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
+
+					
+
+						// Firstly Append paypal account to querystring
+
+						$querystring = "?business=".urlencode($paypal_email)."&";
+
+					
+
+						// Append amount& currency (£) to quersytring so it cannot be edited in html
+
+					
+
+						//The item name and amount can be brought in dynamically by querying the $_POST['item_number'] variable.
+
+						$querystring .= "item_name=".urlencode("Start Trial")."&";
+
+						$querystring .= "amount=".urlencode($amount)."&";
+
+						$querystring .= "receiver_email=".urlencode($email)."&";
 
 
-				}
 
-				
+						// Append querystring with custom field
 
-			
+						$querystring .= "custom=".urlencode($last_id)."&";
+
+					
+
+						//loop for posted values and append to querystring
+
+						foreach($_POST as $key => $value){
+
+							$value = urlencode(stripslashes($value));
+
+							$querystring .= "$key=$value&";
+
+						}
+
+					
+
+						// Append paypal return addresses
+
+						$querystring .= "return=".urlencode(stripslashes($return_url))."&";
+
+						$querystring .= "cancel_return=".urlencode(stripslashes($cancel_url))."&";
+
+						$querystring .= "notify_url=".urlencode($notify_url);
+
+						
+
+						$log_message=array();
+
+	    				$log_title = "Redirect page to paypal";	    	
+
+		    			$log_message=$data;
+
+		    			$file='payment_test';
+
+		    			$this->fnMakeLog($log_title,$log_message,$file);
+
+						
+
+						// Redirect to paypal IPN
+
+						header('location:https://www.paypal.com/cgi-bin/webscr'.$querystring);
+
+						exit();
+
+					}
+
+					
+
+				endif;	
 
 			
 
@@ -1205,458 +1312,5 @@ class Cartorder_model extends CI_Model {
 		return true; 
 
 	}
-	
-	
-	function saveNewDojocartForms($data, $product_id,$pdfLink = null){
-		
-		$tblspecialoffer = $this->query_model->getTrialSpecialOffersTableName();
-		
-		$offer_detail = array();
-		$this->db->limit(1);
-		$offer_detail = $this->query_model->getbySpecific("$tblspecialoffer", 'trial', 0);
-		
-		$productDetail = $this->query_model->getbySpecific('tbl_dojocarts', 'id', $product_id);
-		$product_title =  isset($productDetail[0]->product_title) ? $productDetail[0]->product_title : '';
-		$check_mailchimp = $this->query_model->getbySpecific('tblmailchimp', 'id', 1);
-		
-		$mailchimp_type = 0;
-		$mailchimp_template_id = '';
-		$mailchimp_api_key = '';
-		if(!empty($check_mailchimp)){
-			$mailchimp_type = $check_mailchimp[0]->type;
-			$mailchimp_template_id = $check_mailchimp[0]->template_id;
-			$mailchimp_api_key =  $check_mailchimp[0]->api_key;
-		}
-
-		/** geting from, replyto and cc email address **/
-		$emailIdManager = $this->query_model->getbyTable('tblsite');
-		
-		$fromEmailId = (!empty($emailIdManager) && !empty($emailIdManager[0]->from_email)) ? $emailIdManager[0]->from_email : '';
-		
-		$replyEmailId = (!empty($emailIdManager) && !empty($emailIdManager[0]->replyto_email)) ? $emailIdManager[0]->replyto_email : '';
-		
-		$cc_email = (!empty($emailIdManager) && !empty($emailIdManager[0]->cc_email)) ? $emailIdManager[0]->cc_email : '';
-		/*** end  code **/
-		
-		
-		
-		$name = isset($_POST['name']) ? $_POST['name'] : '';
-		$last_name = isset($_POST['last_name']) ? $_POST['last_name'] : '';
-
-		$phone = isset($_POST['phone']) ?  str_replace(' ', '-', $_POST['phone']) : '';
-		$email = isset($_POST['email']) ? trim($_POST['email']) : '';
-		
-		$address1 = isset($_POST['address']) ? $_POST['address'] : '';
-
-		$address2 = isset($_POST['address_line2'])? $_POST['address_line2'] : '';
-
-		$city = isset($_POST['city']) ? $_POST['city'] : '';
-
-		$state = isset($_POST['state']) ? $_POST['state'] : '';
-
-		$zip = isset($_POST['zip']) ? $_POST['zip'] : '';
-
-		$program = isset($_POST['program']) ? $_POST['program'] : '';
-
-		$dojocart_custom_fields = (isset($_POST['custom_field']) && !empty($_POST['custom_field'])) ? $_POST['custom_field'] : '';
-		$dojocart_custom_fields_serialize = !empty($dojocart_custom_fields) ? serialize($dojocart_custom_fields) : '';
-		//echo $program;
-
-
-		
-			
-		/*
-		* checkFormModuleApplyAPI 				
-		* this function for using apis according form model 				
-		*/				
-		
-		$this->query_model->checkFormModuleApplyAPI($_POST);
-		
-		
-		$extraContentArr  = array('dojocart_title' => $product_title,'dojocart_custom_fields'=>$dojocart_custom_fields,'pdfLink'=>$pdfLink);
-		$emailAutoResponder = $this->query_model->checkFormModuleAutoResponder($_POST,$extraContentArr);
-//echo '<pre>emailAutoResponder'; print_r($emailAutoResponder); die;
-		
-		// sending msg by twillio api
-		$this->query_model->connectFormToTwillioAPi($_POST,'dojocart',$extraContentArr);
-		
-
-		if($program != 0){
-
-			$program_info = $this->query_model->getbyId("tblprogram", $program);
-
-			$program = $program_info[0]->program;	
-
-		}else{
-
-			$program = '';
-
-		}
-
-
-
-		
-
-		/* New added */
-
-		if(isset($_POST['school_interest']) && !empty($_POST['school_interest'])){
-
-			$location_info = $this->query_model->getbyId("tblcontact", $_POST['school_interest']);
-
-			$location_name = $location_info[0]->name;
-
-			$location_email = $location_info[0]->email;
-			
-			
-
-		}else{
-
-			$location_name = '';
-			
-			
-
-		}
-
-
-		//echo $noreply_email_address; die;
-		
-		// vinay 16_2
-		$site_setting = $this->query_model->getbyTable('tblsite');
-		
-		if(isset($_POST['location_id']) && !empty($_POST['location_id'])){
-				
-				$qry = $this->db->query("select * from `tblcontact` where id = ".$_POST['location_id']) or die(mysqli_error($this->db->conn_id));
-
-				$location_data = $qry->row_array();
-				
-				$site_email = $location_data['email'];
-				
-				$noreply_email_address = $location_data['email'];
-		
-		} else{
-				$main_location_id = $this->query_model->getMainLocation();
-				$qry = $this->db->query("select * from `tblcontact` where id = ".$main_location_id[0]->id) or die(mysqli_error($this->db->conn_id));
-
-				$location_data = $qry->row_array();
-				$query1 = $this->query_model->getbyTable('tblsite');
-				
-				$site_email = trim($query1[0]->email);
-				
-				$site_setting = $this->query_model->getbyTable('tblsite');	
-				$noreply_email_address = $site_setting[0]->email;
-		}
-		//echo 'noreply_email_address=>'.$noreply_email_address; die;
-		
-		
-		
-		/* End */
-
-		$message = '';
-
-		$amount = !empty($offer_detail) ? $offer_detail[0]->amount : 0;
-
-		$paypalEmail = 'info@websitedojo.com';
-
-								
-				
-				if(!empty($offer_detail) && $offer_detail[0]->trial==1){
-					
-
-					$data = array("name" => $name,"last_name"=>$last_name, "phone" => $phone, "email" => $email, "program_of_interest" => $program,"school_of_interest" => $location_name, "amount" => $amount, "message" => $message);
-
-				}
-
-				else{
-
-					$data = array("name" => $name,"last_name"=>$last_name, "phone" => $phone, "email" => $email,  "program_of_interest" => $program,"school_of_interest" => $location_name,"message" => $message);					
-
-					
-
-					$record = $this->query_model->getbySpecific($this->table, 'email', $email);
-
-					if($record){
-
-						
-
-						//$this->query_model->update($this->table, '', $data);	
-
-						$this->db->where('email', $email);
-
-						$this->db->update($this->table, $data);
-
-						
-
-					}else{
-
-						$this->query_model->insertData($this->table, $data);	
-
-					}
-
-
-
-			/*** Save Order in tbl_dojocart_orders table **/
-		
-			$insertOrder = array();
-			$insertOrder['name'] = isset($_POST['name']) ? $_POST['name'] : '';
-			$insertOrder['last_name'] =isset($_POST['last_name']) ? $_POST['last_name'] : '';
-			$insertOrder['email'] =isset($_POST['email']) ? $_POST['email'] : '';
-			$insertOrder['phone'] =isset($_POST['phone']) ? $_POST['phone'] : '';
-			$insertOrder['product_id'] = $product_id;
-			$insertOrder['address'] =isset($_POST['address']) ? $_POST['address'] : '';
-			$insertOrder['address_line2'] =isset($_POST['address_line2']) ? $_POST['address_line2'] : '';
-			$insertOrder['city'] =isset($_POST['city']) ? $_POST['city'] : '';
-			$insertOrder['state'] =isset($_POST['state']) ? $_POST['state'] : '';
-			$insertOrder['zip'] =isset($_POST['zip']) ? $_POST['zip'] : '';
-			$insertOrder['term_condition'] = isset($_POST['term_condition']) ? $_POST['term_condition'] : 0;
-			$insertOrder['offer_type'] = 'Free';
-			$insertOrder['trans_status'] = 'Success';
-			$insertOrder['created'] = date('Y-m-d H:i:s');
-			$insertOrder['location'] = $location_data['id'];
-			$insertOrder['custom_fields'] = $dojocart_custom_fields_serialize;
-			
-			//$insertOrder['product_id'] = isset($_POST['product_id'])? $_POST['product_id'] : 0;
-			$this->query_model->insertData('tbl_dojocart_orders', $insertOrder);	
-//echo '<pre>insertOrder'; print_r($insertOrder); die;
-
-					$this->load->library("email");
-
-					$query = $this->query_model->getbyTable('tblsite');
-
-					foreach($query as $row):
-
-					//	$site_email = trim($row->email);
-
-						$school_name = $row->title;
-
-					endforeach;
-
-					$multi_calendar_qry = $this->db->query("SELECT * FROM tblconfigcalendar where field_name = 'multi_location'");
-				$multi_calendar_result = $multi_calendar_qry->result();
-				$multi_calendar = $multi_calendar_result[0];				 
-				
-	
-			
-			
-			/*********Start CODE FOR ADMIN PHONE MESSAGES ******/
-			$is_unique_dojocart = 0;
-			$unique_email_address = '';
-			if(isset($_POST['is_unique_dojocart']) && $_POST['is_unique_dojocart'] == 1){
-				if(!empty($productDetail)){
-					if(!empty($productDetail[0]->unique_email_address)){
-						$is_unique_dojocart = 1;
-						$unique_email_address = $productDetail[0]->unique_email_address;
-					}
-				}
-				//echo '<pre>productDetail'; print_r($productDetail); die;
-			}
-			
-			if(isset($emailAutoResponder['admin_email'])){
-				
-				//echo $_POST['location_id']; die;
-				$multiple_loc = $this->query_model->getbyTable("tblconfigcalendar");
-				if($multiple_loc[0]->field_value == 1 && isset($_POST['location_id'])){
-					$loc_detail = $this->query_model->getbySpecific('tblcontact', 'id',$_POST['location_id']);
-					$text_address = $loc_detail[0]->text_address;
-				}else{
-					$loc_detail = $this->query_model->getMainLocation("tblcontact");
-					$text_address = $loc_detail[0]->text_address;
-				}
-				
-				//echo 'text_address=>'.$text_address; die;
-				//echo str_replace(' ','_',"Free Trial | ".$school_name.' | '.$name.' '.$last_name); die;
-				
-				if(!empty($text_address) && $is_unique_dojocart == 0){	
-					
-					$type =  isset($emailAutoResponder['admin_email_subject']) ? $emailAutoResponder['admin_email_subject'] : '';
-					
-					$config['charset'] = 'iso-8859-1';
-
-					$config['wordwrap'] = TRUE;
-
-					$config['mailtype']="html";
-
-					$this->email->initialize($config);
-
-					//$this->email->from($email);
-								
-					if(!empty($fromEmailId)){
-						$this->email->from($fromEmailId);
-					}
-					if(!empty($email)){
-						$this->email->reply_to($email);
-					}
-					if(!empty($cc_email)){
-						$this->email->bcc($cc_email);
-					}
-					
-					
-
-					$this->email->to($text_address);
-
-					$this->email->subject($type);
-
-					
-					$mes  = isset($emailAutoResponder['admin_auto_responder']) ? $emailAutoResponder['admin_auto_responder'] : '';
-
-					$mes .= "<br/>";
-					//$mes .= isset($emailAutoResponder['email_signature']) ? $emailAutoResponder['email_signature'] : '';
-
-					
-					
-					
-					$this->email->message($mes);
-
-					$this->email->send();
-
-					/*$this->email->initialize($config);
-
-					$this->email->from($email);
-
-					$this->email->to('leads@websitedojo.com');
-
-					$this->email->subject($type.' - '.$school_name);
-
-					$this->email->message($mes);					
-
-					$this->email->send(); */
-			}		
-/********* Ends CODE FOR ADMIN PHONE MESSAGES ******/
-					
-				//Mail to admin	
-					
-					$type =  isset($emailAutoResponder['admin_email_subject']) ? $emailAutoResponder['admin_email_subject'] : '';
-
-					$config['charset'] = 'iso-8859-1';
-
-					$config['wordwrap'] = TRUE;
-
-					$config['mailtype']="html";
-
-					$this->email->initialize($config);
-
-					//$this->email->from($email);
-								
-					if(!empty($fromEmailId)){
-						$this->email->from($fromEmailId);
-					}
-					if(!empty($email)){
-						$this->email->reply_to($email);
-					}
-					if(!empty($cc_email)){
-						$this->email->bcc($cc_email);
-					}
-					
-					$site_email = (!empty($unique_email_address) && $is_unique_dojocart = 1) ? $unique_email_address : $site_email;
-
-					$this->email->to($site_email);
-
-					$this->email->subject($type);
-
-										
-
-					
-					$mes  = isset($emailAutoResponder['admin_auto_responder']) ? $emailAutoResponder['admin_auto_responder'] : '';
-
-					$mes .= "<br/>";
-					//$mes .= isset($emailAutoResponder['email_signature']) ? $emailAutoResponder['email_signature'] : '';
-					
-
-					$this->email->message($mes);
-
-					
-
-					$this->email->send();
-			}
-					
-
-					// send email to websitedojo.com
-
-					/*$this->email->initialize($config);
-
-					$this->email->from($email);
-
-					$this->email->to('leads@websitedojo.com');
-
-					$this->email->subject($type.' - '.$school_name);
-
-					$this->email->message($mes);					
-
-					$this->email->send(); */
-
-					
-
-					
-
-					// Email to user
-				
-				
-				if(isset($emailAutoResponder['customer_email']) && $emailAutoResponder['customer_email'] == 1 && !empty($email)){
-					
-					$type = isset($emailAutoResponder['customer_email_subject']) ? $emailAutoResponder['customer_email_subject'] : '';
-
-					$cont = "Thank you, your order was accepted! A representative from our school will contact you shortly with more information."; 
-
-					$config['charset'] = 'iso-8859-1';
-
-					$config['wordwrap'] = TRUE;
-
-					$config['mailtype']="html";
-
-					$this->email->initialize($config);
-
-					$from_email=trim($this->config->item('email_from'));
-
-					
-
-					/*if(!empty($from_email)){
-
-						$this->email->from($noreply_email_address,$school_name);
-
-					}else{
-
-						$this->email->from($site_email,$school_name);
-
-					}*/
-
-					
-					$this->email->from($noreply_email_address, $school_name);
-					$this->email->reply_to($noreply_email_address, $school_name);
-
-					$this->email->to($email);
-
-					$this->email->subject($type);
-
-												
-					$mes  = isset($emailAutoResponder['customer_auto_responder']) ? $emailAutoResponder['customer_auto_responder'] : '';
-
-					//$mes .= "<br/>";
-					$mes .= isset($emailAutoResponder['email_signature']) ? $emailAutoResponder['email_signature'] : '';
-
-
-
-					$this->email->message($mes);
-
-					$this->email->send();
-					
-				}
-				
-				
-				
-				
-				$this->query_model->getThankYouPageMessage($_POST);
-				
-				$dojocart_thankyou_url = $this->query_model->getDojocartThankyouUrl($productDetail[0]->slug);
-				
-				redirect(@base_url().$dojocart_thankyou_url);
-						//redirect(@base_url().'site/thankyou');
-						
-				//$this->load->view("dojocart-trial-sent");
-
-
-				}
-
-	}	
-
-
 
 }

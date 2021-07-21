@@ -87,9 +87,11 @@
 								 <?php echo $twilio_sms_flow->title; ?></h4>
 								  <p>You have <span class="total_alternating_full_width_row_<?php echo $twilio_sms_flow->id; ?>"><?php echo !empty($twilio_sms_templates['days_template'][$twilio_sms_flow->id]) ? count($twilio_sms_templates['days_template'][$twilio_sms_flow->id]) : 0; ?></span> Entries</p>
 								</div>
+								<?php if(isset($twilio_sms_templates['days_template'][$twilio_sms_flow->id]) && count($twilio_sms_templates['days_template'][$twilio_sms_flow->id]) <=14){ ?>
 								<div>
 								 <a href="admin/<?=$link_type;?>/add_template/<?php echo $twilio_sms_flow->id; ?>" class="button_class btn btn-indigo ">Add New Template</a>
 								</div>
+								<?php } ?>
 							  </div>
 							  
 			<!-- ajax_record_sortable  class for sort templates--->				  

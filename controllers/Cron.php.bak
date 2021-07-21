@@ -50,7 +50,7 @@ class Cron extends CI_Controller {
 				
 				$apiResponse['twilio_chat_api'] = 1;
 				
-				//$this->cron_for_twilio_sms_flow_msgs();
+				$this->cron_for_twilio_sms_flow_msgs();
 				
 			}
 		}
@@ -122,7 +122,7 @@ public function cron_for_sparkpost_email_flow(){
 							$next_msg_created_date = date('Y-m-d',strtotime($sparkpost_user->created. " + $next_day_number days"));
 							$current_date = date('Y-m-d');
 							
-							
+							//echo $next_msg_created_date.'==>'.$current_date; die;
 							
 							if($next_msg_created_date == $current_date){
 								
@@ -141,7 +141,7 @@ public function cron_for_sparkpost_email_flow(){
 													'mail_template_id' => $current_sparkpost_mail_template[0]->template_id,
 													);
 													
-								echo '<prE>requestData'; print_r($requestData); die;
+								
 													
 								//echo '<pre>requestData'; print_r($requestData); die;
 								
@@ -206,8 +206,10 @@ public function cron_for_twilio_sms_flow_msgs(){
 	$this->db->select(array('id','name','phone','sms_flows_status','chat_conversation_sid','sms_flow_id','msg_template_type','lead_created'));
 	$this->db->where('sms_flows_status','pending');
 	$this->db->where('conversation_type','user');
+	$this->db->where('sms_flow_id !=',0);
 	$twilio_users = $this->query_model->getBySpecific('twilio_sms_users','is_msg_sent_by_phone',0);
 	
+	//echo '<pre>twilio_users'; print_r($twilio_users); die;
 	
 	
 	if(!empty($twilio_users)){
@@ -224,10 +226,10 @@ public function cron_for_twilio_sms_flow_msgs(){
 				$this->db->where("template_type !=","paid_trial_template");
 				$this->db->where("template_type !=","admin_sms_template");
 				$this->db->where("template_type >",$last_msg_template_type);
-				$this->db->order_by('template_type','asc');
+				$this->db->order_by('convert (SUBSTRING(template_type, POSITION("_" IN template_type ) + 1 , LENGTH(template_type)), signed) ASC');
 				$this->db->limit(1);
 				$current_twilio_msg_template = $this->query_model->getByTable('tbl_twilio_sms_templates');
-				//echo '<pre>next_sms_flow'; print_r($current_twilio_msg_template); die;
+				echo '<pre>current_twilio_msg_template'; print_r($current_twilio_msg_template); die;
 			if(!empty($current_twilio_msg_template)){
 				
 				/*$current_msg_template_type = str_replace('day_','',$last_msg_template_type);
@@ -236,7 +238,7 @@ public function cron_for_twilio_sms_flow_msgs(){
 				
 				$current_msg_template_type_number = str_replace('day_','',$current_twilio_msg_template[0]->template_type);
 				$current_msg_template_type = $current_twilio_msg_template[0]->template_type;
-				
+				//echo '<pre>current_twilio_msg_template'; print_r($current_twilio_msg_template);
 				if($current_msg_template_type_number <= 14){
 					
 					/*$this->db->where("sms_flow_id",$twilio_user->sms_flow_id);
@@ -249,10 +251,10 @@ public function cron_for_twilio_sms_flow_msgs(){
 					$this->db->where("sms_flow_id",$twilio_user->sms_flow_id);
 					$this->db->where("template_type !=","paid_trial_template");
 					$this->db->where("template_type !=","admin_sms_template");
-					$this->db->order_by('template_type','desc');
+					$this->db->order_by('convert (SUBSTRING(template_type, POSITION("_" IN template_type ) + 1 , LENGTH(template_type)), signed) DESC');
 					$this->db->limit(1);
 					$last_sms_flow = $this->query_model->getByTable('tbl_twilio_sms_templates');
-					
+					//echo '<pre>last_sms_flow'; print_r($last_sms_flow); die;
 					
 					if(!empty($current_twilio_msg_template)){
 						

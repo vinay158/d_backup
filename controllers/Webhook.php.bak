@@ -101,7 +101,7 @@ class Webhook extends CI_Controller {
 					'email' => $formData['email'],
 					'school' => $formData['location'],
 					'message' => $formData['message'],
-					'date_added' => date('Y-m-d H:i:s'),
+					'date_added' => date('Y-m-d h:i:s'),
 				);
 						
 		$result = $this->insertDataWebhook('tblcontactusleads', $data);
