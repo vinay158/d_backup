@@ -17,6 +17,11 @@ class Sparkpost_mail extends CI_Controller {
 		
 		$this->load->model("sparkpost_mail_model");
 		
+		$sparkpost_api_is_active = $this->query_model->checkSparkpostApiIsActive();
+		if($sparkpost_api_is_active == 0){
+			redirect('/admin');
+		}
+		
 	}
 	
 	public function index(){

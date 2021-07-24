@@ -300,7 +300,7 @@
 	 <script src="<?=base_url();?>assets_admin/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="<?=base_url();?>assets_admin/js/web-animations.min.js"></script>
 <script src="<?=base_url();?>assets_admin/js/muuri.min.js"></script>
-<script src="<?=base_url();?>assets_admin/js/azia.js"></script>
+<!--<script src="<?=base_url();?>assets_admin/js/azia.js"></script>-->
 
 
 <script src="color_overlay_opacity_pickier/js/spectrum.js" type="text/javascript"></script>

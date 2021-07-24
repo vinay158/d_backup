@@ -1,7 +1,21 @@
 <?php 
 class Twilio_sms_messenger extends CI_Controller{
 	
-
+	function __construct(){
+		parent::__construct();
+		if (!$this->session->userdata('is_logged_in'))
+        { 
+            redirect('/admin/login');
+        }
+		
+		$twilio_chat_api_is_active = $this->query_model->checkTwilioApiIsActive();
+		
+		if($twilio_chat_api_is_active == 0){
+			redirect('/admin');
+		}
+		
+	}
+	
 	function index(){
 		
 		$is_logged_in = $this->session->userdata('is_logged_in');
@@ -12,6 +26,8 @@ class Twilio_sms_messenger extends CI_Controller{
 			$data['link_type'] = "twilio_sms_messenger";
 			
 			$data['lead_users'] = $this->db->query("SELECT `id`,`name`,`phone`,`email`,`last_updated_date`, (select count(*) from twilio_sms_messenger where sms_users_id = twilio_sms_users.id and is_read_msg = 0  and sender_by = 'student' ) as total_msgs FROM `twilio_sms_users` WHERE is_deleted = 0 and  conversation_type != 'admin' order by last_updated_date DESC")->result();
+			
+			//echo '<pre>'; print_r($data['lead_users']); die;
 			
 			/*date_default_timezone_set($this->query_model->getCurrentDateTimeZone());
 			if (date_default_timezone_get()) {

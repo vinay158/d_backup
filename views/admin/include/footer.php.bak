@@ -58,6 +58,7 @@
 	<script src="<?=base_url();?>assets_admin/lib/ionicons/ionicons.js"></script>
 	
 	
+	
      <script>
 $(document).ready(function() {
 		
@@ -351,8 +352,6 @@ $(window).scroll(function() {
 					</div>
 				</div>
 				<input type="hidden" name="delete-item-id" id="delete_lead_id" value="">
-				<input type="hidden" name="lead_type" id="delete_lead_lead_type" value="">
-				<input type="hidden" name="delete-lead-email" id="delete_lead_email" value="">
           </div>
           <div class="modal-footer">
 			  <div class="col-md-6 text-left">

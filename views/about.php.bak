@@ -2173,7 +2173,7 @@ if(!empty($apiKeys)){
 if(!empty($apiKeys->instragram_user_id) && !empty($apiKeys->instragram_access_token)){ 
 
  $instragram_images = $this->query_model->userMedia($apiKeys->instragram_user_id, $apiKeys->instragram_access_token); 
- 
+
 ?>
       <section id="instagram-feeds">
 	  <style>
@@ -2207,10 +2207,10 @@ if(!empty($apiKeys->instragram_user_id) && !empty($apiKeys->instragram_access_to
 		
          <div class="feed-list">
             <ul>
-			<?php if(isset($ins_media['data'])){ ?>	
+			
 			 <?php
 				$ins_media = $instragram_images; 
-				
+				if(isset($ins_media['data'])){
 				$i = 1; 
 				foreach ($ins_media['data'] as $vm): 
 				$ShowMoreIntImg = '';
@@ -2247,10 +2247,12 @@ if(!empty($apiKeys->instragram_user_id) && !empty($apiKeys->instragram_access_to
          </div>
 		 <div class="clearfix"></div>
          <div class="action-btn-block">
-		 <?php if(count($ins_media['data']) > 5){ ?>
+		 <?php if(isset($ins_media['data']) && count($ins_media['data']) > 5){ ?>
         	<a href="javascript:void(0);" class="load-more showMoreInstragram"><?php echo $this->query_model->getStaticTextTranslation('load_more'); ?></a> 
 		<?php } ?>
+		<?php if(isset($ins_media['data']) { ?>
             <a href="#" class="follow-btn"><i class="fa fa-instagram"></i> <?php echo $this->query_model->getStaticTextTranslation('follow'); ?> </a>
+		<?php } ?>
          </div>
 
       </section>

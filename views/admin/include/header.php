@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<?php //$this->query_model->getNewNotification();?>	
 <html lang="en">
 
 <?php $this->output->set_header("HTTP/1.0 200 OK");
@@ -370,12 +370,67 @@ if($this->uri->segment(2) != ""){
 				</div>
 			<?php } ?>
 			
-            <div class="az-header-message">
+<?php $notifications =  $this->query_model->getNewNotification(); ?>
+
+<?php if(empty($notifications)){?>
+	<style>
+		.az-header-notification > a.new::before{background-color:#fff}
+	</style>
+<?php }?>		
+			<div class="dropdown az-header-notification ">
+            <a href="" class="new"><i class="typcn typcn-bell"></i></a>
+            <div class="dropdown-menu">
+              <div class="az-dropdown-header mg-b-20 d-sm-none">
+                <a href="" class="az-header-arrow"><i class="icon ion-md-arrow-back"></i></a>
+              </div>
+              <h6 class="az-notification-title">Notifications</h6>
+              <p class="az-notification-text">You have <?php echo !empty($notifications) ? count($notifications) : 0; ?> unread notification</p>
+              <div class="az-notification-list">
+			  
+			  <?php if(!empty($notifications)){
+					foreach($notifications as $notification){
+						if($notification->notification_type == "message"){
+							
+							$this->db->select(array('image'));
+							$profile_img = $this->query_model->getBySpecific('tbl_lead_profile_img','email',$notification->email);
+							 
+							 $user_image = !empty($profile_img) ? base_url().'upload/kanban_user_profiles/thumb/'.$profile_img[0]->image : base_url().'assets_admin/img/lead_blank_profile_img.png';
+				?>
+				 <div class="media">
+                  <div class="az-img-user"><img src="<?php echo $user_image; ?>" alt=""></div>
+                  <div class="media-body">
+				  <a href="<?php echo base_url().'admin/twilio_sms_messenger?kanban_user_phone_number='.$notification->phone; ?>" style="color:#031b4e" target="_blank">
+                    <p><strong><?php echo $notification->name; ?></strong> 
+					<?php echo ($notification->total_msgs > 1) ? 'send you '.$notification->total_msgs.' messages.' : 'send a new message.';?>
+					</p>
+					<?php if(isset($notification->message) && !empty($notification->message)){ ?>
+					<p>
+						<?php echo (strlen($notification->message) > 50) ? substr($notification->message,0,50).'...' : $notification->message; ?>
+					</p>
+					<?php } ?>
+                    <span><?php echo date('M d h:i a', strtotime($notification->msg_created)); ?></span>
+					</a>
+                  </div>
+                </div>
+			<?php 	
+						}	
+					} 
+				}
+			  ?>
+			  
+              </div><!-- az-notification-list -->
+            <!--  <div class="dropdown-footer"><a href="">View All Notifications</a></div>-->
+            </div><!-- dropdown-menu -->
+          </div>
+		  
+           <!-- <div class="az-header-message">
               <a href="#"><i class="typcn typcn-bell"></i></a>
-            </div><!-- az-header-message -->
+            </div>--><!-- az-header-message -->
 			<div class="az-header-message">
               <a href="https://intercom.help/dojo-industries/en/" target="_blank"><i class="fa fa-question-circle"></i></a>
             </div><!-- az-header-message --> 
+			
+			
 
            
 

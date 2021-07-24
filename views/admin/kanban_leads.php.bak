@@ -229,9 +229,9 @@
 								?>
 								<span class="badge badge-primary"><?php echo $tag; ?></span>
 								<?php } } ?>
-								Email: <?=$lead->email?><br/>
+								<!--Email: <?=$lead->email?><br/>
 								Lead Type: <?php echo $lead_type; ?><br/>
-								Lead ID: <?php echo $lead->id; ?><br/>
+								Lead ID: <?php echo $lead->id; ?><br/>-->
 								<div class="icon">
 									<?php if(!empty($lead->phone)){ ?>
 									<a href="tel:<?php echo $lead->phone; ?>"><i class="fas fa-phone"></i></a>
@@ -300,7 +300,6 @@
 	 <script src="<?=base_url();?>assets_admin/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="<?=base_url();?>assets_admin/js/web-animations.min.js"></script>
 <script src="<?=base_url();?>assets_admin/js/muuri.min.js"></script>
-<script src="<?=base_url();?>assets_admin/js/azia.js"></script>
 
 
 <script src="color_overlay_opacity_pickier/js/spectrum.js" type="text/javascript"></script>

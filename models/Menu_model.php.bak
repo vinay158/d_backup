@@ -280,14 +280,14 @@ class Menu_model extends CI_Model{
 									echo '</a></li>';
 								}
 							}elseif($subPages['slug'] == "admin/sparkpost_mail"){
-								$sparkpost_api_is_active = $this->query_model->checkSparkpostApiIsActive();
-								
-								if($sparkpost_api_is_active == 1){
-									echo '<li class="'.$child_sub_cls.'"><a href="'.$subPages['slug'].'" slug="'.$subPages['slug'].'" class="cms_menu_url subPages '.$child_sub_link_cls.' '.$activeTabPageCls.'">';
-									echo $subPages['title'];
-									echo '</a></li>';
-								}
-							}else{
+							$sparkpost_api_is_active = $this->query_model->checkSparkpostApiIsActive();
+							
+							if($sparkpost_api_is_active == 1){
+								echo '<li class="'.$child_sub_cls.'"><a href="'.$subPages['slug'].'" slug="'.$subPages['slug'].'" class="cms_menu_url subPages '.$child_sub_link_cls.' '.$activeTabPageCls.'">';
+								echo $subPages['title'];
+								echo '</a></li>';
+							}
+						}else{
 								echo '<li class="'.$child_sub_cls.'"><a href="'.$subPages['slug'].'" slug="'.$subPages['slug'].'" class="cms_menu_url subPages '.$child_sub_link_cls.' '.$activeTabPageCls.'">';
 								echo $subPages['title'];
 								echo '</a></li>';
