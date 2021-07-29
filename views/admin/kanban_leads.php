@@ -209,8 +209,11 @@
 		  <?php 
 			$this->db->select(array('image'));
 			$profile_img = $this->query_model->getBySpecific('tbl_lead_profile_img','email',$lead->email);
+			
+			$emailSuffix = !empty($lead->email) ? explode('@', $lead->email) : '';
+
 		  ?>
-		  <a href="" class="az-img-user <?php echo !empty($profile_img) ? 'profile_img_exist' : ''; ?> profile_img_<?php echo $lead_type; ?>_<?php echo $lead->id; ?>"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>">
+		  <a href="" class="az-img-user <?php echo !empty($profile_img) ? 'profile_img_exist' : ''; ?> profile_img_<?php echo $lead_type; ?>_<?php echo $lead->id; ?> "  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>">
 		  <?php if(!empty($profile_img)){ ?>
 			<img src="<?php echo base_url().'upload/kanban_user_profiles/thumb/'.$profile_img[0]->image; ?>">
 		<?php }else{ ?>
@@ -219,7 +222,7 @@
 		  
 		  </a>
 		  
-								<a href="" class="username"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>"><h4> <?php echo $lead->name; ?></h4></a>
+								<a href="" class="username  user_email_<?php echo isset($emailSuffix[0]) ? $emailSuffix[0] : '' ?>"  lead_type="<?php echo $lead->lead_type; ?>" lead_id="<?php echo $lead->id; ?>" email="<?php echo $lead->email; ?>" popup_title="<?=$lead->email?>"><h4> <?php echo $lead->name; ?></h4></a>
 								<span class="detail"><strong>Date Added:</strong> <?php echo date('M d, Y ', strtotime($lead->created)); ?></span>
 								 <?php
 									
@@ -1186,6 +1189,33 @@ $('body').on('click','.delete_item', function(){
 	
 		
 	
+})
+
+
+$(window).load(function(){
+	<?php 
+		if(isset($_GET['notify_email']) && !empty($_GET['notify_email'])){ 
+			$emailSuffix = !empty($_GET['notify_email']) ? explode('@', $_GET['notify_email']) : '';
+			$emailSuffix = isset($emailSuffix[0]) ? $emailSuffix[0] : '';
+	?>
+			var lead_email = "<?php echo $_GET['notify_email']; ?>";
+			var emailSuffix = "<?php echo $emailSuffix; ?>";
+			$('.user_email_'+emailSuffix).trigger('click');
+			
+			
+			$.ajax({ 					
+			type: 'POST',						
+			dataType: 'json',						
+			url: "admin/dashboard/ajax_update_lead_notification",					
+			data: { lead_email : lead_email, action:'update_lead_nofitcation'}					
+			}).done(function(msg){ 
+		
+				if(msg == 1){
+					
+				}
+				
+			})
+	<?php } ?>
 })
 
     </script>

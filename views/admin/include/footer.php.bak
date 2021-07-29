@@ -58,11 +58,28 @@
 	<script src="<?=base_url();?>assets_admin/lib/ionicons/ionicons.js"></script>
 	
 	
-	
      <script>
 $(document).ready(function() {
 		
+		/*$('body').on('click','.header_lead_notification', function(){
+			var lead_email = $(this).attr('lead_email');
+			$(this).parent().parent().remove();
+			
+			$.ajax({ 					
+			type: 'POST',						
+			dataType: 'json',						
+			url: "admin/dashboard/ajax_update_lead_notification",					
+			data: { lead_email : lead_email, action:'update_lead_nofitcation'}					
+			}).done(function(msg){ 
 		
+				if(msg == 1){
+					
+				}
+				
+			})
+		
+			//return false;
+		})*/
 		
 		$('#azContactList a').bind('click', function(e) {
 				e.preventDefault(); // prevent hard jump, the default behavior
@@ -79,6 +96,8 @@ $(document).ready(function() {
 				return false;
 				
 		});
+		
+	
 });
 
 $(window).scroll(function() {

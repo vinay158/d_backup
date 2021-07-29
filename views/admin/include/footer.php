@@ -78,6 +78,8 @@ $(document).ready(function() {
 				return false;
 				
 		});
+		
+	
 });
 
 $(window).scroll(function() {

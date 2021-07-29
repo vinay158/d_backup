@@ -792,7 +792,9 @@ public function getFreePaidTrialLeads($start_date,$end_date,$location = '',$sear
 				
 				$this->db->where("mail_flow_id", $id);
 				$this->db->delete('tbl_sparkpost_mail_templates');
+				
 			}elseif($table_name == "twilio_sms_flows"){
+				
 				$this->db->where("sms_flow_id", $id);
 				$this->db->delete('tbl_twilio_sms_templates');
 			}
@@ -849,6 +851,24 @@ public function getFreePaidTrialLeads($start_date,$end_date,$location = '',$sear
 	}
 	
 	
+	public function ajax_update_lead_notification(){
+		
+		$email = (isset($_POST['lead_email']) && !empty($_POST['lead_email'])) ? $_POST['lead_email'] : '';
+		$action = (isset($_POST['action']) && !empty($_POST['action'])) ? $_POST['action'] : '';
+		
+		if(!empty($email) && $action == "update_lead_nofitcation"){
+			
+			/*$updateData = array('is_read_notification'=> 1);
+			
+			$this->query_model->updateData('tblorders', 'email', $email , $updateData);
+			$this->query_model->updateData('tblbirthdayparty', 'email', $email , $updateData);
+			$this->query_model->updateData('tblcontactusleads', 'email', $email , $updateData);
+			$this->query_model->updateData('tbl_dojocart_orders', 'email', $email , $updateData);*/
+			
+		}
+		
+		echo 1; exit;
+	}
 	
 	public function google_reviews(){
 		

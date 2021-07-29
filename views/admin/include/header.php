@@ -375,6 +375,7 @@ if($this->uri->segment(2) != ""){
 <?php if(empty($notifications)){?>
 	<style>
 		.az-header-notification > a.new::before{background-color:#fff}
+		
 	</style>
 <?php }?>		
 			<div class="dropdown az-header-notification ">
@@ -389,17 +390,29 @@ if($this->uri->segment(2) != ""){
 			  
 			  <?php if(!empty($notifications)){
 					foreach($notifications as $notification){
-						if($notification->notification_type == "message"){
-							
-							$this->db->select(array('image'));
-							$profile_img = $this->query_model->getBySpecific('tbl_lead_profile_img','email',$notification->email);
-							 
-							 $user_image = !empty($profile_img) ? base_url().'upload/kanban_user_profiles/thumb/'.$profile_img[0]->image : base_url().'assets_admin/img/lead_blank_profile_img.png';
+						
+						$this->db->select(array('image'));
+						$profile_img = $this->query_model->getBySpecific('tbl_lead_profile_img','email',$notification->email);
+						 
+						 $user_image = !empty($profile_img) ? base_url().'upload/kanban_user_profiles/thumb/'.$profile_img[0]->image : base_url().'assets_admin/img/lead_blank_profile_img.png';
 				?>
+				 
+                  
+				 
+				 <?php if($notification->lead_type == "twilio_message"){ 
+							
+							$is_show_notify = 1;
+							if(isset($_GET['kanban_user_phone_number']) && $_GET['kanban_user_phone_number'] == $notification->phone){
+								$is_show_notify = 0;
+							}
+							
+					if($is_show_notify == 1){
+				 ?>
 				 <div class="media">
                   <div class="az-img-user"><img src="<?php echo $user_image; ?>" alt=""></div>
-                  <div class="media-body">
-				  <a href="<?php echo base_url().'admin/twilio_sms_messenger?kanban_user_phone_number='.$notification->phone; ?>" style="color:#031b4e" target="_blank">
+				 <div class="media-body">
+				  <a href="<?php echo base_url().'admin/twilio_sms_messenger?kanban_user_phone_number='.$notification->phone; ?>" style="color:#031b4e">
+				  
                     <p><strong><?php echo $notification->name; ?></strong> 
 					<?php echo ($notification->total_msgs > 1) ? 'send you '.$notification->total_msgs.' messages.' : 'send a new message.';?>
 					</p>
@@ -410,10 +423,32 @@ if($this->uri->segment(2) != ""){
 					<?php } ?>
                     <span><?php echo date('M d h:i a', strtotime($notification->msg_created)); ?></span>
 					</a>
-                  </div>
-                </div>
-			<?php 	
-						}	
+					 </div>
+				</div>
+				
+				<?php } }else{ 
+					$is_show_notify = 1;
+					if(isset($_GET['notify_email']) && $_GET['notify_email'] == $notification->email){
+						$is_show_notify = 0;
+					}
+					
+					if($is_show_notify == 1){
+				?>
+				<div class="media">
+                  <div class="az-img-user"><img src="<?php echo $user_image; ?>" alt=""></div>
+				<div class="media-body">
+					 <a href="<?php echo base_url().'admin/kanban_leads?notify_email='.$notification->email; ?>&date_sort=last_30_days" style="color:#031b4e" class="header_lead_notification" type="form_lead" lead_email="<?php echo $notification->email; ?>" >
+                    <p><strong><?php echo $notification->name; ?></strong> 
+					You have a new lead from <?php echo ucwords(str_replace('_',' ',$notification->lead_type)) ?> <?php echo !empty($notification->last_order_id) ? ' - Upsell' : ''; ?> Form.
+					</p>
+					
+                    <span><?php echo date('M d h:i a', strtotime($notification->created)); ?></span>
+					</a>
+				</div>
+				  </div>
+				<?php } } ?>
+                
+			<?php
 					} 
 				}
 			  ?>

@@ -11073,19 +11073,19 @@ public function checkSparkpostApiIsActive(){
 public function getNewNotification(){
 	
 	$notifications = array();
-	$message_nofitications = array();
-	$lead_nofitications = array();
+	//$message_nofitications = array();
+	//$lead_nofitications = array();
 	
 	$twilio_chat_api_is_active = $this->query_model->checkTwilioApiIsActive();
 		
-	if($twilio_chat_api_is_active == 0){
+	if($twilio_chat_api_is_active == 1){
 		
 		$single_messages = $this->db->query("SELECT id,name,email,phone,message,msg_created,total_msgs FROM new_message_records where total_msgs = 1 order by `msg_created` desc")->result();
 		if(!empty($single_messages)){
 			foreach($single_messages as $message){
 				$msg_created = strtotime($message->msg_created);
-				$message->notification_type = "message";
-				$message_nofitications[$msg_created] = $message;
+				$message->lead_type = "twilio_message";
+				$notifications[$msg_created] = $message;
 			}
 		}
 		
@@ -11093,22 +11093,198 @@ public function getNewNotification(){
 		
 		if(!empty($multi_messages)){
 			foreach($multi_messages as $message){
-				$message->notification_type = "message";
+				$message->lead_type = "twilio_message";
 				$msg_created = strtotime($message->msg_created);
-				$message_nofitications[$msg_created] = $message;
+				$notifications[$msg_created] = $message;
 			}
 		}
 	}
 	
-	if(!empty($message_nofitications)){
-		krsort($message_nofitications);
+	
+	/////////////// unique leads for notification /////
+	$lead_status = '';
+	$tags = '';
+	$search_query = array('kanban_status_id' => $lead_status,'tags' => $tags);
+	$notfiy_end_date =  date('Y-m-d');					
+	$notfiy_start_date = date("Y-m-d", strtotime("-30 days",strtotime($notfiy_end_date)));
+	
+	
+		$lead_type =   'all';
+		$location = '';
+		
+		$notify_leads = array();
+		$notify_filterd_leads = array();
+		
+		
+		$notify_leads['email_opt_in_leads'] = $this->notifyOrderLeads($notfiy_start_date,$notfiy_end_date,'email_opt_in',$location,$search_query);
+		
+		$notify_leads['free_trial_leads'] = $this->notifyOrderLeads($notfiy_start_date,$notfiy_end_date,'free_trial',$location,$search_query);
+		
+		$notify_leads['paid_trial_leads'] = $this->notifyOrderLeads($notfiy_start_date,$notfiy_end_date,'paid_trial',$location,$search_query);
+		
+		$notify_leads['upsell_trial_leads'] = $this->notifyOrderLeads($notfiy_start_date,$notfiy_end_date,'upsell_trial',$location,$search_query);
+	
+		$notify_leads['birthday_parties_leads'] = $this->notifyBirthdayPartiesLeads($notfiy_start_date,$notfiy_end_date,$search_query);
+		
+		$notify_leads['contact_us_leads'] = $this->notifyContactUsLeads($notfiy_start_date,$notfiy_end_date,$location,$search_query);
+		
+		$notify_leads['dojocart_leads'] = $this->notifyDojocartLeads($notfiy_start_date,$notfiy_end_date,$location,$search_query);
+		
+		$notify_custom_filterd_leads = array();
+		if(isset($notify_leads) && !empty($notify_leads)){
+			
+			foreach($notify_leads as $key=> $lead_data){
+				$a = 0;
+				if(!empty($lead_data)){
+					foreach($lead_data as  $lead){
+						$lead_type = str_replace('_leads','',$key);
+						if($lead_type == "birthday_parties" || $lead_type == "contact_us" ){
+							$created = $lead->date_added;
+						}else{
+							$created = $lead->created;
+						}
+						
+						$unique_id = $lead->id.'_'.$lead->kanban_status_id.'_'.$lead_type;
+						
+						$notify_filterd_leads[$lead->email][$unique_id] = $lead;
+						$notify_filterd_leads[$lead->email][$unique_id]->lead_type = $lead_type;
+						
+						if($lead_type == "birthday_parties" || $lead_type == "contact_us" ){
+							$notify_filterd_leads[$lead->email][$unique_id]->created = $lead->date_added;
+							$notify_filterd_leads[$lead->email][$unique_id]->offer_type = "";
+							$notify_filterd_leads[$lead->email][$unique_id]->trans_status = "";
+							
+						}
+						$notify_custom_filterd_leads[$lead->email][$unique_id]['created'] = $created;
+						$notify_custom_filterd_leads[$lead->email][$unique_id]['email'] = $lead->email;
+						$notify_custom_filterd_leads[$lead->email][$unique_id]['unique_id'] = $unique_id;
+					$a++;
+					}
+				}
+				
+			}
+		}
+		
+		$orderLeadsSortEmail = array();
+		
+		if(isset($notify_custom_filterd_leads) && !empty($notify_custom_filterd_leads)){
+			foreach($notify_custom_filterd_leads as $lead_data){
+				
+				$last_date = '';
+				foreach($lead_data as $key => $lead){
+					if(strtotime($lead['created']) > $last_date){
+						$last_date = strtotime($lead['created']);
+						$orderLeadsSortEmail[$lead['email']] = $lead;
+					}
+				}
+				
+			}
+			
+			if(!empty($orderLeadsSortEmail)){
+				foreach($orderLeadsSortEmail as $email => $newlead_data){
+					$lead = array();
+					$lead = isset($notify_filterd_leads[$newlead_data['email']][$newlead_data['unique_id']]) ? $notify_filterd_leads[$newlead_data['email']][$newlead_data['unique_id']] : '';
+					
+					if(!empty($lead)){
+						$created_date = strtotime($lead->created);
+						$notifications[$created_date] = $lead;
+					}
+					
+				}
+			}
+		}
+		
+	
+	
+	if(!empty($notifications)){
+		krsort($notifications);
+	}
+	
+	return $notifications;
+	
+}
+
+
+public function notifyOrderLeads($start_date,$end_date,$lead_type,$location = '',$search_query){
+	
+	$where = 'is_delete = 0 and is_read_notification = 0 and ';
+	
+	$where .= "DATE_FORMAT(created,'%Y-%m-%d') >= '".$start_date."' and ";
+	$where .= "DATE_FORMAT(created,'%Y-%m-%d') <= '".$end_date."' and ";
+	
+	if($lead_type == "email_opt_in"){ 
+		$where .= 'offer_type IS NULL';
+	}elseif($lead_type == "free_trial"){
+		$where .= 'offer_type = "Free"';
+	}elseif($lead_type == "paid_trial"){
+		$where .= 'offer_type = "Paid"';
+	}elseif($lead_type == "upsell_trial"){
+		$where .= 'last_order_id > 0';
 	}
 	
 	
-	//echo '<pre>message_nofitications'; print_r($message_nofitications); die;
-	//echo '<pre>';print_r($data); die;
-	return $message_nofitications;
+	/*$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,last_order_id,offer_type,trans_status,is_unique_trial,trial_id,created,is_delete,kanban_status_id from tblorders order by id desc) as orders where ".$where);*/
 	
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,last_order_id,offer_type,trans_status,is_unique_trial,trial_id,created,is_delete,kanban_status_id,is_read_notification from tblorders order by id desc) as orders where ".$where);
+	
+	$leads = $query->result();
+	
+	return $leads;
 }
+	
+	
+public function notifyBirthdayPartiesLeads($start_date,$end_date,$search_query){
+	
+	$where = 'is_delete = 0 and is_read_notification = 0 and ';
+	$where .= "DATE_FORMAT(date_added,'%Y-%m-%d') >= '".$start_date."' and ";
+	$where .= "DATE_FORMAT(date_added,'%Y-%m-%d') <= '".$end_date."'";
+	
+	
+	/*$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location_id,party_date,guests,date_added,is_delete,kanban_status_id from tblbirthdayparty order by id desc) as orders where ".$where);*/
+	
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,date_added,is_delete,kanban_status_id,is_read_notification from tblbirthdayparty order by id desc) as orders where ".$where);
+	
+	$leads = $query->result();
+	
+	
+	return $leads;
+}
+	
+public function notifyContactUsLeads($start_date,$end_date,$location = '',$search_query){
+	
+	$where = 'is_delete = 0 and is_read_notification = 0 and ';
+	$where .= "DATE_FORMAT(date_added,'%Y-%m-%d') >= '".$start_date."' and ";
+	$where .= "DATE_FORMAT(date_added,'%Y-%m-%d') <= '".$end_date."'";
+	
+	/*$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,school,message,date_added,is_delete,kanban_status_id from tblcontactusleads order by id desc) as orders where ".$where);*/
+	
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,date_added,is_delete,kanban_status_id,is_read_notification from tblcontactusleads order by id desc) as orders where ".$where);
+	
+	$leads = $query->result();
+	
+	return $leads;
+}
+
+public function notifyDojocartLeads($start_date,$end_date,$location = '',$search_query){
+	
+	$where = 'is_delete = 0 and is_read_notification = 0 and ';
+	
+	$where .= "DATE_FORMAT(created,'%Y-%m-%d') >= '".$start_date."' and ";
+	$where .= "DATE_FORMAT(created,'%Y-%m-%d') <= '".$end_date."'"; 
+	
+	/*$query = $this->db->query("select * from (select DISTINCT email,id,name,last_name,phone,location,product_id,offer_type,amount,trans_status,created,is_delete,kanban_status_id from tbl_dojocart_orders order by id desc) as orders where ".$where);*/
+	
+	$query = $this->db->query("select * from (select DISTINCT email,id,name,product_id,offer_type,amount,trans_status,created,is_delete,kanban_status_id,is_read_notification from tbl_dojocart_orders order by id desc) as orders where ".$where);
+	
+	$leads = $query->result();
+	
+	
+	return $leads;
+}
+
+
+
+
+
 
 }
