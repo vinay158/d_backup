@@ -7,7 +7,7 @@ class Site extends CI_Controller {
 
 	public function index()
 	{
-		
+	echo $this->query_model->getFrontendLayout();	die;
 		
 		$index_path = explode('/',$_SERVER['REQUEST_URI']);
 		if(isset($index_path[1]) && $index_path[1] == 'index.php'){
@@ -35,7 +35,7 @@ class Site extends CI_Controller {
 		$this->load->helper(array('url'));
 		
 		$this->db->limit(5);
-		$this->db->order_by("pos", "ASC");	
+		$this->db->order_by('pos asc, id desc');	
 			
 		$data['featured'] = $this->query_model->getbySpecific("tblprogram", "featured", 1);
 		//echo '<pre>'; print_r($data['featured']); die;

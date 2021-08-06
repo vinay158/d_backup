@@ -98,7 +98,7 @@ $virtual_training_rows = $this->query_model->getbyTable('tbl_virtual_training_ro
  ?>
  
 <header class="main-header   <?php if($pageurl == 'programs' || $pageurl == 'ourprograms')?>">
-	
+		
 		 <?php if($settings->hide_window != 'hide'): ?>
         <span class="fixed-text mobile-visible">
 		<a href="<?php echo $settings->url_call_to_action; ?>" target="<?php if($settings->window == 'new'): echo '_blank'; endif; ?>">
@@ -113,7 +113,10 @@ $virtual_training_rows = $this->query_model->getbyTable('tbl_virtual_training_ro
                     </span>
                   </h1>
                </div>
+			  
                <div class="col-md-4 col-sm-6 col-lg-4  hidden-xs hidden-sm">
+			   
+			   <div class="col-md-9">
                   <h2 class="contact-top">
 			<?php if($settings->ss_login_btn_position == "header"){ ?>
 				 <?php if($studentSection->field_value == 1){ ?>
@@ -164,6 +167,10 @@ $virtual_training_rows = $this->query_model->getbyTable('tbl_virtual_training_ro
 					
                   </h2>
                </div>
+			    <div class="col-md-3">
+			   <div id="google_translate_element"></div>
+			   </div>
+               </div>
             </div>
          </div>
       </header>
@@ -179,5 +186,7 @@ $virtual_training_rows = $this->query_model->getbyTable('tbl_virtual_training_ro
          </div>
       </header> 
 <?php } ?>
+
+
 		
 <?php include_once('main_nav.php'); ?>

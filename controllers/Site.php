@@ -7,7 +7,7 @@ class Site extends CI_Controller {
 
 	public function index()
 	{
-		
+	
 		
 		$index_path = explode('/',$_SERVER['REQUEST_URI']);
 		if(isset($index_path[1]) && $index_path[1] == 'index.php'){

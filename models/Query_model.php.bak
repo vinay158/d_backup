@@ -11126,7 +11126,7 @@ public function getNewNotification(){
 	
 		$notify_leads['birthday_parties_leads'] = $this->notifyBirthdayPartiesLeads($notfiy_start_date,$notfiy_end_date,$search_query);
 		
-		$notify_leads['contact_us_leads'] = $this->notifyContactUsLeads($notfiy_start_date,$notfiy_end_date,$location,$search_query);
+		//$notify_leads['contact_us_leads'] = $this->notifyContactUsLeads($notfiy_start_date,$notfiy_end_date,$location,$search_query);
 		
 		$notify_leads['dojocart_leads'] = $this->notifyDojocartLeads($notfiy_start_date,$notfiy_end_date,$location,$search_query);
 		
@@ -11283,7 +11283,14 @@ public function notifyDojocartLeads($start_date,$end_date,$location = '',$search
 }
 
 
-
+public function getFrontendLayout(){
+	
+	$this->db->select('front_layout_type');
+	$layout = $this->query_model->getByTable('tblsite');
+	
+	$layout = !empty($layout) ? $layout[0]->front_layout_type : '';
+	echo '<pre>layout'; print_r($layout); die;
+}
 
 
 

@@ -1403,6 +1403,16 @@ $countries =array("AF" => "Afghanistan","AL" => "Albania","DZ" => "Algeria","AS"
 	</div>
 </div>
 
+<div class="form-light-holder">
+	<h1>Layout Type</h1>
+	<?php $front_layout_types = array('default_layout'=>'Default', 'new_layout'=> 'New Layout'); ?>
+	<select name="front_layout_type" id="" class="field">
+			<?php foreach($front_layout_types as $key => $layout){ ?>
+			<option value="<?php echo $key; ?>" <?php echo ($setting->front_layout_type == $key) ? 'selected=selected' : ''; ?> ><?php echo $layout; ?></option>
+			<?php } ?>
+		</select>
+</div>
+
 <?php if($user_level==1){ ?>
 	<!--<div class="form-light-holder">
 		<a id="status" class="checkbox <?php if($setting->status == 1) echo "check-on"; else echo "check-off"; ?>"></a>

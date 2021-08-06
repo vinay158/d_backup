@@ -11283,7 +11283,15 @@ public function notifyDojocartLeads($start_date,$end_date,$location = '',$search
 }
 
 
-
+public function getFrontendLayout(){
+	
+	$this->db->select('front_layout_type');
+	$layout = $this->query_model->getByTable('tblsite');
+	
+	$layout = !empty($layout) ? $layout[0]->front_layout_type : '';
+	
+	return $layout;
+}
 
 
 
