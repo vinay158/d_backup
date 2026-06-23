@@ -1560,7 +1560,124 @@ function wellfor_attribute_config() {
 				'2',
 				'3'
 			],
-        ]
+        ],
+		'Bathtubs' => [
+
+            'colors' => [
+                'Glossy White',
+				'Gray',
+				'Green',
+				'Matte White',
+				'Transparent Champagne',
+				'Transparent Gray',
+				'Transparent Sea Blue',
+				'White',
+            ],
+
+            'materials' => [
+                'Acrylic',
+				'Resin',
+				'Solid Surface',
+				'Stone Resin',
+            ],
+
+            'shapes' => [
+				'Oval',
+				'Rectangle',
+				'Round',
+				'Specialty',
+				'Square',
+			],
+
+            'widths' => [
+                '39',
+				'41',
+				'49',
+				'51',
+				'55',
+				'59',
+				'60',
+				'61',
+				'62',
+				'63',
+				'64',
+				'65',
+				'66',
+				'67',
+				'69',
+				'70',
+				'71',
+				'72',
+            ],
+
+            'heights' => [
+                 '21.6',
+				'21.65',
+				'21.7',
+				'22',
+				'22.05',
+				'22.4',
+				'22.8',
+				'22.81',
+				'22.83',
+				'23.6',
+				'23.62',
+				'24.8',
+				'25.59',
+				'26.38',
+				'26.75',
+				'26.77',
+				'27.56',
+				'28.3',
+				'28.35',
+				'28.54',
+				'28.66',
+				'28.75',
+				'29.5',
+				'29.93',
+				'34',
+            ],
+
+            'depths' => [
+                '26.57',
+				'28.35',
+				'28.75',
+				'29',
+				'29.31',
+				'29.5',
+				'29.75',
+				'30',
+				'30.31',
+				'30.7',
+				'30.71',
+				'31',
+				'31.5',
+				'31.88',
+				'32',
+				'33.5',
+				'33.66',
+				'34',
+				'35',
+				'35.5',
+				'35.83',
+				'37',
+				'39',
+				'39.4',
+				'41',
+				'49',
+            ],
+
+            'product_types' => [
+                 'Jetted Tubs',
+				'Soaking Tubs',
+            ],
+
+            'installation_types' => [],
+			'door_types' => [],
+			'frame_types' => [],
+			'handle_types' => [],
+			'handle_numbers' => [],
+        ],
     ];
 }
 
@@ -2539,6 +2656,7 @@ function wellfor_extract_attributes(
             'cabinet material',
             'frame material',
             'material',
+            'materials',
             'handle material'
         ];
 
@@ -3042,6 +3160,67 @@ function wellfor_extract_attributes(
 				}
 				
 				
+			}elseif ($shopify_product_type === 'Shower System') {
+
+				$source = wp_strip_all_tags($description);
+
+				/*
+				==========================================================
+				SHOWER HEAD SIZE / SHOWERHEAD SIZE
+				Examples:
+				Shower Head Size: 10 inches
+				Showerhead Size: 10 inches
+				==========================================================
+				*/
+
+				if (
+					empty($attributes['width'])
+					&&
+					preg_match(
+						'/Shower\s*head\s*Size\s*:\s*(\d+(?:\.\d+)?)/is',
+						$source,
+						$matches
+					)
+				) {
+					$attributes['width'] = $matches[1];
+					$attributes['height'] = $matches[1];
+				}
+
+				/*
+				==========================================================
+				TITLE / DESCRIPTION SHOWER HEAD DIMENSIONS
+				Examples:
+				21.88in×10.25in Dual-Function Overhead Shower
+				19.69''×7.87'' Rainfall Shower Head
+				==========================================================
+				*/
+
+				if (
+					empty($attributes['width'])
+					&&
+					preg_match(
+						'/\b(\d+(?:\.\d+)?)\s*(?:in\.?|inch(?:es)?|"|\'\')?\s*[x×]\s*(\d+(?:\.\d+)?)\s*(?:in\.?|inch(?:es)?|"|\'\')?\s*(?:rainfall|rain|shower|overhead)/i',
+						$source,
+						$matches
+					)
+				) {
+					$attributes['width'] = $matches[1];
+					$attributes['height'] = $matches[2];
+				}
+
+				if (
+					empty($attributes['width'])
+					&&
+					preg_match(
+						'/\b(6|8|9|10|11|12|16)\s*(?:-| )?(?:inch|inches|in\.|")\s+(?:round|square|rectangular)?\s*(?:rainfall|rain|shower|showerhead|shower\s+head)/i',
+						$title . ' ' . $source,
+						$matches
+					)
+				) {
+					$attributes['width'] = $matches[1];
+					$attributes['height'] = $matches[1];
+				}
+
 			}
 	
 	
@@ -3570,20 +3749,23 @@ function wellfor_extract_attributes(
 		*/
 
 		if (
+			stripos($text, 'square') !== false
+		) {
+
+			$attributes['shape'] = 'Square';
+
+
+		} elseif (
+
 			stripos($text, 'rectangular') !== false
 			||
 			preg_match('/\d+(\.\d+)?\s*[x×]\s*\d+(\.\d+)?/i', $text)
+
+
 		) {
 
 			$attributes['shape'] = 'Rectangular';
 
-		} elseif (
-
-			stripos($text, 'square') !== false
-
-		) {
-
-			$attributes['shape'] = 'Square';
 
 		} elseif (
 
@@ -3629,13 +3811,50 @@ function wellfor_extract_attributes(
 
 		if (
 			preg_match(
-				'/([123])\s*(?:handles?|handle)/i',
+				'/\bnumber\s+of\s+handles?\s*[:\-]?\s*([123])\b/i',
+				$text,
+				$matches
+			)
+			||
+			preg_match(
+				'/\b([123])\s*[- ]?handles?\b/i',
+
 				$text,
 				$matches
 			)
 		) {
 
 			$attributes['handle_number'] = $matches[1];
+			} elseif (
+			stripos($text, 'three-handle') !== false
+			||
+			stripos($text, 'three handle') !== false
+		) {
+
+			$attributes['handle_number'] = '3';
+
+		} elseif (
+			stripos($text, 'double handle') !== false
+			||
+			stripos($text, 'dual handle') !== false
+			||
+			stripos($text, 'two handle') !== false
+		) {
+
+			$attributes['handle_number'] = '2';
+
+		} elseif (
+			stripos($text, 'single handle') !== false
+			||
+			stripos($text, 'single-handle') !== false
+			||
+			stripos($text, 'one-handle') !== false
+			||
+			stripos($text, 'one handle') !== false
+		) {
+
+			$attributes['handle_number'] = '1';
+
 		}
 	}
 
@@ -4208,7 +4427,7 @@ function import_wellfor_products($page = 1) {
 	foreach ($data['products'] as $product) {
 		$product_type = trim($product['product_type']);
 
-		if ($product_type == "Shower System") {
+		if ($product_type == "Bathtubs") {
 			$title       = wp_strip_all_tags($product['title']);
 			$description = $product['body_html'];
 			$testingdata[$product['id']]['title'] = $title;
@@ -4219,7 +4438,7 @@ function import_wellfor_products($page = 1) {
 	die('passs');*/
 	
 		$a = 1;
-		$staticProductIds = array('7473841111232'); 
+		$staticProductIds = array('7474609291456'); 
 	
 	foreach ($data['products'] as $product) {
 		
