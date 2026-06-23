@@ -1,0 +1,4274 @@
+
+Importing Page : 2
+
+Array
+(
+    [8407119167680] => Array
+        (
+            [title] => 3-Function Shower System with 10-Inch Rain Shower Head, Adjustable Tub Spout, Hand shower, 304 SS
+            [description] => 
+Key Features:
+
+
+
+    cUPC Certified Pressure Balance Mixing Valve: The shower system equipped with a cUPC-certified pressure balance valve body and cartridge, this shower system maintains consistent water temperature and pressure, protecting users from sudden temperature fluctuations caused by water pressure changes.
+
+
+    3-Function Shower Experience: Enjoy a versatile 3-function configuration, including: 10-inch ultra-slim rain shower head, handheld shower, and tub spout flexible switching for customized shower experiences. Perfect for daily comfort and modern bathroom upgrades.
+
+
+    Adjustable Tub Spout: The adjustable tub spout allows left and right position adjustment for added convenience and flexibility. It easily adapts to different bathtub layouts and user needs, ensuring comfortable water flow positioning without complicated installation or modification.
+
+
+    Heavy-Duty Design: Engineered to support up to 22lb of hanging weight for 24 hours without leaking or deforming.
+
+
+    Water-Saving & Anti-Backflow: Integrated Neoperl® aerator and check valve help conserve water and prevent reverse flow.
+
+
+    Safe & Certified: Complies with ASME A112.18.1 standards and cUPC certification, ensuring top-tier safety and quality.
+
+
+Specifications
+
+
+
+    Shower Type: 3-Function Shower System
+
+
+    Valve Type: Pressure Balance Mixing Valve
+
+
+    Certification: cUPC Certified Valve Body & Cartridge
+
+
+    Main Material: 304 Stainless Steel
+
+
+    Water Flow Rate: Max 2.5 GPM (9.5 L/min) @ 80 PSI
+
+
+    Water-Saving Components: Neoperl® flow regulator
+
+
+        )
+
+    [8249456754880] => Array
+        (
+            [title] => 10" Shower System with Dual Mounting Options Wall-Mounted & Ceiling-Mounted, 304 SS
+            [description] => 
+Key Features:
+
+
+
+    Dual Mounting Options – Ceiling & Wall Arm Included: Comes with both ceiling-mounted and wall-mounted horizontal shower arms, allowing flexible installation to suit your bathroom layout.
+
+
+    Ultra-Thin 10-Inch Square Overhead Shower: Made from 304 stainless steel with brass ball joint, providing wide water coverage in a sleek, modern form.
+
+
+    Adjustable Vernet Thermostatic Mixing Valve: Maintains constant water temperature with built-in depth scale marks for accurate in-wall installation.
+
+
+    Square Sliding Bar with Handheld Shower: The 304 stainless steel bar supports up to 22lb for 24 hours without bending or leaking—ideal for daily use.
+
+    Premium Components Throughout
+
+
+           304 stainless steel hose with brass swivel ends
+
+           304 stainless steel handheld shower
+
+           Brass and copper fittings for enhanced durability
+
+           Neoperl flow restrictor and check valve for safe, efficient performance
+
+
+
+    Safe & Healthy Water Flow: Equipped with Neoperl backflow preventers and anti-scald protection to ensure clean, stable, and safe water delivery.
+
+
+    Certified Quality: Complies with ASME A112.18.1 and cUPC, and flows at a maximum of 2.5 GPM (9.5 L/min @ 80 psi).
+
+
+Specification:
+
+Color: Brushed Nickel / Matte Black
+
+Flow Rate: Max 2.5 GPM / 9.5 L/min @ 80 psi
+
+Material: 304 Stainless Steel, Solid Brass, Copper
+
+Certifications: ASME A112.18.1, cUPC
+
+ 
+
+        )
+
+    [8249420415168] => Array
+        (
+            [title] => 10" Round Shower System with Dual Mounting Options Wall-Mounted & Ceiling-Mounted
+            [description] => 
+Product Description:
+
+Designed for flexibility, performance, and safety, this 3-function thermostatic shower system features a 10" round stainless steel overhead shower, dual mounting arms, height-adjustable sliding bar, and Vernet thermostatic valve. Built with premium 304 stainless steel and Neoperl safety components, it delivers reliable flow, precise temperature control, and modern style.
+
+Key Features:
+
+
+
+    Dual Mounting Options – Ceiling & Wall Arm Included: Comes with both ceiling-mounted and wall-mounted horizontal shower arms, allowing flexible installation to suit your bathroom layout.
+
+
+    Ultra-Thin 10-Inch Round Overhead Shower: Made from 304 stainless steel with brass ball joint, providing wide water coverage in a sleek, modern form.
+
+
+    Adjustable Vernet Thermostatic Mixing Valve: Maintains constant water temperature with built-in depth scale marks for accurate in-wall installation.
+
+
+    Round Sliding Bar with Handheld Shower: The 304 stainless steel bar supports up to 22lb for 24 hours without bending or leaking—ideal for daily use.
+
+    Premium Components Throughout
+
+
+           304 stainless steel hose with brass swivel ends
+
+           304 stainless steel handheld shower
+
+           Brass and copper fittings for enhanced durability
+
+           Neoperl flow restrictor and check valve for safe, efficient performance
+
+
+
+    Safe & Healthy Water Flow: Equipped with Neoperl backflow preventers and anti-scald protection to ensure clean, stable, and safe water delivery.
+
+
+    Certified Quality: Complies with ASME A112.18.1 and cUPC, and flows at a maximum of 2.5 GPM (9.5 L/min @ 80 psi).
+
+
+        )
+
+    [8249382994112] => Array
+        (
+            [title] => Stainless Steel Shower System with Ultra-Thin Dual-Function Rainfall Head, Handheld, Body Jets
+            [description] => 
+Product Description:
+
+Elevate your shower experience with this premium 4-function thermostatic shower system. Made from solid 304 stainless steel, it features a dual-mode rainfall/waterfall head, handheld sprayer, adjustable body jets, and concealed in-wall installation. The advanced Vernet thermostatic valve ensures stable, scald-free temperature control. Sleek, durable, and certified for performance — perfect for modern luxury bathrooms.
+
+Key Features:
+
+
+
+    Durable 304 Stainless Steel Construction: Crafted from high-grade 304 stainless steel for both the main body and shower head – corrosion-resistant, rustproof, and built to last.
+
+
+    Ultra-Thin Dual-Function Overhead Shower: Sleek rain panel delivers both Rainfall and Waterfall modes, offering wide, gentle, and immersive water flow.
+
+
+    Advanced Vernet Thermostatic Valve Core: Ensures precise temperature control and anti-scald protection. Automatically balances hot and cold water even during pressure fluctuations.
+
+    4 Powerful Shower Functions:
+
+
+Dual-function rainfall/waterfall shower head
+
+Handheld shower
+
+Round body jets with adjustable direction
+
+
+
+    Thick 2mm Brushed Stainless Steel Panel: Enhanced strength and visual appeal for luxury bathrooms and premium renovations.
+
+
+    Concealed In-Wall Installation: Modern built-in design hides plumbing components for a clean, minimalist aesthetic and space-efficient layout.
+
+
+    Efficient & Certified Performance: Max flow rate 2.5 GPM (9.5L/min @ 80psi). Fully compliant with ASME A112.18.1 and cUPC certification standards.
+
+
+    Eco-Friendly and Safe: Equipped with water-saving flow restrictor and check valves for anti-backflow and efficient water use.
+
+
+ 
+
+        )
+
+    [8248088789184] => Array
+        (
+            [title] => Wall-Mounted 3-Function Shower Set with Dual-Mode Overhead, Brass Body Jets & Hand Shower
+            [description] => 
+Product Description:
+
+Elevate your bathroom with this premium 3-function pressure balance shower system, engineered for comfort, durability, and style. Featuring a large 21/ 7/8in×10 1/4in overhead shower with dual Rainfall and Waterfall modes, this system delivers a truly immersive spa-like experience. The solid brass body jets offer powerful, adjustable spray coverage, while the L-shaped stainless steel hand shower ensures flexible cleaning and convenience.
+
+Precision-crafted from 304 stainless steel and copper, the set is equipped with a pressure balance valve to maintain water temperature and prevent scalding. Neoperl water-saving technology and backflow prevention ensure safe, eco-conscious performance. Certified to meet ASME A112.18.1 and cUPC standards.
+
+Key Features:
+
+
+
+
+    21.88in×10.25in Dual-Function Overhead Shower: Experience both Rainfall and Waterfall flows from a single extra-large overhead panel.
+
+
+    Pressure Balance Valve (Concealed): Equipped with a HANYU ceramic cartridge to deliver safe and stable water temperature.
+
+
+    Adjustable Brass Body Jets: Four square body jets in solid brass provide targeted massage and full-body coverage.
+
+
+    Stainless Steel L-Shaped Hand Shower: Durable, ergonomic, and paired with an adjustable holder for versatile use.
+
+
+    Solid Copper Valve Body: Built to last with exceptional corrosion resistance.
+
+
+    Heavy-Duty Design: Showerhead and components hold 22lb for 24 hours without deformation or leakage.
+
+
+What’s Included
+
+
+    Rain & Waterfall Overhead Shower Head
+
+    Concealed Pressure Balance Valve
+
+    L-Shaped Hand Shower
+
+    4 × Square Brass Body Jets
+
+    304 Stainless Steel Shower Arm, Hose, and Trim Panel
+
+
+Why Choose This Shower System?
+
+
+✓ Spa-level shower experience
+✓ High-performance, anti-scald pressure balance valve
+✓ Sleek, durable finishes to match modern interiors
+✓ Certified safe and water-efficient
+
+        )
+
+    [8247961026752] => Array
+        (
+            [title] => 12-Inch Ceiling-Mount Shower System with Handheld & Square Body Jets
+            [description] => 
+Product Description:
+
+Upgrade your bathroom with this luxury 3-function thermostatic shower system, featuring a 12-inch ultra-thin square rain shower, ceiling-mounted stainless steel arm, and matching square body jets. Built from premium 304 stainless steel and solid brass, this concealed system offers not just sleek modern aesthetics, but high performance and consistent temperature control thanks to the advanced Vernet thermostatic cartridge.
+
+With Neoperl® backflow prevention and full cUPC certification, this system ensures safety, efficiency, and durability—ideal for high-end residential or commercial spaces.
+
+Key Features:
+
+
+
+    Advanced Vernet Thermostatic Cartridge: Delivers stable, anti-scalding water temperature even with pressure fluctuations.
+
+
+    12" Ultra-Thin Square Overhead Shower (304 Stainless Steel): Ceiling-mounted for a modern look and complete rain coverage. Supports 22 lbs (10kg) for 24h without deformation.
+
+
+    Solid Brass Valve Body with Trim Panel (2mm Thick): Rust-proof and long-lasting, with embedded wall-depth indicators for precise installation.
+
+
+    Ultra-Thin 304 Stainless Steel Square Body Jets: Stylish and powerful, delivering full-body coverage.
+
+
+    Round Handheld Shower Included: Functional and minimal for flexible use.
+
+
+    Neoperl® Water-Saving Insert & Check Valve: Ensures hygienic, efficient flow and prevents contamination.
+
+
+        )
+
+    [8247956078784] => Array
+        (
+            [title] => 12-Inch Square Shower System with Rain Head, Sliding Bar & Body Jets, 304 Stainless Steel
+            [description] => 
+Product Description:
+
+Bring modern elegance and lasting performance to your bathroom with this premium square 3-function shower system, featuring a 12-inch ultra-thin square rain head, adjustable sliding bar with matching handheld, and large square body jets. Built from 304 stainless steel and solid brass, this system is designed for both visual appeal and exceptional durability. Certified to cUPC and ASME A112.18.1 standards, and enhanced with Neoperl backflow protection, it offers a spa-grade experience with full safety and reliability.
+
+Key Features:
+
+
+
+    Concealed Pressure Balance Valve: Ensures consistent temperature and anti-scalding performance. Hidden design offers a clean, modern wall look.
+
+
+    12” Ultra-Thin Square Rainfall Shower Head: Made from 304 stainless steel with a sleek, modern profile and brass swivel ball joint. Supports up to 22 lbs hanging load without deformation or leakage.
+
+
+    Adjustable Sliding Bar with Hand Shower: Stainless steel slide bar for hands-free use and customizable height, perfect for multiple users.
+
+
+    Ultra-Thin Square Body Jets (304 Stainless Steel): Delivers luxurious, full-body spray while maintaining a minimalist wall appearance.
+
+
+    Durable Brass & Stainless Steel Construction: Rust-proof, leak-proof, and corrosion-resistant for long-term reliability.
+
+
+        )
+
+    [8247955816640] => Array
+        (
+            [title] => 10” Round Shower Set with Sliding Bar, Body Jets & Hand Shower
+            [description] => 
+Product Description:
+
+Upgrade your bathroom with this premium 3-function round shower system, engineered for performance, comfort, and durability. Featuring a 10-inch ultra-thin stainless steel rainfall shower head, adjustable sliding bar with handheld shower, and large round body jets, this set is built with top-tier materials and thoughtful design to elevate your shower experience.
+
+Key Features:
+
+
+
+    3-Function Pressure Balance Valve: Seamlessly switch between rainfall shower, handheld sprayer, and body jets. Built-in HanYou ceramic cartridge and HanSen diverter ensure consistent temperature and smooth operation.
+
+
+    Ultra-Thin 304 Stainless Steel Rainfall Shower Head (10"): Modern round design with brass ball connector, corrosion-resistant, and capable of hanging 22 lbs without deformation or leakage.
+
+
+    Adjustable Sliding Bar with Handheld Shower: Stainless steel slide rail offers custom height and hands-free flexibility and handheld shower can adjust the angle, ideal for families.
+
+
+    Large Round Body Jets: Stylish 304 stainless steel ultra-thin side sprayers deliver spa-like body massage while maintaining sleek wall integration.
+
+
+    Solid Brass Valve Body: Provides enhanced durability and long-term reliability.
+
+
+    Concealed Installation: Clean wall appearance with easy-to-read rough-in markings on valve body.
+
+
+        )
+
+    [8247932387520] => Array
+        (
+            [title] => 3-Function Shower System with Tub Spout, 10-Inch Rainfall Head & Handheld, 304 SS
+            [description] => 
+Product Description:
+
+Upgrade your bathing space with this versatile 3-function pressure balance shower system, complete with a bathtub spout, a 10-inch round rainfall shower head, and a handheld sprayer. Made with premium 304 stainless steel and finished in a modern matte black/brushed nickel, this system ensures both functionality and lasting durability.
+
+Key Features:
+
+
+
+    3-Function Pressure Balance Valve: Allows seamless switching between rainfall shower, handheld sprayer, and tub spout. Ensures consistent water temperature with built-in HanYou ceramic cartridge and HanSen diverter for smooth control.
+
+
+    Bathtub Spout Included: Designed for efficient filling, with a direct outlet below the valve body, ideal for combination bath-shower setups.
+
+
+    10-Inch Round Rainfall Shower Head: Crafted from 304 stainless steel, provides full-body coverage. Features a brass ball joint to adjust spray direction.
+
+
+    Heavy-Duty Design: Engineered to support up to 22lb of hanging weight for 24 hours without leaking or deforming. Shower rod and panel built from 304 stainless steel.
+
+
+    Solid Copper Valve Body: Machined from solid copper to resist corrosion and daily wear, delivering long-lasting durability and smooth, reliable control.
+
+
+    Handheld Shower: Sleek, stainless steel build with flexible hose and matching adjustable bracket, offering targeted rinsing and easy cleaning.
+
+
+    Water-Saving & Anti-Backflow: Integrated Neoperl® aerator and check valve help conserve water and prevent reverse flow.
+
+
+    Safe & Certified: Complies with ASME A112.18.1 standards and cUPC certification, ensuring top-tier safety and quality.
+
+
+        )
+
+    [8247323427008] => Array
+        (
+            [title] => Wall-Mounted Shower System with Rainfall Head, Handheld & 3-Way Diverter – Pressure Balance Valve
+            [description] => 
+Product Description:
+
+Experience enhanced comfort and control with this 3-function pressure balance shower system, engineered with precision for safety, flexibility, and modern style. Crafted from durable 304 stainless steel, this shower set includes a rainfall shower head, handheld sprayer, and an advanced diverter valve – ideal for luxury and everyday use alike.
+
+Key Features:
+
+
+
+    Pressure Balance Shower Valve: Keeps water temperature consistent and prevents scalding. Built with a durable HanYou ceramic valve cartridge, plus depth indicator markings for accurate in-wall installation.
+
+
+    3-Function Diverter Valve: Easily switch between Rainfall Shower Mode and Handheld Shower.
+
+
+    Adjustable Shower Arm & Brass Ball Joint: Customize the overhead angle; supports up to 22lb for 24 hours without deformation or leaking.
+
+
+    High-Quality Stainless Steel Construction: All major components made from 304 stainless steel, including: Wall panel; Handheld shower; Adjustable bracket; Hose with brass connectors.
+
+
+    Water-Saving & Safety Enhancements: Equipped with Neoperl® aerator and backflow preventer for efficient water flow and hygiene protection.
+
+    Elegant Matte Black Finish: Sleek electroplated surface adds a premium touch and resists corrosion and fingerprints.
+
+
+Included Components:
+
+
+    Rainfall & Waterfall Shower Head
+
+    Handheld Shower
+
+    304 Stainless Steel Hose
+
+    3-Function Pressure Balance Valve
+
+
+        )
+
+    [8247225123008] => Array
+        (
+            [title] => 2-Function Shower System with 10" Rainfall Shower Head & Handheld, 304 SS, Brushed Nickel
+            [description] => 
+About Item
+
+Upgrade your shower experience with this modern 2-function pressure balance shower system, engineered for performance, safety, and durability. Featuring a 304 stainless steel construction, 10-inch round overhead rainfall shower, and a flexible handheld sprayer, this system blends function and form in a sleek brushed nickel finish.
+
+Key Features
+
+
+
+    Pressure Balance Valve: Provides consistent water temperature and anti-scald protection. Built with a reliable HanYou ceramic cartridge, plus clear in-wall depth markings for accurate installation.
+
+
+    2-Function Diverter: Switch easily between the 10-inch rainfall shower head and the handheld shower wand, offering flexibility and comfort.
+
+
+    Adjustable Shower Arm & Brass Ball Joint: Top spray angle can be customized for optimal coverage. Designed to hold up to 22lb of weight continuously for 24 hours without deforming or leaking.
+
+
+    High-Quality Materials: All key components are made from 304 stainless steel: 2mm-thick wall panel; Shower hose with brass connectors; Handheld shower & bar; Brass ball joint for top spray
+
+
+    Water-Saving & Safety Features: Equipped with Neoperl® aerator and check valve for efficient flow and backflow protection.
+
+
+    Elegant Brushed Nickel Finish: Electroplated surface resists corrosion and enhances the look of any bathroom.
+
+
+Included Components:
+
+
+    10" Overhead Shower Head
+
+    Shower Arm
+
+    Handheld Shower
+
+    Adjustable Shower Holder
+
+    304 Stainless Steel Hose
+
+    Pressure Balance Valve
+
+
+        )
+
+    [8247214571712] => Array
+        (
+            [title] => 3-Function Shower System with Rainfall Shower Head, Built-in Shelf & Handheld
+            [description] => 
+About Item
+
+Enhance your bathroom with this modern 3-function pressure balance shower system, designed for safety, convenience, and minimalist elegance. Featuring a 500×200mm ultra-thin rainfall & waterfall head, a handheld shower with integrated storage shelf, and durable 304 stainless steel construction, this system combines performance with practicality.
+
+Key Features
+
+
+
+    Pressure Balance Shower Valve: Prevents sudden temperature changes and protects against scalding. Uses a durable HanYou ceramic cartridge for smooth control and long-lasting use.
+
+
+    19.69''×7.87'' Rainfall Shower Head: Ultra-slim rectangular overhead shower made from0.37'' thick 304 stainless steel, delivering a powerful rain-like experience.
+
+
+    Handheld Shower with Built-in Shelf: Combines stainless steel hand shower and a space-saving storage rack for easy access to shampoo, soap, or body wash. Ideal for compact bathrooms and modern lifestyles.
+
+
+    3-Function Shower System: Effortlessly switch between Rainfall Mode, Waterfall Mode, and Handheld Shower for a fully customizable shower experience.
+
+
+    Water-Saving & Backflow Protection: Equipped with Neoperl® aerator and check valve for efficient water flow and hygiene.
+
+
+    Premium Finish: Sleek brushed nickel/matte black electroplated finish for a modern, minimalist look.
+
+
+    Easy Installation: Valve includes wall-depth indicators; all mounting components are included.
+
+
+Included Components:
+
+
+    Rainfall Shower Head
+
+    Pressure Balance Valve
+
+    Handheld Shower
+
+    304 Stainless Steel Shower Hose
+
+
+    Storage Shelf
+
+
+        )
+
+    [8246964519104] => Array
+        (
+            [title] => 3-Function Shower System with 10" Square Rainfall Head, L-Shaped Hand Shower & Body Jets
+            [description] => 
+Product Description:
+
+Engineered for performance, durability, and luxury — this thermostatic 3-function shower system offers Thermostatic Mixing Valve with Vernet® Cartridge, sleek aesthetics, and a full-body spa experience. Built from premium 304 stainless steel and solid brass, every component is designed for long-term reliability and modern elegance.
+
+Key Features:
+
+
+
+    3-Way Diverter: Easily switch between the ultra-thin square overhead shower, handheld spray, and square body jets.
+
+
+    10-Inch Square Overhead Shower: Ultra-thin stainless steel design with a solid brass ball joint for 360° swivel and high-pressure rain effect.
+
+
+    304 Stainless Steel L-Shaped Handheld Shower: Ergonomic and modern design, paired with a durable 304 stainless steel hose and brass connectors.
+
+
+    One-Piece Panel with 2mm Thickness: Durable 304 stainless steel panel with integrated control trim — engineered to support up to 22lb of weight for 24 hours without deformation or leakage.
+
+
+    360° Adjustable Square Body Jets: Provide powerful, relaxing water massage — ideal for a full-body spa shower.
+
+
+    🇩🇪 Neoperl® Water-Saving Aerator & Check Valve: Reduces water consumption while maintaining strong flow; prevents backflow for added hygiene and system protection.
+
+
+    Full Installation Kit Included: Everything you need: valve, trim plate, handle, diverter, body jets, hand shower, hose, shower arm, and 10"" square head.
+
+
+ 
+
+        )
+
+    [8246963175616] => Array
+        (
+            [title] => 3-Function Shower System with 10" Ultra-Thin Round Shower Head, Handheld & Body Jets
+            [description] => 
+About Item
+
+Experience the ultimate in comfort and control with our premium thermostatic 3-function shower system.
+304-grade shower hose with brass connectors, 2mm thick 304 stainless steel wall plate, 304 stainless steel slide bar, 304 stainless steel round handheld shower. Crafted with durability and performance in mind, this system features high-grade 304 stainless steel and solid brass components for long-lasting reliability and sleek modern aesthetics.
+
+Product Features
+
+
+
+    Thermostatic Mixing Valve: Delivers a consistent and safe water temperature, featuring a high-performance Vernet thermostatic cartridge with built-in check valve and Neoperl water-saving aerator.
+
+
+    3-Function Diverter: Easily switch between the ultra-thin overhead shower, handheld spray, and six body jets for a customizable showering experience.
+
+
+    10-Inch Round Overhead Shower: Crafted from ultra-thin stainless steel with a solid brass swivel ball joint; ensures wide, even coverage with a modern look.
+
+
+    Brass Components for Stability: Includes brass ball joints on the shower head and top spray, tested to support 22lb weight for 24 hours without deformation or leakage.
+
+
+    Round Body Jets: Provide a luxurious spa-like experience with full-body water massage.
+
+
+    Standard Compliance: Meets ASME A112.18.1 and is cUPC certified, ensuring high quality, safety, and performance for North American plumbing systems. Flow Rate: Max 2.5 GPM (9.5 L/min) @ 80 psi
+
+
+    What’s Included: Overhead Shower Arm, 10-Inch Ultra-Thin Round Shower Head, Thermostatic Mixing Valve (with wall-depth indicator markings), Round Body Jets, Handheld Shower with Hose and Mount
+
+
+ 
+
+        )
+
+    [8115521618112] => Array
+        (
+            [title] => Dual Head Wall Mount Shower System with 7 Spray Functions Shower Faucet
+            [description] => 
+Product Features
+
+
+
+    3-Way Diverter Shower Head: Experience ultimate control with the 3-way diverter shower head. Switch effortlessly between multiple settings for a customized and luxurious shower tailored to your preferences.
+
+
+    7-Spray Function: Enhance your shower with a dual-head faucet featuring 7 spray settings. Crafted from durable ABS material, it provides versatile and invigorating options for a personalized, refreshing experience.
+
+
+    High-Quality Valve Trim Kit: Achieve precise temperature control with the left handle for hot water, the right handle for cold, and the central switch to toggle between modes. Enjoy an efficient and customized shower every time.
+
+
+    Extra Long Stainless Steel Hose: Equipped with a 59-inch stainless steel hose and a durable alloy spout, this shower system ensures flexibility, durability, and reliable performance, providing you with an enjoyable shower experience.
+
+
+Specifications
+
+
+
+    Color: Matte Black/Brushed Gold/Brushed Nickel
+
+
+    Material: Stainless Steel, Brass, ABS (Acrylonitrile Butadiene Styrene)
+
+
+    Finish Type: Matte Black/Brushed Gold/Brushed Nickel
+
+
+    Mounting Type: Wall Mount
+
+
+        )
+
+)
+
+Importing Page : 3
+
+Array
+(
+    [8116830142656] => Array
+        (
+            [title] => Matte Black Waterfall Bathtub Shower Set with Hand Shower Wall-Mounted
+            [description] => 
+Product Features:
+
+
+
+    Water Flow & Pressure Control for Consistent Comfort: The brass valve kit automatically adjusts the flow rate, preventing water hammer and ensuring a balanced water temperature and pressure. The cUPC Certified cartridge provides reliable control and protection.
+
+
+    Modern Matte Black Shower System: Crafted from durable stainless steel, this shower system features a sleek matte black finish. The corrosion-resistant surface passes the 48-hour Salt Spray Test, ensuring long-lasting durability in humid environments.
+
+
+    Air Inject Technology for Enhanced Water Pressure: The rain shower head uses air inject technology to increase water pressure up to 2.5GPM by mixing air with water. This enhances water flow in both high and low-pressure areas while conserving water.
+
+
+    Easy Installation for Quick Setup: This shower system is designed for easy installation, featuring standard NPT 1/2” tapered threads. It is compatible with various plumbing types, including copper, PVC, and PEX, making setup hassle-free.
+
+
+    1-Year Warranty for Peace of Mind: We offer a 1-year warranty on the shower fixture and accessories. Our dedicated customer support team is available via email to assist with installation or any product-related inquiries.
+
+
+Specifications:
+
+
+
+    Color: Matte Black
+
+
+    Material: Brass, Stainless Steel, PVC
+
+
+    Finish Type: Matte Black
+
+
+    Mounting Type: Wall-Mounted
+
+
+    Included Components: 1/2” NPT connection、3.9” Tub Spout
+
+
+        )
+
+    [8116827357376] => Array
+        (
+            [title] => Matte Black High Flow Tub Faucet Set with Waterfall Shower Head and Handheld Shower
+            [description] => 
+Product Features:
+
+
+
+    Water Flow & Pressure Control for Safety: The brass valve kit is designed to prevent water hammer while maintaining balanced water temperature and pressure. Featuring a cUPC-certified cartridge, it ensures protection from sudden temperature changes.
+
+
+    Modern Matte Black Shower System: Crafted from stainless steel with a corrosion-resistant matte black finish, this shower system passes the 48-hour Salt Spray Test, ensuring it remains durable and resistant to rust in humid bathroom environments.
+
+
+    Air Inject Technology for Enhanced Pressure: Air inject technology boosts water pressure up to 2.5GPM by mixing air with water, providing a strong, consistent flow. This feature ensures optimal performance in both high and low-pressure areas while saving water.
+
+
+    Easy Installation for Quick Setup: Designed with standard NPT 1/2” tapered threads, this shower system is compatible with copper, PVC, and PEX pipes. It includes all necessary installation fixtures for an easy, hassle-free setup.
+
+
+    1-Year Warranty for Peace of Mind: We prioritize customer satisfaction and offer a 1-year warranty on the shower system. Our customer support team is available via email for any installation assistance or product-related queries.
+
+
+Specifications:
+
+
+
+    Color: Matte Black
+
+
+    Material: Brass, Stainless Steel, PVC
+
+
+    Finish Type: Matte Black
+
+
+    Mounting Type: Wall-Mounted
+
+
+    Included Components: 1/2” NPT, 6.1” Curved Spout
+
+
+        )
+
+    [8116698972352] => Array
+        (
+            [title] => Single Handle Dual Control Floor Mounted Freestanding Bathtub Faucet with Hand Shower
+            [description] => 
+Product Features:
+
+
+
+    cUPC Certified Spool for Safe, Reliable Performance: Equipped with a cUPC certified spool, this system meets strict safety and performance standards, ensuring a reliable and high-quality shower experience every time.
+
+
+    Hot and Cold Water Control for Easy Adjustment: Featuring a single handle with double control, this design allows you to quickly and easily adjust the water temperature, providing flexibility to meet various bathing preferences.
+
+
+    Durable Copper Material for Long-Lasting Use: Crafted from high-quality copper, the main body offers exceptional durability, corrosion resistance, and resistance to daily wear, ensuring the system remains reliable for years.
+
+
+    Stainless Steel Hose for Flexibility and Durability: The 1.5-meter long stainless steel hose provides great flexibility and ease of use, while its durable construction ensures long-term reliability and resilience, even with frequent use.
+
+
+    360-Degree Rotating Outlet Nozzle for Optimal Comfort: The outlet nozzle can be freely rotated 360 degrees, providing a wider range of spray angles. This feature enhances your bathing experience, offering greater comfort and flexibility.
+
+
+Specifications:
+
+
+
+    Color: Black
+
+
+    Finish Type: Black
+
+
+    Material: Copper
+
+
+    Certification: cUPC Certified Spool
+
+
+        )
+
+    [8116690976960] => Array
+        (
+            [title] => 360 Degree Rotating Single Handle Dual Control Free Standing Bathtub Faucet in Brushed Nickel
+            [description] => 
+Product Features:
+
+
+
+    360° Rotating Water Outlet for Flexible Water Flow: Enjoy the flexibility of a 360° rotating water outlet that allows you to easily adjust the direction of the water flow, providing improved convenience and customization for your shower.
+
+
+    Hot and Cold Water Adjustment for Complete Control: This shower system features a single handle with dual control, making it easy to adjust both hot and cold water. Perfect for achieving the ideal temperature to meet your bathing preferences.
+
+
+    Premium Copper Material for Durability: Crafted from high-quality copper, the main body of this shower faucet offers superior corrosion resistance and long-lasting durability. This ensures reliable performance and a product that will stand the test of time.
+
+
+    Easy Installation for Convenient Setup: Designed for simplicity, this bathtub faucet is easy to install in various bathroom settings. Its clean, modern design is perfect for enhancing the style and functionality of any bathroom.
+
+
+    Quick Bathtub Filling with High Flow Performance: The optimized water outlet and high-flow performance allow for fast and efficient water flow, making it easy to quickly fill your bathtub when needed. Enjoy a more efficient and time-saving bathing experience.
+
+
+Specifications:
+
+
+
+    Color: Brushed Nickel
+
+
+    Materials: Copper + Stainless Steel
+
+
+    Certification: cUPC Certified Valve Core
+
+
+        )
+
+    [8116655227072] => Array
+        (
+            [title] => Single Handle Dual Control Floor Mounted Freestanding Bathtub Faucet
+            [description] => 
+Product Features:
+
+
+
+    cUPC Certified Spool for Reliable Performance: Equipped with a cUPC certified spool, this shower faucet guarantees that all safety and performance standards are met. Enjoy peace of mind with a reliable, high-quality component that ensures optimal function.
+
+
+    360° Rotating Outlet Pipe for Flexible Control: The 360° rotating outlet pipe offers flexibility in directing water flow. Easily adjust the angle of the shower for convenience, improving the overall showering experience with added versatility.
+
+
+    Hot and Cold Water Regulation for Complete Comfort: Designed with a single handle and double control, this system makes it simple to adjust the temperature to your liking. Effortlessly balance hot and cold water to create the perfect bathing environment.
+
+
+    Premium Copper Construction for Durability: Crafted from high-quality copper, the main body of this bathtub faucet boasts superior corrosion resistance and outstanding durability, ensuring reliable use and long-lasting performance over time.
+
+
+    Easy Installation for Effortless Setup: This shower system features a simple design that makes installation a breeze. Compatible with various bathroom setups, it enhances the style and functionality of your bathroom with minimal effort.
+
+
+Specifications:
+
+
+
+    Color: Matte Black/Brushed Gold
+
+
+    Finish Type: Matte Black/Brushed Gold
+
+
+    Material: Copper
+
+
+    Certification: cUPC Certified Spool
+
+
+        )
+
+    [8116649492672] => Array
+        (
+            [title] => Single Handle Tub Faucet with Hand Shower and Openwork Platform
+            [description] => 
+Product Features:
+
+
+
+    Dual Function Pressure Balancing Valve for Safe Showers: Our advanced dual-function pressure balancing valve ensures stable water pressure throughout your shower. It maintains a perfect balance of temperature and water flow, preventing sudden temperature fluctuations that could cause discomfort or burns.
+
+
+    cUPC Certified Spool for Guaranteed Safety: The cUPC certified spool meets high industry standards for both safety and performance, ensuring a reliable and safe showering experience for you and your family. Enjoy peace of mind with this trusted component.
+
+
+    Premium Copper Shower Seat for Enhanced Durability: Crafted from high-quality copper, the shower seat is designed for long-lasting durability. Its corrosion and wear resistance enhance its lifespan, providing a stable and reliable seating solution in your shower.
+
+
+    SUS304 Stainless Steel Handheld Showerhead: The handheld shower nozzle is made from SUS304 stainless steel, offering superior corrosion resistance and ease of cleaning. This ensures long-term beauty and reliable functionality, keeping your shower experience hassle-free.
+
+
+    Flexible 1.5m Stainless Steel Hose: The included 1.5-meter stainless steel hose is highly resistant to heat and pressure. It provides flexibility for easy use in various bathroom settings, allowing you to comfortably adjust the shower according to your needs.
+
+
+Specifications:
+
+
+
+    Color: Matte Black/Brushed Gold
+
+
+    Finish Type: Matte Black/Brushed Gold
+
+
+    Materials: Copper, SUS304 Stainless Steel
+
+
+    Certification: cUPC Certified Spool
+
+
+        )
+
+    [8116646510784] => Array
+        (
+            [title] => Matte Black Single Handle Tub Faucet with Hand Shower and Storage Station
+            [description] => 
+Product Features:
+
+
+
+    Dual Function Pressure Balancing Valve for Safe Showers: Our advanced dual-function pressure balancing valve ensures a stable water pressure, providing a consistent flow of water during your shower. This system helps maintain balanced temperature, avoiding sudden burns or cold water shock.
+
+
+    cUPC Certified Spool for Safety and Reliability: The high-quality cUPC certified spool meets stringent safety and performance standards. This ensures your shower system operates safely, efficiently, and reliably for years to come.
+
+
+    Premium Copper Shower Seat for Durability: Crafted from high-quality copper, the shower seat is designed to resist corrosion and wear. This enhances the product’s durability, stability, and long-lasting performance, making it an ideal addition to your bathroom.
+
+
+    SUS304 Handheld Showerhead for Flexibility and Comfort: Our handheld shower nozzle is made from SUS304 stainless steel, known for its superior corrosion resistance. It's also easy to clean, ensuring your showerhead stays in pristine condition and offers reliable performance over time.
+
+
+    Flexible 1.5m Stainless Steel Hose for Convenience: Equipped with a 1.5m stainless steel hose, this system provides high temperature and pressure resistance. It offers flexibility and ease of use, making it perfect for a variety of bathroom setups.
+
+
+Specifications:
+
+
+
+    Color: Matt Black
+
+
+    Finish Type: Matt Black
+
+
+    Materials: Copper, SUS304 Stainless Steel
+
+
+    Certification: cUPC Certified Spool
+
+
+        )
+
+    [8115705741504] => Array
+        (
+            [title] => 6-in Wall Mount Square Shower Faucet Set with Tub Spout Faucet Wall Mount Shower Head
+            [description] => 
+Product Features:
+
+
+
+    Innovative Shower Technology for Enhanced Comfort: Our shower system incorporates advanced pressure balancing valves that enhance water pressure, creating larger drops and wider shower coverage. Enjoy a more comfortable, invigorating shower experience.
+
+
+    Constant Temperature Control for Stability: With intelligent monitoring of hot and cold water pressures, our system ensures stable water temperature throughout your shower. This constant temperature control prevents sudden changes, offering continuous relaxation.
+
+
+    High-Quality Construction for Durability: Crafted from lead-free brass and high-strength ABS material, this shower system is built to last. Designed to meet cUPC standards, its multi-layer coating prevents corrosion, ensuring a sleek, long-lasting appearance.
+
+
+    Easy to Clean with Silicone Nozzles: Our shower head features a silicone nozzle design that makes maintenance simple. Easily wipe away calcifications and minerals without complicated cleaning procedures, keeping your shower in top condition.
+
+
+    Quick Tub Filling for Efficiency: Optimized water outlet design and high flow performance enable quick tub filling, efficiently meeting your needs without delays.
+
+
+Specifications
+
+
+
+    Color: Matte Black/Brushed Gold/Brushed Nickel
+
+
+    Material: ABS, Lead-free brass
+
+
+    Certification Standard: cUPC Certified
+
+
+    Flow rate: 2.5GPM
+
+
+        )
+
+    [8115540492480] => Array
+        (
+            [title] => Three-Handle Shower System With Diverter Handle And 5-Spray Function Heads
+            [description] => 
+Product Features:
+
+
+
+    Premium All-Brass Main Body & Cartridge: The shower faucet features a solid brass faucet body and durable brass valve cartridge for superior corrosion resistance, ensuring long-lasting performance in your bathroom.
+
+
+    Convenient Three-Handle Design: Left handle for hot water, right handle for cold water, and a center diverter handle to easily switch between tub and shower functions — intuitive and user-friendly.
+
+
+    Dual 5-Function ABS Shower Heads: Equipped with versatile dual shower heads offering 5 spray settings, delivering a customizable shower experience from gentle mist to powerful massage.
+
+
+    Rust-Resistant SUS304 Stainless Steel Hose: Includes a flexible 1.5-meter (59.06-inch) stainless steel hose made of premium SUS304, ideal for extended reach and hassle-free cleaning.
+
+
+    Durable Alloy Tub Spout with Modern Look: The sturdy alloy tub spout ensures steady high-flow water delivery, complemented by a sleek finish that enhances any bathroom décor.
+
+
+Specifications
+
+
+
+    Color: Matte Black/Brushed Gold/Brushed Nickel
+
+
+    Material: Stainless Steel, Brass, Acrylonitrile Butadiene Styrene (ABS)
+
+
+    Mounting Type: Wall Mount
+
+
+    Flow rate: 2.5GPM
+
+
+    Item Weight: 7.83 pounds
+
+
+    Package Dimensions: 17.28x 10.12 x 5.35inches
+
+
+        )
+
+    [8115507167424] => Array
+        (
+            [title] => 10 Spray Modes Wall Mount Shower and Bathtub Faucet Set
+            [description] => 
+Product Features
+
+
+
+    10 Spray Modes: Enjoy a fully customizable shower with 10 spray modes, including soft, medium, and strong options to meet your personal preferences and enhance comfort.
+
+
+    Innovative Shower Technology: Advanced pressure balancing valves optimize water pressure, delivering larger droplets and broader coverage for a more consistent and enjoyable shower experience.
+
+
+    Constant Temperature Control: Smart temperature monitoring ensures that the hot and cold water pressures remain stable throughout your shower, avoiding discomfort and providing continuous relaxation.
+
+
+    High-Quality Construction: Crafted from lead-free brass and high-strength ABS, our shower system meets cUPC standards for durability and environmental safety. A multi-layer coating resists corrosion while maintaining a sleek matte black finish.
+
+
+    Easy to Clean: The silicone nozzle design makes maintenance easy—simply wipe away mineral buildup and calcifications without the hassle of complicated cleaning processes.
+
+
+    Quick Tub Filling: The optimized water outlet design and high-flow performance provide fast, efficient water flow, ensuring quick tub filling whenever needed.
+
+
+Specifications
+
+
+
+    Color: Matte Black/Brushed Nickel
+
+
+    Finish Type: Matte Black/Brushed Nickel
+
+
+    Material: ABS, Copper, Stainless Steel
+
+
+    Certification Standard: cUPC Certified Spool
+
+
+        )
+
+    [8115423576256] => Array
+        (
+            [title] => 10 Spray Modes Wall Mount Rain Showerhead and Bathtub Faucet Set
+            [description] => 
+Product Features
+
+
+
+    10 Spray Modes: Choose from soft, medium, and strong options to meet your specific shower needs. Enjoy a customizable shower experience that enhances comfort and relaxation.
+
+
+    Innovative Shower Technology: Our advanced pressure balancing valves optimize water pressure, providing larger droplets and wider coverage. Experience consistent warmth and comfort during every shower.
+
+
+    Constant Temperature Control: Smart temperature control monitors hot and cold water pressure to maintain a stable temperature throughout your shower. Enjoy continuous relaxation without unexpected temperature fluctuations.
+
+
+    High-Quality Construction: Crafted from lead-free brass and high-strength ABS, this shower system meets cUPC standards for durability and environmental safety. A multi-layer coating prevents corrosion while maintaining a sleek appearance.
+
+
+    Easy to Clean: Designed with silicone nozzles, our showerhead is easy to maintain. Simply wipe away mineral buildup and calcifications for hassle-free cleaning.
+
+
+    Quick Tub Filling: The optimized water outlet design and high-flow performance ensure fast and efficient water flow, easily meeting your needs for quick tub filling.
+
+
+Specifications
+
+
+
+    Color: Matte Black/Brushed Gold/Brushed Nickel
+
+
+    Finish Type: Matte Black/Brushed Gold/Brushed Nickel
+
+
+    Material: Copper and ABS
+
+
+    Certification Standard: cUPC Certified Spool
+
+
+        )
+
+    [8114897846464] => Array
+        (
+            [title] => Shower System with 5-Function Handheld & Rainfall Shower Head, High-Flow Tub Spout, cUPC Certified Cartridge, 2.5GPM
+            [description] => 
+Product Features
+
+
+
+    Quick Filling Bath Nozzle: Effortlessly fill your bath with our quick-filling nozzle, designed to save you time. The user-friendly lift knob diverts water with ease.
+
+
+    High-Quality Brass Valves: Experience durability with our non-corrosive brass shower valve. The elegant finish not only ensures longevity but also enhances your bathroom's aesthetic.
+
+
+    Pressure Balancing Valve with Anti-Scalding Protection: Stay safe during your showers with our pressure balancing valve, which prevents sudden temperature fluctuations and reduces the risk of burns. Enjoy a quieter experience with minimized water hammer noise.
+
+
+    Versatile Shower Options: Customize your shower experience with our 5-Function Showerhead and Handheld Shower. Both options provide five spray settings, catering to various preferences for a luxurious shower.
+
+
+    304 Stainless Steel Shower Hose: Made from premium 304 stainless steel, this 59.06 inch hose is flexible, rust-resistant, and tangle-free—perfect for easy, long-lasting use.
+
+
+    PVD Anti-Corrosion Finish: Advanced PVD coating with ceramic glaze delivers a sleek, scratch-resistant surface that resists stains and maintains its shine over time.
+
+
+Specifications
+
+
+
+    Color: Matte Black/Brushed Gold/Brushed Nickel
+
+
+    Material: Copper and ABS
+
+
+    Certification Standard: cUPC Certified valve core
+
+
+    Flow rate: 2.5GPM
+
+
+        )
+
+    [8114896339136] => Array
+        (
+            [title] => 10-Setting Handheld Showerhead and Bathtub Faucet Set
+            [description] => 
+Product Features
+
+
+
+    Quick-Filling Bath Spout: Effortlessly fill your bath quickly with the lift knob, diverting water efficiently to save time.
+
+
+    Premium Brass Valve: Constructed from high-quality brass, this valve is durable and non-corrosive. The brushed gold / matte black finish adds a luxurious touch to your bathroom.
+
+
+    Pressure-Balancing Valve with Anti-Scald Protection: Designed to prevent sudden temperature shifts and reduce water hammer noise, ensuring a safe, comfortable shower experience.
+
+
+    10-Setting Showerhead and Handheld Shower: Both the overhead and handheld showerheads offer 10 unique spray options, allowing for a customized shower experience to fit every preference.
+
+
+Specifications
+
+
+
+    Color: Brushed Gold / Matte Black
+
+
+    Finish Type: Brushed Gold/ Matte Black
+
+
+    Material: Copper + ABS
+
+
+    Certification Standard: cUPC Certified Spool
+
+
+        )
+
+    [8114893553856] => Array
+        (
+            [title] => 9-Function Handheld Showerhead and Bathtub Faucet Set
+            [description] => 
+Product Features
+
+
+
+    Quick-Filling Bath Nozzle: Efficiently fills the tub in minimal time with an easy-to-use lift knob for water diversion.
+
+
+    Premium Brass Valves: Made from high-quality, non-corrosive brass, the shower valve in brushed nickel / brushed gold finish enhances durability and bathroom elegance.
+
+
+    Pressure-Balancing Valve with Anti-Scald Protection: Ensures consistent water temperature and pressure, minimizing sudden fluctuations and preventing burns.
+
+
+    9-Function Showerhead and Handheld Shower: Offers 9 adjustable spray settings on both showerheads, providing a personalized and luxurious shower experience.
+
+
+Specifications
+
+
+
+    Color: Brushed Nickel/Brushed Gold
+
+
+    Finish Type: Brushed Nickel/Brushed Gold
+
+
+    Material: Copper + ABS
+
+
+    Certification Standard: cUPC Certified Spool
+
+
+        )
+
+    [8114882773184] => Array
+        (
+            [title] => 7-Setting Multi-Function Shower System With Handheld Shower And Dual Showerheads
+            [description] => 
+Product Features
+
+
+
+    Dual Showerhead with Three-Way Diverter: Effortlessly switch between the overhead shower, handheld shower, or use both simultaneously with the convenient three-way diverter for ultimate flexibility.
+
+
+    Adjustable Overhead Stand: The angle-adjustable stand allows easy customization to accommodate both children and adults, ensuring the perfect shower experience for all.
+
+
+    High-Quality Brass Valve: Made from durable, non-corrosive brass with an elegant brushed nickel/brushed gold/matte black finish, this shower valve enhances bathroom aesthetics while delivering long-lasting performance.
+
+
+    Pressure-Balancing Valve with Anti-Scald Protection: Prevents sudden temperature fluctuations, ensuring safe water pressure and protecting against burns, while also reducing water hammer noise.
+
+
+    7-Setting Showerhead and Handheld Shower: Both the overhead and handheld showers feature 7 different spray options, offering versatile water flows to suit individual preferences.
+
+
+Specifications
+
+
+
+    Finish Type: Brushed Nickel/Brushed Gold/Matte Black
+
+
+    Material: Copper and SUS304 Stainless Steel
+
+
+    Certification Standard: cUPC Certified Spool
+
+
+    Item Weight: 6 pounds
+
+
+    Package Dimensions: 17.28x 10.12 x 5.35 inches
+
+
+        )
+
+    [8113932828864] => Array
+        (
+            [title] => Wall Mounted Multifunctional Complete Shower System with Drain Valve in Matte Black
+            [description] => 
+Product Features
+
+
+
+    Stylish Modern Design: Features a round fixed shower head and handheld shower for a sleek, contemporary look.
+
+
+    Durable Construction: Built with a brass rough-in valve and ceramic disc, ensuring long-term reliability and leak resistance.
+
+
+    Easy Maintenance: Equipped with silicone nozzles that prevent hard water and scale buildup, keeping your shower clean and efficient.
+
+
+    Comfortable Showering: Fixed shower head provides a natural shower experience, eliminating the need to bend.
+
+
+    Water-Saving Air Injection Technology: Reduces water usage by up to 30%, delivering full-body coverage with a soft, luxurious flow.
+
+
+    Versatile Handheld Shower: Handheld shower head features 360° rotation, kink-resistant hose, and exceptional durability against abrasion, corrosion, and explosion.
+
+
+    Effortless Installation: Wall-mounted design allows for easy installation without requiring complex ceiling mounts.
+
+
+Specifications
+
+
+
+    Adjustable Water Flow: Yes
+
+
+    Primary Material: Brass
+
+
+    Finish Options: Matte Black
+
+
+    Connection Size: NPT 1/2" (US standard)
+
+
+    Included Components: Fixed shower head, handheld shower head, rough-in valve (brass with ceramic disc), wall supply elbow, handle(s), flange/escutcheon
+
+
+        )
+
+    [8113929879744] => Array
+        (
+            [title] => Double Hole Double Handle Brushed Gold Bathtub Faucet with Handheld Shower
+            [description] => 
+Product Features
+
+
+
+    Single-Function Handheld Shower: Constructed from copper and stainless steel, offering a steady 1.8 GPM flow rate for a satisfying shower experience.
+
+
+    Stable Hand Stand: Made from durable copper for reliable fixation, keeping the handheld shower secure and stable.
+
+
+    Bathtub Faucet Performance: Copper faucet with a 5.9 GPM flow rate. Features a rotatable design, making it easy and convenient to use.
+
+
+    High-Quality Ceramic Spool: Built with a ceramic spool for enhanced durability and excellent sealing to prevent leaks.
+
+
+    Use Limitations: Handheld shower and bathtub faucet cannot run water simultaneously. Product does not include a stop valve and lacks certification.
+
+
+Specifications
+
+
+
+    Material: Stainless steel, copper, zinc alloy
+
+
+    Color: Brushed gold
+
+
+    Installation: Wall-mounted
+
+
+        )
+
+    [8113927979200] => Array
+        (
+            [title] => Matte Black Wall Mounted Two Function Bathroom Shower System
+            [description] => 
+Product Features
+
+
+
+    Premium Shower Design: Features a 10-inch stainless steel square thick-edge top spray and square copper hand shower, paired with a flat square 304 shower tube and fixed seat for a sturdy and stylish look.
+
+
+    Flexible Connection Design: Custom NPT threaded G3/4 pin entry level and square 304 decorative cup allow for versatile installation to meet different requirements.
+
+
+    Excellent Water Flow Performance: Delivers a flow rate of 1.8 GPM with an NSF-certified spool rated for up to 500,000 uses. Passed a 24-hour acid salt spray test, achieving a corrosion resistance rating of 10.
+
+
+    Convenient Cleaning and Rotation: The water nozzle and hand shower seat can rotate 360°. The copper hand shower includes a silicone outlet, which is easy to clean and helps prevent clogging.
+
+
+    Multi-Function Control System: Single-handle design with left hot and right cold water adjustment. Features a 45° lift operation and three-speed water valve to switch between outlet nozzle, hand-held, and top spray functions. Includes a 1.5m anti-tangle encrypted shower hose and a universal rotating water inlet adapter for added convenience.
+
+
+Specifications
+
+
+
+    Material: Stainless steel, copper, zinc alloy
+
+
+    Color: Matte black
+
+
+    Installation: Wall-mounted
+
+
+    Components Included: 10-inch square thick-edge top spray, square copper hand shower, flat square 304 shower tube, fixed seat, square ABS shower, flat ABS slide sleeve, 1.5m encrypted shower hose, custom NPT thread G3/4 inlet adapter, square 304 decorative cup
+
+
+        )
+
+    [8113293197504] => Array
+        (
+            [title] => Round Matte Black Three-hole Double Handle Concealed Bathtub Faucet with Valve
+            [description] => 
+Product Features
+
+
+
+    CUPC Certification: Control valve body is CUPC certified for safety and reliability, featuring a CUPC-certified pressure balancing valve. The entire product meets high industry standards.
+
+
+    Superior Outlet Performance: Offers strong water flow with an embedded depth of 2 inches, 80 psi, outlet nozzle flow rate of 13.71 L/min, and hand-held shower flow rate of 13.4 L/min.
+
+
+    Long-Lasting Durability: Built for longevity with a spool life of up to 500,000 uses. Passed 24-hour acid salt spray test, achieving a corrosion resistance rating of 10 for extended use.
+
+
+    Convenient, User-Friendly Design: Features a detachable water-saving bubbler for foamy water flow. The outlet nozzle and hand-held shower rotate 360°, and the handle design allows easy temperature adjustment (hot left, cold right).
+
+
+Specifications
+
+
+
+    Material: Stainless steel, copper, zinc alloy
+
+
+    Color: Matte black
+
+
+    Installation Method: Wall-mounted
+
+
+    Components Included: CUPC spool, thickened copper waterfall nozzle, copper hand shower, and socket
+
+
+        )
+
+)
+
+Importing Page : 4
+
+Array
+(
+    [7448172003520] => Array
+        (
+            [title] => 10-Inch Wall Mounted Shower System with Rainfall & Handheld, Matte Black
+            [description] => 
+Product Features
+
+
+
+    Modern Dual Shower System: Features a sleek 10-inch high-pressure rain shower head and a handheld shower for versatile bathing options.
+
+
+    Premium Materials for Durability: Constructed from solid brass and stainless steel for long-lasting performance and corrosion resistance.
+
+
+    Stylish Matte Black Finish: Electroplated matte black surface resists fingerprints and water spots, keeping your shower looking pristine.
+
+
+    Adjustable Shower Head: Easily adjust the angle to your preferred position for a personalized and comfortable shower experience.
+
+
+    Effortless Control: Single lever handle provides smooth and precise control over water flow and temperature.
+
+
+    Convenient Diverter Included: Easily switch between the overhead rain shower and handheld spray with the integrated diverter.
+
+
+    Complete Installation Kit: Includes all necessary components for easy installation, perfect for new builds or bathroom renovations.
+
+
+Specifications
+
+
+
+    Shower Head Size: 10 inches
+
+
+    Shower Type: Dual (wall-mounted rain shower + handheld)
+
+
+    Material: Solid Brass & Stainless Steel
+
+
+    Finish: Matte Black
+
+
+    Flow Type: High-Pressure Rain Shower
+
+
+    Control Type: Single Lever Handle
+
+
+    Diverter: Included (switch between showerhead and handheld)
+
+
+        )
+
+    [7474611617984] => Array
+        (
+            [title] => Matte Black Slide Bar Three Functions Shower Faucet Set With Rough-In Valve
+            [description] => 
+Product Features:
+
+
+
+    Elegant Design: The shower system features a traditional design with unique decorative elements, creating a luxurious aesthetic while combining modern functionality for an elevated shower experience.
+
+
+    High-Pressure Bathtub Faucet: The included bathtub faucet boasts a high-pressure flow rate, allowing you to fill your tub in just a few minutes for ultimate convenience.
+
+
+    Adjustable Hand Shower: Equipped with a slide bar, the handheld shower can be easily adjusted up and down on the rail, accommodating both children and adults for a personalized shower experience.
+
+
+    Comprehensive Shower Coverage: This complete shower system includes a 7.48-inch square shower head, handheld shower, and tub spout, providing expansive coverage and intense water flow for a truly invigorating shower.
+
+
+    Three Functionality Settings: Enjoy versatility with three spray settings: rain shower, full spray massage, and fast massage. The silicone nozzles feature a self-cleaning design for easy maintenance.
+
+
+    Lead-Free Material: Constructed with solid brass, this shower faucet set is lead-free, ensuring durability, resistance to tarnish and rust, and safety for you and your family.
+
+
+    Simple Installation: Standard NPT 1/2’’ tapered threads make the connectors compatible with most existing shower systems. All necessary hardware and parts are included for a hassle-free installation.
+
+
+Specifications:
+
+
+
+    Shower Head Size: 7.48 inches * 11.81 inches
+
+
+    Material: Solid brass, lead-free
+
+
+    Spray Settings: Rain shower, full spray massage, fast massage
+
+
+    Adjustable Features: Handheld shower with slide bar for height and angle adjustments
+
+
+    Installation Type: Compatible with standard NPT 1/2’’ tapered threads
+
+
+    Included Components: Shower head, handheld shower, tub spout, slide bar, connectors, and installation hardware
+
+
+        )
+
+    [7474609291456] => Array
+        (
+            [title] => 1-Spray Patterns 5.91 in. Wall Mount Dual Shower Heads in Spot Resist
+            [description] => 
+Product Features:
+
+
+
+    Luxurious Rainfall Experience: Enjoy a soothing cascade reminiscent of a tropical downpour with the 5.91-inch rainfall shower head, crafted from heavy-duty solid 304 stainless steel for durability and easy maintenance.
+
+
+    Premium Construction: Built from sturdy brass and finished with a premium color that resists tarnishing and corrosion, this dual shower head set ensures long-lasting performance.
+
+
+    Versatile Functionality: The 2-function design allows you to effortlessly switch between the top rainfall shower and handheld shower for a personalized bathing experience.
+
+
+    Safety Features: Equipped with pressure balance valves that protect against scalding and cold shocks, ensuring a safe shower for you and your family.
+
+
+    Easy Installation: Designed for wall-mounted installation with standard NPT 1/2 connections, making it compatible with most shower setups for hassle-free installation.
+
+
+Specifications:
+
+
+
+    Flow Rate: 1.8 GPM
+
+
+    Shower Head Size: 5.91 inches
+
+
+    Material: Solid 304 stainless steel and brass
+
+
+    Installation Method: Wall-mounted
+
+
+    Connections: Standard NPT 1/2
+
+
+        )
+
+    [7474570363072] => Array
+        (
+            [title] => Tub Filler Faucet with Handheld Shower Bathtub Set with Rough-in Valve
+            [description] => 
+Product Features
+
+
+
+    Indulge in Luxury: Transform your daily shower into a spa-like experience with this wall mount bathtub faucet set featuring a handshower. Designed for both style and functionality, this luxurious shower system elevates your bathroom to new heights.
+
+
+    Advanced Pressure Balance Valve (cUPC Certified): Enjoy a consistent, soothing water temperature with our advanced pressure balance valve. The cUPC certification ensures protection against sudden temperature changes, providing a safe and relaxing shower experience.
+
+
+    Captivating Waterfall Spout: The extra-long 7.28-inch waterfall spout, crafted from premium brass, not only adds elegance to your bathroom but also enables fast and efficient bathtub filling. Experience the tranquil beauty of a cascading waterfall in your own home.
+
+
+    Personalized 3-Mode Handheld Shower: Customize your shower with three water settings—gentle rainfall, revitalizing massage, or a combination of both. Relieve the stress of the day with a shower that suits your preferences.
+
+
+    Elegant and Durable Design: The brushed nickel/ Matte Black/ Brushed Gold finish resists fingerprints and fading, ensuring the faucet maintains its sophisticated look for years. The elegant black surface adds a modern touch, seamlessly fitting into any bathroom decor.
+
+
+Specifications
+
+
+
+    Waterfall Spout: 7.28 inches, made from high-quality brass
+
+
+    Material: Premium brass faucet and valve for durability and longevity
+
+
+    Water Temperature Control: Advanced pressure balance valve, cUPC certified
+
+
+        )
+
+    [7474568593600] => Array
+        (
+            [title] => 10 inch Tub Spout Shower System Kit with Rough-in Valve Wall Mounted
+            [description] => 
+Product Features
+
+
+
+    Luxury Redefined: Transform your shower into a spa-like retreat with this 10-inch tub spout shower kit, designed with a sleek rain shower system that enhances your daily routine.
+
+
+    Pressure Balance for Safety: Equipped with a cUPC-certified pressure balance valve cartridge, this shower system maintains a consistent water temperature, preventing sudden changes caused by other water use in the home. Enjoy a safe, uninterrupted shower every time.
+
+
+    Waterfall Tub Spout: The 4.72-inch waterfall spout, crafted from premium stainless steel, quickly fills your tub with ease, combining functionality with elegance to elevate your bathroom’s ambiance.
+
+
+    360° Swivel Rain Shower Head: The 10-inch rain shower head provides a full-body, invigorating shower experience. Its 360° swivel design offers flexible positioning, ensuring complete relaxation with every use.
+
+
+    Modern Finish: Designed with a contemporary finish, this shower system complements various bathroom styles and resists fading and fingerprints. The brass valve construction adds durability, making it a stylish and long-lasting addition to your space.
+
+
+Specifications
+
+
+
+    Shower Head Size: 10 inches (stainless steel, 360° swivel)
+
+
+    Tub Spout Length: 4.72 inches (premium stainless steel waterfall spout)
+
+
+    Finish: Matte Black/ Brushed Nickel/ Brushed Gold
+
+
+    Valve Cartridge: Pressure balance, cUPC certified for consistent water temperature
+
+
+    Material: High-quality stainless steel, brass valve for durability
+
+
+        )
+
+    [7474567381184] => Array
+        (
+            [title] => 8 Inch Wall Mount Shower System with Tub Spout and Shower Valve Trim Kit
+            [description] => 
+Product Features:
+
+
+
+    Luxurious Rainfall Experience: Enjoy the soothing cascade of water from the 8 in. rainfall shower head, crafted from heavy-duty solid 304 stainless steel for durability and a pristine shower every time.
+
+
+    Premium Construction: Made from robust brass and finished with a tarnish- and corrosion-resistant coating, ensuring long-lasting performance and elegance in your bathroom.
+
+
+    Safety and Comfort: Equipped with pressure balance valves, this shower head set provides reliable protection against scalding and cold shocks, ensuring a safe bathing experience for you and your family.
+
+
+    Versatile Design: The 2-function shower combo allows you to effortlessly switch between the top rainfall shower and the hand shower, providing a customizable and enjoyable showering experience.
+
+
+    Easy Installation: Designed for wall-mounted installation with standard NPT 1/2 connections, making it compatible with most shower setups for hassle-free installation.
+
+
+    Low Maintenance: Flexible silicone jets prevent lime scale build-up, making cleaning simple and ensuring that your shower remains in top condition with minimal effort.
+
+
+Specifications:
+
+
+
+    Flow Rate: 1.8 GPM
+
+
+    Shower Head Size: 8 inches
+
+
+    Material: Solid 304 stainless steel and brass
+
+
+    Finish: Premium color finish resistant to tarnishing and corrosion
+
+
+    Connection Type: Standard NPT 1/2 connections
+
+
+    Installation Method: Wall-mounted
+
+
+        )
+
+    [7474553290944] => Array
+        (
+            [title] => 10 inch Shower Faucst Set with Waterfall Tub Spout and Trim Kit with Rough in Valve
+            [description] => 
+Product Features:
+
+
+
+    Luxury Shower Experience: Transform your daily shower into a spa-like retreat with our meticulously crafted shower system designed for ultimate comfort and style.
+
+
+    Advanced Pressure Balance Valve: Enjoy a consistent shower temperature with our cUPC Certified pressure balance valve cartridge, eliminating sudden temperature fluctuations caused by other water usage.
+
+
+    Elegant Waterfall Spout: The 3.74-inch premium stainless steel waterfall spout provides a tranquil cascade, filling your bathtub quickly while enhancing your bathing experience.
+
+
+    Full-Body Coverage: The 360° swivel 10-inch stainless steel rain shower head offers comprehensive coverage, delivering a therapeutic shower that relaxes and rejuvenates.
+
+
+    Stylish Finish: This tub shower system features a fingerprint-resistant Matte Black/Brushed Gold/ Brushed Nickel surface that complements a variety of bathroom styles, ensuring lasting elegance and easy maintenance.
+
+
+    Durable Construction: Crafted with high-quality materials, including a robust brass valve, our system is designed for longevity, providing a durable and stylish addition to your bathroom.
+
+
+Specifications:
+
+
+
+    Material: Premium stainless steel and brass
+
+
+    Finish: Matte Black/Brushed Gold/ Brushed Nickel
+
+
+    Shower Head Size: 10 inches
+
+
+    Waterfall Spout Size: 3.74 inches
+
+
+    Installation Type: Wall-mounted with rough-in valve included
+
+
+    Certification: cUPC Certified
+
+
+        )
+
+    [7474550046912] => Array
+        (
+            [title] => 8 Inch Wall Mounted Shower Faucet Set with Waterfall Tub Spout and Round-in Valve
+            [description] => 
+Product Features
+
+
+
+    cUPC Certified & Anti-Scald: The pressure balance ceramic disc cartridge is cUPC certified, helping prevent scalding by regulating water temperature, especially if water pressure fluctuates. A built-in check valve reduces water hammer noise for a quieter shower.
+
+
+    Premium Ceramic Disc Cartridge: This long-lasting, drip-free cartridge ensures smooth operation and durability (over 500,000 uses). The single lever control makes it easy to adjust both water flow and temperature.
+
+
+    6-Setting Rain Shower Head: Choose from 6 water flow settings on the rain shower head: waterfall, mist, rainfall & mist, pure rainfall, pellet, and pause, giving you a customizable shower experience.
+
+
+    Waterfall Tub Spout: The large-flow tub spout allows for fast filling, adding convenience to your bath time.
+
+
+Specifications
+
+
+
+    Shower Head Settings: 6 flow options (waterfall, mist, rainfall & mist, pure rainfall, pellet, pause)
+
+
+    Material: Ceramic disc cartridge
+
+
+    Safety Features: cUPC certified, anti-scald, check valve to prevent noise
+
+
+    Water Flow Control: Single lever for easy flow and temperature adjustment
+
+
+    Waterfall Tub Spout: Large flow for quick tub filling
+
+
+    Durability: Ceramic cartridge rated for 500,000+ uses
+
+
+
+
+
+
+        )
+
+    [7474547720384] => Array
+        (
+            [title] => Pressure Balanced Tub and Shower Faucet with Rough-in Valve
+            [description] => 
+Product Features
+
+
+
+    49 Water Flow Patterns: Enjoy a customized shower experience with 49 full and combined settings using the fixed mount showerhead and handheld shower together or separately.
+
+
+    Dual Shower Head with 3-Way Diverter: Switch easily between the overhead shower, handheld shower, or both, with the 3-way water diverter for flexible use.
+
+
+    Adjustable Overhead Bracket: The angle-adjustable bracket allows easy adjustment of the showerhead to accommodate both children and adults for the perfect shower.
+
+
+    Quick-Fill Tub Spout: The bathtub spout quickly fills your tub, saving time with an easy-to-use lift-up knob for diverting water.
+
+
+    High-Quality Brass Valve: Made from premium brass material, the shower valve is non-corrosive and durable, while the elegant Matte Black/ Brushed Gold/ Brushed Nickel finish enhances your bathroom's aesthetic.
+
+
+    Pressure Balance Valve with Anti-Scald Protection: Prevents sudden temperature fluctuations in water pressure and protects against scalding, while reducing water hammer noise.
+
+
+    7-Function Showerhead & Handheld: Both the overhead and handheld showers feature 7 settings, offering multiple spray options to suit different preferences.
+
+
+Specifications
+
+
+
+    Showerhead Functions: 7 settings
+
+
+    Water Diverter: 3-way
+
+
+    Material: High-Quality Brass
+
+
+    Finish: Matte Black/ Brushed Gold/ Brushed Nickel
+
+
+    Valve Type: Pressure Balance Valve with Built-in Shut Off Stops
+
+
+    Tub Spout: Quick-fill with lift-up knob
+
+
+
+
+
+
+        )
+
+    [7474219057344] => Array
+        (
+            [title] => 10 in. Ceiling Mount Rain Dual Shower Heads with Handheld Shower in Brushed Gold
+            [description] => 
+Product Features:
+
+
+
+    Luxurious Design: Transform your shower into a spa-like experience with the stunning brushed gold finish, adding a touch of elegance to your bathroom decor.
+
+
+    Dual Shower Heads: Enjoy the versatility of a 10-inch ceiling-mounted rain shower head combined with a handheld shower, providing a soothing cascade or targeted rinse for your convenience.
+
+
+    Unmatched Performance: Engineered to deliver consistent and powerful water flow even under low water pressure, ensuring a refreshing shower every time.
+
+
+    Advanced Pressure Control: Equipped with a cUPC certified pressure balance spool and adjustable water pressure device, this system safeguards against scalding and cold water shocks for enhanced safety and comfort.
+
+
+    Durable Construction: Crafted from SUS304 stainless steel and solid brass, this shower system resists corrosion and scratches, ensuring long-lasting performance and durability.
+
+
+Specifications:
+
+
+
+    Material: SUS304 stainless steel and solid brass
+
+
+    Finish: Brushed gold
+
+
+    Shower Head Size: 10 inches
+
+
+    Connection Type: NPT 1/2 in. fittings
+
+
+    Included Components:
+
+        1 Rain Shower Head
+
+        1 Handheld Shower
+
+        1 Shower Mixer Valve Control
+
+        1 Shower Hose
+
+        1 Shower Arm
+
+        1 Shower Bracket Holder
+
+        Installation Instructions and Mounting Hardware
+
+
+
+
+        )
+
+    [7474217877696] => Array
+        (
+            [title] => Freestanding Single Handle Bath Tub Filler Faucet Set with Handheld Shower
+            [description] => 
+Product Features
+
+
+    Faucet body is made from solid brass, highly resistant to corrosion and able to withstand high temperatures.
+
+    Drip-free ceramic disc cartridge for extended product life with a standard 1/2inch connection.
+
+
+    The all-in-one diverter allows easy switching between different water modes.?The square rotatable tub spout creates a luxurious shower experience.
+
+    Maximum Spout Flow Rate: 8 GPM/30 LPM at 80 PSI, easily filling a 50-gallon tub in 7 minutes.
+
+    Overall Size: 41.45inch Height, Spout Height: 37inch, Spout Reach: 7.5inch, Handle Height: 32inch.
+
+    Easy operation allows for precise flow rate and temperature control.¡¢
+
+    Quick freestanding mount design with high and rigid mounting bracket and included hardware.
+
+    100% pressure system tested to ensure no leakage.?Well-packaged to protect from damage during shipment.
+
+    Contemporary style hand shower with a stainless steel shower hose, perfect for rinsing off after a bath, washing hair, cleaning the tub, or bathing pets.
+
+
+Specifications
+
+
+    Main Material: Solid brass
+
+    Finish: Matte Black / Brushed Gold / Brushed Nickel
+
+    Spout Type: Freestanding
+
+    Functions: Tub spout + Hand shower
+
+    Control Type: Single lever handle + diverter knob
+
+
+
+
+
+
+        )
+
+    [7474217746624] => Array
+        (
+            [title] => Singe-Handle Freestanding Floor Mount Tub Faucet Set with Hand Shower
+            [description] => 
+Product Features:
+
+
+
+    Single-Handle Operation: Features a single lever for easy temperature and water flow control, with a small knob to divert water between the spout and hand shower. Designed for effortless use by all ages.
+
+
+    High Flow Rate: Delivers an impressive flow of 8 GPM at 80 psi, allowing you to fill your bathtub in about 15 minutes for a quick and relaxing soak.
+
+
+    Durable Design: Crafted from solid brass with a corrosion-resistant surface treatment for long-lasting reliability. The ceramic disc valve ensures smooth operation, preventing drips and leaks, while promoting environmental conservation and energy savings.
+
+
+    Hand Shower with Hose: The brass hand shower, complete with a 59-inch shower hose, is ideal for both full-body showers and easy bathtub cleaning.
+
+
+    Modern Aesthetic: The sleek, contemporary design with smooth lines complements any bathroom decor, adding a stylish update to your space.
+
+
+    Easy Installation: Floor-mounted setup with all necessary mounting hardware and installation instructions included for hassle-free installation.
+
+
+Specifications:
+
+
+
+    Material: Solid brass
+
+
+    Finish: Matte Black/ Brushed Nickel/ Brushed Gold
+
+
+    Flow Rate: 8 GPM at 80 psi
+
+
+    Spout Design: High-arc swivel
+
+
+    Hand Shower Hose: 59 inches
+
+
+    Valve Type: Ceramic disc
+
+
+    Installation Method: Floor-mounted
+
+
+    Testing: 100% high-pressure tested before leaving the factory
+
+
+        )
+
+    [7474217615552] => Array
+        (
+            [title] => Single Handle Modern Freestanding Tub Faucet with Handheld Shower
+            [description] => 
+Product Features:
+
+
+    Faucet body is made from solid brass construction, which is highly resistant to corrosion and with stand high temperatures.
+
+    Drip-free ceramic disc cartridge for extended product life, Standard 1/2inch connection.
+
+    The all-in-one diverter make it easy to switch different waterways.
+
+    High-Arch 360-degree swivel spout offers more room for bathing activities
+
+    Maximum Spout Flow Rate : 8 GPM/30 LPM at 80 PSI, easily filled up a 50 Gallons.
+
+    Overall Size: 41inch Height, Spout Height: 36inch, Spout Reach: 10.62inch,Handle Height: 30inch
+
+
+    Quick freestanding mount to floor design with high and rigid quadripod mounting bracket and hardware included.
+
+    A 100% pressure system was tested to ensure no leakage. Well package protects from damage during the shipment.
+
+    Contemporary style hand shower stainless steel shower hose are great for rinsing off after a bath, hair washing, tub cleaning and washing pets.
+
+
+
+Specification:
+
+
+    Two 1/2 inch hot and cold hoses.
+
+
+    Maximum Flow Rate: 8 gpm
+
+
+
+        )
+
+    [7474217517248] => Array
+        (
+            [title] => High Arc Swivel Spout Singe-Handle Freestanding Tub Faucet with Hand Shower
+            [description] => 
+Product Features:
+
+1. Faucet body is made from solid brass construction which is highly resistant to corrosion and with stand high temperature
+
+2. Drip free ceramic disc cartridge for extended product life, Standard 1/2inch connection.
+
+3. The all-in-one diverter make it easy to switch different waterway
+
+4. High Arch 360 degree swivel spout offers more room for bathing activities
+
+5. Maximum Spout Flow Rate : 10GPM/37.5 LPM at 80 PSI, easily filled up a 50 Gallons tub in 5 minutes
+
+6. Overall Size :46inch Height, Spout Height: 42inch, Spout Reach: 9inch,Handle Height:30inch
+
+7. Easy operation allows flow rate and temperature control
+
+8. Quick freestanding mount to floor design with high and rigid quadripod mounting bracket and hardware included
+
+9. 100% pressure system tested to ensure no any leakage.?Well package protects from the damage during the shipment.
+
+Specification:
+
+
+
+    High-arc design
+
+    Stable base design
+
+    Brass hand shower with?59 in. shower hose
+
+    All-in-one diverter
+
+    Hand shower included
+
+
+
+        )
+
+    [7474217255104] => Array
+        (
+            [title] => Waterfall Spout Single-Handle Freestanding Tub Faucet Set with Handheld Shower
+            [description] => 
+Product Features
+
+
+
+    Elegant Waterfall Output: Enjoy a stunning waterfall-style flow that enhances your bathing experience while adding a touch of sophistication to your bathroom.
+
+
+    Modern Design: Meticulously tested in the factory to prevent leaking, ensuring no water drips from the hand shower when the faucet is turned off.
+
+
+    Multifunctional Convenience: Features a 360° swivel spout and a pivoting handheld shower with a 59.06 in. (150 cm) hose, ideal for full-body showers or cleaning the tub.
+
+
+    Stable Base Design: Comes with a tripod bracket and bolts to securely fix the tub faucet to the floor, providing stability and preventing movement during use.
+
+
+    High Flow Rate: Equipped with 1/2 in. hot and cold hoses for enhanced water flow; special hose sizes can be customized to meet your specific requirements.
+
+
+Specifications
+
+
+
+    Shower Hose Length: 59 inches (150 cm)
+
+
+    Waterlines: 1/2 inch hot and cold hoses
+
+
+    Installation: Includes tripod bracket and bolts for floor mounting
+
+
+    Diverter: All-in-one diverter incl
+
+
+        )
+
+    [7474217156800] => Array
+        (
+            [title] => 12 in. Ceiling Mount Rain Dual Shower Heads with Shower Head and Hand Shower
+            [description] => 
+Product Features
+
+12inch Rain Shower for Full-Body Coverage: Enjoy a consistent and powerful rain-like shower, even under low water pressure, with the wide 12-inch stainless steel shower head.
+
+All-in-One Diverter for Easy Control: Integrated diverter design allows smooth switching between overhead rain shower and handheld shower for flexible use.
+
+cUPC-Certified Pressure Balance Valve: Ensures temperature stability and protects against sudden changes in water pressure. Prevents scalding and cold water shock with certified ceramic core technology.
+
+Durable & Elegant Construction: Crafted with a polished chrome finish, SUS304 stainless steel shower head, and solid brass valve body resistant to corrosion, scratches, and built for long-lasting performance.
+
+Universal Compatibility: Designed with NPT 1/2 in. fittings for standard U.S. plumbing systems, making upgrades simple and straightforward.
+
+Specifications
+
+Shower Head Size: 12 in.
+Finish: Chrome Plating/ Brushed Nickel/ Matte Black
+Main Materials: SUS304 stainless steel (shower head), Solid brass (valve & handheld shower)
+Valve Type: Pressure balance valve with ceramic disc core (cUPC certified)
+Connection Size: NPT 1/2 in. standard U.S. fittings
+Included Components:
+
+1 x 12 in. Rain shower head
+
+1x Brass handheld shower
+
+1 x Mixer valve control
+
+1 x Shower hose
+
+1 x Shower arm
+
+1 x Shower bracket holder
+
+Installation instructions & mounting hardware
+
+        )
+
+    [7474216927424] => Array
+        (
+            [title] => 10inch Shower Head 3-way Wall-Mount Square Shower Faucet Set with Rough-in Valve
+            [description] => 
+Product Features
+
+
+
+    High-Pressure Technology: Enjoy a consistent, invigorating rain shower experience, even in low water pressure conditions. Our advanced high-pressure technology guarantees a revitalizing shower every time, turning your routine into a luxurious escape.
+
+
+    Elegant 10-Inch Shower Head: Indulge in a wide, full coverage shower with our oversized 10-inch shower head, designed for a soothing and refreshing cascade of water.
+
+
+    Brass Handheld Shower Head: The handheld shower head offers superior spray performance, making it ideal for targeted rinsing and versatile showering needs, while maintaining its efficiency even with low water pressure.
+
+
+    Complete Shower System: This all-in-one shower system includes a shower arm, shower bracket holder, shower hose, and shower valve, ensuring quick and easy installation and providing everything you need for a seamless setup.
+
+
+    Temperature Stability: Our shower system maintains a consistent and comfortable water temperature, eliminating sudden temperature changes for a safe and enjoyable shower every time.
+
+
+    Premium Brass Construction: Crafted from high-quality brass, the shower system not only ensures durability and longevity but also maintains water purity, offering protection for your skin and your family's well-being.
+
+
+    Sleek and Modern Design: With its elegant, contemporary design, this shower system enhances the aesthetic appeal of your bathroom while providing a sophisticated and luxurious shower experience.
+
+
+Specifications
+
+
+
+    Shower Head Size: 10 inches
+
+
+    Material: High-quality brass
+
+
+    Includes: Shower head, handheld shower head, shower arm, bracket holder, shower hose, shower valve
+
+
+        )
+
+    [7474216403136] => Array
+        (
+            [title] => 10 in. Wall Mount 2-Spray Rain Dual Shower System with Shower Head and Hand Shower
+            [description] => 
+Product Features
+
+
+
+    Quiet & Safe Showering:Built-in check valve reduces water hammer for a quieter home, while the cUPC-certified ceramic cartridge maintains balanced pressure to prevent sudden hot or cold water.
+
+
+    Premium Brass Construction:Made from high-quality solid brass with UPC-approved components for exceptional durability, corrosion resistance, and long-lasting, reliable performance.
+
+
+    Dual Shower Functions:Enjoy a luxurious 10" rainfall shower head and a convenient handheld shower. Easily switch between modes with a smooth diverter for customized comfort.
+
+
+    Easy, Universal Installation:Features standard NPT 1/2" and G1/2" connectors compatible with most U.S. and international plumbing systems—installs in minutes with no special tools required.
+
+
+Product Details
+
+
+
+    Material: Rust-resistant brass
+
+
+    Certification: CUPC certified pressure balance spool
+
+
+    Included Components: Handheld shower, adjustable shower bracket, pressure balance valve, 71 in. shower hose, 10 in. shower head, 16 in. shower arm, and shower control valve.
+
+
+    Shower Head Size: 10 inches
+
+
+    Shower Hose Length: 71 inches
+
+
+    Shower Arm Length: 16 inches
+
+
+    Pressure Balance Valve: CUPC certified
+
+
+    Material: Rust-resistant brass
+
+
+        )
+
+    [7474216337600] => Array
+        (
+            [title] => Waterfall Single-Handle Wall Mounted Tub and Shower Faucet with Rough-in Valve
+            [description] => 
+Product Features
+
+
+
+    Premium Quality Material: Constructed of high-quality solid brass for durability and corrosion resistance.
+
+
+    Safety Feature: cUPC certified pressure balance ceramic disc cartridge prevents scalding injuries.
+
+
+    Compatibility: Male threaded 1/2" NPT inlets compatible with U.S. plumbing connections.
+
+
+    Ease of Installation: Includes detailed installation instructions.
+
+
+    Excellent Flow Rate:
+
+        Waterfall Spout: 8 GPM at 60 PSI.
+
+        Hand Shower: 1.8 GPM.
+
+
+
+
+    Convenience: Both the spout and hand shower can be used simultaneously.
+
+
+Specification
+
+
+
+    Material: Solid brass
+
+
+    Certification: cUPC certified
+
+
+    Pressure Balance: Ceramic disc cartridge
+
+
+    Connector Size: 1/2" NPT male threads
+
+
+    Flow Rates:
+
+        Waterfall Spout: 8 GPM at 60 PSI
+
+        Hand Shower: 1.8 GPM
+
+
+
+
+    Design: Waterfall spout
+
+
+    Installation: Instructions included
+
+
+        )
+
+    [7474216304832] => Array
+        (
+            [title] => Single-Handle 1-Spray 12 in. Ceiling Mounted Shower Head Shower Faucet Set
+            [description] => 
+Product Features
+
+
+
+    12-Inch Stainless Steel Rain Shower Head: Enjoy a luxurious rainfall experience with a 12-inch 304 stainless steel shower head, designed for full coverage and a soothing water flow.
+
+
+    Solid Brass Construction: The brass shower mixer valve, concealed installation shower bracket holder, and L-style handheld shower ensure durability and long-lasting performance.
+
+
+    3-Spray Handheld Shower: Personalize your shower routine with a versatile 3-spray handheld shower for a customizable and indulgent experience.
+
+
+    Pressure Balance Valve: Advanced technology monitors water pressure, preventing sudden changes and protecting you from scalds, ensuring a safe and comfortable shower.
+
+
+    180° Swivel Hand Shower Holder: Provides flexibility and convenience, allowing you to adjust the handheld shower to the perfect angle for your comfort.
+
+
+    All-in-One Diverter: Effortlessly switch between shower functions with the convenient integrated diverter for a seamless experience.
+
+
+    Thermal Shock Protection: Safeguards against temperature fluctuations, maintaining a consistent water temperature to prevent thermal shock.
+
+
+    Adjustable Shower Head: Tailor the water flow to your preference with the adjustable shower head for a personalized and invigorating shower experience.
+
+
+    Air Energy Technology: Enjoy a powerful rain shower even under low water pressure, maximizing water efficiency without compromising performance.
+
+
+Specifications
+
+
+
+    Material: 304 Stainless steel rain shower head, solid brass valve and handheld shower
+
+
+    Shower Head Size: 12 inches
+
+
+    Handheld Shower: 3-spray options, brass construction
+
+
+    Shower Hose: 1.5m 304 stainless steel
+
+
+    Shower Arm: Ceiling mount, metal construction
+
+
+    Installation: Concealed wall mount
+
+
+    Swivel Holder: 180° rotation
+
+
+    Finish: Brushed Gold/ Chrome plating/ Matte Black/ Brushed Nickel
+
+
+        )
+
+    [7474216239296] => Array
+        (
+            [title] => Pressure Balanced Wall-Mounted 12-inch Shower System With Tub Spout and Rough-In Valve
+            [description] => 
+Product Features:
+
+
+
+    Premium Rain Shower Head: Enjoy an indulgent shower experience with the meticulously crafted 12-inch 304 stainless steel rain shower head, designed for a luxurious cascading waterfall effect.
+
+
+    Versatile Handheld Shower: Equipped with a brass L-style handheld shower head, featuring three invigorating spray options for a personalized bathing experience tailored to your preferences.
+
+
+    180° Swivel Hand Shower Holder: The 180° swivel design allows for easy adjustment and precise water flow direction, providing ultimate flexibility and convenience.
+
+
+    Adjustable Shower Head: Customize your shower experience with an adjustable shower head that lets you switch between a gentle rainfall and a powerful cascade according to your mood.
+
+
+    Safety Features: The advanced anti-scalding pressure balance valve protects against sudden temperature changes, ensuring a safe and comfortable shower every time.
+
+
+    Air Energy Technology: Experience a consistent and powerful rain shower even in low water pressure conditions, thanks to innovative air energy technology that enhances water flow.
+
+
+    Durable Construction: Crafted from high-quality materials for corrosion resistance and long-lasting durability, ensuring your shower system remains in top condition.
+
+
+Specifications:
+
+
+
+    Shower Head Size: 12 inches
+
+
+    Finish: Brushed Nickel/ Matte Black/ Chrome Plating/ Brushed Gold
+
+
+    Material: 304 stainless steel and solid brass components
+
+
+    Spray Options: 3 settings
+
+
+    Swivel Hand Shower Holder: 180° adjustability
+
+
+    Safety Valve: Anti-scalding pressure balance valve
+
+
+    Technology: Air energy technology for low water pressure performance
+
+
+        )
+
+    [7474216140992] => Array
+        (
+            [title] => Single-Handle 1-Spray Pressure Balance Wall Mounted Shower Faucet Set with Shower Head
+            [description] => 
+Product Features:
+
+
+
+    Luxurious 12-Inch Shower Head: Indulge in a spa-like experience with a large, rainfall-style 12-inch rectangular shower head, designed for full-body coverage and ultimate relaxation.
+
+
+    3-Spray Handheld Shower: The handheld shower features three spray modes, easily adjustable with a push of a button, offering personalized options for a refreshing, invigorating shower.
+
+
+    Anti-Scalding Protection: Equipped with an advanced anti-scald valve, the system ensures consistent water temperature and protects against sudden hot or cold water pressure changes.
+
+
+    Air-In Technology for High Water Pressure: Innovative air-in technology ensures optimal water pressure, even in low water supply conditions, enhancing your shower experience.
+
+
+Specifications:
+
+
+
+    Shower Head Size: 12-inch rectangular design
+
+
+    Handheld Shower: 3-spray modes, push-button control
+
+
+    Shower Holder: 180° swivel for flexible positioning
+
+
+    Finish: Matte black/ Brushed Gold/ Chrome/ Brushed Nickel
+
+
+    Installation: Standard US NPT 1/2-inch connector for easy installation
+
+
+    Included Components: Shower head, handheld shower, swivel holder, anti-scalding valve, diverter
+
+
+        )
+
+    [7474208604352] => Array
+        (
+            [title] => Single-Handle 3-Spray Round High Pressure Ceiling Shower Faucet with 10 in. Shower Head
+            [description] => 
+Product Features
+
+
+
+    Luxurious Shower Experience: It features a 10-inch rain shower head and a 3-function handheld shower, delivering a powerful and consistent water flow, even with low water pressure.
+
+
+    Safe and Comfortable: The pressure-balancing valve, made from durable brass, ensures steady water pressure and consistent temperature, protecting you from scalding and thermal shock.
+
+
+    Modern Design: The all-in-one diverter makes it easy to switch between the rain shower and the handheld shower.
+
+
+    Easy to Install: It comes with everything you need, including a valve trim, rough-in valve, 10-inch rain shower head, 3-function handheld shower head, shower arm, and elbow shower holder.
+
+
+Product Details
+
+
+    10-inch rain shower head for full coverage
+
+    All-in-one diverter for easy switching
+
+    Brushed Nickel/ Matte Black/ Chrome/ Brushed Gold finish for a modern look
+
+    Adjustable swivel hand shower holder
+
+    3-function handheld shower for a personalized experience
+
+    Protection from scalding and thermal shock
+
+
+        )
+
+    [7474208374976] => Array
+        (
+            [title] => Single-Handle 3-Spray Round High Pressure Shower System with 10 in. Shower Head and Tub Spout,Handheld Shower
+            [description] => 
+Product Features
+
+
+
+    Safety-First Engineering: Equipped with a cUPC-certified pressure-balanced valve to protect against sudden water temperature changes, along with an additional shut-off stop for personalized water flow adjustments.
+
+
+    Enhanced Water Pressure: Experience extraordinary showers with air-in technology that delivers higher water pressure even at low water levels.
+
+
+    Self-Cleaning Nozzles: Enjoy a pristine shower experience with medical-grade nozzles featuring a self-cleaning function, ensuring hygiene with minimal effort.
+
+
+    Versatile Shower Options: Customize your shower with the adjustable swivel brass ball, allowing you to direct water flow according to your preference.
+
+
+    Durable Construction: Made from high-quality metal, the shower head arm offers lasting durability and sophistication, complemented by a 59 in. stainless steel flexible shower hose for added versatility.
+
+
+    Simplified Controls: The solid brass shower mixer valve is pre-embedded for easy integration, featuring a single handle for effortless control of water flow and temperature.
+
+
+    DIY-Friendly Installation: Follow the straightforward installation instructions provided, or opt for a professional plumber or contractor for a quicker setup.
+
+
+Specifications
+
+
+
+    Shower Head Size: 10 in.
+
+
+    Handheld Shower Features: 3-Spray settings for a customizable experience
+
+
+    Diverter Type: All-in-One Diverter for streamlined bathing
+
+
+    Pressure Balance Cartridge: cUPC certified for safe and consistent water temperature
+
+
+    Tub Spout: Swivel design for space-saving and aesthetic appeal
+
+
+        )
+
+    [7474208309440] => Array
+        (
+            [title] => Single-Handle 1-Spray Round High Pressure Shower Faucet with 10 in. Shower Head
+            [description] => 
+Product Features:
+
+
+
+    3-Function Handheld & Rain Shower: Experience luxury with a 3-function handheld shower head and a powerful 10-inch rain shower head, designed to provide a consistent, spa-like experience even in low water pressure environments.
+
+
+    Pressure-Balancing Valve: The brass valve maintains steady water flow and controls temperature, ensuring a safe and comfortable shower without sudden changes in temperature.
+
+
+    Elegant Design: The stylish Brushed Gold/ Matte Black/ Chrome Plating/ Brushed Nickel finish adds sophistication to your bathroom, while the all-in-one diverter and swivel hand shower holder provide enhanced functionality and convenience.
+
+
+    Effortless Installation: Designed for easy installation with standard U.S. plumbing connections. The package includes all the necessary components for a hassle-free setup.
+
+
+Specifications:
+
+
+
+    Material: Brass valve
+
+
+    Finish: Brushed Gold/ Matte Black/ Chrome Plating/ Brushed Nickel
+
+
+    Shower Head Size: 10 inches
+
+
+    Functions: 3-function handheld shower, single-function rain shower
+
+
+    Valve Type: Pressure-balancing valve
+
+
+    Installation Method: Wall-mounted
+
+
+        )
+
+    [7474208276672] => Array
+        (
+            [title] => 1-Spray Wall Mount Dual Head Shower System with 1.8 GPM 10 inch Showerhead
+            [description] => 
+Product Features:
+
+
+
+    Luxurious 10-Inch Rain Shower Head: Experience full-body coverage with a 10-inch circular rain shower head that offers a single-spray pattern, delivering a spa-like shower experience.
+
+
+    CUPC-Certified Valve: Ensures safety by balancing hot and cold water, preventing scalding and providing consistent water flow for a comfortable shower.
+
+
+    Stainless Steel Hand Shower: Includes a 59-inch hose for versatility, allowing easy access to different showering needs.
+
+
+    Effortless Maintenance: Easy-to-clean rubber nozzles on both the rain shower head and hand shower reduce buildup, ensuring hassle-free upkeep.
+
+
+    Elegant Design and Durable Materials: Constructed from high-quality brass with a curved 10-inch shower arm for a refined and long-lasting addition to your bathroom.
+
+
+    Simple Installation: Designed for easy wall-mounted installation, providing an ideal shower height for maximum comfort.
+
+
+Specifications:
+
+
+
+    Shower Head Diameter: 10 inches
+
+
+    Shower Arm Length: 10 inches (curved)
+
+
+    Hand Shower Hose Length: 59 inches
+
+
+    Material: Brass (main construction), stainless steel (hand shower)
+
+
+    Certification: CUPC-certified
+
+
+    Spray Patterns: 1 (single-spray pattern)
+
+
+    Installation Method: Wall-mounted
+
+
+    Nozzle Type: Easy-to-clean rubber nozzles
+
+
+    Valve Included: Yes (CUPC-certified for safety)
+
+
+    Finish: Chrome/ Matte Black
+
+
+        )
+
+    [7474208145600] => Array
+        (
+            [title] => Single-Handle 1-Spray Round High Pressure Shower Faucet with 10 in. Shower Head
+            [description] => 
+Product Features
+
+
+    10-inch ultra-thin round rain shower head delivers full-body spray coverage
+
+    Handheld shower and overhead provide consistent performance even under low water pressure
+
+    Pressure balance valve cartridge protects against sudden changes in temperature, preventing scalding
+
+    Elegant finish complements modern bathroom aesthetics
+
+    Single-handle design offers smooth control over water flow and temperature
+
+    Anti-scald pressure balance valve ensures safe and reliable use
+
+    Integral stops allow easy maintenance and cartridge replacement
+
+    Easy to install with standard U.S. 1/2" NPT plumbing connections
+
+    100% pressure-tested components for quality assurance
+
+
+
+Specifications
+
+
+    Shower head size: 10 in. round
+
+    Flow rate: 2.5 GPM @ 80 PSI
+
+    Valve type: Pressure balance ceramic disc valve
+
+    Material: Solid brass and stainless steel
+
+
+    Handle type: Single-handle
+
+    Installation thread: 1/2 in. NPT
+
+    Certifications: ASME A112.18.1-2018 / CSA B125.1-18, ASSE 1016 compliant
+
+
+        )
+
+    [7474205491392] => Array
+        (
+            [title] => 6 Inch Luxury 2-in-1 Multi-function One-Handle Shower Combo Kit Wall Mounted
+            [description] => 
+Product Features
+
+
+
+    2-in-1 Luxury Shower Combo: Features a 6-setting overhead shower head and 6-setting hand shower that can be used separately or simultaneously for a personalized shower experience.
+
+
+    Wide Spray Coverage: Oversized 6-inch shower heads with click lever dials and rub-clean jets ensure easy use and maintenance.
+
+
+    Adjustable & Secure Mounting: Patented 3-way diverter with anti-swivel lock nut and angle-adjustable overhead bracket offers flexible and stable positioning.
+
+
+    Flexible & Durable Hose: Includes a 59-inch stainless steel hose with conical brass nuts for easy hand-tightening and reliable performance.
+
+
+    High-Pressure Performance: Advanced technology delivers consistent, powerful water flow even under low pressure.
+
+
+    Anti-Scald Protection: Pressure-balance cartridge protects against sudden changes in hot or cold water temperature.
+
+
+    Premium Finish: Ten-layer plated finish offers sleek aesthetics and strong corrosion resistance.
+
+
+    Wall-Mounted Installation: Designed for remodeling or renovation; includes valve and trim kit.
+
+
+    Easy Maintenance: Integral stops allow for convenient cartridge replacement without shutting off the main water supply.
+
+
+Specifications
+
+
+    Shower Head Size: 6 in. (both overhead and handheld)
+
+
+    Hose Length: 59 in. stainless steel
+
+
+    Valve Type: Ceramic disc pressure-balance valve
+
+    Flow Rate: 2.5 GPM @ 80 PSI
+
+    Connection Size: 1/2 in. NPT (U.S. standard)
+
+    Certification: ASSE 1016 compliant
+
+    Pressure Tested: 100% factory tested
+
+    Installation: Wall-mounted, includes valve & trims
+
+
+        )
+
+    [7474205032640] => Array
+        (
+            [title] => Complete Square 12 inches Ceiling Mounted Shower System with Rough-in Valve
+            [description] => 
+
+The ultra-thin rainfall shower head creates a luxury shower experience. An all-in-one diverter makes it easy to switch to a different model. All metal handheld shower provide quality feeling. All parts of shower system are made of high-quality metals with professional technology. Premium brass material and quality surface finish offers anti-corrosion surface and modern looking. Air-in technology offers a strong pressure even at low water pressure supply. Pressure balance cartriage valve protects from scalding caused by a sudden temperature change. The standard US NPT 1/2 in. connector is compatible with most existing shower system pipes.
+
+Features
+
+
+    Square 12 inches ultra-thin shower head offers a full body spray shower experience
+
+    Pressure-balanced cartriage protects from sudden temperature changes
+
+
+    All the parts are 100% pressure-tested to ensure quality
+
+    A 2-in-1 divertier makes it easy to switch to different modes
+
+    Ceramic disc valve assures drip-free performance and smooth handle operation
+
+    Solid brass waterway construction with 1/2"NPT connection
+
+
+        )
+
+    [7474204344512] => Array
+        (
+            [title] => One-Handle 1-Spray Setting Bathtub Shower Faucet Set
+            [description] => 
+
+Product Features:
+
+
+
+    Pressure-Balanced Cartridge Valve: Protects you from scalding due to sudden changes in water temperature, ensuring a safe and comfortable shower experience.
+
+
+    2-in-1 Diverter: Easily switch between different modes with the all-in-one diverter, offering flexibility in showering and tub filling.
+
+
+    Durable All-Metal Construction: All parts, including the handheld shower and faucet components, are crafted from premium brass and high-quality metals, providing long-lasting durability and a solid feel.
+
+
+    Rotatable Tub Spout: Designed to prevent accidental bruising, the spout rotates to stay out of the way while offering a high flow rate for fast tub filling.
+
+
+    Anti-Corrosion Finish: The modern surface finish is not only visually appealing but also resists corrosion, fingerprints, and water spots, ensuring your faucet remains clean and sleek.
+
+
+    Ceramic Disc Valve: Equipped with a drip-free ceramic disc valve, ensuring smooth handle operation and long-lasting performance.
+
+
+    Standard US NPT Connection: The 1/2" NPT connector is compatible with most existing shower system pipes, making installation simple and straightforward.
+
+
+
+Specifications:
+
+
+
+    Material: Solid brass and high-quality metals.
+
+
+    Connection Size: 1/2" NPT connector.
+
+
+    Cartridge Type: Pressure-balanced for temperature control.
+
+
+    Valve: Ceramic disc valve for drip-free performance.
+
+
+    Finish: Fingerprint and water spot resistant.
+
+
+    Spout: Rotatable tub spout for convenience and fast filling.
+
+
+    Compliance: Meets or exceeds all required standards.
+
+
+        )
+
+    [7474204246208] => Array
+        (
+            [title] => Complete 12 inch Square Shower System with Rough-in Valve
+            [description] => 
+Product Features
+
+
+    10-inch ultra-thin rainfall shower head delivers a luxurious, full-body spray for a spa-like experience
+
+    All-metal handheld shower ensures a premium feel and long-lasting performance
+    3-in-1 all-in-one diverter allows easy switching between rainfall, handheld, or combined modes
+
+    Pressure balance valve with ceramic cartridge protects against scalding or cold shocks and ensures drip-free, smooth operation
+
+    Air-in technology boosts water pressure performance, even under low water pressure conditions
+
+    Premium brass construction with corrosion-resistant finish offers durability and a modern look
+
+    Standard NPT 1/2 in. connectors provide compatibility with most U.S. plumbing systems
+
+
+Specifications
+
+
+    Shower head size: 10 in. square ultra-thin
+
+    Shower modes: Rainfall, handheld, or combined (via 3-way diverter)
+
+    Handheld material: All-metal
+
+    Valve type: Pressure-balanced with ceramic disc cartridge
+
+    Connection type: NPT 1/2 in. (U.S. standard)
+
+    Water pressure technology: Air-in for enhanced performance under low pressure
+
+    Certification: ASSE 1016 compliant
+
+    Performance: 100% pressure-tested
+
+
+        )
+
+    [7474204147904] => Array
+        (
+            [title] => Single-Handle 1-Spray Square High Pressure Shower Faucet with 10 in. Shower Head
+            [description] => 
+Product Features
+
+
+    Premium Materials: Faucet body crafted from solid brass for long-lasting durability. The 10-inch overhead shower head is made of SUS304 stainless steel for a sleek and corrosion-resistant finish
+
+    All-Metal Construction: Includes a brass handheld shower, brass mixer valve, 15.7 in. metal shower arm, 59 in. stainless steel hose, and concealed brass bracket holder
+
+    Pressure Balance Valve: Built-in cartridge maintains consistent water temperature and protects against sudden changes in pressure to prevent scalding
+
+    Air Energy Technology: Ensures a strong and consistent rain shower even under low water pressure conditions
+
+    Stylish Finish: High-quality plated finish resists corrosion and tarnishing for a modern, durable appearance
+
+    User-Friendly Design: Features a swivel hand shower holder and all-in-one diverter for easy control and adjustable functionality
+
+
+Specifications
+
+
+    Shower Head Size: 10 inches (SUS304 stainless steel)
+
+    Handheld Shower: Solid brass
+
+    Shower Arm: 15.7 inches, metal
+
+    Hose Length: 59 inches, stainless steel
+
+    Shower Valve: Pressure balance, solid brass
+
+    Cartridge Type: Anti-scald pressure balance cartridge
+
+    Connector Size: Standard NPT 1/2 inch
+
+
+        )
+
+    [7474203656384] => Array
+        (
+            [title] => Wall Mounted 10 in. Rain Shower Head Faucet Set with Valve
+            [description] => 
+Modern Pressure Balance Shower Faucet creates an instant update for any bathroom. Shower technology with greater water pressure, larger drips and a wider shower area than traditional shower heads ensures you stay warmer faster without catching a cold. The modern luxury shower head in stainless steel is perfect for your bathroom.
+
+
+    10 in. square rain shower head (304 stainless steel), shower arm (brass), shower valve (brass) and shower valve plate and single handle (304 stainless steel)
+
+    16 in. elongated brass shower arm can be firmly fixed to the wall with the large 10 in. rain shower head
+
+    Shower comes with a 360° swivel ball so you can adjust the angle at your leisure while showering, making you feel like you're enjoying a spa at home
+
+    Shower valve includes an adjustable water pressure device to ensure that the temperature is always constant, avoiding sudden temperature changes that can affect your bathing pleasure
+
+    Touch to clean - the soft silicone nozzle, just wipe off calcification or mineral residues with your fingers and enjoy a shower immediately
+
+
+
+        )
+
+    [7474199232704] => Array
+        (
+            [title] => 6-Spray Pressure-Balanced 6 Inch Shower Faucet Set With Rough-In Valve
+            [description] => 
+Product Features
+
+
+
+    6-Spray Shower Head：Features a 6" shower head with six spray settings for a personalized and comfortable shower experience.
+
+
+    Pressure-Balanced Cartridge：Maintains consistent water temperature and protects against sudden temperature changes, preventing scalding and thermal shock.
+
+
+    Drip-Free Performance：Equipped with a ceramic disc cartridge for smooth operation and long-lasting, leak-free performance.
+
+
+    One-Handle Control：Single lever design offers precise control of both water flow and temperature.
+
+
+    Spot-Resistant Finish：High-quality finish resists fingerprints and water spots, keeping your shower looking clean and modern.
+
+
+    Fast-Fill Tub Spout：High-flow rate tub filler quickly fills the bathtub for added convenience.
+
+
+Specifications
+
+
+
+    Spray Settings: 6-function adjustable showerhead
+
+
+    Flow Rate:
+
+    Shower: 2.5 GPM @ 80 PSI
+
+    Tub Spout: 6.0 GPM @ 80 PSI
+
+
+    Valve Type: Pressure-balanced ceramic cartridge
+
+
+    Operation: Single-handle control
+
+
+    Material: Solid brass waterway construction
+
+
+    Connection: 1/2"-14 NPT standard US plumbing
+
+
+    Testing: All components 100% pressure-tested
+
+
+        )
+
+    [7474199101632] => Array
+        (
+            [title] => Single-Handle 6-Spray 6 in. Shower Head Round High Pressure Shower Faucet Set
+            [description] => 
+Product Features
+
+
+
+    6-Setting Shower Combo：Includes both a 6" overhead shower head and a matching handheld shower, each offering 6 spray modes including power rain, mist, and pause for a fully customized shower experience.
+
+
+    Anti-Scald Pressure Balance Valve：Effectively maintains consistent water temperature, protecting users from sudden pressure changes—ideal for children, elderly, and pets.
+
+
+    High-Pressure Technology：Ensures a powerful rain shower even under low water pressure conditions, enhancing every drop of your shower.
+
+
+    Durable Premium Materials：Features a 10-layer plated finish for corrosion resistance and long-lasting beauty, with a brushed nickel shower head and solid brass wall-mounted valve.
+
+
+Specifications
+
+
+    Shower Head: 6" overhead with swivel function
+
+    Spray Modes: 6 total, including pause and water-saving settings
+
+
+    Valve Type: Pressure-balanced anti-scald valve
+
+    Connection Thread: 1/2"-14 NPT (U.S. standard)
+
+
+    Material: Solid brass valve body, stainless steel hose
+
+    Flow Rate: 2.5 GPM @ 80 PSI
+
+
+        )
+
+    [7474198511808] => Array
+        (
+            [title] => Single-Handle 6-Spray Round High Pressure Shower Faucet with 6 inch Shower Head
+            [description] => 
+Product Features
+
+
+
+    6-Spray Settings: Enjoy a customizable shower experience with options including power rain for a refreshing wash, invigorating massage for relaxation, stay-warm mist for comfort, water-saving economy rain for efficiency, and a convenient pause setting to conserve water while lathering.
+
+
+    Sleek and Modern Design: Crafted with a 10-layer plated finish, this shower system not only enhances your bathroom's aesthetic but also provides excellent corrosion resistance and durability, ensuring it looks great for years to come.
+
+
+    Flexible Installation: The included 59-inch super flexible stainless steel hose, complete with conical brass hose nuts, allows for easy maneuverability and reliable hand-tightening, making installation straightforward and hassle-free.
+
+
+    Advanced Safety Features: The pressure balance anti-scald valve ensures a consistent output temperature, protecting you and your family from sudden fluctuations in water temperature, creating a safe and comfortable shower experience.
+
+
+    Water Conservation Technology: Engineered to reduce water usage by 20% without sacrificing pressure, this shower system is designed to be eco-friendly while providing a luxurious bathing experience.
+
+
+    Installation Components: Complete package includes shower head, shower arm and flange, rough-in valve, and shower trim kit for a seamless upgrade.
+
+
+Specifications
+
+
+
+    Type: Single-Handle 6-Spray Round High Pressure Shower Faucet
+
+
+    Shower Head Size: 6 inches
+
+
+    Material: Solid brass valve and stainless steel hose
+
+
+    Thread Standard: USA standard 1/2" NPT
+
+
+    Certification: cUPC certified for safety and reliability
+
+
+        )
+
+    [7474197528768] => Array
+        (
+            [title] => Single-Handle 6-Spray Round High Pressure Shower Faucet with 6 in. Shower Head
+            [description] => 
+Product Features
+
+
+
+    6-Setting Shower Combo：Includes both a 6" overhead shower head and a detachable handheld shower, each offering 6 spray settings—Power Rain, Massage, Stay-Warm Mist, Economy Rain, Pause, and more—for a fully customizable experience.
+
+
+    Flexible Handheld Use：Comes with a 59-inch ultra-flexible stainless steel hose and conical brass hose nuts for easy hand-tightened installation and increased maneuverability.
+
+
+    Sleek & Durable Finish：Features a 10-layer premium plated finish that resists corrosion and maintains its modern look over time.
+
+
+    Safe Showering：Pressure balance valve maintains a consistent water temperature, preventing scalding from sudden hot or cold water fluctuations.
+
+
+Specifications
+
+
+    Shower Head Size: 6 inches
+
+    Spray Modes: 6 total (Power Rain, Massage, Mist, Economy Rain, Pause, etc.)
+
+
+    Valve Type: Pressure-balanced anti-scald valve
+
+    Connection: Standard 1/2" NPT thread
+
+
+    Material: Solid brass components and stainless steel hose
+
+    Flow Rate: 2.5 GPM @ 80 PSI
+
+    Installation: Wall-mounted; includes all necessary fittings
+
+    Safety Feature: Anti-scalding valve for stable temperature control
+
+
+
+        )
+
+    [7474197168320] => Array
+        (
+            [title] => 6-Spray Patterns Wall Mount 2.5 GPM 6 in. Wall Mount Handheld Shower Head
+            [description] => 
+Product Features
+
+
+
+    6 Spray Settings：Choose from 6 versatile spray modes including rain, massage, and mist for a fully customized shower experience.
+
+
+    Large 6-Inch Shower Face：Provides full-body coverage and consistent water flow for a spa-like experience at home.
+
+
+    High-Pressure Performance：Delivers a strong, steady stream even under low water pressure thanks to optimized nozzle design.
+
+
+    Anti-Clog Silicone Nozzles： Soft rubber nozzles are easy to wipe clean and resistant to mineral buildup for long-lasting performance.
+
+
+    Durable Materials：Made of high-strength ABS plastic with an elegant chrome finish for heat resistance and durability.
+
+
+    Anti-Leakage Hose：Includes a 59-inch flexible, anti-leak hose for reliable and extended reach.
+
+
+Specifications
+
+
+    Shower Head Diameter: 6 inches
+
+    Spray Modes: 6 (Rain, Massage, Mist, etc.)
+
+    Hose Length: 59 inches (anti-leak design)
+
+    Material: ABS plastic
+
+    Nozzle Material: Silicone rubber
+
+
+    Installation: Tool-free, fits standard 1/2" shower arms
+
+
+
+        )
+
+    [7448189534400] => Array
+        (
+            [title] => 10 inch Single-Handle 3-Spray Round High Pressure Shower Faucet Set
+            [description] => 
+Product Features:
+
+
+
+    Air Injection Technology for Water Efficiency: Designed to mix air and water, this technology reduces water consumption by up to 30%, making it perfect for areas with low water pressure. It also reduces noise, providing a peaceful shower experience.
+
+
+    Premium Durable Construction: Made from high-quality brass, this shower system is built for long-term use. Its rust-resistant and anti-corrosion matte black finish ensures easy cleaning and maintenance.
+
+
+    Modern Design: The sleek Matte black/ Brushed Gold/ Brushed Nickel finish brings a touch of modern elegance to any bathroom. With a wall-mounted design, it adds both style and functionality to your space.
+
+
+    Comfortable Shower Experience: Enjoy a relaxing shower with the large 10-inch shower head that provides a soothing water flow at 1.5 GPM. The 59-inch flexible shower hose offers added convenience, making it easy to bathe children or pets.
+
+
+    Easy Installation: The set comes with all necessary components for simple installation, allowing for a seamless setup without sacrificing style or space.
+
+
+Specifications:
+
+
+    Shower Head Size: 10 inches
+
+    Water Flow Rate: Up to 1.5 GPM
+
+    Shower Hose Length: 59 inches
+
+    Material: Premium brass
+
+    Finish: Matte black/ Brushed Gold/ Brushed Nickel
+
+    Installation Type: Wall-mounted
+
+    Handle Type: Single handle
+
+    Water Efficiency: Air Injection Technology
+
+
+        )
+
+    [7448188092608] => Array
+        (
+            [title] => 10 inch Tub Shower Faucet Set Complete Rain Shower System with Tub Spout
+            [description] => 
+Product Features:
+
+
+
+    Indulgent Shower Experience: This 10-inch Tub Shower Faucet Set combines a high-pressure rainfall shower head with a sleek handheld sprayer, creating a spa-like escape in your own bathroom. Customize your shower with the adjustable angle for a refreshing cascade or a gentle rain shower.
+
+
+    Air-Water Mixing Technology: Enjoy a powerful water flow of up to 2.5 GPM while conserving water. This innovative technology enhances the shower experience without compromising on efficiency.
+
+
+    Premium Brushed Gold Finish: The elegant brushed gold coating, enhanced by an Oil Sealing Surface Process, minimizes watermarks and fingerprints while providing a modern aesthetic that complements any decor.
+
+
+    Durable All-Metal Construction: Made from solid brass and 304 stainless steel, this shower system ensures long-lasting performance and resistance to corrosion and tarnishing.
+
+
+    User-Friendly Installation: Designed with US standard NPT thread interfaces and a 1/2-inch connection, the solid brass rough-in valve body makes installation straightforward and hassle-free.
+
+
+Specifications:
+
+
+
+    Material: Solid brass and 304 stainless steel
+
+
+    Finish: Brushed gold
+
+
+    Shower Head Size: 10 inches
+
+
+    Water Flow Rate: Up to 1.8 GPM
+
+
+    Installation Method: Wall-mounted
+
+
+    Included Components:
+
+        Valve Body and Trim
+
+        Shower Head
+
+        Rough-in Valve with Diverter
+
+        Handheld Shower
+
+        Tub Spout
+
+        Shower Hose
+
+        Shower Arm and Escutcheon
+
+        Shower Holder
+
+        Valve Decorative Cover
+
+        Hardware Pack
+
+        Installation Instructions
+
+
+
+
+        )
+
+    [7448187601088] => Array
+        (
+            [title] => 10 Inch Wall Mounted Matte Black Thermostatic Shower System With Tub Spout
+            [description] => 
+Product Features:
+
+
+
+    Air Injection Technology: This innovative feature mixes air with water, saving up to 30% on water consumption while enhancing water pressure. Ideal for low-pressure areas, it provides noise reduction and optimal efficiency in your shower experience.
+
+
+    Premium Brass Construction: Crafted from high-quality brass, this shower system ensures durability and resilience against daily use. The rust-resistant and anti-corrosion surface makes it easy to clean, offering a long-lasting, practical solution for your bathroom.
+
+
+    Modern Finish: The sleek Matte Black/ Brushed Gold finish combined with a wall-mounted design adds a touch of contemporary elegance to any bathroom décor, transforming your space into a stylish sanctuary.
+
+
+    Generous Shower Head Size: Enjoy a relaxing shower with the spacious 10-inch shower head that delivers a soothing water flow of up to 1.5 GPM, ensuring full coverage and a comfortable experience. The included 59-inch shower hose provides flexibility for rinsing off after baths and accommodating children or pets.
+
+
+Specifications:
+
+
+
+    Material: Premium brass
+
+
+    Finish: Matte Black/ Brushed Gold
+
+
+    Flow Rate: 1.8 GPM
+
+
+    Spray Pattern: Single spray
+
+
+    Shower Head Size: 10 inches
+
+
+    Hose Length: 59 inches
+
+
+    Installation Type: Wall-mounted
+
+
+        )
+
+    [7448187502784] => Array
+        (
+            [title] => 10 Inch Wall Mounted Large Flow Thermostatic Shower System With Rough-In Valve
+            [description] => 
+Product Features:
+
+
+
+    Thermostatic Control: Enjoy a consistent and comfortable shower experience with the advanced thermostatic control, which maintains your desired water temperature even with fluctuating water pressure.
+
+
+    Large Flow Rate: Designed for maximum performance, this shower system features a large flow rate, providing an invigorating and refreshing shower experience that covers your entire body.
+
+
+    High-Quality Materials: Constructed from durable brass, this shower system ensures longevity and resistance to corrosion, guaranteeing a reliable and stylish addition to your bathroom.
+
+
+    Comprehensive Package: The shower system includes a rough-in valve, ensuring a straightforward installation process and providing all necessary components for a seamless setup.
+
+
+    Sleek and Modern Design: The 10-inch shower head offers a modern aesthetic that enhances your bathroom decor, making it a perfect choice for contemporary spaces.
+
+
+Specifications:
+
+
+
+    Installation Type: Wall-mounted
+
+
+    Shower Head Size: 10 inches
+
+
+    Material: Solid brass construction
+
+
+    Included Components: Rough-in valve, shower head, and all necessary installation hardware
+
+
+        )
+
+    [7448187371712] => Array
+        (
+            [title] => 10 inch Wall Mount Dual Shower Heads Combo in Matte Black
+            [description] => 
+Product Features:
+
+
+
+    Air Injection Technology: Designed to enhance water efficiency, this system utilizes air injection technology to save up to 30% on water consumption. By mixing water with air, it provides optimal pressure even in low water conditions while reducing noise during use.
+
+
+    Premium Brass Construction: Crafted from high-quality brass, this shower system is built for durability and longevity. The rust-resistant and anti-corrosion surface makes it easy to maintain, ensuring it remains a practical addition to your bathroom for years to come.
+
+
+    Sleek Modern Design: The elegant matte black finish and wall-mounted design combine modern aesthetics with functionality. This shower faucet set enhances your bathroom's décor, transforming it into a chic and stylish sanctuary.
+
+
+    Luxurious Shower Experience: Enjoy a refreshing shower with the 10-inch shower head that delivers a soothing water flow of up to 2.5 GPM. The generous coverage ensures a relaxing experience, and the included shower hose offers flexibility and convenience for all users.
+
+
+Specifications:
+
+
+
+    Material: Premium brass with a matte black finish
+
+
+    Installation: Includes all necessary components for easy installation
+
+
+    Shower Head Size: 10 inches
+
+
+    Weight: Lightweight for effortless handling during installation
+
+
+        )
+
+    [7448187338944] => Array
+        (
+            [title] => 10 Inch Thermostatic Rainfall Shower System With 3 PCS Body Jets Mixer Set
+            [description] => 
+Product Features:
+
+
+
+    Thermostatic Control: The built-in thermostatic shower system ensures consistent water temperature, eliminating the need for manual adjustments and improving shower safety and comfort.
+
+
+    10-Inch Rainfall Showerhead: The large 10-inch square rain shower head offers full-body coverage, creating a spa-like shower experience.
+
+
+    Premium Finish: The Matte Black/ Brushed Gold/ Brushed Nickel coating adds a touch of luxury while resisting corrosion, tarnishing, and water spots, maintaining a long-lasting, sleek appearance.
+
+
+    Comprehensive Kit: Includes a 10-inch rain shower head, handheld shower, three body jets, a 15-inch shower arm, a 59-inch shower hose, and a shower mixer valve. This kit is perfect for those seeking full-body coverage with its multifunctional design, providing flexibility and convenience.
+
+
+    Durable and Long-Lasting: The high-quality ceramic cartridge guarantees over 500,000 cycles of leak-free operation, ensuring durability and reliable performance over time.
+
+
+    Body Jets for Full-Body Immersion: The shower system includes three strategically placed body jets that create a relaxing, full-body immersion during your shower.
+
+
+    Easy Installation with Standard U.S. Threads: Designed for DIY enthusiasts, this shower system features 1/2" NPT standard threads, ensuring easy and quick installation without the need for special tools or professional help.
+
+
+Specifications:
+
+
+
+    Shower Head Size: 10 inches (square)
+
+
+    Finish: Matte Black/ Brushed Gold/ Brushed Nickel
+
+
+    Material: Solid brass and 304 stainless steel
+
+
+    Installation method: Wall-mounted
+
+
+    Item weight: 14.07 pounds
+
+
+    Flow rate: 1.8 gallons per minute
+
+
+    Shower Hose Length: 59 inches
+
+
+    Shower Arm Length: 15 inches
+
+
+    Connection Type: 1/2" NPT standard threads
+
+
+        )
+
+    [7448184094912] => Array
+        (
+            [title] => 10 inch Concealed Installation Stainless Steel SPA Shower Faucet Set with 3 Handles
+            [description] => 
+Product Features:
+
+
+
+    Elegant Design: The 10-inch concealed installation shower faucet features a distinctive cylindrical shape with unique bevel details, perfect for modern bathrooms.
+
+
+    Adjustable Ultra-Thin Shower Head: Enjoy a visually appealing and functional 10-inch ultra-thin shower head that can be adjusted at any angle for a personalized showering experience. Easy installation allows for immediate luxury.
+
+
+    Air Energy Technology: Experience powerful rain showers even with low water pressure, thanks to innovative air energy technology that delivers a refreshing cascade of water.
+
+
+    Intuitive Control: Effortlessly manage hot and cold water with three intuitive buttons. Switch between a rain shower and handheld modes for complete control over your bathing experience.
+
+
+    Complete Installation Package: Comes with all necessary components for easy installation, including the valve body, trim, shower head, handheld shower, shower hose, and installation instructions.
+
+
+Specifications:
+
+
+
+    Material: Solid brass
+
+
+    Finish: Matte Black/ Brushed Gold
+
+
+    Installation Method: Wall-mounted
+
+
+    Item Weight: 9.85 pounds
+
+
+    Flow Rate: 2.9 gallons per minute
+
+
+        )
+
+    [7448182194368] => Array
+        (
+            [title] => 10 inch Single Handle Shower Faucet Set with 4 PCS Shower Body Sprayer Jets
+            [description] => 
+Product Features
+
+
+
+    Innovative Air Pressure Technology: Blends air and water to create a refreshing rain shower effect, mimicking the natural sensation of rainfall, providing a spa-like shower experience.
+
+
+    Premium Construction: Crafted from low-lead brass, ensuring durability, safety, and resistance to extreme temperatures. The ceramic cartridge and inlet pipe are cUPC certified for long-lasting performance and reliability.
+
+
+    Brushed Gold Finish: Elegant brushed gold/ matte black finish adds a luxurious and contemporary touch to your bathroom, making it a stylish centerpiece.
+
+
+    4 PCS Body Jets for Full-Body Relaxation: The set includes 4 body sprayer jets, enhancing your shower experience by providing a full-body massage effect.
+
+
+    Easy Installation: Standard 1/2" NPT threading on the shower bracket holder, shower arm, and mixer valve ensures seamless installation with standard U.S. plumbing connections.
+
+
+    Complete Set: Includes a valve body, rough-in valve with diverter, handheld shower, body jets, and all necessary hardware, offering a complete shower solution.
+
+
+Specifications
+
+
+
+    Material: Low-lead brass
+
+
+    Finish: Brushed Gold/ Matte Black
+
+
+    Connection Size: 1/2" NPT
+
+
+    Certification: cUPC certified
+
+
+    Shower Head Size: 10 inches
+
+
+    Number of Body Jets: 4 PCS
+
+
+        )
+
+    [7448181342400] => Array
+        (
+            [title] => 11 inch Concealed Ceiling Mounted Single Knob Handle Shower Faucet Set in Rectangular
+            [description] => 
+Product Features:
+
+
+
+    High-Pressure Technology: Experience the luxury of a rainfall shower with a 11-inch rain shower head that utilizes innovative air injection technology to increase water pressure by 100%, delivering a refreshing and invigorating shower.
+
+
+    Stylish and Durable Design: Featuring a multi-layered electroplating finish, this shower faucet set is designed to enhance your bathroom's aesthetics while passing rigorous salt spray and corrosion resistance tests for lasting beauty.
+
+
+    Easy to Clean: Equipped with silicone spray nozzles that allow for easy cleaning, simply wipe away calcium and lime build-up for a consistent and pristine water flow over time.
+
+
+    Versatile Stainless Steel Hose: Includes a 59-inch stainless steel hose, providing flexibility for rinsing off after a bath or meeting the needs of children and pets, with a 360° free rotation for maximum maneuverability and leak-free performance.
+
+
+    Convenient Installation: Designed for easy setup with NPT 1/2" connectors compliant with US plumbing standards. The concealed installation enhances bathroom aesthetics while saving valuable space.
+
+
+Specifications:
+
+
+
+    Shower Head Size: 11 inches
+
+
+    Hose Length: 59 inches
+
+
+    Material: Solid brass
+
+
+    Flow rate: 1.8 gallons per minute
+
+
+    Installation Type: Ceiling Mounted
+
+
+    Includes: Valve Body and Trim, Shower Head, Rough-in Valve with Diverter, Handheld Shower, Shower Hose, Shower Arm and Escutcheon, Shower Holder, Valve Decorative Cover, Hardware Pack, Installation Instructions
+
+
+        )
+
+    [7448180031680] => Array
+        (
+            [title] => 10 inch / 12 inch Modern Wall Mounted Ultra-thin Square Shower System in Matte Black
+            [description] => 
+Product Features
+
+
+
+    Sleek Finish: This elegant shower system features a sleek matte black finish, adding a touch of modern luxury to your bathroom.
+
+
+    Durable Brass Construction: Built with high-quality brass for long-lasting reliability, ensuring resistance to daily wear and tear.
+
+
+    Anti-Corrosion Technology: Multi-layered electroplating protects against corrosion, guaranteeing durability and a consistently comfortable showering experience.
+
+
+    Customizable Shower Experience: Easily adjust the water flow with the built-in water diverter control for a personalized shower every time.
+
+
+    Easy Installation: Compatible with standard American NPT tapered threads, ensuring a hassle-free setup and quick installation.
+
+
+    CEC Certified: Certified to meet California’s environmental standards, offering peace of mind for eco-conscious consumers.
+
+
+Specifications
+
+
+
+    Shower Head Sizes: Available in ultra-thin 10" and 12" square designs.
+
+
+    Material: Solid brass
+
+
+    Finish: Matte black
+
+
+    Installation Method: Wall-mounted
+
+
+    Shower Arm: Included
+
+
+    Rough-in Valve: Included for smooth operation
+
+
+    Handle: Provides precise water flow and temperature control
+
+
+    Certifications: CEC certified
+
+
+        )
+
+    [7448173543616] => Array
+        (
+            [title] => 10 in. Wall Mount Dual Shower Heads System with Handheld Shower in Matte Black
+            [description] => 
+Features:
+
+
+
+    Modern & Functional Design: Clean contemporary styling combined with practical functionality makes this shower system an ideal upgrade for modern bathrooms.
+
+
+    Premium Mixed-Material Construction: Features a durable ABS rain showerhead and handheld shower, paired with a brass valve body, shower arm, hose, slide bar and pipe for long-lasting reliability and corrosion resistance.
+
+
+    Powerful Handheld Jet Mode: Handheld shower includes a jet spray function, perfect for targeted rinsing and effortless corner or wall cleaning.
+
+
+    Multiple Spray Settings: Handheld shower offers multiple water flow options, allowing you to customize the shower experience to suit personal preferences.
+
+
+    10-Inch Rainfall Showerhead: Oversized 10" ABS rain showerhead delivers full-body coverage, with soft silicone tips designed to resist mineral buildup for easy maintenance and consistent performance.
+
+
+    Smooth Pressure-Balanced Control: Equipped with a pressure-balance ceramic cartridge and integrated diverter to maintain stable water temperature and ensure smooth, reliable operation.
+
+
+    Elegant Matte Black Finish: Wear- and corrosion-resistant matte black coating adds a refined, modern look while complementing a wide range of bathroom styles.
+
+
+Specifications:
+
+
+
+    Finish: Matte Black
+
+
+    Showerhead Size: 10 inches
+
+
+    Flow Rate: 2.5GPM
+
+
+    Material: ABS and Brass
+
+
+    Hose Material: Stainless Steel
+
+
+    Installation Type: Wall Mount
+
+
+    Valve Type: Pressure balance ceramic cartridge with diverter
+
+
+        )
+
+    [7448173445312] => Array
+        (
+            [title] => 10 inch/ 12 inch 3-way Mixer  Rainfall Shower Head Faucet Tub Spout Tap with Handheld Spray
+            [description] => 
+Product Features:
+
+
+
+    Durable All-Metal Construction: Crafted from high-quality brass with a Matte Black/ Brushed Nickel finish, this shower system offers both aesthetic appeal and corrosion resistance for long-lasting durability.
+
+
+    Triple Function Convenience: Enjoy versatile showering options with three functions: an overhead rainfall shower, a handheld spray, and a tub spout. The single handle design allows for effortless control of both hot and cold water.
+
+
+    Innovative Rainfall Technology: The large rainfall shower head combines water with air to boost water pressure by 100%, simulating the soothing effects of natural rain for a refreshing experience.
+
+
+    Flexible Design: Both the rain shower head and handheld shower are adjustable, providing flexibility and ease of use. The adjustable hose allows you to find the perfect angle for a personalized shower experience.
+
+
+    Complete Installation Package: Includes all necessary components for a seamless installation, including a wall-mounted shower head, handheld shower, shower arm, handheld shower holder, rough-in valve, and detailed installation instructions.
+
+
+Specifications:
+
+
+
+    Shower Head Size: 10/12 inches
+
+
+    Material: High-quality brass
+
+
+    Finish: Matte Black/ Brushed Nickel
+
+
+    Functions: Overhead rainfall shower, handheld spray, tub spout
+
+
+    Water Pressure Technology: Amplifies pressure by 100% for enhanced shower experience
+
+
+    Installation Type: Wall-mounted
+
+
+        )
+
+)
+
+Importing Page : 5
+
+Array
+(
+    [7448173347008] => Array
+        (
+            [title] => 10 inch/ 12 inch 3-Spray Patterns with 1.8 GPM Wall Mount Dual Shower Heads with Waterfall Spout
+            [description] => 
+
+Product Features:
+
+
+
+    Premium Dual Shower System: Featuring a 10"/12" rain shower head and waterfall spout, this wall-mounted system provides a luxurious and relaxing shower experience, bringing spa-like comfort to your bathroom.
+
+
+    360° Rotatable Rain Shower Head: Enjoy wide water coverage with the 360° rotating rain shower head, simulating the feel of natural rainfall for a refreshing and immersive experience.
+
+
+    Adjustable Hand Shower & Waterfall Spout: The flexible hand shower and quick-fill waterfall spout allow for a tailored showering experience, whether you're rinsing off or filling the tub quickly.
+
+
+    Air Injection Technology: Delivers a powerful, consistent water flow even in low water pressure conditions by mixing air with water, enhancing water efficiency while maintaining comfort.
+
+
+    Pressure Balance Valve: Ensures stable water temperature and pressure, preventing scalding or sudden temperature fluctuations, for a safer and more comfortable shower.
+
+
+    Quick Installation: Designed for hassle-free installation with a pre-embedded box system, ensuring precise setup and a neat finish.
+
+
+    Durable Construction: Made from high-quality solid brass and SUS304 stainless steel for superior durability and corrosion resistance, guaranteeing long-lasting use and a sleek appearance.
+
+
+
+Specifications:
+
+
+
+    Material: Solid brass and SUS304 stainless steel.
+
+
+    Shower Head Size: 10" or 12" rain shower head
+
+
+    Flow Rate: 1.8 GPM.
+
+
+    Technology: Air injection technology for enhanced water flow.
+
+
+    Valve Type: Pressure balance valve for safety and stability.
+
+
+    Spout Type: Waterfall spout for efficient tub filling.
+
+
+    Installation: Pre-embedded box system for easy installation.
+
+
+    Finish Options: Brushed Nickel/ Matte black/ Brushed Gold.
+
+
+        )
+
+    [7448173183168] => Array
+        (
+            [title] => 10 in. 3-Spray Patterns Shower System with 1.8 GPM Wall Mount Shower System with Waterfall Tub Spout and Handheld Shower Head
+            [description] => 
+Product Features
+
+
+
+    Dual shower heads: 10-inch square rain showerhead and handheld showerhead
+
+
+    Three spray patterns: Waterfall, rain, and handheld,  Single handle can control water temperature well
+
+
+    Pressure balance cartridge: Prevents scalding
+
+
+    59-inch shower hose: Flexible and durable
+
+
+    360° rotatable showerhead: Adjustable spray angle
+
+
+    Adjustable water outlet direction: Turning the knob, you can switch the shower mode by yourself shower head or shower mode
+
+
+    Wall-mounted installation: Space-saving design
+
+
+Product Details
+
+
+
+    Material: Solid brass and SUS304 stainless steel
+
+
+    Water pressure: Pressure balanced
+
+
+    Flow rate: 1.8 GPM
+
+
+    Installation type: Wall-mounted
+
+
+    Certification: cUPC certified
+
+
+        )
+
+    [7448171872448] => Array
+        (
+            [title] => 10 inch Single Handle High Pressure Tub and Shower Faucet with Hand Shower in Matte Black
+            [description] => 
+Product Features
+
+
+
+    3-in-1 Shower System: Includes a 10 inch rainfall shower head, handheld shower, and tub spout for a complete and flexible bathing experience.
+
+
+    Matte Black Finish: Stylish and modern, with corrosion and tarnish resistance for long-lasting durability.
+
+
+    Pressure-Balanced Valve: Maintains consistent water temperature to prevent scalding and cold water shocks.
+
+
+    High-Pressure Air Injection Technology: Delivers a strong shower even in low water pressure environments while helping to save water.
+
+
+    Durable Construction: Built with 304 stainless steel handheld shower and a ceramic disc valve for long-term use.
+
+
+    Easy Maintenance: Anti-clog silicone nozzles on both shower heads prevent calcium buildup and are simple to clean.
+
+
+    Flexible Hand Shower Use: Comes with a 59 inch stainless steel hose, ideal for cleaning, bathing kids, or washing pets.
+
+
+    Adjustable Swivel Design: Swivel joint allows easy adjustment of the shower head angle for personalized comfort.
+
+
+Specifications
+
+
+    Finish: Matte Black
+
+    Shower Head Size: 10 inches
+
+    Hand Shower Hose Length: 59 inches
+
+    Valve Type: Pressure-balanced with ceramic disc cartridge
+
+    Material: 304 Stainless Steel (hand shower), Brass (valve and tub spout)
+
+    Installation Type: Wall-mounted
+
+    Flow Rate: Approximately 1.8 GPM
+
+    Shower Modes: Rainfall, Handheld, Tub Spout
+
+    Included Components: Rain shower head, hand shower, tub spout, 59 inch hose, valve body, mounting hardware
+
+
+        )
+
+    [7448171774144] => Array
+        (
+            [title] => 10 inch 3-Spray Patterns with 2.5 GPM Wall Mounting Dual Shower Heads in Matte Black with 4-Jets
+            [description] => 
+Product Features
+
+
+
+    Three Spray Modes with Full-Body Coverage: The 10 inch overhead shower provides wide, full-body spray patterns that simulate a spa experience, helping you relax and unwind.
+
+
+    Four Body Jets for Hydro Massage: Built-in body jets deliver targeted water streams that gently massage your back and muscles, promoting relaxation and stress relief.
+
+
+    Matte Black Finish with Durable Build: Constructed from solid brass and stainless steel with a matte black finish that is scratch-resistant, corrosion-resistant, and easy to clean.
+
+
+    Air Injection Technology: Mixes air into the water stream to enhance water pressure while creating a softer, oxygen-rich shower for a more refreshing and healthier bathing experience.
+
+
+    Handheld Shower for Added Flexibility: Includes a handheld shower head with a hose, ideal for rinsing, cleaning the shower area, or bathing pets and children.
+
+
+    Ceramic Disc Valve for Long-Term Use: Equipped with a high-quality ceramic valve that ensures smooth operation and long-lasting durability without leaks.
+
+
+    All-in-One System for Easy Installation: Includes all necessary components such as shower head, body jets, handheld shower, hose, diverter, valve, and trim kit for a complete and convenient setup.
+
+
+Specifications
+
+
+
+    Finish: Matte Black
+
+
+    Shower Head Size: 10 inches
+
+
+    Spray Modes: Rainfall, Body Jets, Handheld
+
+
+    Body Jets: 4 jets
+
+
+    Valve Type: Ceramic disc valve
+
+
+    Material: Solid brass and stainless steel
+
+
+    Installation Type: Wall-mounted
+
+
+
+    Included Components: Overhead shower, hand shower, hose, shower arm, body jets, diverter, valve, trim plate, and mounting hardware
+
+
+        )
+
+    [7448171675840] => Array
+        (
+            [title] => 10 inch 3-Function Pressure-Balanced Rain Shower System with Tub Spout
+            [description] => 
+Product Features
+
+
+
+    3-Function Versatility: Enjoy the flexibility to switch between a luxurious rain shower head, a convenient handheld showerhead, and a functional tub spout, catering to all your showering and bathing needs.
+
+
+    Pressure-Balanced Technology: The integrated pressure balance valve cartridge ensures consistent water temperature and flow, preventing sudden changes that can lead to scalding, enhancing your safety and comfort.
+
+
+    Elegant Matte Black Finish: The sophisticated matte black finish adds a timeless elegance to your bathroom, achieved through a premium multi-layer electroplating process for long-lasting durability and resistance to tarnishing.
+
+
+    User-Friendly Installation: Designed for ease of installation with standard 1/2" NPT tapered threads, making it compatible with most existing plumbing setups, allowing for a seamless upgrade to your shower system.
+
+
+    High-Quality Construction: Crafted with cUPC-certified components, ensuring compliance with recognized safety standards and delivering a reliable and durable shower system.
+
+
+Specifications
+
+
+
+    Finish: Matte Black
+
+
+    Shower Head Size: 10 inches
+
+
+    Functionality: Rain shower head, handheld showerhead, tub spout
+
+
+    Installation Type: Wall mount, compatible with standard 1/2" NPT tapered threads
+
+
+    Valve Type: Pressure balance valve cartridge
+
+
+    Safety Certification: cUPC certified
+
+
+        )
+
+    [7448171643072] => Array
+        (
+            [title] => 10-in Rain Shower Head Wall Mount Dual Head Built-In Shower System with with 2-way Diverter Valve Included
+            [description] => 
+Product Features
+
+
+
+    Sleek Finish: The 10-in Rain Shower Head features a contemporary Matte Black/ Brushed Nickel/ Brushed Gold/ Oil Rubbed Bronze/ Chrome finish that not only enhances the elegance of your bathroom but also offers exceptional durability, resisting corrosion and tarnishing over time.
+
+
+    Advanced Air Injection Technology: Experience a powerful yet water-efficient flow with innovative air injection technology that combines water with air, saving up to 30% more water compared to traditional shower systems while ensuring a luxurious shower experience.
+
+
+    Dual Head Customization: Enjoy the flexibility of a dual head system, allowing you to easily switch between the rain shower head and handheld shower with a single button, tailoring your shower to your preference for maximum comfort.
+
+
+    Easy Installation: The comprehensive installation package includes all necessary components and clear instructions, ensuring a hassle-free setup for both DIY enthusiasts and professional plumbers.
+
+
+    User-Centric Design: Feedback from users emphasizes the robust construction, intuitive controls, and luxurious feel of the shower system, making it a favored choice for modern bathrooms.
+
+
+Specifications
+
+
+
+    Finish: Matte Black/ Brushed Nickel/ Brushed Gold/ Oil Rubbed Bronze/ Chrome
+
+
+    Water-Saving Technology: Air Injection System, saves up to 30% water
+
+
+    Shower Head Size: 10 inches
+
+
+    Installation Type: Wall mount
+
+
+    Components Included: Dual shower heads, installation hardware, and instructions
+
+
+    Compatibility: Fits most standard plumbing setups
+
+
+    Warranty: 2 year warranty included
+
+
+        )
+
+    [7448171512000] => Array
+        (
+            [title] => 10 inch 2-Function Thermostatic Exposed Pipe Shower System in Brushed Gold
+            [description] => 
+Product Features
+
+
+
+    Modern and Functional Design: Features a sleek 10 inch overhead rainfall shower and a handheld spray, offering versatile showering options for everyday comfort.
+
+
+    Thermostatic Temperature Control: Built-in thermostatic valve maintains a consistent water temperature, protecting against sudden temperature changes for a safer shower experience.
+
+
+    Luxurious Brushed Gold Finish: Adds a touch of elegance to your bathroom while offering corrosion and tarnish resistance for long-lasting beauty.
+
+
+    Adjustable Height for All Users: The exposed pipe design includes a slide bar that allows easy adjustment of the shower head height to suit different user needs.
+
+
+    Dual Shower Modes: Easily switch between the overhead shower and handheld spray with the integrated diverter valve.
+
+
+    Easy Installation: Designed for wall-mounted installation with standard US 1/2 inch NPT connections and all necessary components included for a straightforward setup.
+
+
+Specifications
+
+
+
+    Material: Solid Brass
+
+
+    Finish: Brushed Gold
+
+
+    Valve Type: Pressure Balance Ceramic Valve
+
+
+    Installation Method: Wall-Mounted
+
+
+    Flow Rate: 2.5 Gallons Per Minute
+
+
+    Package Dimensions: 34.25 x 14.76 x 5.12 inches
+
+
+    Item Weight: 12.57 pounds
+
+
+
+Included Components:
+
+
+    Shower Arm
+
+    Rough-In Valve
+
+    Diverter Valve
+
+    Wall Supply Elbow
+
+    Handle
+
+    Escutcheon
+
+    Slide Bar
+
+
+        )
+
+)
+passs
