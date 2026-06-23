@@ -1,0 +1,2813 @@
+
+Importing Page : 1
+
+Array
+(
+    [8595677184192] => Array
+        (
+            [title] => 72 in. x 34 in. Acrylic Freestanding Whirlpool & Air Bubble Heated Bathtub with LED Control Panel, Water Jets, Drain & Overflow, Glossy White
+            [description] => 
+Product Features:
+
+
+
+    Luxury Whirlpool & Air Bubble Massage System: Experience a spa-like bath at home with this freestanding whirlpool and air bubble bathtub. Featuring 10 back whirlpool jets, 10 bottom air bubble jets, and 4 side massage jets, this tub delivers a powerful yet relaxing full-body hydro massage experience.
+
+
+    Customizable LED Spa Lighting: Easily adjust the ambiance with the modern stepless 3000K–6000K LED lighting control panel. Create a relaxing spa-like bath with soft, colorful underwater illumination, transforming every soak into a soothing and luxurious experience.
+
+
+    Heated Soaking Bathtub with Inline Heater: The built-in inline heater system helps maintain water temperature for longer soaking sessions without constantly adding hot water. 
+
+
+    Spacious Deep Soaking Comfort: With exterior dimensions of 72 in. L x 34 in. W x 26-3/4 in. H and a 71-gallon water capacity, this deep soaking tub offers generous bathing space for maximum relaxation and comfort. The spacious interior provides exceptional comfort for deep soaking.
+
+
+    Durable Premium Acrylic Construction: Crafted from high-quality acrylic, this bathtub is stain-resistant, easy to clean, and built for long-lasting durability. Chrome-finished sanitary full-draining jets enhance both performance and appearance.
+
+
+    Adjustable Air Massage Therapy: Customize the intensity of the air bubble massage to your preference. Thousands of gentle air bubbles help relieve stress, relax muscles, improve circulation, and create a soothing spa experience at home.
+
+
+    Certified Quality & Warranty Protection: This hydromassage bathtub is UL certified for safety and quality assurance and includes a 2-year limited warranty covering defects in materials and workmanship.
+
+
+Specifications:
+
+
+
+    Installation Type: Freestanding
+
+
+    Material: Acrylic
+
+
+    Exterior Dimensions: 72" L × 34" W × 26.75" H
+
+
+    Water Capacity: 71 Gallons
+
+
+    Whirlpool Jets: 10 Back Jets + 4 Side Massage Jets
+
+
+    Air Bubble Jets: 10 Bottom Air Bubble Jets
+
+
+    Color Temperature Range: Stepless Adjustable 3000K–6000K
+
+
+    Drain Finish: Chrome
+
+
+    Warranty: 2-Year Limited Warranty
+
+
+        )
+
+    [8536394563776] => Array
+        (
+            [title] => 62" Pure Resin Transparent Freestanding Bathtub with Drain, Transparent Sea Blue
+            [description] => 
+Features:
+
+
+
+    Perfectly Sized for Comfortable Soaking: Designed with generous dimensions of 62” L x 26.57” W x 22.83” H and a 64-gallon capacity, this pure resin bathtub offers the ideal balance between space-saving design and full-body relaxation.
+
+
+    Premium Resin Construction: Crafted from high-molecular pure resin, this transparent bathtub delivers a luxurious, modern aesthetic. The elegant sea blue finish adds a sophisticated touch, making it a statement piece in any contemporary bathroom.
+
+
+    Built to Last for Decades: Engineered with a solid, durable structure, this tub outperforms traditional thin acrylic alternatives. Its high-strength material ensures long-term reliability, maintaining both beauty and performance over time.
+
+
+    Easy to Clean & Maintain: The non-porous solid surface resists stains from common substances like coffee or ink. Simply wipe with mild soapy water to keep your bathtub looking pristine and hygienic.
+
+
+    Exceptional Heat Retention: Featuring thick, thermally insulated walls, this bathtub keeps water warmer for longer. Enjoy extended, relaxing soaks without constantly adding hot water.
+
+
+    2-Year Warranty for Peace of Mind: Built with durable, high-quality materials and backed by a 2-year warranty, ensuring long-lasting performance and reliable everyday comfort.
+
+
+Specifications:
+
+
+
+    Dimensions: 62" L x 26.57" W x 22.83" H
+
+
+    Soaking Depth: 14.2 inch
+
+
+    Capacity: 64 Gallons
+
+
+    Material: Pure Resin
+
+
+    Installation Type: Freestanding
+
+
+    Finish: Transparent Sea Blue
+
+
+        )
+
+    [8536385814720] => Array
+        (
+            [title] => 62" Pure Resin Transparent Freestanding Bathtub with Drain, Transparent Champagne
+            [description] => 
+Features:
+
+
+
+    Perfectly Sized for Comfortable Soaking: Designed with generous dimensions of 62.2” L x 34.65” W x 28.35” H and a 69-gallon capacity, this pure resin bathtub offers the ideal balance between space-saving design and full-body relaxation.
+
+
+    Premium Resin Construction: Crafted from high-molecular pure resin, this transparent bathtub delivers a luxurious, modern aesthetic. The elegant champagne finish adds a sophisticated touch, making it a statement piece in any contemporary bathroom.
+
+
+    Built to Last for Decades: Engineered with a solid, durable structure, this tub outperforms traditional thin acrylic alternatives. Its high-strength material ensures long-term reliability, maintaining both beauty and performance over time.
+
+
+    Easy to Clean & Maintain: The non-porous solid surface resists stains from common substances like coffee or ink. Simply wipe with mild soapy water to keep your bathtub looking pristine and hygienic.
+
+
+    Exceptional Heat Retention: Featuring thick, thermally insulated walls, this bathtub keeps water warmer for longer. Enjoy extended, relaxing soaks without constantly adding hot water.
+
+
+    2-Year Warranty for Peace of Mind: Built with durable, high-quality materials and backed by a 2-year warranty, ensuring long-lasting performance and reliable everyday comfort.
+
+
+Specifications:
+
+
+
+    Dimensions: 62.2" L x 34.65" W x 28.35" H
+
+
+    Soaking Depth: 14.9 inch
+
+
+    Capacity: 69 Gallons
+
+
+    Material: Pure Resin
+
+
+    Installation Type: Freestanding
+
+
+    Finish: Transparent Champagne
+
+
+        )
+
+    [8536359108800] => Array
+        (
+            [title] => 62" Freestanding Bathtub with Unique Ripple Texture, Modern Solid surface Soaking Tub with Overflow & Drain, Matte White
+            [description] => 
+Features:
+
+
+
+    DIMENSIONS: External dimensions: 62" L x 35" W x 28.3" H. Bathtub capacity: 69 gallons.
+
+
+    "Wave-Rim" Design: The exterior features a stunning, hand-sculpted ripple texture that mimics the gentle flow of water. This unique 3D wave design breaks away from the monotony of traditional smooth bathtubs, turning your bathroom into a high-end private gallery.
+
+
+    Easy-to-Clean Surface: The non-porous solid surface prevents water absorption, stains, and soap buildup, making daily cleaning simple and effortless.
+
+
+    Advanced Multi-Layer Insulation for Long-Lasting Warmth: Due to the efficient thermal insulation provided by the solid walls at both ends, the water temperature can be maintained at a constant level for a longer period, resulting in a unique soaking experience.
+
+
+    Strong and Easy to Repair: The soaking bathtub is made of solid surface, which has years of durability and strength, making it difficult to crack. 
+
+
+    Fade-Resistant & Non-Yellowing Finish: Built to maintain its original color over time, this bathtub is UV-resistant and anti-yellowing, ensuring it won’t discolor even when placed near windows or exposed to sunlight—keeping it looking brand new for years.
+
+
+    2-Year Warranty for Peace of Mind: Built with durable, high-quality materials and backed by a 2-year warranty, ensuring long-lasting performance and reliable everyday comfort.
+
+
+Specifications:
+
+
+
+    Dimensions: 62" L x 35" W x 28.3" H
+
+
+    Soaking Depth: 14.9 inch
+
+
+    Capacity: 69 Gallons
+
+
+    Material: Solid Surface (Stone Resin)
+
+
+    Installation Type: Freestanding
+
+
+    Overflow Type: Integrated Slotted Overflow
+
+
+    Finish: Matte White
+
+
+        )
+
+    [8536291999936] => Array
+        (
+            [title] => 67" Matte White Freestanding Solid Surface Bathtub with Overflow and Drain, 74 Gallons
+            [description] => 
+Features:
+
+
+
+    DIMENSIONS: External dimensions: 67" L x 31" W x 22.4" H. Bathtub capacity: 74 gallons.
+
+
+    Perfect Humanized Design: The solid surface freestanding bathtub adopts oval bathtub design, which follows the natural curve of human body, fits the waist and deeply soaking. 
+
+
+    Easy-to-Clean Surface: The non-porous solid surface prevents water absorption, stains, and soap buildup, making daily cleaning simple and effortless.
+
+
+    Advanced Multi-Layer Insulation for Long-Lasting Warmth: Due to the efficient thermal insulation provided by the solid walls at both ends, the water temperature can be maintained at a constant level for a longer period, resulting in a unique soaking experience.
+
+
+    Strong and Easy to Repair: The soaking bathtub is made of solid surface, which has years of durability and strength, making it difficult to crack. 
+
+
+    Fade-Resistant & Non-Yellowing Finish: Built to maintain its original color over time, this bathtub is UV-resistant and anti-yellowing, ensuring it won’t discolor even when placed near windows or exposed to sunlight—keeping it looking brand new for years.
+
+
+    2-Year Warranty for Peace of Mind: Built with durable, high-quality materials and backed by a 2-year warranty, ensuring long-lasting performance and reliable everyday comfort.
+
+
+Specifications:
+
+
+
+    Dimensions: 67" L x 31" W x 22.4" H
+
+
+    Soaking Depth: 14.2 inch
+
+
+    Capacity: 74 Gallons
+
+
+    Material: Solid Surface (Stone Resin)
+
+
+    Installation Type: Freestanding
+
+
+    Overflow Type: Integrated Slotted Overflow
+
+
+    Finish: Matte White
+
+
+        )
+
+    [8536276762816] => Array
+        (
+            [title] => 67" Matte White Solid Surface Bathtub with Drain & Integrated Slotted Overflow, 78 Gallons
+            [description] => 
+Features:
+
+
+
+    DIMENSIONS: External dimensions: 67" L x 32" W x 22.8" H. Bathtub capacity: 78 gallons. 
+
+
+    Perfect Humanized Design: The solid surface freestanding bathtub adopts oval bathtub design, which follows the natural curve of human body, fits the waist and deeply soaking. 
+
+
+    Easy-to-Clean Surface: The non-porous solid surface prevents water absorption, stains, and soap buildup, making daily cleaning simple and effortless.
+
+
+    Advanced Multi-Layer Insulation for Long-Lasting Warmth: Due to the efficient thermal insulation provided by the solid walls at both ends, the water temperature can be maintained at a constant level for a longer period, resulting in a unique soaking experience.
+
+
+    Strong and Easy to Repair: The soaking bathtub is made of solid surface, which has years of durability and strength, making it difficult to crack. 
+
+
+    Fade-Resistant & Non-Yellowing Finish: Built to maintain its original color over time, this bathtub is UV-resistant and anti-yellowing, ensuring it won’t discolor even when placed near windows or exposed to sunlight—keeping it looking brand new for years.
+
+
+    2-Year Warranty for Peace of Mind: Built with durable, high-quality materials and backed by a 2-year warranty, ensuring long-lasting performance and reliable everyday comfort.
+
+
+Specifications:
+
+
+
+    Dimensions: 67" L x 32" W x 22.8" H
+
+
+    Soaking Depth: 14.4 inch
+
+
+    Capacity: 78 Gallons
+
+
+    Material: Solid Surface (Stone Resin)
+
+
+    Installation Type: Freestanding
+
+
+    Overflow Type: Integrated Slotted Overflow
+
+
+    Finish: Matte White
+
+
+        )
+
+    [8439938318528] => Array
+        (
+            [title] => 64" Freestanding Acrylic Soaking Bathtub with Ergonomic Design, Integrated Slotted Overflow & Pop-Up Drain
+            [description] => 
+Features:
+
+
+
+    Premium Material: Freestanding bathtub crafted from high-quality 100% pure virgin acrylic, ensuring superior strength, durability, and resistance to stains and yellowing compared to recycled materials.
+
+
+    Spacious Soaking Experience: With a nominal dimension of 63 3/4"*31 7/8"*28 3/8", this freestanding tub offers generous space for a relaxing and immersive bathing experience.
+
+
+    Ergonomic & Modern Design: Gently sloping lines follow the natural curves of your body providing exceptional comfort while adding a sleek, contemporary touch to any bathroom.
+
+
+    Customizable Setup: Supports both deck-mounted faucet installation on the tub body or wall-mounted faucet, depending on your preference.
+
+
+    Pre-Drilled for Easy Installation: Soaker tub comes with predrilled drain and overflow holes, making installation simple and hassle-free for both homeowners and professionals.
+
+
+    Integrated Slotted Overflow & Pop-Up Drain: Acrylic freestanding bathtub equipped with a pop-up drain and integrated slotted overflow system to prevent water spillage while maintaining a clean, seamless look.
+
+
+    2-Year Warranty for Peace of Mind: Built with durable, high-quality materials and backed by a 2-year warranty, ensuring long-lasting performance and reliable everyday comfort.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 64 inches in length
+
+
+    Capacity: 74 Gallons
+
+
+    Included Accessories: Overflow, pop-up drain, predrilled drain holes, and installation hardware
+
+
+        )
+
+    [8439932223680] => Array
+        (
+            [title] => 39 in. x 39 in. Acrylic Square Freestanding Soaking Bathtub with Groove Overflow and Pop-up Drainer, White
+            [description] => 
+Features:
+
+
+
+    Compact Square Design for Small Bathrooms: The square freestanding design is ideal for small bathrooms, maximizing space efficiency while creating a more open and visually spacious feel. Easy to install and suitable for various layouts.
+
+
+    Premium 100% Pure Virgin Acrylic Construction: The soaking bathtub crafted from 100% pure virgin acrylic for superior strength, durability, and a high-gloss finish. The surface is stain-resistant, scratch-resistant, easy to clean, and designed to maintain its shine over time.
+
+
+    Ergonomic Recline with Comfortable Backrest Angle: Designed with a recline angle to naturally support your body, providing a relaxing and comfortable soaking position.
+
+
+    Pre-Molded Seat for Enhanced Comfort: Features a deep interior with a built-in pre-molded seat that gently supports the body, enhancing comfort and promoting a soothing, spa-like bathing experience.
+
+
+    High Load Capacity for Stability and Safety: Engineered with a strong structure supporting up to 800 lbs, ensuring excellent stability and long-term durability.
+
+
+    Modern Freestanding Style: A perfect balance of ergonomic comfort and contemporary design, elevating the look of any modern bathroom.
+
+
+    2-Year Warranty for Peace of Mind: Built with durable, high-quality materials and backed by a 2-year warranty, ensuring long-lasting performance and reliable everyday comfort.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 39 3/8"*39 3/8"*28 3/4"
+
+
+    Shape: Square
+
+
+    Weight Capacity: 800 lbs
+
+
+    Capacity: 84 Gallons
+
+
+    Overflow Type: Groove Overflow
+
+
+    Drain Assembly: Pop-up Drain Included
+
+
+    Installation Type: Freestanding
+
+
+    Surface Finish: High-gloss, stain-resistant, scratch-resistant
+
+
+        )
+
+    [8439930847424] => Array
+        (
+            [title] => 41 in. x 41 in. Acrylic Round Freestanding Soaking Bathtub with Groove Overflow and Pop-up Drainer
+            [description] => 
+Features:
+
+
+
+    Compact Round Design for Small Bathrooms: The round freestanding design is ideal for small bathrooms, maximizing space efficiency while creating a more open and visually spacious feel. Easy to install and suitable for various layouts.
+
+
+    Premium 100% Pure Virgin Acrylic Construction: The soaking bathtub crafted from 100% pure virgin acrylic for superior strength, durability, and a high-gloss finish. The surface is stain-resistant, scratch-resistant, easy to clean, and designed to maintain its shine over time.
+
+
+    Ergonomic Recline with Comfortable Backrest Angle: Designed with a comfortable recline angle to naturally support your body, providing a relaxing and comfortable soaking position.
+
+
+    Pre-Molded Seat for Enhanced Comfort: Features a deep interior with a built-in pre-molded seat that gently supports the body, enhancing comfort and promoting a soothing, spa-like bathing experience.
+
+
+    High Load Capacity for Stability and Safety: Engineered with a strong structure supporting up to 800 lbs, ensuring excellent stability and long-term durability.
+
+
+    Modern Freestanding Style: A perfect balance of ergonomic comfort and contemporary design, elevating the look of any modern bathroom.
+
+
+    2-Year Warranty for Peace of Mind: Built with durable, high-quality materials and backed by a 2-year warranty, ensuring long-lasting performance and reliable everyday comfort.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 41 1/8"*41 1/8"*26 9/16"
+
+
+    Shape: Round
+
+
+    Weight Capacity: 800 lbs
+
+
+    Capacity: 64 Gallons
+
+
+    Overflow Type: Groove Overflow
+
+
+    Drain Assembly: Pop-up Drain Included
+
+
+    Installation Type: Freestanding
+
+
+    Surface Finish: High-gloss, stain-resistant, scratch-resistant
+
+
+        )
+
+)
+
+Importing Page : 2
+
+Array
+(
+    [8435829670080] => Array
+        (
+            [title] => 65" Glossy White Acrylic Freestanding Bathtub with Chrome Overflow and Drain, 62 Gallon
+            [description] => 
+Product Features:
+
+
+
+    DIMENSIONS: 65 3/16" L x 29 1/2" W x 22 13/16" D with a 62-gallon capacity, fitting most bathroom spaces.
+
+
+    Premium 100% Pure Acrylic Construction: Crafted from 100% pure virgin acrylic, this bathtub provides excellent durability, structural stability, and a smooth, non-porous surface. The lightweight yet strong material ensures easy installation, long-lasting performance, and everyday reliability.
+
+
+    Extra-Wide Rim for Added Functionality: The generously wide edge rim offers convenient space for soaps and towels and allows for deck-mounted tub filler installation. (The installer has to measure and drill the mounting holes by themselves)
+
+
+    Advanced Multi-Layer Insulation for Long-Lasting Warmth: Engineered with a high-performance multi-layer insulated structure, this tub maximizes heat retention to keep bathwater warm for extended soaking sessions—reducing heat loss and enhancing overall bathing comfort.
+
+
+    Ergonomic Design with Exceptional Lumbar Support: Designed to follow the natural contours of the human body, this bathtub features enhanced lumbar support for superior comfort. Two size options are available to suit different bathroom spaces.
+
+
+    Fade-Resistant & Non-Yellowing Finish: Built to maintain its original color over time, this bathtub is UV-resistant and anti-yellowing, ensuring it won’t discolor even when placed near windows or exposed to sunlight—keeping it looking brand new for years.
+
+
+    Quick & Hassle-Free Installation: Featuring a pre-installed chrome drain and overflow, this bathtub streamlines installation and is compatible with most tub fillers (sold separately), making setup simple and efficient.
+
+
+Specifications
+
+
+
+    Product Type: Freestanding Soaking Bathtub
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Capacity: 62 Gallons
+
+
+    Installation Type: Freestanding
+
+
+    Included Accessories: Chrome overflow, pop-up drain, predrilled drain holes, and installation hardware
+
+
+        )
+
+    [8435812073664] => Array
+        (
+            [title] => 57" Glossy White Acrylic Freestanding Bathtub with Chrome Overflow and Drain, 54 Gallon
+            [description] => 
+Product Features:
+
+
+
+    DIMENSIONS: 57 1/4" L x 29 1/2" W x 22 13/16" D with a 54-gallon capacity, fitting most bathroom spaces.
+
+
+    Premium 100% Pure Acrylic Construction: Crafted from 100% pure virgin acrylic, this bathtub provides excellent durability, structural stability, and a smooth, non-porous surface. The lightweight yet strong material ensures easy installation, long-lasting performance, and everyday reliability.
+
+
+    Extra-Wide Rim for Added Functionality: The generously wide edge rim offers convenient space for soaps and towels and allows for deck-mounted tub filler installation. (The installer has to measure and drill the mounting holes by themselves)
+
+
+    Advanced Multi-Layer Insulation for Long-Lasting Warmth: Engineered with a high-performance multi-layer insulated structure, this tub maximizes heat retention to keep bathwater warm for extended soaking sessions—reducing heat loss and enhancing overall bathing comfort.
+
+
+    Ergonomic Design with Exceptional Lumbar Support: Designed to follow the natural contours of the human body, this bathtub features enhanced lumbar support for superior comfort. Two size options are available to suit different bathroom spaces.
+
+
+    Fade-Resistant & Non-Yellowing Finish: Built to maintain its original color over time, this bathtub is UV-resistant and anti-yellowing, ensuring it won’t discolor even when placed near windows or exposed to sunlight—keeping it looking brand new for years.
+
+
+    Quick & Hassle-Free Installation: Featuring a pre-installed chrome drain and overflow, this bathtub streamlines installation and is compatible with most tub fillers (sold separately), making setup simple and efficient.
+
+
+Specifications
+
+
+
+    Product Type: Freestanding Soaking Bathtub
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Capacity: 54 Gallons
+
+
+    Installation Type: Freestanding
+
+
+    Included Accessories: Chrome overflow, pop-up drain, predrilled drain holes, and installation hardware
+
+
+        )
+
+    [8435805290688] => Array
+        (
+            [title] => 67" Glossy White Freestanding Acrylic Soaking Bathtub with Advanced Heat Retention & Ergonomic Support, 71-Gallon
+            [description] => 
+Product Features:
+
+
+
+    DIMENSIONS: 66 15/16" L x 28 3/4" W x 26 3/8" D with a 71-gallon capacity, providing ample room while fitting most bathroom spaces.
+
+
+    Premium 100% Pure Acrylic Construction: Crafted from 100% pure virgin acrylic, this bathtub provides excellent durability, structural stability, and a smooth, non-porous surface. The lightweight yet strong material ensures easy installation, long-lasting performance, and everyday reliability.
+
+
+    Advanced Multi-Layer Insulation for Long-Lasting Warmth: Engineered with a high-performance multi-layer insulated structure, this tub maximizes heat retention to keep bathwater warm for extended soaking sessions—reducing heat loss and enhancing overall bathing comfort.
+
+
+    Ergonomic Design with Exceptional Lumbar Support: Designed to follow the natural contours of the human body, this bathtub features enhanced lumbar support for superior comfort. Two size options are available to suit different bathroom spaces.
+
+
+    Seamless One-Piece Surface: One-piece molded design with a smooth, joint-free surface for enhanced comfort and easy cleaning, finished with a sleek chrome drain and integrated slotted overflow for a clean, modern look.
+
+
+    Fade-Resistant & Non-Yellowing Finish: Built to maintain its original color over time, this bathtub is UV-resistant and anti-yellowing, ensuring it won’t discolor even when placed near windows or exposed to sunlight—keeping it looking brand new for years.
+
+
+Specifications
+
+
+
+    Product Type: Freestanding Soaking Bathtub
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Capacity: 71 Gallons
+
+
+    Installation Type: Freestanding
+
+
+    Included Accessories: Chrome overflow, pop-up drain, predrilled drain holes, and installation hardware
+
+
+        )
+
+    [8435803816128] => Array
+        (
+            [title] => 60" Glossy White Freestanding Acrylic Soaking Bathtub with Advanced Heat Retention & Ergonomic Support, 60-Gallon
+            [description] => 
+Product Features:
+
+
+
+    DIMENSIONS: 59 13/16" L x 28 3/4" W x 26 3/8" D with a 60-gallon capacity, providing ample room while fitting most bathroom spaces.
+
+
+    Premium 100% Pure Acrylic Construction: Crafted from 100% pure virgin acrylic, this bathtub provides excellent durability, structural stability, and a smooth, non-porous surface. The lightweight yet strong material ensures easy installation, long-lasting performance, and everyday reliability.
+
+
+    Advanced Multi-Layer Insulation for Long-Lasting Warmth: Engineered with a high-performance multi-layer insulated structure, this tub maximizes heat retention to keep bathwater warm for extended soaking sessions—reducing heat loss and enhancing overall bathing comfort.
+
+
+    Ergonomic Design with Exceptional Lumbar Support: Designed to follow the natural contours of the human body, this bathtub features enhanced lumbar support for superior comfort. Two size options are available to suit different bathroom spaces.
+
+
+    Seamless One-Piece Surface: One-piece molded design with a smooth, joint-free surface for enhanced comfort and easy cleaning, finished with a sleek chrome drain and integrated slotted overflow for a clean, modern look.
+
+
+    Fade-Resistant & Non-Yellowing Finish: Built to maintain its original color over time, this bathtub is UV-resistant and anti-yellowing, ensuring it won’t discolor even when placed near windows or exposed to sunlight—keeping it looking brand new for years.
+
+
+Specifications
+
+
+
+    Product Type: Freestanding Soaking Bathtub
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Capacity: 60 Gallons
+
+
+    Installation Type: Freestanding
+
+
+    Included Accessories: Chrome overflow, pop-up drain, predrilled drain holes, and installation hardware
+
+
+        )
+
+    [8326702465216] => Array
+        (
+            [title] => 60/66" Acrylic Freestanding Soaking Bathtub Contemporary Soaking White Tub with Overflow and Drain
+            [description] => 
+Product Features
+
+
+
+    Premium Quality Construction: This soaking bathtub is made out of 100% pure virgin acrylic, this bathtub offers exceptional durability, and resistance to wear and discoloration over time.
+
+
+    Low-Maintenance Glossy Finish: Easy clean, easy maintenance, stain-resistant, scratch resistant surface that maintains its high gloss. Can be use for a long time. And keep bright and clean as new.
+
+
+    Ergonomic Design: Designed with a curved back for optimal support and relaxation, the Acrylic bathtub’s perfect soaking depth ensures a full-body immersion for a truly soothing experience.
+
+
+    Superior Heat Retention: Designed with a multi-layer insulated structure, this freestanding bathroom bathtub provides maximum insulation to maintain water temperature for extended periods.
+
+
+    Integrated Slotted Overflow & Pop-Up Drain: Acrylic freestanding bathtub equipped with a white pop-up drain and integrated slotted overflow system to prevent water spillage while maintaining a clean, seamless look.
+
+
+Specifications
+
+
+
+    Capacity: 56/68 Gallon (options)
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Color/Finish: Glossy White
+
+
+    Dimensions: 60''--60" (L) × 28 3/4" (W) × 28 3/4" (H); 66''--66" (L) × 28 3/4" (W) × 28 3/4" (H)
+
+
+    Overflow Type: Integrated Slotted Overflow
+
+
+    Drain Type: White Pop-Up Drain (included)
+
+
+    Installation Type: Freestanding
+
+
+    Included Components: Bathtub, Pop-up drain, Integrated overflow
+
+
+        )
+
+    [8326054674624] => Array
+        (
+            [title] => 60/66" Freestanding Rectangle Acrylic Bathtub in Glossy White with Groove Overflow and Pop-up Drainer
+            [description] => 
+Product Features
+
+
+
+    Premium Quality Construction: The freestanding bathtub is made out of 100% pure virgin acrylic, this bathtub offers exceptional durability, and resistance to wear and discoloration over time.
+
+
+    Upgraded Large Water Capacity for Deep Soaking: Designed for ultimate relaxation, the enhanced water capacity allows for a fully immersive bathing experience. Enjoy a deep soak that envelops your body, providing maximum comfort and warmth.
+
+
+    Design Inspiration: The sleek, contemporary freestanding design with a glossy white finish enhances the elegance of any bathroom and serves as a luxurious focal point. Its size is ample yet economical allowing it to fit a variety of spaces.
+
+
+    Ergonomic Comfort Design: 120° gently sloped backrest follows the natural body curve, enhancing comfort and promoting full-body relaxation.
+
+
+    Superior Heat Retention: Designed with a multi-layer insulated structure, this freestanding bathroom bathtub provides maximum insulation to maintain water temperature for extended periods.
+
+
+    Complete Installation Convenience: Comes with essential accessories, including a Pop-up drain and groove overflow, making installation straightforward and stress-free.
+
+
+Specifications
+
+
+
+    Capacity: 65/78 Gallon(Options)
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Color/Finish: Glossy White
+
+
+    Dimensions: 60''--60" (L) × 28 3/4" (W) × 23 5/8" (H); 66''--66" (L) × 29 1/2" (W) × 23 5/8" (H)
+
+
+    Overflow Type: Integrated Slotted Overflow
+
+
+    Drain Type: White Pop-Up Drainer (included)
+
+
+    Installation Type: Freestanding
+
+
+    Included Components: Bathtub, Pop-up drainer, Integrated overflow
+
+
+        )
+
+    [8326020038848] => Array
+        (
+            [title] => 67" Acrylic Modern Freestanding Soaking Bathtub, Overflow and Drain Included
+            [description] => 
+Product Features
+
+
+
+    Premium Material: Freestanding bathtub crafted from high-quality 100% pure virgin acrylic, ensuring superior strength, durability, and resistance to stains and yellowing compared to recycled materials.
+
+
+    Ergonomic & Modern Design: Gently contoured shape and deep soaking depth ensure relaxing comfort while adding a sleek, contemporary touch to any bathroom.
+
+
+    Pre-Drilled for Easy Installation: Soaker tub comes with predrilled drain and overflow holes, making installation simple and hassle-free for both homeowners and professionals.
+
+
+    Integrated Slotted Overflow & Pop-Up Drain: Acrylic freestanding bathtub equipped with a white pop-up drain and integrated slotted overflow system to prevent water spillage while maintaining a clean, seamless look.
+
+
+    Spacious Soaking Experience: With a nominal dimension of 67"*28 15/16"*28 15/16", this freestanding tub offers generous space for a relaxing and immersive bathing experience.
+
+
+    Design Inspiration: The acrylic material allows for dynamic curvatures and for crisp, hand-finished details that are rich with character. Luxury, comfort, and chic style, ample yet economical size fits a variety of spaces.
+
+
+Specifications
+
+
+
+    Capacity: 56 Gallon
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Color/Finish: Glossy White
+
+
+    Dimensions: 67" (L) × 28 15/16" (W) × 28 15/16" (H)
+
+
+    Overflow Type: Integrated Slotted Overflow
+
+
+    Drain Type: White Pop-Up Drain (included)
+
+
+    Installation Type: Freestanding
+
+
+    Included Components: Bathtub, Pop-up drain, Integrated overflow
+
+
+        )
+
+    [8326014107840] => Array
+        (
+            [title] => 67" Acrylic Freestanding Soaking Bathtub in Glossy White with Pop-up Drainer and Groove Overflow
+            [description] => 
+Product Features
+
+
+
+    Premium Material: Freestanding bathtub crafted from high-quality 100% pure virgin acrylic, ensuring superior strength, durability, and resistance to stains and yellowing compared to recycled materials.
+
+
+    Ergonomic & Stylish Design: Smooth curves and deep soaking depth provide maximum comfort while enhancing bathroom aesthetics with a modern, minimalist look.
+
+
+    Pre-Drilled for Easy Installation: Soaker tub comes with predrilled drain and overflow holes, making installation simple and hassle-free for both homeowners and professionals.
+
+
+    Integrated Slotted Overflow & Pop-Up Drain: Acrylic freestanding bathtub equipped with a white pop-up drain and integrated slotted overflow system to prevent water spillage while maintaining a clean, seamless look.
+
+
+    Spacious Soaking Experience: With a nominal dimension of 67"*29 5/16"*28 3/4", this freestanding tub offers generous space for a relaxing and immersive bathing experience.
+
+
+    Design Inspiration: Luxury, comfort, and chic style, ample yet economical size fits a variety of spaces.
+
+
+Specifications
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Color/Finish: Glossy White
+
+
+    Dimensions: 67" (L) × 29 5/16" (W) × 28 3/4" (H)
+
+
+    Overflow Type: Integrated Slotted Overflow
+
+
+    Drain Type: White Pop-Up Drain (included)
+
+
+    Installation Type: Freestanding
+
+
+    Included Components: Bathtub, Pop-up drain, Integrated overflow
+
+
+        )
+
+    [8175317123264] => Array
+        (
+            [title] => 67" Acrylic Freestanding Bathtub, Unique Pleated Design With Chrome Drain and Slotted Overflow in Glossy White
+            [description] => 
+Product Features:
+
+
+
+    Modern Acrylic Freestanding Bathtub: Crafted from premium pure virgin acrylic, this bathtub maintains its vibrant color and glossy finish over time, resisting discoloration and wear for lasting beauty.
+
+
+    Design Inspiration: The sleek, contemporary freestanding design with a glossy white finish enhances the elegance of any bathroom and serves as a luxurious focal point. Its size is ample yet economical allowing it to fit a variety of spaces.
+
+
+    A Perfect Bathing Experience: Designed with a curved back for optimal support and relaxation, the Acrylic bathtub’s perfect soaking depth ensures a full-body immersion for a truly soothing experience.
+
+
+    Superior Heat Retention: Designed with a multi-layer insulated structure, this freestanding bathroom bathtub provides maximum insulation to maintain water temperature for extended periods.
+
+
+    Easy to Clean & Repairable: The non-porous surface resists stains and dirt, allowing for effortless cleaning and maintenance while ensuring a hygienic bathroom environment.
+
+
+    Complete Installation Convenience: Comes with essential accessories, including a chrome bathtub drain and chrome slotted overflow, making installation straightforward and stress-free.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 67 inches in length
+
+
+    Capacity: 78GAL
+
+
+    Design: Freestanding with ergonomic curved back
+
+
+    FAST DRAINIG: Drainage completed within 5 minutes
+
+
+
+        )
+
+    [8175284945088] => Array
+        (
+            [title] => 59" Acrylic Freestanding Bathtub, Unique Pleated Design With Chrome Drain and Slotted Overflow in Glossy White
+            [description] => 
+Product Features:
+
+
+
+    Modern Acrylic Freestanding Bathtub: Crafted from premium pure virgin acrylic, this bathtub maintains its vibrant color and glossy finish over time, resisting discoloration and wear for lasting beauty.
+
+
+    Design Inspiration: The sleek, contemporary freestanding design with a glossy white finish enhances the elegance of any bathroom and serves as a luxurious focal point. Its size is ample yet economical allowing it to fit a variety of spaces.
+
+
+    A Perfect Bathing Experience: Designed with a curved back for optimal support and relaxation, the Acrylic bathtub’s perfect soaking depth ensures a full-body immersion for a truly soothing experience.
+
+
+    Superior Heat Retention: Designed with a multi-layer insulated structure, this freestanding bathroom bathtub provides maximum insulation to maintain water temperature for extended periods.
+
+
+    Easy to Clean & Repairable: The non-porous surface resists stains and dirt, allowing for effortless cleaning and maintenance while ensuring a hygienic bathroom environment.
+
+
+    Complete Installation Convenience: Comes with essential accessories, including a chrome bathtub drain and chrome slotted overflow, making installation straightforward and stress-free.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 59 inches in length
+
+
+    Capacity: 62GAL
+
+
+    Design: Freestanding with ergonomic curved back
+
+
+    FAST DRAINIG: Drainage completed within 5 minutes
+
+
+
+        )
+
+    [8175031320768] => Array
+        (
+            [title] => 59" Acrylic Freestanding Bathtub in Glossy White with Overflow and Drain
+            [description] => 
+Product Features:
+
+
+
+    Premium Quality Construction: Wellfor bathtub is made out of 100% pure virgin acrylic. Engineered for durability, the high-quality solid surface resists scratches and wear while offering excellent repairability.
+
+
+    Design Inspiration: The sleek, contemporary freestanding design with a polished glossy white finish enhances the elegance of any bathroom and serves as a luxurious focal point. Its size is ample yet economical allowing it to fit a variety of spaces.
+
+
+    Ergonomic Design: Designed with a curved back for optimal support and relaxation, the Acrylic bathtub’s perfect soaking depth ensures a full-body immersion for a truly soothing experience.
+
+
+    Superior Heat Retention: Designed with a multi-layer insulated structure, this freestanding bathroom bathtub provides maximum insulation to maintain water temperature for extended periods.
+
+
+    Complete Installation Convenience: Comes with essential accessories, including a chrome bathtub drain and chrome slotted overflow, making installation straightforward and stress-free.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 59 inches in length
+
+
+    Capacity: 63GAL
+
+
+    Design: Freestanding with ergonomic curved back
+
+
+    FAST DRAINIG: Drainage completed within 5 minutes
+
+
+
+        )
+
+    [8175282454720] => Array
+        (
+            [title] => 67" Freestanding Acrylic Bathtub Contemporary Soaking Tub in Glossy White
+            [description] => 
+Product Features:
+
+
+
+    100% Fade-Resistant Acrylic: Crafted from premium pure virgin acrylic, this bathtub maintains its vibrant color and glossy finish over time, resisting discoloration and wear for lasting beauty.
+
+
+    74GAL Upgraded Large Water Capacity for Deep Soaking: Designed for ultimate relaxation, the enhanced water capacity allows for a fully immersive bathing experience. Enjoy a deep soak that envelops your body, providing maximum comfort and warmth.
+
+
+    Design Inspiration: The sleek, contemporary freestanding design with a glossy white finish enhances the elegance of any bathroom and serves as a luxurious focal point. Designed with a dedicated surface area for placing bath essentials like shampoo, soap, and body wash, keeping everything within easy reach for a seamless bathing experience.
+
+
+    Ergonomic Design: Designed with a curved back for optimal support and relaxation, the Acrylic bathtub’s perfect soaking depth ensures a full-body immersion for a truly soothing experience.
+
+
+    Superior Heat Retention: Designed with a multi-layer insulated structure, this freestanding bathroom bathtub provides maximum insulation to maintain water temperature for extended periods.
+
+
+    Complete Installation Convenience: Comes with essential accessories, including a chrome bathtub drain and chrome slotted overflow, making installation straightforward and stress-free.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 67 inches in length
+
+
+    Capacity: 74GAL
+
+
+    Color: Glossy White
+
+
+    Design: Freestanding with ergonomic curved back
+
+
+    FAST DRAINIG: Drainage completed within 5 minutes
+
+
+
+        )
+
+    [8175037415616] => Array
+        (
+            [title] => 67" Acrylic Freestanding Bathtub Contemporary 71GAL Soaking Tub in Glossy White
+            [description] => 
+Product Features:
+
+
+
+    100% Fade-Resistant Acrylic: Crafted from premium pure virgin acrylic, this bathtub maintains its vibrant color and glossy finish over time, resisting discoloration and wear for lasting beauty.
+
+
+    71GAL Upgraded Large Water Capacity for Deep Soaking: Designed for ultimate relaxation, the enhanced water capacity allows for a fully immersive bathing experience. Enjoy a deep soak that envelops your body, providing maximum comfort and warmth.
+
+
+    Design Inspiration: The sleek, contemporary freestanding design with a polished glossy white finish enhances the elegance of any bathroom and serves as a luxurious focal point. Its size is ample yet economical allowing it to fit a variety of spaces.
+
+
+    Ergonomic Design: Designed with a curved back for optimal support and relaxation, the Acrylic bathtub’s perfect soaking depth ensures a full-body immersion for a truly soothing experience.
+
+
+    Superior Heat Retention: Designed with a multi-layer insulated structure, this freestanding bathroom bathtub provides maximum insulation to maintain water temperature for extended periods.
+
+
+    Complete Installation Convenience: Comes with essential accessories, including a chrome bathtub drain and chrome slotted overflow, making installation straightforward and stress-free.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 67 inches in length
+
+
+    Capacity: 71GAL
+
+
+    Design: Freestanding with ergonomic curved back
+
+
+    FAST DRAINIG: Drainage completed within 5 minutes
+
+
+
+        )
+
+    [8175036039360] => Array
+        (
+            [title] => 59" Acrylic Freestanding Bathtub Contemporary 66GAL Soaking Tub in Glossy White
+            [description] => 
+Product Features:
+
+
+
+    100% Fade-Resistant Acrylic: Crafted from premium pure virgin acrylic, this bathtub maintains its vibrant color and glossy finish over time, resisting discoloration and wear for lasting beauty.
+
+
+    Design Inspiration: The sleek, contemporary freestanding design with a polished glossy white finish enhances the elegance of any bathroom and serves as a luxurious focal point. Its size is ample yet economical allowing it to fit a variety of spaces.
+
+
+    Ergonomic Design: Designed with a curved back for optimal support and relaxation, the Acrylic bathtub’s perfect soaking depth ensures a full-body immersion for a truly soothing experience.
+
+
+    Superior Heat Retention: Designed with a multi-layer insulated structure, this freestanding bathroom bathtub provides maximum insulation to maintain water temperature for extended periods.
+
+
+    Complete Installation Convenience: Comes with essential accessories, including a chrome bathtub drain and chrome slotted overflow, making installation straightforward and stress-free.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 59 inches in length
+
+
+    Capacity: 66GAL
+
+
+    Design: Freestanding with ergonomic curved back
+
+
+    FAST DRAINIG: Drainage completed within 5 minutes
+
+
+
+        )
+
+    [8175032074432] => Array
+        (
+            [title] => 67" Acrylic Freestanding Bathtub in Glossy White with Overflow and Drain
+            [description] => 
+Product Features:
+
+
+
+    Premium Quality Construction: Wellfor bathtub is made out of 100% pure virgin acrylic. Engineered for durability, the high-quality solid surface resists scratches and wear while offering excellent repairability.
+
+
+    74GAL Upgraded Large Water Capacity for Deep Soaking: Designed for ultimate relaxation, the enhanced water capacity allows for a fully immersive bathing experience. Enjoy a deep soak that envelops your body, providing maximum comfort and warmth.
+
+
+    Design Inspiration: The sleek, contemporary freestanding design with a polished glossy white finish enhances the elegance of any bathroom and serves as a luxurious focal point. Its size is ample yet economical allowing it to fit a variety of spaces.
+
+
+    Ergonomic Design: Designed with a curved back for optimal support and relaxation, the Acrylic bathtub’s perfect soaking depth ensures a full-body immersion for a truly soothing experience.
+
+
+    Superior Heat Retention: Designed with a multi-layer insulated structure, this freestanding bathroom bathtub provides maximum insulation to maintain water temperature for extended periods.
+
+
+    Complete Installation Convenience: Comes with essential accessories, including a chrome bathtub drain and chrome slotted overflow, making installation straightforward and stress-free.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 67 inches in length
+
+
+    Capacity: 74GAL
+
+
+    Design: Freestanding with ergonomic curved back
+
+
+    FAST DRAINIG: Drainage completed within 5 minutes
+
+
+
+        )
+
+    [8175025848512] => Array
+        (
+            [title] => 67" Acrylic Freestanding Soaking Bathtub in Glossy White with Overflow and Drain
+            [description] => 
+Product Features:
+
+
+
+    Premium Quality Construction: Wellfor bathtub is made out of 100% pure virgin acrylic, this bathtub offers exceptional durability, and resistance to wear and discoloration over time.
+
+
+    66GAL Upgraded Large Water Capacity for Deep Soaking: Designed for ultimate relaxation, the enhanced water capacity allows for a fully immersive bathing experience. Enjoy a deep soak that envelops your body, providing maximum comfort and warmth.
+
+
+    Design Inspiration: The sleek, contemporary freestanding design with a glossy white finish enhances the elegance of any bathroom and serves as a luxurious focal point. Its size is ample yet economical allowing it to fit a variety of spaces.
+
+
+    Ergonomic Design: Designed with a curved back for optimal support and relaxation, the Acrylic bathtub’s perfect soaking depth ensures a full-body immersion for a truly soothing experience.
+
+
+    Superior Heat Retention: Designed with a multi-layer insulated structure, this freestanding bathroom bathtub provides maximum insulation to maintain water temperature for extended periods.
+
+
+    Complete Installation Convenience: Comes with essential accessories, including a chrome bathtub drain and chrome slotted overflow, making installation straightforward and stress-free.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 67 inches in length
+
+
+    Design: Freestanding with ergonomic curved back
+
+
+    FAST DRAINIG: Drainage completed within 5 minutes
+
+
+
+        )
+
+    [8136647213248] => Array
+        (
+            [title] => 67" Freestanding Acrylic Bathtub with Slotted Overflow in Glossy White
+            [description] => 
+Product Features
+
+
+
+
+    Elegant Glossy White Finish: Features a glossy white finish that adds a sleek, modern touch to your bathroom decor.
+
+
+
+    High-Quality 100% Virgin Acrylic: Made from 100% pure virgin acrylic for enhanced durability, heat retention, and resistance to stains and scratches.
+
+
+
+    Pre-Drilled Drain and Overflow Holes: Includes pre-drilled holes for both the drain and overflow, ensuring quick and easy installation.
+
+
+
+    Chrome Drain and Integrated Slotted Overflow: Designed with a chrome bathtub drain and integrated slotted overflow for a stylish and efficient drainage system.
+
+
+Specifications
+
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 67 inches in length
+
+
+
+    Overflow Style: Integrated slotted overflow with chrome bathtub drain
+
+
+
+        )
+
+    [8136646852800] => Array
+        (
+            [title] => 59" Freestanding Glossy White Acrylic Bathtub with Chrome Drain and Overflow
+            [description] => 
+Product Features
+
+
+
+
+    Sleek Glossy White Finish: Features a smooth, glossy white finish that adds a clean and modern look to any bathroom.
+
+
+
+    Durable 100% Virgin Acrylic: Constructed from 100% pure virgin acrylic for superior strength, excellent heat retention, and resistance to scratches and stains.
+
+
+
+    Pre-Drilled Holes for Easy Installation: Comes with pre-drilled drain and overflow holes, making installation quick and hassle-free.
+
+
+
+    Chrome Drain and Integrated Slotted Overflow: Equipped with a chrome bathtub drain and an integrated slotted overflow for efficient drainage and a stylish, minimalist design.
+
+
+Specifications
+
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 59 inches in length
+
+
+
+    Overflow Style: Integrated slotted overflow with chrome bathtub drain
+
+
+
+        )
+
+    [8136646492352] => Array
+        (
+            [title] => 67" Freestanding Glossy White Acrylic Bathtub with Chrome Overflow
+            [description] => 
+Product Features
+
+
+
+
+    Elegant Glossy White Finish: The bathtub is finished in a luxurious glossy white that enhances any bathroom with its sleek, modern design.
+
+
+
+    Durable 100% Pure Virgin Acrylic: Crafted from high-quality 100% virgin acrylic, ensuring exceptional durability, heat retention, and resistance to stains and scratches.
+
+
+
+    Pre-Drilled Holes for Effortless Installation: Includes pre-drilled drain and overflow holes for a straightforward and convenient installation process.
+
+
+
+    Chrome Drain and Integrated Slotted Overflow: Features a chrome bathtub drain and an integrated slotted overflow system, offering both style and functionality with seamless water flow.
+
+
+Specifications
+
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 67 inches in length
+
+
+
+    Overflow Style: Integrated slotted overflow with chrome bathtub drain
+
+
+
+        )
+
+    [8136646164672] => Array
+        (
+            [title] => 67" Freestanding Glossy White Acrylic Bathtub with Integrated Overflow and Chrome Drain
+            [description] => 
+Product Features
+
+
+
+
+    Luxurious Glossy White Finish: Features a sleek and glossy white surface that adds an elegant touch to any bathroom decor.
+
+
+
+    Premium 100% Pure Virgin Acrylic: Constructed with 100% virgin acrylic for superior strength, heat retention, and resistance to scratches and stains.
+
+
+
+    Pre-Drilled Holes for Easy Installation: Comes with pre-drilled drain and overflow holes for quick and easy installation.
+
+
+
+    Chrome Drain and Integrated Slotted Overflow: Includes a chrome bathtub drain and an integrated slotted overflow system for modern, efficient drainage and a clean look.
+
+
+Specifications
+
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 67 inches in length
+
+
+
+    Overflow Style: Integrated slotted overflow with chrome bathtub drain
+
+
+
+        )
+
+    [8136638005440] => Array
+        (
+            [title] => 60" Freestanding Glossy White Acrylic Bathtub with Slotted Overflow and Chrome Drain
+            [description] => 
+Product Features
+
+
+
+
+    Elegant Glossy White Finish: Features a smooth and glossy white finish that provides a modern and sophisticated look to your bathroom.
+
+
+
+    Durable 100% Pure Virgin Acrylic: Made from 100% virgin acrylic, offering excellent durability, resistance to scratches, stains, and superior heat retention.
+
+
+
+    Pre-Drilled Holes for Easy Setup: Equipped with pre-drilled drain and overflow holes for a hassle-free installation process.
+
+
+
+    Chrome Drain with Integrated Slotted Overflow: Comes with a chrome bathtub drain and integrated slotted overflow for a sleek, efficient, and modern design.
+
+
+Specifications
+
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 60 inches in length
+
+
+
+    Overflow Style: Integrated slotted overflow with chrome bathtub drain
+
+
+
+        )
+
+    [8136637251776] => Array
+        (
+            [title] => 67" Freestanding Glossy White Acrylic Bathtub with Chrome Drain and Overflow
+            [description] => 
+Product Features
+
+
+
+
+    Sleek Glossy White Finish: Features a glossy white finish that enhances the elegance and sophistication of your bathroom decor.
+
+
+    100% Pure Virgin Acrylic: Crafted from 100% pure virgin acrylic, offering exceptional durability, heat retention, and resistance to stains and scratches.
+
+
+
+    Pre-Drilled Holes for Easy Installation: Pre-drilled drain and overflow holes for straightforward installation and optimal water flow management.
+
+
+
+    Chrome Drain with Integrated Slotted Overflow: Includes a chrome bathtub drain and integrated slotted overflow for a sleek, modern design and efficient drainage.
+
+
+Specifications
+
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 67 inches in length
+
+
+
+    Overflow Style: Integrated slotted overflow with chrome bathtub drain
+
+
+
+        )
+
+    [8136637055168] => Array
+        (
+            [title] => 60" Freestanding Glossy White Acrylic Bathtub with Chrome Drain and Overflow
+            [description] => 
+Product Features
+
+
+
+
+    Sleek Glossy White Finish: The bathtub features a smooth and shiny glossy white finish that complements any modern bathroom design.
+
+
+
+    100% Pure Virgin Acrylic Construction: Made from high-quality pure virgin acrylic for superior strength, durability, heat retention, and resistance to stains and scratches.
+
+
+
+    Pre-Drilled Drain and Overflow Holes: Includes pre-drilled drain and overflow holes for easy installation and reliable water flow management.
+
+
+
+    Chrome Drain and Integrated Slotted Overflow: Comes with a stylish chrome bathtub drain and integrated slotted overflow for a sleek, modern appearance and efficient water drainage.
+
+
+Specifications
+
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 60 inches in length
+
+
+
+    Overflow Style: Integrated slotted overflow with chrome bathtub drain
+
+
+
+        )
+
+    [8136636235968] => Array
+        (
+            [title] => 66" White Acrylic Freestanding Bathtub with Integrated Slotted Overflow
+            [description] => 
+Product Features
+
+
+
+
+    Elegant Glossy White Finish: Features a smooth, glossy white finish that adds a modern and luxurious touch to your bathroom.
+
+
+
+    Durable 100% Pure Virgin Acrylic: Constructed with 100% pure virgin acrylic, ensuring long-lasting durability, superior heat retention, and resistance to stains and scratches.
+
+
+
+    Pre-Drilled Drain and Overflow Holes: Designed with pre-drilled drain and overflow holes for easy, hassle-free installation and optimal water drainage.
+
+
+
+    Integrated Slotted Overflow with Matching White Drain: Equipped with an integrated slotted overflow and a white matching drain for a seamless and clean design.
+
+
+Specifications
+
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 66 inches in length
+
+
+
+    Overflow Style: Integrated slotted overflow with a matching white drain
+
+
+
+        )
+
+    [8136635711680] => Array
+        (
+            [title] => 66" Glossy White Acrylic Freestanding Bathtub with Integrated Slotted Overflow
+            [description] => 
+Product Features
+
+
+
+
+    Sleek Glossy White Finish: Features a shiny, smooth glossy white surface that enhances the aesthetic appeal of any bathroom.
+
+
+
+    Durable 100% Virgin Acrylic: Made from 100% pure virgin acrylic, offering long-lasting durability, resistance to stains, and excellent heat retention.
+
+
+
+    Pre-Drilled Holes for Easy Installation: Equipped with pre-drilled drain and overflow holes, allowing for a smooth and quick setup process.
+
+
+
+    Integrated Slotted Overflow and White Drain: Designed with an integrated slotted overflow and matching white drain for a modern, minimalist design.
+
+
+Specifications
+
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 66 inches in length
+
+
+
+    Overflow Style: Integrated slotted overflow with matching white drain
+
+
+
+        )
+
+)
+
+Importing Page : 3
+
+Array
+(
+    [8136633778368] => Array
+        (
+            [title] => 66" Freestanding Glossy White Acrylic Bathtub with Integrated Overflow
+            [description] => 
+Product Features
+
+
+
+    Luxurious Glossy White Finish: The bathtub boasts a sleek, glossy white finish that adds elegance and modern style to any bathroom.
+
+
+
+    High-Quality Virgin Acrylic: Constructed from 100% pure virgin acrylic for superior durability, heat retention, and resistance to stains and scratches.
+
+
+
+    Pre-Drilled Holes for Easy Setup: Comes with pre-drilled drain and overflow holes, making installation quick and hassle-free.
+
+
+
+    Integrated Slotted Overflow and Matching White Drain: Features an integrated slotted overflow system and a white bathtub drain, creating a seamless and stylish appearance.
+
+
+Specifications
+
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 66 inches in length
+
+
+
+    Overflow Style: Integrated slotted overflow with white matching drain
+
+
+
+        )
+
+    [8136629223616] => Array
+        (
+            [title] => 69" Freestanding Glossy White Acrylic Bathtub with Slotted Overflow and Drainer
+            [description] => 
+Product Features
+
+
+
+
+    Sleek Glossy White Finish: Features a high-gloss white finish that enhances the beauty and elegance of your bathroom decor.
+
+
+
+    100% Pure Virgin Acrylic Construction: Made from 100% virgin acrylic, offering durability, heat retention, and scratch resistance for long-lasting use.
+
+
+
+    Pre-Drilled Drain and Overflow Holes: Includes pre-drilled drain and overflow holes for easy and quick installation.
+
+
+
+    Integrated Slotted Overflow with Matching Drain: Comes with a built-in slotted overflow and matching white drain, providing a smooth and modern look.
+
+
+    Customizable Setup: Supports both deck-mounted faucet installation on the tub body or wall-mounted faucet, depending on your preference.
+
+
+Specifications
+
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 69 inches in length
+
+
+
+    Overflow Style: Integrated slotted overflow with matching drain
+
+
+
+        )
+
+    [8136628830400] => Array
+        (
+            [title] => 66" Freestanding Glossy White Acrylic Bathtub with Slotted Overflow and Drain
+            [description] => 
+Product Features
+
+
+
+
+    Elegant Glossy White Finish: The bathtub features a smooth, glossy white surface that adds a touch of sophistication to any bathroom.
+
+
+
+    100% Pure Virgin Acrylic: Constructed with premium virgin acrylic, offering superior strength, longevity, and resistance to scratches, stains, and fading.
+
+
+
+    Pre-Drilled Holes for Easy Installation: Includes pre-drilled drain and overflow holes, simplifying the installation process for a seamless setup.
+
+
+
+    Integrated Slotted Overflow and White Drain: Comes with an integrated slotted overflow system and a matching white drain, providing a sleek and minimalist design.
+
+
+Specifications
+
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 66 inches in length
+
+
+
+    Overflow Style: Integrated slotted overflow with matching drain
+
+
+
+        )
+
+    [8136628273344] => Array
+        (
+            [title] => 60/63/66/71" Freestanding Glossy White Acrylic Bathtub with Slotted Overflow
+            [description] => 
+Product Features
+
+
+
+
+    Stylish Glossy White Finish: Features a sleek, glossy white finish that complements any bathroom decor, offering a modern and clean look.
+
+
+
+    Heavy-Duty & Thermal Construction: Multi-layer insulated structure ensures excellent heat retention, keeping water warm longer for an extended soaking experience.
+
+
+    Ergonomic Comfort Design: 120° gently sloped backrest follows the natural body curve, enhancing comfort and promoting full-body relaxation.
+
+
+    Spacious Soaking Experience: This freestanding bathtub is available in four sizes — 60", 63", 66", 71" (corresponding to 59 Gallon, 61 Gallon, 66 Gallon, and 77 Gallon) — offering a spacious design that allows you to fully relax and enjoy an immersive bathing experience.
+
+
+    Premium 100% Virgin Acrylic Construction: Constructed from high-quality virgin acrylic, ensuring exceptional durability, heat retention, and resistance to staining and scratching.
+
+
+
+    Pre-Drilled Drain and Overflow Holes: Pre-drilled drain and overflow holes for easy, convenient installation and efficient water drainage.
+
+
+
+    Integrated Slotted Overflow with Matching Drain: Designed with an integrated slotted overflow and matching white bathtub drain, providing a seamless and elegant appearance.
+
+
+Specifications
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Overflow Style: Integrated slotted overflow
+
+
+
+    Installation Features: Pre-drilled drain and overflow holes
+
+
+    Capacity: 59/61/66/71 Gallon (Options)
+
+
+
+        )
+
+    [8136627814592] => Array
+        (
+            [title] => 66" Freestanding Acrylic Bathtub Glossy White with Overflow and Drainage
+            [description] => 
+Product Features
+
+
+
+
+    Sleek Glossy White Finish: Designed with a high-gloss white surface that enhances the elegance of your bathroom.
+
+
+    Premium Virgin Acrylic Construction: Made from 100% pure virgin acrylic, providing durability, excellent heat retention, and resistance to wear.
+
+
+    Pre-Drilled Holes for Easy Installation: Equipped with pre-drilled drain and overflow holes for a seamless and hassle-free setup.
+
+
+    Integrated Overflow with Matching Drain: Features an integrated slotted overflow and a white bathtub drain for a polished, minimalist appearance.
+
+
+Specifications
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Finish: Glossy white
+
+
+
+    Dimensions: 66 inches in length
+
+
+
+    Features: Pre-drilled drain and overflow holes with integrated slotted overflow
+
+
+
+        )
+
+    [8136627650752] => Array
+        (
+            [title] => 66" Freestanding Glossy White Acrylic Bathtub with Overflow and Drainage
+            [description] => 
+Product Features
+
+
+
+    Modern Glossy White Finish: A sleek and glossy white surface enhances the elegance and style of any bathroom.
+
+
+
+    100% Pure Virgin Acrylic: Crafted from durable virgin acrylic, ensuring excellent heat retention, scratch resistance, and long-lasting use.
+
+
+
+    Convenient Pre-Drilled Holes: Features pre-drilled drain and overflow holes for straightforward installation and efficient water management.
+
+
+
+    Integrated Slotted Overflow and Matching Drain: Includes a built-in slotted overflow and a white bathtub drain for a clean, seamless design.
+
+
+    Customizable Setup: Supports both deck-mounted faucet installation on the tub body or wall-mounted faucet, depending on your preference.
+
+
+Specifications
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+
+    Finish: Glossy white
+
+
+
+    Overflow Style: Integrated slotted overflow
+
+
+
+    Installation Features: Pre-drilled drain and overflow holes
+
+
+
+        )
+
+    [8136626667712] => Array
+        (
+            [title] => 70" Freestanding Glossy White Acrylic Bathtub with Overflow and Drain
+            [description] => 
+Product Features
+
+
+
+    Elegant Glossy White Finish: Features a high-gloss white surface that adds a modern and luxurious touch to any bathroom design.
+
+
+    100% Pure Virgin Acrylic Construction: Made from premium virgin acrylic for superior durability, heat retention, and resistance to stains and scratches.
+
+
+    Pre-Drilled Overflow and Drain Holes: Includes pre-drilled overflow and drain holes for hassle-free installation and optimal water drainage.
+
+
+    Integrated Slotted Overflow and Matching Drain: Comes with a white integrated slotted overflow and a matching bathtub drain, ensuring a clean and seamless look.
+
+
+Specifications
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Finish: Glossy white
+
+
+    Overflow Type: Integrated slotted overflow
+
+
+    Installation Features: Pre-drilled overflow and drain holes
+
+
+
+        )
+
+    [8045702611136] => Array
+        (
+            [title] => 67" Luxury Acrylic Freestanding Soaking Bathtub in White with Air Bubble Massage and Romantic LED Lighting
+            [description] => 
+Product Features
+
+
+
+    Premium Acrylic Construction: Made from 100% pure virgin acrylic, ensuring strength, durability, and a lightweight design for easy handling and installation.
+
+
+    Air Bubble Massage System: Features an integrated air bubble massage system for a luxurious and therapeutic bathing experience, providing ultimate relaxation.
+
+
+    Elegant Design with Mood Lighting: A sleek, modern design complemented by built-in ambient lighting to create a serene and romantic atmosphere in your bathroom.
+
+
+    Low Maintenance and Longevity: Glossy white finish with a stain- and scratch-resistant surface makes cleaning effortless while maintaining a pristine look over time.
+
+
+Specifications
+
+
+
+    Material: 100% Virgin Acrylic
+
+
+    Features: Air bubble massage system, integrated mood lighting
+
+
+    Drainage: Pop-up drainer and groove overflow for efficient water control
+
+
+    Finish: Glossy white, stain and scratch resistant for lasting beauty
+
+
+
+        )
+
+    [8045697138880] => Array
+        (
+            [title] => 67" Acrylic Freestanding Soaking Bathtub in White with Overflow and Drain
+            [description] => 
+Product Features
+
+
+
+    Premium Acrylic Construction: Made from 100% pure virgin acrylic for exceptional durability, and long-lasting quality.
+
+
+    Modern and Versatile Design: Features a contemporary style with a sleek, glossy white finish that complements a variety of bathroom aesthetics.
+
+
+    Ergonomic Comfort: Designed with sculpted curves that cradle your body, providing a deeply relaxing and restorative soaking experience.
+
+
+    Low Maintenance: Scratch- and stain-resistant surface with a high-gloss finish ensures easy cleaning and a pristine look over time.
+
+
+Specifications
+
+
+
+    Material: 100% Virgin Acrylic
+
+
+    Finish: Glossy white, stain and scratch-resistant
+
+
+    Installation: Predrilled drain and overflow holes; includes chrome drain and overflow
+
+
+    Dimensions: Spacious soaking tub suitable for various bathroom layouts
+
+
+
+        )
+
+    [8045695303872] => Array
+        (
+            [title] => 59" Acrylic Freestanding Soaking Bathtub in White with Overflow and Drain
+            [description] => 
+Product Features
+
+
+
+    Premium Acrylic Construction: Made from 100% pure virgin acrylic, offering durability, strength, and easy handling during installation.
+
+
+    Sleek and Modern Design: Featuring gracefully curved lines and a glossy white finish, this tub enhances any bathroom with its elegant and contemporary aesthetic.
+
+
+    Ergonomic Comfort: Sculpted to cradle your body, ensuring a deep, relaxing soak while maintaining warmth for extended comfort.
+
+
+    Low Maintenance: Stain and scratch-resistant surface with a mirror-like finish makes cleaning effortless, ensuring the tub remains pristine over time.
+
+
+Specifications
+
+
+
+    Material: 100% Virgin Acrylic
+
+
+    Finish: High-gloss white, resistant to stains and scratches
+
+
+    Installation: Predrilled drain and overflow holes; includes chrome drain and overflow
+
+    Overall size: 59 x 31.5 x 23.625 in. (L x W x H)
+
+
+
+        )
+
+    [8045027688640] => Array
+        (
+            [title] => 59" Acrylic Freestanding Soaking Bathtub in White with Overflow and Drain
+            [description] => 
+Features:
+
+
+
+    Superior Acrylic Construction: Crafted from 100% pure virgin acrylic, this bathtub is durable, ensuring effortless installation and long-term reliability.
+
+
+    Elegant Smooth Finish: Featuring a high-gloss, smooth finish on both interior and exterior surfaces, this bathtub adds a modern, sophisticated touch to your bathroom decor.
+
+
+    Ergonomic Double-End Design: The double-ended shape provides exceptional support and comfort, allowing for a spa-like, fully immersive bathing experience.
+
+
+    Advanced Multi-Layer Insulation for Long-Lasting Warmth: Designed with a high-performance multi-layer insulated structure, this bathtub delivers maximum heat retention, keeping bathwater warm for extended periods.
+
+
+    Low Maintenance Durability: Designed with a stain- and scratch-resistant surface, the bathtub remains easy to clean and maintain, keeping its pristine appearance for years.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 59 inches in length
+
+
+    Capacity: 79 Gallons
+
+
+    Design: Double-ended, freestanding with high-gloss finish
+
+
+    Included Accessories: Chrome overflow, pop-up drain, predrilled drain holes, and installation hardware
+
+
+        )
+
+    [8045004062912] => Array
+        (
+            [title] => 67" Acrylic Freestanding Soaking Bathtub in White with Overflow and Drain
+            [description] => 
+Product Features:
+
+
+
+    Premium and Durable Construction: Built from 100% pure virgin acrylic, this bathtub offers exceptional durability, and resistance to wear and discoloration over time.
+
+
+    Modern Aesthetics: The sleek, contemporary freestanding design with a polished white finish enhances the elegance of any bathroom and serves as a luxurious focal point.
+
+
+    Ergonomic Comfort: Designed with a curved back for optimal support and relaxation, the bathtub’s perfect soaking depth ensures a full-body immersion for a truly soothing experience.
+
+
+    Complete Installation Convenience: Comes with essential accessories, including a pop-up drain, chrome waste overflow, leveling legs, and a flexible drain hose, making installation straightforward and stress-free.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 67 inches in length
+
+
+    Design: Freestanding with ergonomic curved back
+
+
+    Included Accessories: Pop-up drain, chrome overflow, leveling legs, and flexible drain hose
+
+
+
+        )
+
+    [8044997148864] => Array
+        (
+            [title] => 59" Acrylic Freestanding Soaking Bathtub in White with Overflow and Drain
+            [description] => 
+Product Features:
+
+
+
+    Premium Construction: Crafted from 100% pure virgin acrylic, this bathtub ensures exceptional strength, and long-lasting durability for years of reliable use.
+
+
+    Modern and Stylish Design: The contemporary freestanding design, combined with a sleek white finish, creates an elegant centerpiece that complements any bathroom décor.
+
+
+    Ergonomic and Comfortable: Featuring a curved back design, this bathtub offers excellent support for a relaxing soak. The ideal soaking depth allows for full-body immersion, enhancing your bathing experience.
+
+
+    Complete Installation Package: Includes all necessary accessories: a pop-up drain, chrome waste overflow, leveling legs, and a flexible drain hose, ensuring hassle-free and straightforward installation.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Dimensions: 59 inches in length
+
+
+    Design: Freestanding with curved back
+
+
+    Included Accessories: Pop-up drain, chrome overflow, leveling legs, and flexible drain hose
+
+
+
+        )
+
+    [8044992463040] => Array
+        (
+            [title] => 67" Luxury Acrylic Freestanding Flatbottom Bathtub in White
+            [description] => 
+Product Features:
+
+
+
+    Durability and Quality: Constructed from 100% pure virgin acrylic, this freestanding bathtub offers exceptional durability, resisting wear and maintaining a high-quality finish for years.
+
+
+    Design and Comfort: The 67-inch freestanding design provides ample space to stretch out and relax. Its sleek, modern style enhances any bathroom while allowing for a more open, unrestricted layout. Enjoy the ultimate comfort with a generous bathing area perfect for relaxation.
+
+
+    Convenience and Ease of Use: This bathtub features a wide edge rim that accommodates a handheld shower, offering flexibility and convenience. The ergonomic control knobs are designed for easy operation, ensuring a seamless bathing experience every time.
+
+
+    Overflow Assembly: The built-in overflow assembly lets you enjoy deep soaking without worrying about spillage. This feature enhances both safety and comfort, allowing you to relax fully without concern.
+
+
+Specifications:
+
+
+
+    Material: 100% Pure Virgin Acrylic
+
+
+    Length: 67 inches
+
+
+    Design: Freestanding
+
+
+    Pre-Installed Accessories: Includes chrome polished drain and overflow pre-drilled for easy installation
+
+
+
+        )
+
+    [7711080284352] => Array
+        (
+            [title] => 67" Solid Surface Stone Resin Stand Freestanding Soaking Bathtub in White
+            [description] => 
+Product Features:
+
+
+
+    Stylish and Elegant Design: The sleek, freestanding design and modern finish of this bathtub create a statement piece in any bathroom. Its contemporary look effortlessly complements various bathroom styles, making it a perfect focal point for your space.
+
+
+    Comfortable and Relaxing Soak: With its ergonomic shape and smooth surface, this freestanding bathtub provides exceptional comfort for a full-body soak. The design allows you to fully relax and unwind, offering a truly rejuvenating bathing experience.
+
+
+    Durable and High-Quality Construction: Crafted from solid surface stone resin, this bathtub is built to withstand daily use. The durable material resists wear and tear, ensuring the bathtub maintains its pristine appearance and function for years to come.
+
+
+    Easy Installation: The bathtub comes with all the necessary hardware and clear instructions, allowing for quick and easy installation. You can enjoy your luxurious new bathtub with minimal effort, thanks to its user-friendly setup.
+
+
+Specifications:
+
+
+
+    Material: Solid Surface Stone Resin
+
+
+    Design: Freestanding, Soaking
+
+
+    Size: 67 inches in length
+
+
+    Finish: Sleek, Modern
+
+
+    Size: 67in*22in*31.5in
+
+
+        )
+
+    [7711016976576] => Array
+        (
+            [title] => 51″ Solid Surface Stone Bathroom Freestanding Bathtub with 34" Depth
+            [description] => 
+Product Features
+
+
+
+    Stylish and Elegant Design: The freestanding design adds a sophisticated touch to any bathroom, enhancing the decor even in compact spaces. Its sleek and modern appearance makes it a versatile addition that elevates the overall ambiance of your bathroom.
+
+
+    Comfortable and Relaxing: Crafted with a smooth surface, this bathtub offers a soothing soak. The ergonomic design ensures total comfort, allowing you to unwind and de-stress after a long day.
+
+
+    High-Quality Construction: Made from solid surface stone, this soaking bathtub is known for its exceptional strength and resilience. The durable material resists wear and tear, ensuring that your bathtub maintains its pristine look for years.
+
+
+    Easy Installation: The freestanding bathtub comes with all necessary hardware and clear instructions, allowing for a hassle-free setup. Enjoy your new bathing space with minimal effort.
+
+
+Specifications
+
+
+
+    Material: Solid Surface Stone
+
+
+    Design: Freestanding
+
+
+    Size: 51 inches * 34 inches * 29 inches
+
+
+    Finish: Sleek, Modern
+
+
+    Included in Package:
+
+        1x 51" Solid Surface Stone Freestanding Bathtub
+
+        1x Installation Hardware Pack
+
+        1x Installation Instructions
+
+
+
+
+        )
+
+    [7710986109120] => Array
+        (
+            [title] => 49" Solid Surface Resin Stone Round Freestanding Soaking Bathtub with Pop-up Drainer
+            [description] => 
+Freestanding Bathtub Features:
+
+
+
+    Premium Construction: Made from high-quality resin stone mixed with aluminum powder, this bathtub is durable, non-toxic, environmentally friendly, and resistant to mildew and corrosion.
+
+
+    Natural Aesthetic: The matte finish offers a natural stone texture, providing both visual appeal and long-lasting durability.
+
+
+    Ergonomic Design: The rounded interior is thoughtfully designed to contour to your body’s shape, ensuring maximum comfort during every soak.
+
+
+    Non-Slip Surface: Equipped with a non-slip surface for enhanced safety, offering a secure bathing experience.
+
+
+    All-in-One Design: Features a built-in overflow and includes a pop-up drainer and flexible hose for convenient and hassle-free installation.
+
+
+Specifications:
+
+
+
+    Material: Solid Surface Resin Stone
+
+
+    Size: 49 inches
+
+
+    Design: Freestanding, Circular
+
+
+    Finish: Matte, Non-Slip
+
+
+Product List:
+
+
+    1x 49" Solid Surface Resin Stone Freestanding Soaking Bathtub
+
+    1x Flexible Hose
+
+    1x Pop-up Drainer
+
+    1x Installation Hardware Pack
+
+    1x Installation Instructions
+
+
+        )
+
+    [7710735302848] => Array
+        (
+            [title] => 69" Solid Surface Stone Resin Stand Alone Freestanding Soaking Bathtub
+            [description] => 
+Product Features:
+
+
+
+    Elegant and Smooth Finish: Hand-polished to perfection, this freestanding bathtub offers a velvety-smooth surface that enhances the tactile experience of your bath. Its flawless finish ensures a luxurious and sophisticated look, perfect for any modern bathroom.
+
+
+    Timeless Beauty and Durability: Constructed from high-quality resin-based materials, this bathtub retains its Matte White/ Transparent Gray colour over time. It resists corrosion and acid, maintaining its elegant appearance and lasting durability, making it an enduring addition to your bathroom.
+
+
+    Enhanced Bathing Experience: Designed for ultimate comfort, this bathtub helps retain warmth, ensuring that your bathwater stays warm longer for a relaxing soak. The ergonomic design provides the perfect space to unwind and enjoy a stress-free bath.
+
+
+    Scratch-Free Maintenance: The scratch-resistant surface of this tub is incredibly easy to maintain. With a simple wipe-down using a microfiber cloth and water, you can keep your bathtub spotless and pristine with minimal effort.
+
+
+Specifications:
+
+
+
+    Material: Solid Surface Stone Resin
+
+
+    Dimensions: 69 inches in length
+
+
+    Finish: Matte White/ Transparent Gray
+
+
+    Installation Type: Freestanding
+
+
+    Maintenance: Scratch-resistant, easy to clean
+
+
+    Gross weight: 401.24 lbs
+
+
+    Net weight: 288.81 lbs
+
+
+        )
+
+    [7710669013184] => Array
+        (
+            [title] => 59" Solid Surface Stone Resin Stand Alone Freestanding Soaking Bathtub
+            [description] => 
+Product Features:
+
+
+
+    Hand-Polished Finish: Features a smooth, velvety texture that enhances the luxury of your bathing experience.
+
+
+    Durable Solid Surface Construction: Made from high-quality stone resin, this soaking bathtub is resistant to acids and corrosion, while maintaining its color and durability over time.
+
+
+    Comfortable Soaking: Retains heat for extended periods, allowing for longer, more relaxing soaks.
+
+
+    Effortless Maintenance: The scratch-resistant surface is easy to clean with just a microfiber cloth and water, ensuring the tub remains pristine.
+
+
+Specifications:
+
+
+
+    Material: Solid surface stone resin
+
+
+    Dimensions: 59 inches
+
+
+    Finish: Matte White/ Dark Gray
+
+
+    Installation Type: Freestanding
+
+
+        )
+
+    [7709888839872] => Array
+        (
+            [title] => 65" Stone Resin Solid Surface Flatbottom Freestanding Bathtub Inside White Outside Green
+            [description] => 
+Product Features:
+
+
+
+    Elegant Free-Standing Design: This freestanding bathtub serves as a beautiful centerpiece in your bathroom, elevating the space with its contemporary and sleek design. Its versatility allows for easy placement anywhere in the room, making it the focal point of your bathroom decor.
+
+
+    Smooth, Non-Porous Surface: Made from stone resin solid surface, the bathtub's non-porous finish resists stains, dirt, and bacteria, making it easy to clean and maintain its pristine appearance with minimal effort.
+
+
+    Adjustable Feet for Stability: The bathtub is equipped with adjustable feet, allowing for stable installation on any surface, even uneven floors. This ensures a level and secure setup, enhancing the comfort and safety of your bathing experience.
+
+
+    Generous Capacity: With ample space for a full-body soak, this bathtub is perfect for unwinding and relaxation. Its spacious design accommodates one or two people comfortably, offering flexibility for different bathing needs.
+
+
+Specifications:
+
+
+
+    Material: Stone Resin Solid Surface
+
+
+    Dimensions: 65 inches in length
+
+
+    Capacity: 70 Gallons
+
+
+    Finish: White interior, green exterior
+
+
+    Type: Free-Standing
+
+    Slope: 130°
+
+
+    Features: Adjustable feet, large capacity for comfortable soaking
+
+
+        )
+
+    [7709527376064] => Array
+        (
+            [title] => 67" Artificial Stone Solid Surface Freestanding Bathroom Bathtub
+            [description] => 
+Product Features:
+
+
+
+    Premium Quality Construction: Crafted from artificial stone solid surface, this bathtub offers exceptional durability. The non-porous material is resistant to stains, scratches, and bacteria, ensuring easy cleaning and long-lasting use.
+
+
+    Spacious and Stylish Design: With an extra-wide design measuring 40 inches, this bathtub provides ample space for a full, relaxing soak. Its sleek modern aesthetics, featuring smooth surfaces and clean lines, make it a sophisticated addition to any bathroom.
+
+
+    Convenient Installation and Upkeep: This freestanding bathtub comes with all the necessary hardware for an easy and hassle-free installation. Its low-maintenance non-porous surface simplifies cleaning, allowing you to enjoy your bathtub without the added effort of constant upkeep.
+
+
+    Enhanced Comfort: The bathtub’s spacious design offers generous room for stretching out, allowing you to fully relax and enjoy a luxurious bathing experience. Its ergonomic shape also promotes a comfortable, restful soak.
+
+
+Specifications:
+
+
+
+    Material: Artificial Stone Solid Surface
+
+
+    Dimensions: 67 inches long x 40 inches wide x 22 inches height
+
+
+    Type: Freestanding
+
+
+    What’s Included: 1x 67" Artificial Stone Solid Bathtub, Installation hardware included for easy setup
+
+
+        )
+
+)
+
+Importing Page : 4
+
+Array
+(
+    [7501054181568] => Array
+        (
+            [title] => 67" Stone Resin Solid Surface Matte Freestanding Bathtub White
+            [description] => 
+Product Features
+
+
+
+    Elegant Design with Thin Edge: Featuring a sleek, thin-edge design and finished in matte white, this bathtub blends artisanal craftsmanship with modern aesthetics, adding sophistication to any bathroom.
+
+
+    Superior Heat Retention: Crafted from resin stone solid surface, the bathtub retains warmth efficiently, allowing you to enjoy longer, more relaxing soaks.
+
+
+    Durable One-Piece Construction: Built with a solid, 1-piece structure, this bathtub offers exceptional durability, safety, and stability for years of luxurious use.
+
+
+    Ergonomic Deep Soaking Experience: Designed with an extra-deep, ergonomic shape, it conforms to your body’s contours, ensuring maximum comfort during every bath.
+
+
+Specifications
+
+
+
+    Material: Resin stone solid surface with a matte white finish
+
+
+    Dimensions: 67-inch length
+
+
+    Included Components: Pop-up drainer, flexible hose, and built-in overflow
+
+
+    Installation Type: Freestanding flat-bottom with quick and easy setup
+
+
+        )
+
+    [7501050708160] => Array
+        (
+            [title] => 63" Stone Resin Solid Surface Matte Flatbottom Freestanding Bathtub in White
+            [description] => 
+Product Features
+
+
+
+    Sleek and Modern Design: Crafted with a chic thin-edge design and finished in elegant matte white, this bathtub exudes sophistication and elevates the ambiance of any bathroom.
+
+
+    Enhanced Heat Retention: Made from high-quality resin stone solid surface, the bathtub offers excellent heat-retention properties, ensuring a warm and luxurious soak every time.
+
+
+    Durable One-Piece Construction: Built with a solid, 1-piece structure, this bathtub ensures stability, safety, and long-lasting durability, providing peace of mind for years to come.
+
+
+    Ergonomic Deep Soaking Experience: Designed with an extra-deep ergonomic shape, the bathtub conforms to your body’s curves, delivering unparalleled comfort and relaxation.
+
+
+Specifications
+
+
+
+    Material: Resin stone solid surface with a matte white finish
+
+
+    Dimensions: 63-inch length
+
+
+    Included Components: Pop-up drainer, flexible hose, and built-in overflow
+
+
+    Design Style: Freestanding flat-bottom bathtub with a lightweight, smooth surface
+
+
+        )
+
+    [7501016039616] => Array
+        (
+            [title] => 55"/61"/65" Stone Resin Solid Surface Flatbottom Free-Standing Bathtub
+            [description] => 
+Product Features
+
+
+
+    Elegant and Modern Design: This bathtub features a sleek, thin-edged design crafted from resin stone solid surface with a matte white finish, adding a touch of sophistication to your bathroom.
+
+
+    Exceptional Heat Retention: The artificial stone construction ensures superior warm-keeping properties, allowing you to enjoy a longer and more comfortable soak.
+
+
+    Durable and Safe Construction: Built with a solid 1-piece design, the bathtub provides stability, durability, and long-lasting performance for a luxurious bathing experience.
+
+
+    Ergonomic and Deep Soaking Comfort: Designed with an ergonomic shape and extra depth, the bathtub conforms to your body’s contours for ultimate relaxation and support.
+
+
+Specifications
+
+
+
+    Material: Resin stone solid surface with matte white finish
+
+
+    Dimensions: Available in 55", 61", and 65" lengths
+
+
+    Included Components: Pop-up drainer, flexible hose, and built-in overflow
+
+
+    Design: Freestanding style with a solid 1-piece construction for easy installation
+
+    Slope: 130°
+
+
+        )
+
+    [7500971278528] => Array
+        (
+            [title] => 59"/67"/71" Stone Resin Solid Surface Matte Flatbottom Freestanding Bathtub in White
+            [description] => 
+Product Features
+
+
+
+    Luxurious and Modern Design: Crafted from resin stone solid surface with a matte white finish, this oval bathtub features a sleek, thin-edged design that adds a chic and sophisticated touch to any bathroom.
+
+
+    Superior Warm-Keeping and Comfort: The artificial stone material provides excellent heat retention, ensuring a longer and more comfortable soak every time.
+
+
+    Durable and Fade-Resistant Construction: Built with a solid 1-piece structure, the bathtub is highly durable and fade-resistant, maintaining its elegance and strength over the years.
+
+
+    Hassle-Free Maintenance and Installation: A non-porous surface makes cleaning and sanitizing effortless, while the included pop-up drainer, flexible hose, and overflow ensure quick and easy setup.
+
+
+Specifications
+
+
+
+    Material: Resin stone solid surface
+
+
+    Finish: Matte white, fade-resistant
+
+
+    Dimensions: Available in 59", 67", and 71" lengths
+
+
+    Included Components: Pop-up drainer, flexible hose, and built-in overflow assembly
+
+
+        )
+
+)
+passs
